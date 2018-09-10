@@ -8,6 +8,8 @@ using Android.Support.V4.App;
 using Android.Support.V4.View;
 using Android.Support.Design.Widget;
 using WoMoDiary.Droid.Fragments;
+using System.Reflection;
+using I18NPortable;
 
 namespace WoMoDiary.Droid
 {
@@ -25,6 +27,14 @@ namespace WoMoDiary.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            I18N.Current
+                 .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
+                 .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
+                 .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
+                 .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
+                 .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
+                 .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
+
 
             adapter = new TabsAdapter(this, SupportFragmentManager);
             pager = FindViewById<ViewPager>(Resource.Id.viewpager);
@@ -77,7 +87,7 @@ namespace WoMoDiary.Droid
             {
                 case 0: return BrowseFragment.NewInstance();
                 case 1: return AboutFragment.NewInstance();
-                case 2: return AboutFragment.NewInstance();
+                case 2: return PhotoFragment.NewInstance();
                 case 3: return AboutFragment.NewInstance();
                 case 4: return MapFragment.NewInstance();
             }
