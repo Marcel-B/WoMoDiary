@@ -1,0 +1,9 @@
+﻿Trip = Reise
+No Camera = Keine Kamera
+Shoot = Aufnahme
+Trip Name = Reiseziel
+Save = Speichern
+Description = Beschreibung
+New Trip = Neue Reise
+Your Position = Deine Position
+Save Position = Position speichern

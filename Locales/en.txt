@@ -1,0 +1,9 @@
+﻿Trip = Trip
+No Camera = No Camera
+Shoot = Shoot
+Trip Name = Trip Name
+Save = Save
+Description = Description
+New Trip = New Trip
+Your Position = Your Position
+Save Position = Save Position
