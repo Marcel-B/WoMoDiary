@@ -7,4 +7,3 @@ Description = Description
 New Trip = New Trip
 Your Position = Your Position
 Save Position = Save Position
-Shoot = Shoot

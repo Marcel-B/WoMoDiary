@@ -4,8 +4,6 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V4.App;
-using Android.Support.V4.View;
 using Android.Support.Design.Widget;
 using WoMoDiary.Droid.Fragments;
 using System.Reflection;
@@ -19,14 +17,16 @@ namespace WoMoDiary.Droid
         ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : BaseActivity
     {
-        protected override int LayoutResource => Resource.Layout.activity_main;
 
-        ViewPager pager;
-        TabsAdapter adapter;
+        public TabWidget TabOne { get; set; }
+        public TabHost MainTabHost { get; set; }
+        public Button TestButton { get; set; }
+        protected override int LayoutResource => Resource.Layout.activity_main;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
@@ -36,64 +36,24 @@ namespace WoMoDiary.Droid
                  .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
 
 
-            adapter = new TabsAdapter(this, SupportFragmentManager);
-            pager = FindViewById<ViewPager>(Resource.Id.viewpager);
-            var tabs = FindViewById<TabLayout>(Resource.Id.tabs);
-            pager.Adapter = adapter;
-            tabs.SetupWithViewPager(pager);
-            pager.OffscreenPageLimit = 3;
+            TabOne = FindViewById<TabWidget>(Resource.Id.tabWidget1);
+            MainTabHost = FindViewById<TabHost>(Resource.Id.tabHost1);
+            TestButton = FindViewById<Button>(Resource.Id.button1);
 
-            pager.PageSelected += (sender, args) =>
-            {
-                var fragment = adapter.InstantiateItem(pager, args.Position) as IFragmentVisible;
+            //Toolbar.MenuItemClick += (sender, e) =>
+            //{
+            //    var intent = new Intent(this, typeof(AddItemActivity)); ;
+            //    StartActivity(intent);
+            //};
 
-                fragment?.BecameVisible();
-            };
-
-            Toolbar.MenuItemClick += (sender, e) =>
-            {
-                var intent = new Intent(this, typeof(AddItemActivity)); ;
-                StartActivity(intent);
-            };
-
-            SupportActionBar.SetDisplayHomeAsUpEnabled(false);
-            SupportActionBar.SetHomeButtonEnabled(false);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            //SupportActionBar.SetHomeButtonEnabled(false);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            //MenuInflater.Inflate(Resource.Menu.top_menus, menu);
             return base.OnCreateOptionsMenu(menu);
         }
-    }
-
-    class TabsAdapter : FragmentStatePagerAdapter
-    {
-        string[] titles;
-
-        public override int Count => titles.Length;
-
-        public TabsAdapter(Context context, Android.Support.V4.App.FragmentManager fm) : base(fm)
-        {
-            titles = context.Resources.GetTextArray(Resource.Array.sections);
-        }
-
-        public override Java.Lang.ICharSequence GetPageTitleFormatted(int position) =>
-                            new Java.Lang.String(titles[position]);
-
-        public override Android.Support.V4.App.Fragment GetItem(int position)
-        {
-            switch (position)
-            {
-                case 0: return BrowseFragment.NewInstance();
-                case 1: return AboutFragment.NewInstance();
-                case 2: return PhotoFragment.NewInstance();
-                case 3: return AboutFragment.NewInstance();
-                case 4: return MapFragment.NewInstance();
-            }
-            return null;
-        }
-
-        public override int GetItemPosition(Java.Lang.Object frag) => PositionNone;
     }
 }

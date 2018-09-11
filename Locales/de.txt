@@ -7,4 +7,3 @@ Description = Beschreibung
 New Trip = Neue Reise
 Your Position = Deine Position
 Save Position = Position speichern
-Shoot = Aufnahme

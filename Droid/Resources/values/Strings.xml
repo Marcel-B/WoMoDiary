@@ -3,10 +3,9 @@
     <string name="hello">Hello World, Click Me!</string>
     <string name="app_name">WoMoDiary</string>
     <string name="tab1">Home</string>
-    <string name="tab2">Cam</string>
-    <string name="tab3">Trip</string>
-    <string name="tab4">Foo</string>
-    <string name="tab5">Map</string>
+    <string name="tab2">Foo</string>
+    <string name="tab3">Cam</string>
+    <string name="tab4">Map</string>
     <string name="signin">Sign In</string>
     <string name="notnow">Not Now</string>
     <string name="signing_in">Signing in...</string>
