@@ -10,7 +10,7 @@ namespace WoMoDiary.Helpers
         public const string NEW_TRIP = "New Trip";
         public const string YOUR_POSITION  = "Your Position";
         public const string SAVE_POSITION = "Save Position";
-        //public const string = "";
+        public const string SHOOT = "Shoot";
         //public const string ;
         //public const string ;
         //public const string ;
