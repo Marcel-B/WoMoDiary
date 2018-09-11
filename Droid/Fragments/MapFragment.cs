@@ -16,6 +16,8 @@ namespace WoMoDiary.Droid.Fragments
 {
     public class MapFragment : Android.Support.V4.App.Fragment
     {
+        public Button ButtonMap { get; set; }
+
         public static MapFragment NewInstance() =>
             new MapFragment { Arguments = new Bundle() };
 
@@ -29,15 +31,22 @@ namespace WoMoDiary.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
 
-            View view = inflater.Inflate(Resource.Layout.fragment_map, container, false);
-   
+            var view = inflater.Inflate(Resource.Layout.fragment_map, container, false);
+            ButtonMap = view.FindViewById<Button>(Resource.Id.ButtonMap);
 
+            ButtonMap.Click += Button_Click;
+        
             return view;
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
             //View view = inflater.Inflate(Resource.Layout.fragment_browse, container, false);
 
             //return base.OnCreateView(inflater, container, savedInstanceState);
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            ButtonMap.Text = "Have clicked me";
         }
     }
 }
