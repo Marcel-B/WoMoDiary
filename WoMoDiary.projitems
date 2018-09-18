@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Rating.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Trip.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

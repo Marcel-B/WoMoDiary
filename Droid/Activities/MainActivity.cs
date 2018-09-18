@@ -1,47 +1,22 @@
-﻿using System.Reflection;
-using Android;
-using Android.App;
-using Android.Content.PM;
+﻿using Android.App;
 using Android.OS;
-using Android.Views;
-using Android.Widget;
+using System.Reflection;
 using I18NPortable;
+using WoMoDiary.Droid.Fragments;
+using WoMoDiary.Droid.Activities;
 
-namespace WoMoDiary.Droid.Activities
+namespace WoMoDiary.Droid
 {
-    [Activity(Label = "@string/app_name", Icon = "@mipmap/icon",
-        LaunchMode = LaunchMode.SingleInstance,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : BaseActivity 
+    [Activity(Label = "WoMo", MainLauncher = true, Icon = "@mipmap/icon")]
+    public class MainActivity : Android.Support.V4.App.FragmentActivity
     {
-
-        public TabWidget TabOne { get; set; }
-        public TabHost MainTabHost { get; set; }
-        public Button TestButton { get; set; }
-        //protected override int LayoutResource => Resource.Layout.MainActivity;
+        public Android.Support.Design.Widget.TabLayout TabLayout { get; set; }
+        public Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            SetContentView(Resource.Layout.MainActivity);
-
-            ActionBar.Tab tab = ActionBar.NewTab();
-            tab.SetText("Hello");
-            tab.SetIcon(Resource.Drawable.WoMo);
-            tab.TabSelected += (sender, args) =>
-            {
-                // Do something when tab is selected
-            };
-            ActionBar.AddTab(tab);
-
-            var detailsTab = ActionBar.NewTab();
-            detailsTab.SetText("Tab2");
-            tab.SetIcon(Resource.Drawable.ic_save);
-            detailsTab.TabSelected += (sender, args) => { };
-            ActionBar.AddTab(detailsTab);
-
+            SetContentView(Resource.Layout.TabsLayout);
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
@@ -49,6 +24,39 @@ namespace WoMoDiary.Droid.Activities
                  .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
                  .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
                  .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
+
+            TabLayout = FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.mainTabLayout);
+            Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbarMain);
+            Toolbar.InflateMenu(Resource.Menu.top_menus);
+            Toolbar.MenuItemClick += (sender, e) =>
+            {
+                StartActivity(typeof(SaveLocationActivity));
+            };
+
+            TabLayout.TabSelected += (sender, e) =>
+            {
+                switch (e.Tab.Position)
+                {
+                    case 0:
+                        FragmentNavigate(new TripsFragment());
+                        break;
+                    case 1:
+                        FragmentNavigate(new LocationFragment());
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
+            };
+            FragmentNavigate(new TripsFragment());
+        }
+
+        private void FragmentNavigate(Android.Support.V4.App.Fragment fragment)
+        {
+            var transaction = SupportFragmentManager.BeginTransaction();
+            transaction.Replace(Resource.Id.contentFrame, fragment);
+            transaction.Commit();
         }
     }
 }
