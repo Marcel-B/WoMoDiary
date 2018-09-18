@@ -8,13 +8,13 @@
     <Button
         android:id="@+id/buttonSaveLocation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+		android:text="Save Location"/>
     
     <fragment
         class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:id="@+id/mapFragmentMyLocation"/>
-    
     
 </LinearLayout>

@@ -17,6 +17,7 @@ namespace WoMoDiary.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.TabsLayout);
+
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
@@ -30,7 +31,17 @@ namespace WoMoDiary.Droid
             Toolbar.InflateMenu(Resource.Menu.top_menus);
             Toolbar.MenuItemClick += (sender, e) =>
             {
-                StartActivity(typeof(SaveLocationActivity));
+                var id = e.Item.ItemId;
+
+                switch (id)
+                {
+                    case Resource.Id.menuAddTrip:
+                        StartActivity(typeof(NewTripActivity));
+                        break;
+                    case Resource.Id.menuSaveLocation:
+                        StartActivity(typeof(SaveLocationActivity));
+                        break;
+                }
             };
 
             TabLayout.TabSelected += (sender, e) =>

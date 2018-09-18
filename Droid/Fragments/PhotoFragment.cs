@@ -23,7 +23,7 @@ namespace WoMoDiary.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             // Use this to return your custom view for this Fragment
-            var view = inflater.Inflate(Resource.Layout.fragment_photo, container, false);
+            var view = inflater.Inflate(Resource.Layout.PhotoFragmentLayout, container, false);
             ShootButton = view.FindViewById<Button>(Resource.Id.ButtonShoot);
             ShootButton.Text = Strings.SHOOT.Translate();
             return view;

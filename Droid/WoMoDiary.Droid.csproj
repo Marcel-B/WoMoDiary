@@ -26,6 +26,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -167,14 +170,11 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
-    <AndroidResource Include="Resources\layout\fragment_photo.axml" />
+    <AndroidResource Include="Resources\layout\PhotoFragmentLayout.axml" />
     <AndroidResource Include="Resources\layout\NewTripLayout.axml" />
     <AndroidResource Include="Resources\layout\TabsLayout.axml" />
     <AndroidResource Include="Resources\layout\TripCellLayout.axml" />
     <AndroidResource Include="Resources\layout\LocationLayout.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Adapter\" />
   </ItemGroup>
   <Import Project="..\WoMoDiary.projitems" Label="Shared" Condition="Exists('..\WoMoDiary.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
