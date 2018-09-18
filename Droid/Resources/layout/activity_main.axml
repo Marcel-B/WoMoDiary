@@ -6,69 +6,10 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    
-    <TabHost
+    <Button
+        android:text="Button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:id="@+id/tabHost1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout1">
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minWidth="25px"
-                android:minHeight="25px">
-                <TabWidget
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tabWidget1">
-                    <Button
-                        android:text="Button Tab one"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/button1" />
-                </TabWidget>
-            </TabWidget>
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:minWidth="25px"
-                android:minHeight="25px">
-                <TabWidget
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tabWidget2">
-                    <Button
-                        android:text="Button"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/button2" />
-                </TabWidget>
-                <TabWidget
-                    android:minWidth="25px"
-                    android:minHeight="25px"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/tabWidget1">
-                    <Button
-                        android:text="Button Tab one"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/button1" />
-                </TabWidget>
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonPushMe" />
     
 </LinearLayout>

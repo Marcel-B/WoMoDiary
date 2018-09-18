@@ -1,32 +1,22 @@
 ﻿using Android.App;
-using Android.Content;
-using Android.Content.PM;
 using Android.OS;
-using Android.Views;
-using Android.Widget;
-using Android.Support.Design.Widget;
-using WoMoDiary.Droid.Fragments;
 using System.Reflection;
 using I18NPortable;
+using WoMoDiary.Droid.Fragments;
+using WoMoDiary.Droid.Activities;
 
 namespace WoMoDiary.Droid
 {
-    [Activity(Label = "@string/app_name", Icon = "@mipmap/icon",
-        LaunchMode = LaunchMode.SingleInstance,
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-        ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : BaseActivity
+    [Activity(Label = "WoMo", MainLauncher = true, Icon = "@mipmap/icon")]
+    public class MainActivity : Android.Support.V4.App.FragmentActivity
     {
-
-        public TabWidget TabOne { get; set; }
-        public TabHost MainTabHost { get; set; }
-        public Button TestButton { get; set; }
-        protected override int LayoutResource => Resource.Layout.activity_main;
+        public Android.Support.Design.Widget.TabLayout TabLayout { get; set; }
+        public Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            SetContentView(Resource.Layout.TabsLayout);
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
@@ -35,25 +25,38 @@ namespace WoMoDiary.Droid
                  .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
                  .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
 
+            TabLayout = FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.mainTabLayout);
+            Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbarMain);
+            Toolbar.InflateMenu(Resource.Menu.top_menus);
+            Toolbar.MenuItemClick += (sender, e) =>
+            {
+                StartActivity(typeof(SaveLocationActivity));
+            };
 
-            TabOne = FindViewById<TabWidget>(Resource.Id.tabWidget1);
-            MainTabHost = FindViewById<TabHost>(Resource.Id.tabHost1);
-            TestButton = FindViewById<Button>(Resource.Id.button1);
-
-            //Toolbar.MenuItemClick += (sender, e) =>
-            //{
-            //    var intent = new Intent(this, typeof(AddItemActivity)); ;
-            //    StartActivity(intent);
-            //};
-
-            //SupportActionBar.SetDisplayHomeAsUpEnabled(false);
-            //SupportActionBar.SetHomeButtonEnabled(false);
+            TabLayout.TabSelected += (sender, e) =>
+            {
+                switch (e.Tab.Position)
+                {
+                    case 0:
+                        FragmentNavigate(new TripsFragment());
+                        break;
+                    case 1:
+                        FragmentNavigate(new LocationFragment());
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                }
+            };
+            FragmentNavigate(new TripsFragment());
         }
 
-        public override bool OnCreateOptionsMenu(IMenu menu)
+        private void FragmentNavigate(Android.Support.V4.App.Fragment fragment)
         {
-            //MenuInflater.Inflate(Resource.Menu.top_menus, menu);
-            return base.OnCreateOptionsMenu(menu);
+            var transaction = SupportFragmentManager.BeginTransaction();
+            transaction.Replace(Resource.Id.contentFrame, fragment);
+            transaction.Commit();
         }
     }
 }
