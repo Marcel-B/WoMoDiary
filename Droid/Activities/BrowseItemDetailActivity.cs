@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using WoMoDiary.Droid.Activities;
 
 namespace WoMoDiary.Droid
 {
