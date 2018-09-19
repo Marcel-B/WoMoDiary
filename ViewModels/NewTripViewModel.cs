@@ -1,0 +1,45 @@
+﻿using System;
+using WoMoDiary.Models;
+
+namespace WoMoDiary.ViewModels
+{
+    public class NewTripViewModel : BaseViewModel
+    {
+        public NewTripViewModel()
+        {
+            SaveTripCommand = new Command(ExecuteSaveTrip, CanExecuteSaveTrip);
+        }
+
+        private bool CanExecuteSaveTrip(object arg)
+            => !string.IsNullOrWhiteSpace(TripName);
+
+        private async void ExecuteSaveTrip(object obj)
+        {
+            var store = MockDataStore.GetInstance();
+            var trip = new Trip
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = TripName,
+                Description = Description
+            };
+            await store.AddItemAsync(trip);
+        }
+
+        private string _tripName;
+        public string TripName
+        {
+            get => _tripName;
+            set => SetProperty(ref _tripName, value);
+        }
+
+        private string _description;
+        public string Description
+        {
+            get => _description;
+            set => SetProperty(ref _description, value);
+        }
+
+        public Command SaveTripCommand { get; set; }
+
+    }
+}

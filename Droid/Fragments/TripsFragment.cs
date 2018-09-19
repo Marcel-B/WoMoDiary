@@ -19,18 +19,13 @@ namespace WoMoDiary.Droid.Fragments
 {
     public class TripsFragment : Android.Support.V4.App.ListFragment
     {
-        public override void OnCreate(Bundle savedInstanceState)
+        public async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
-            ListAdapter = new TripAdapter(Activity, new List<Trip>
-            {
-                new Trip{Name = "Östereich"},
-                new Trip{Name = "Nordsee"},
-                new Trip{Name = "Schweiz"},
-                new Trip{Name = "Mecklenburg"}
-            });
+            var store = MockDataStore.GetInstance();
+            ListAdapter = new TripAdapter(Activity, (await store.GetItemsAsync()).ToList());
         }
     }
 }

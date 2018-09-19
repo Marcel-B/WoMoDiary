@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Reflection;
 using I18NPortable;
+using WoMoDiary.Models;
 
 namespace WoMoDiary
 {
@@ -15,10 +16,10 @@ namespace WoMoDiary
         }
         public static void Initialize()
         {
-            if (UseMockDataStore)
-                ServiceLocator.Instance.Register<IDataStore<Item>, MockDataStore>();
-            else
-                ServiceLocator.Instance.Register<IDataStore<Item>, CloudDataStore>();
+            //if (UseMockDataStore)
+            //    ServiceLocator.Instance.Register<IDataStore<Trip>, MockDataStore>();
+            //else
+                //ServiceLocator.Instance.Register<IDataStore<Trip>, CloudDataStore>();
 
 
         }
