@@ -26,8 +26,8 @@ namespace WoMoDiary.BackEnd.Controllers
                             }
                         },
                         new Restaurant{Name = "Denn's in", Description = "Funny little room", Location = new Location{
-                                Longitude = 11,
-                                Latitude = 11,
+                                Longitude = 42,
+                                Latitude = 12,
                             }
                         },
                         new NicePlace{ Name = "Waterfall", Description ="Awesome Waterfall", Location = new Location{
