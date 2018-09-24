@@ -152,7 +152,9 @@
   <ItemGroup>
     <None Include="Assets\AboutAssets.txt" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\AboutResources.txt" />
     <None Include="packages.config" />
   </ItemGroup>

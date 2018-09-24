@@ -28,13 +28,15 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -44,13 +46,15 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
@@ -58,7 +62,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,7 +84,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchVerbosity>
+    </MtouchVerbosity>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -117,76 +123,216 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Position.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi.png" />
-    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Map.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map.png" />
-    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Camera.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera.png" />
-    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper.png" />
-    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-512.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-256.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-16.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-32.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-64.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-128.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-172.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-196.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-88.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-100.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-48.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-55.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-152.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png" />
-    <ImageAsset Include="Assets.xcassets\Poi.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose.png" />
-    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant.png" />
-    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Camping.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent.png" />
-    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent%403x.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up%402x.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up%403x.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down%402x.png" />
-    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down%403x.png" />
-    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view.png" />
-    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view%402x.png" />
-    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Hotel.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel.png" />
-    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\complete.png" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\complete%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Image.imageset\complete%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Position.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Position.imageset\tab_poi%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map.imageset\tab_map%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camera.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camera.imageset\tab_camera%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Motorhome.imageset\camper%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-512.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-256.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-16.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-32.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-64.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-128.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-172.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-196.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-88.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-100.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-48.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-55.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Poi.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Poi.imageset\wind_rose%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Restaurant.imageset\restaurant%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camping.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Camping.imageset\camping_tent%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbUp.imageset\thumbs_up%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ThumbDown.imageset\thumbs_down%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SightSeeing.imageset\scenic_view%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hotel.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Hotel.imageset\hotel%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\complete.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\complete%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Image.imageset\complete%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
