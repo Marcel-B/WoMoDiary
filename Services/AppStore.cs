@@ -15,7 +15,7 @@ namespace WoMoDiary.Services
 
         protected AppStore() { }
 
-        public Trip CurrentTrip { get; set; }
+        public TripOtd CurrentTrip { get; set; }
         public Location CurrentLocation { get; set; }
 
 

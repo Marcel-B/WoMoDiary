@@ -11,12 +11,12 @@ namespace WoMoDiary.iOS
 {
     public partial class TripsCollectionViewController : UICollectionViewController
     {
-        IList<Trip> Trips;
-        Trip SelectedTrip { get; set; }
+        IList<TripOtd> Trips;
+        TripOtd SelectedTrip { get; set; }
 
         public TripsCollectionViewController(IntPtr handle) : base(handle)
         {
-            Trips = new List<Trip>();
+            Trips = new List<TripOtd>();
         }
 
         public async override void ViewDidLoad()
@@ -31,6 +31,7 @@ namespace WoMoDiary.iOS
             var collectionView = CollectionView;
             var w = collectionView.Frame.Width - 16;
             flowLayout.ItemSize = new CGSize(width: w, height: 120);
+            CollectionView.ReloadData();
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)

@@ -6,9 +6,9 @@ using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
-    public class MockDataStore : IDataStore<Trip>
+    public class MockDataStore : IDataStore<TripOtd>
     {
-        List<Trip> items;
+        List<TripOtd> items;
 
         private static MockDataStore _dataStore;
         public static MockDataStore GetInstance()
@@ -20,10 +20,10 @@ namespace WoMoDiary
 
         protected MockDataStore()
         {
-            items = new List<Trip>();
-            var _items = new List<Trip>
+            items = new List<TripOtd>();
+            var _items = new List<TripOtd>
             {
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Italien", Description="This is a nice description", Places = new List<IPlace>
+                new TripOtd { Id = Guid.NewGuid(), Name = "Italien", Description="This is a nice description", Places = new List<Place>
                     {
                         new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
 
@@ -50,42 +50,42 @@ namespace WoMoDiary
                 //new Trip { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is a nice description"},
             };
 
-            foreach (Trip item in _items)
+            foreach (TripOtd item in _items)
             {
                 items.Add(item);
             }
         }
 
-        public async Task<bool> AddItemAsync(Trip item)
+        public async Task<bool> AddItemAsync(TripOtd item)
         {
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> UpdateItemAsync(Trip item)
+        public async Task<bool> UpdateItemAsync(TripOtd item)
         {
-            var _item = items.Where((Trip arg) => arg.Id == item.Id).FirstOrDefault();
+            var _item = items.Where((TripOtd arg) => arg.Id == item.Id).FirstOrDefault();
             items.Remove(_item);
             items.Add(item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(Guid id)
         {
-            var _item = items.Where((Trip arg) => arg.Id == id).FirstOrDefault();
+            var _item = items.Where((TripOtd arg) => arg.Id == id).FirstOrDefault();
             items.Remove(_item);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Trip> GetItemAsync(string id)
+        public async Task<TripOtd> GetItemAsync(Guid id)
         {
             return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
         }
 
-        public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<TripOtd>> GetItemsAsync(bool forceRefresh = false)
         {
             return await Task.FromResult(items);
         }

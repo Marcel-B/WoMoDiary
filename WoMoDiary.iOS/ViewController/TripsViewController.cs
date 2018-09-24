@@ -10,11 +10,11 @@ namespace WoMoDiary.iOS
 {
     public partial class TripsViewController : UITableViewController
     {
-        IList<IPlace> Places;
+        IList<Place> Places;
 
         public TripsViewController(IntPtr handle) : base(handle)
         {
-            Places = new List<IPlace>();
+            Places = new List<Place>();
         }
 
         public override void ViewDidLoad()

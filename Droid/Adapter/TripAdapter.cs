@@ -10,9 +10,9 @@ namespace WoMoDiary.Droid.Adapter
     public class TripAdapter : BaseAdapter
     {
         Context _context;
-        IList<Trip> _trips;
+        IList<TripOtd> _trips;
 
-        public TripAdapter(Context context, IList<Trip> trips)
+        public TripAdapter(Context context, IList<TripOtd> trips)
         {
             _trips = trips;
             _context = context;

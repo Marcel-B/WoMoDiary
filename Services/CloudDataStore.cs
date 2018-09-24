@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using WoMoDiary.Domain;
@@ -12,46 +11,42 @@ using System.Net;
 
 namespace WoMoDiary
 {
-    public class CloudDataStore : IDataStore<Trip>
+    public class CloudDataStore : IDataStore<TripOtd>
     {
         HttpClient client;
-        IEnumerable<Trip> items;
+        IEnumerable<TripOtd> items;
 
         public CloudDataStore()
         {
             client = new HttpClient();
-            //client.BaseAddress = new Uri($"{App.BackendUrl}/");
-            client.BaseAddress = new Uri($"http://localhost:5000/");
+            client.BaseAddress = new Uri($"{App.BackendUrl}/");
 
-            items = new List<Trip>();
+            items = new List<TripOtd>();
         }
 
-        public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<TripOtd>> GetItemsAsync(bool forceRefresh = false)
         {
-            //var aclient = new HttpClient();
-            //var foo = await aclient.GetAsync("https://womo.marcelbenders.de/api/trip");
-            //var rest = await foo.Content.ReadAsStringAsync();
-            //if (forceRefresh && CrossConnectivity.Current.IsConnected)
-            //{
+            if (forceRefresh && CrossConnectivity.Current.IsConnected)
+            {
                 var json = await client.GetStringAsync($"api/trip");
-                items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Trip>>(json));
-            //}
+                items = await Task.Run(() => TripOtd.FromJson(json));
+            }
 
             return items;
         }
 
-        public async Task<Trip> GetItemAsync(string id)
+        public async Task<TripOtd> GetItemAsync(Guid id)
         {
             if (id != null && CrossConnectivity.Current.IsConnected)
             {
                 var json = await client.GetStringAsync($"api/item/{id}");
-                return await Task.Run(() => JsonConvert.DeserializeObject<Trip>(json));
+                return await Task.Run(() => JsonConvert.DeserializeObject<TripOtd>(json));
             }
 
             return null;
         }
 
-        public async Task<bool> AddItemAsync(Trip item)
+        public async Task<bool> AddItemAsync(TripOtd item)
         {
             if (item == null || !CrossConnectivity.Current.IsConnected)
                 return false;
@@ -63,7 +58,7 @@ namespace WoMoDiary
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> UpdateItemAsync(Trip item)
+        public async Task<bool> UpdateItemAsync(TripOtd item)
         {
             if (item == null || item.Id == null || !CrossConnectivity.Current.IsConnected)
                 return false;
@@ -77,9 +72,9 @@ namespace WoMoDiary
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(Guid id)
         {
-            if (string.IsNullOrEmpty(id) && !CrossConnectivity.Current.IsConnected)
+            if (id != Guid.Empty && !CrossConnectivity.Current.IsConnected)
                 return false;
 
             var response = await client.DeleteAsync($"api/trip/{id}");

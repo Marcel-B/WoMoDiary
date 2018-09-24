@@ -1,5 +1,7 @@
 ﻿using WoMoDiary.Services;
 using System;
+using WoMoDiary.Domain;
+
 namespace WoMoDiary.ViewModels
 {
     public class SaveLocationViewModel : BaseViewModel
@@ -16,7 +18,7 @@ namespace WoMoDiary.ViewModels
         {
             System.Diagnostics.Debug.WriteLine($"Location Saved: Long {Longitude} - Lat {Latitude} - Alt {Altitude}");
             var store = AppStore.GetInstance();
-            var location = new WoMoDiary.Domain.Location
+            var location = new Location
             {
                 Id = Guid.NewGuid(),
                 Name = Name,

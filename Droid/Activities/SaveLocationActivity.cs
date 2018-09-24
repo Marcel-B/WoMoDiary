@@ -86,5 +86,6 @@ namespace WoMoDiary.Droid.Activities
             MyMapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentMyLocation);
             // Create your application here
         }
+
     }
 }

@@ -9,7 +9,7 @@ namespace WoMoDiary
     public class App
     {
         public static bool UseMockDataStore = true;
-        public static string BackendUrl = "http://localhost:5000";
+        public static string BackendUrl = "https://womo.marcelbenders.de";
         public App()
         {
             Console.WriteLine(GetType().GetTypeInfo().Assembly);

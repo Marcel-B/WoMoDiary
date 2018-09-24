@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WoMoDiary.Domain;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -11,13 +12,19 @@ namespace WoMoDiary.BackEnd.Controllers
     [ApiController]
     public class TripController : ControllerBase
     {
+        WoMoContext _context;
+        public TripController(WoMoContext context)
+        {
+            _context = context;
+        }
+
         // GET api/trip
         [HttpGet]
-        public ActionResult<IEnumerable<Trip>> Get()
+        public ActionResult<IEnumerable<TripOtd>> Get()
         {
-           return new List<Trip>
+            return new List<TripOtd>
             {
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Italien", Description="This is a nice description", Places = new List<IPlace>
+                new TripOtd { Id = Guid.NewGuid(), Name = "Italien", Description="This is a nice description", Places = new List<Place>
                     {
                         new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
 
@@ -36,47 +43,48 @@ namespace WoMoDiary.BackEnd.Controllers
                             }
                         }
                     }
-                },
-            };
-        }
-
-        // GET api/trip/5
-        [HttpGet("{id}")]
-        public ActionResult<Trip> Get(Guid id)
-        {
-            return new Trip
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Italien",
-                Description = "This is a nice description",
-                Places = new List<IPlace>
-                    {
-                        new CampingPlace{Id = id, Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
-
-                                Longitude = 4,
-                                Latitude = 55,
-                            }
-                    }
                 }
             };
         }
 
+        // GET api/trip/
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Trip>> Get(Guid id)
+        {
+            var foo = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            return foo;
+        }
+
         // POST api/trip
         [HttpPost]
-        public void Post([FromBody] Trip value)
+        public async Task<ActionResult> Post([FromBody] Trip value)
         {
+            var result = await _context.Trips.AddAsync(value);
+            var r = await _context.SaveChangesAsync();
+            return new OkResult();
         }
 
         // PUT api/trip/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Trip value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] Trip value)
         {
+            var s = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            if (s == null) return new NotFoundObjectResult(id);
+            _context.Trips.Remove(s);
+            await _context.AddAsync(value);
+            var result = await _context.SaveChangesAsync();
+            return new OkResult();
         }
 
         // DELETE api/trip/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
+            var s = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            if (s == null) return new NotFoundObjectResult(id);
+            _context.Trips.Remove(s);
+            var result = await _context.SaveChangesAsync();
+            return new OkResult();
         }
     }
 }

@@ -27,7 +27,7 @@ namespace WoMoDiary.ViewModels
             Place.Description = location.Description;
             Place.Id = Guid.NewGuid();
             Place.Location = location;
-            trip.Places.Add(Place);
+            trip.Places.Add((Place)Place);
             System.Diagnostics.Debug.WriteLine("Location saved");
         }
     }
