@@ -11,19 +11,17 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Command.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ServiceLocator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CloudDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CampingPlace.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Location.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Rating.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\Trip.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewTripViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AppStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationTypeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\LocationTypeFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

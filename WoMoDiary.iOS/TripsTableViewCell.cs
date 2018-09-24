@@ -19,6 +19,18 @@ namespace WoMoDiary.iOS
             set => LableTripDescription.Text = value;
         }
 
+        public UIImageView Rating
+        {
+            get => ImageRating;
+            set => ImageRating = value;
+        }
+
+        public UIImageView ImagePath
+        {
+            get => ImageType;
+            set => ImageType = value;
+        }
+
 
         public TripsTableViewCell(IntPtr handle) : base(handle)
         {

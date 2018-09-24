@@ -1,8 +1,8 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
@@ -23,12 +23,31 @@ namespace WoMoDiary
             items = new List<Trip>();
             var _items = new List<Trip>
             {
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "First item", Description="This is a nice description"},
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is a nice description"},
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is a nice description"},
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is a nice description"},
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is a nice description"},
-                new Trip { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is a nice description"},
+                new Trip { Id = Guid.NewGuid().ToString(), Name = "Italien", Description="This is a nice description", Places = new List<IPlace>
+                    {
+                        new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
+
+                                Longitude = 4,
+                                Latitude = 55,
+                            }
+                        },
+                        new Restaurant{Name = "Denn's in", Description = "Funny little room", Location = new Location{
+                                Longitude = 11,
+                                Latitude = 11,
+                            }
+                        },
+                        new NicePlace{ Name = "Waterfall", Description ="Awesome Waterfall", Location = new Location{
+                                Longitude = 11,
+                                Latitude = 22,
+                            }
+                        }
+                    }
+                },
+                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is a nice description"},
+                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is a nice description"},
+                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is a nice description"},
+                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is a nice description"},
+                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is a nice description"},
             };
 
             foreach (Trip item in _items)

@@ -13,7 +13,6 @@ using Android.Views;
 using Android.Widget;
 using WoMoDiary.Droid.Adapter;
 using Java.Nio.Channels;
-using WoMoDiary.Models;
 
 namespace WoMoDiary.Droid.Fragments
 {

@@ -3,7 +3,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using System.Collections.Generic;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary.Droid.Adapter
 {
@@ -38,16 +38,20 @@ namespace WoMoDiary.Droid.Adapter
                     .GetSystemService(Context.LayoutInflaterService)
                     .JavaCast<LayoutInflater>();
                 view = inflater.Inflate(Resource.Layout.TripCellLayout, parent, false);
-                holder.Name = view.FindViewById<TextView>(Resource.Id.textViewCellTripName);
+                holder.Name = view.FindViewById<TextView>(Resource.Id.viewCellTripName);
+                holder.Time = view.FindViewById<TextView>(Resource.Id.viewCellTimeSpan);
                 view.Tag = holder;
             }
             holder.Name.Text = _trips[position].Name;
+            holder.Time.Text = _trips[position].Created.ToString("D");
             return view;
         }
 
         class TripAdapterViewHolder : Java.Lang.Object
         {
             public TextView Name { get; set; }
+            public TextView Time { get; set; }
+
         }
     }
 }

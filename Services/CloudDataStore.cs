@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 using Plugin.Connectivity;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
@@ -20,6 +20,7 @@ namespace WoMoDiary
         {
             client = new HttpClient();
             client.BaseAddress = new Uri($"{App.BackendUrl}/");
+            client.BaseAddress = new Uri($"http://localhost:5000/");
 
             items = new List<Trip>();
         }

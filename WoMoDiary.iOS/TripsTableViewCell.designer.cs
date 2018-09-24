@@ -16,6 +16,14 @@ namespace WoMoDiary.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ImageRating { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView ImageType { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel LableTripDescription { get; set; }
 
         [Outlet]
@@ -24,6 +32,16 @@ namespace WoMoDiary.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (ImageRating != null) {
+                ImageRating.Dispose ();
+                ImageRating = null;
+            }
+
+            if (ImageType != null) {
+                ImageType.Dispose ();
+                ImageType = null;
+            }
+
             if (LableTripDescription != null) {
                 LableTripDescription.Dispose ();
                 LableTripDescription = null;
