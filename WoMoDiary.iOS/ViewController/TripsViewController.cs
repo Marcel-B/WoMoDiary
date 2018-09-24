@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIKit;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
@@ -21,6 +21,7 @@ namespace WoMoDiary.iOS
         {
             base.ViewDidLoad();
             var store = MockDataStore.GetInstance();
+            
             var trip = AppStore.GetInstance().CurrentTrip;
             Places = trip.Places;
             TableView.ReloadData();

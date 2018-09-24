@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using WoMoDiary.Domain;
+using System.Net;
 
 namespace WoMoDiary
 {
@@ -19,7 +20,7 @@ namespace WoMoDiary
         public CloudDataStore()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri($"{App.BackendUrl}/");
+            //client.BaseAddress = new Uri($"{App.BackendUrl}/");
             client.BaseAddress = new Uri($"http://localhost:5000/");
 
             items = new List<Trip>();
@@ -27,11 +28,14 @@ namespace WoMoDiary
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
         {
-            if (forceRefresh && CrossConnectivity.Current.IsConnected)
-            {
+            //var aclient = new HttpClient();
+            //var foo = await aclient.GetAsync("https://womo.marcelbenders.de/api/trip");
+            //var rest = await foo.Content.ReadAsStringAsync();
+            //if (forceRefresh && CrossConnectivity.Current.IsConnected)
+            //{
                 var json = await client.GetStringAsync($"api/trip");
                 items = await Task.Run(() => JsonConvert.DeserializeObject<IEnumerable<Trip>>(json));
-            }
+            //}
 
             return items;
         }

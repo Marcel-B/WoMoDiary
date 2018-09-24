@@ -40,5 +40,10 @@
 	<string>I need your home</string>
 	<key>NSLocationUsageDescription</key>
 	<string>I need your home</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

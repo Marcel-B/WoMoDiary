@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIKit;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
@@ -24,7 +24,9 @@ namespace WoMoDiary.iOS
             base.ViewDidLoad();
             NavigationItem.SetHidesBackButton(true, false);
             var store = MockDataStore.GetInstance();
-            Trips = (await store.GetItemsAsync()).ToList();
+            var cloud = new CloudDataStore();
+
+            Trips = (await cloud.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var w = collectionView.Frame.Width - 16;

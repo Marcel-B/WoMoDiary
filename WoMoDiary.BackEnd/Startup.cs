@@ -40,7 +40,7 @@ namespace WoMoDiary.BackEnd
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

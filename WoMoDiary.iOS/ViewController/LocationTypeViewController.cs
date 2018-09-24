@@ -1,7 +1,7 @@
 using System;
 using UIKit;
 using System.Collections.Generic;
-using WoMoDiary.Models;
+using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Services;
 
