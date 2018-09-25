@@ -43,11 +43,6 @@ namespace WoMoDiary
                         }
                     }
                 },
-                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Second item", Description="This is a nice description"},
-                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Third item", Description="This is a nice description"},
-                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Fourth item", Description="This is a nice description"},
-                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Fifth item", Description="This is a nice description"},
-                //new Trip { Id = Guid.NewGuid().ToString(), Name = "Sixth item", Description="This is a nice description"},
             };
 
             foreach (TripOtd item in _items)

@@ -17,9 +17,12 @@ namespace WoMoDiary
         public static void Initialize()
         {
             //if (UseMockDataStore)
-            //    ServiceLocator.Instance.Register<IDataStore<Trip>, MockDataStore>();
+            // {   ServiceLocator.Instance.Register<IDataStore<Trip>, MockDataStore>();
+            //ServiceLocator.Instance.Register<IDataStore<Place>, MockPlaceDataStore>();}
             //else
-                //ServiceLocator.Instance.Register<IDataStore<Trip>, CloudDataStore>();
+            //{ServiceLocator.Instance.Register<IDataStore<Trip>, CloudDataStore>();
+            ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
+            //}
         }
     }
 }

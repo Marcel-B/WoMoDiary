@@ -1,5 +1,6 @@
 ﻿using System;
 using WoMoDiary.Domain;
+using Network;
 
 namespace WoMoDiary.ViewModels
 {
@@ -16,13 +17,15 @@ namespace WoMoDiary.ViewModels
         private async void ExecuteSaveTrip(object obj)
         {
             var store = MockDataStore.GetInstance();
+            var cloud = new TripDataStore();
+
             var trip = new TripOtd
             {
                 Id = Guid.NewGuid(),
                 Name = TripName,
                 Description = Description
             };
-            await store.AddItemAsync(trip);
+            await cloud.AddItemAsync(trip);
         }
 
         private string _tripName;

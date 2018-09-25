@@ -24,7 +24,7 @@ namespace WoMoDiary.iOS
             base.ViewDidLoad();
             NavigationItem.SetHidesBackButton(true, false);
             var store = MockDataStore.GetInstance();
-            var cloud = new CloudDataStore();
+            var cloud = new TripDataStore();
 
             Trips = (await cloud.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
             var flowLayout = Layout as UICollectionViewFlowLayout;
@@ -42,6 +42,8 @@ namespace WoMoDiary.iOS
             var cell = CollectionView.DequeueReusableCell("CollectionViewCell", indexPath) as TripCollectionViewCell;
             var trip = Trips[indexPath.Row];
             cell.Trip = trip.Name;
+            if (trip.Places == null)
+                trip.Places = new List<Place>();
             cell.Count = $"{trip.Places.Count} places";
             cell.Tag = indexPath.Row;
             cell.TimeSpan = trip.Created.ToString("D");

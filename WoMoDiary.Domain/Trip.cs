@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace WoMoDiary.Domain
 {
-    public class Trip
+    public class Trip : IItem
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

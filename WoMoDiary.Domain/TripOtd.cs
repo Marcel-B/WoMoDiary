@@ -13,7 +13,7 @@ namespace WoMoDiary.Domain
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
 
-    public partial class TripOtd
+    public partial class TripOtd : IItem
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }
@@ -40,7 +40,7 @@ namespace WoMoDiary.Domain
 
     }
 
-    public partial class Place : IPlace
+    public partial class Place : IPlace, IItem
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }
@@ -69,7 +69,7 @@ namespace WoMoDiary.Domain
         public bool? IsGood { get; set; }
     }
 
-    public partial class Location
+    public partial class Location : IItem
     {
         [JsonProperty("id")]
         public Guid Id { get; set; }
