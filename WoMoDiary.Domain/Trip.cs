@@ -16,13 +16,13 @@ namespace WoMoDiary.Domain
         public string Description { get; set; }
 
         [JsonProperty("created")]
-        public DateTimeOffset? Created { get; set; }
+        public DateTimeOffset Created { get; set; }
 
         [JsonProperty("lastEdit")]
         public DateTimeOffset? LastEdit { get; set; }
 
-        [JsonProperty("user")]
-        public User User { get; set; }
+        [JsonProperty("userFk")]
+        public Guid UserFk { get; set; }
 
         [JsonProperty("places")]
         public List<Place> Places { get; set; }

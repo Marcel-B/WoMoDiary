@@ -16,7 +16,7 @@ namespace WoMoDiary.Domain
         public string Email { get; set; }
         public byte[] Hash { get; set; }
         public byte[] Salt { get; set; }
-        public DateTimeOffset? Created { get; set; }
+        public DateTimeOffset Created { get; set; }
         public DateTimeOffset? LastEdit { get; set; }
         public IEnumerable<Trip> Trips { get; set; }
 
