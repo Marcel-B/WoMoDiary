@@ -50,7 +50,9 @@ namespace WoMoDiary.iOS
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
-            if (segue.DestinationViewController is MainTabBarViewController target)
+            var s = segue;
+            var i = segue.DestinationViewController;
+            if (segue.DestinationViewController is TripsViewController target)
             {
                 if (sender is UICollectionViewCell cell)
                 {
