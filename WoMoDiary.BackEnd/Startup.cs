@@ -26,8 +26,7 @@ namespace WoMoDiary.BackEnd
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<WoMoContext>(x =>
-                x.UseSqlServer(Configuration.GetConnectionString("default")));//, b => b.MigrationsAssembly("WoMoDiary.Domain")));
+            services.AddDbContext<WoMoContext>((x) => x.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -5,6 +5,7 @@ using WoMoDiary.Domain;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -20,31 +21,34 @@ namespace WoMoDiary.BackEnd.Controllers
 
         // GET api/trip
         [HttpGet]
-        public ActionResult<IEnumerable<TripOtd>> Get()
+        public async Task<ActionResult<IEnumerable<TripOtd>>> Get()
         {
-            return new List<TripOtd>
-            {
-                new TripOtd { Id = Guid.NewGuid(), Name = "Italien", Description="This is a nice description", Places = new List<Place>
-                    {
-                        new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
+            //return new List<TripOtd>
+            //{
+            //    new TripOtd { Id = Guid.NewGuid(), Name = "Italien", Description="This is a nice description", Places = new List<Place>
+            //        {
+            //            new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Location  = new Location{
 
-                                Longitude = 4,
-                                Latitude = 55,
-                            }
-                        },
-                        new Restaurant{Name = "Denn's in", Description = "Funny little room", Location = new Location{
-                                Longitude = 42,
-                                Latitude = 12,
-                            }
-                        },
-                        new NicePlace{ Name = "Waterfall", Description ="Awesome Waterfall", Location = new Location{
-                                Longitude = 11,
-                                Latitude = 22,
-                            }
-                        }
-                    }
-                }
-            };
+            //                    Longitude = 4,
+            //                    Latitude = 55,
+            //                }
+            //            },
+            //            new Restaurant{Name = "Denn's in", Description = "Funny little room", Location = new Location{
+            //                    Longitude = 42,
+            //                    Latitude = 12,
+            //                }
+            //            },
+            //            new NicePlace{ Name = "Waterfall", Description ="Awesome Waterfall", Location = new Location{
+            //                    Longitude = 11,
+            //                    Latitude = 22,
+            //                }
+            //            }
+            //        }
+            //    }
+            //};
+            //var trips = await _context.Trips.Where(t => t.User.Id == userId).ToListAsync();
+            var trips = await _context.Trips.ToListAsync();
+            return new OkObjectResult(trips);
         }
 
         // GET api/trip/

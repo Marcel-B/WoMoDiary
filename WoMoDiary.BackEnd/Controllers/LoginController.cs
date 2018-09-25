@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WoMoDiary.Domain;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -8,6 +11,11 @@ namespace WoMoDiary.BackEnd.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
+        WoMoContext _context;
+        public LoginController(WoMoContext context)
+        {
+            _context = context;
+        }
         //// GET api/trip
         //[HttpGet]
         //public ActionResult<IEnumerable<User>> Get()
@@ -37,29 +45,45 @@ namespace WoMoDiary.BackEnd.Controllers
         //    };
         //}
 
-        // GET api/trip/5
+        // GET api/user/
         [HttpGet("{id}")]
-        public ActionResult<User> Get(Guid id)
+        public async Task<ActionResult<User>> Get(Guid id)
         {
-            return new User { Id = id };
+            var user = await _context.Users.SingleOrDefaultAsync(i => i.Id == id);
+            if (user == null) return new NotFoundResult();
+            return user;
         }
 
-        // POST api/trip
+        // POST api/user
         [HttpPost]
-        public void Post([FromBody] User value)
+        public async Task<ActionResult> Post([FromBody] User value)
         {
+            var user = await _context.Users.AddAsync(value);
+            var result = await _context.SaveChangesAsync();
+            return new CreatedResult("/api/user", user);
         }
 
-        // PUT api/trip/5
+        // PUT api/user/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] User value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] User value)
         {
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            _context.Users.Remove(user);
+            value.LastEdit = DateTimeOffset.Now;
+            var newUser = await _context.Users.AddAsync(value);
+            var result = await _context.SaveChangesAsync();
+            return new OkResult();
         }
 
-        // DELETE api/trip/5
+        // DELETE api/user/
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
+            var toDelete = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            if (toDelete == null) return new NotFoundResult();
+            _context.Remove(toDelete);
+            var result = await _context.SaveChangesAsync();
+            return new OkResult();
         }
     }
 }

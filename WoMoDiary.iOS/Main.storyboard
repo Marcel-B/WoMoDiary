@@ -25,24 +25,6 @@
             </objects>
             <point key="canvasLocation" x="-247" y="-1639"/>
         </scene>
-        <scene sceneID="4558">
-            <objects>
-                <tabBarController id="4559" sceneMemberID="viewController" customClass="MainTabBarViewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="4562">
-                        <rect key="frame" x="0.0" y="617" width="375" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue id="5109" destination="5069" kind="relationship" relationship="viewControllers"/>
-                        <segue id="9906" destination="9856" kind="relationship" relationship="viewControllers"/>
-                    </connections>
-                    <navigationItem title="Title" id="4602" key="navigationItem"/>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4563" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1107" y="-1605"/>
-        </scene>
         <scene sceneID="4811">
             <objects>
                 <viewController id="4812" sceneMemberID="viewController" customClass="NewTripViewController">
@@ -165,6 +147,7 @@
                                     <outlet property="LableTripName" destination="5709" id="name-outlet-5709"/>
                                     <outlet property="ImageType" destination="40943" id="name-outlet-40943"/>
                                     <outlet property="ImageRating" destination="42507" id="name-outlet-42507"/>
+                                    <segue id="54704" destination="54660" kind="show"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -174,11 +157,18 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" id="5108" image="Position" selectedImage="Poi"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationItem title="Foobar" id="53177" key="navigationItem">
+                        <barButtonItem key="rightBarButtonItem" id="53178" systemItem="add">
+                            <connections>
+                                <segue id="53285" destination="9856" kind="show"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334" y="-1812"/>
+            <point key="canvasLocation" x="1117" y="-820"/>
         </scene>
         <scene sceneID="9855">
             <objects>
@@ -271,9 +261,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15334" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="68" y="294" width="243" height="30"/>
                                 <state key="normal" title="Save"/>
-                                <connections>
-                                    <segue id="15393" destination="4559" kind="show"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47092" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="289" width="40" height="40"/>
@@ -397,7 +384,7 @@
                                     <outlet property="LabelTrip" destination="30260" id="name-outlet-30260"/>
                                     <outlet property="LabelCount" destination="30261" id="name-outlet-30261"/>
                                     <outlet property="LabelTimespan" destination="30262" id="name-outlet-30262"/>
-                                    <segue id="37858" destination="4559" kind="show" identifier="ToTabBar"/>
+                                    <segue id="53942" destination="5069" kind="show" identifier="ToPlaces"/>
                                 </connections>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="2" left="8" bottom="2" right="8" leading="2" trailing="2"/>
                                 <size key="customSize" width="394" height="132"/>
@@ -434,6 +421,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30223" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="372" y="-1621"/>
+        </scene>
+        <scene sceneID="54659">
+            <objects>
+                <viewController id="54660" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="54657"/>
+                        <viewControllerLayoutGuide type="bottom" id="54658"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="54661">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54662" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1695" y="-1614"/>
         </scene>
     </scenes>
     <resources>

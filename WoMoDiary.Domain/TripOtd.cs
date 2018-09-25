@@ -35,6 +35,9 @@ namespace WoMoDiary.Domain
 
         [JsonProperty("tags")]
         public List<object> Tags { get; set; }
+
+        public User User { get; set; }
+
     }
 
     public partial class Place : IPlace
