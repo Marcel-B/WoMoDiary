@@ -13,17 +13,18 @@ using Android.Views;
 using Android.Widget;
 using WoMoDiary.Droid.Adapter;
 using Java.Nio.Channels;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary.Droid.Fragments
 {
     public class TripsFragment : Android.Support.V4.App.ListFragment
     {
-        public async override void OnCreate(Bundle savedInstanceState)
+        public override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
-            var store = MockDataStore.GetInstance();
+            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
             ListAdapter = new TripAdapter(Activity, (await store.GetItemsAsync()).ToList());
         }
     }

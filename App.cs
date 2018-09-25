@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reflection;
-using I18NPortable;
 using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
     public class App
     {
-        public static bool UseMockDataStore = true;
+        public static bool UseMockDataStore = false;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public App()
         {
@@ -16,13 +14,16 @@ namespace WoMoDiary
         }
         public static void Initialize()
         {
-            //if (UseMockDataStore)
-            // {   ServiceLocator.Instance.Register<IDataStore<Trip>, MockDataStore>();
-            //ServiceLocator.Instance.Register<IDataStore<Place>, MockPlaceDataStore>();}
-            //else
-            //{ServiceLocator.Instance.Register<IDataStore<Trip>, CloudDataStore>();
-            ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
-            //}
+            if (UseMockDataStore)
+            {
+                ServiceLocator.Instance.Register<IDataStore<TripOtd>, MockDataStore>();
+                ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
+            }
+            else
+            {
+                ServiceLocator.Instance.Register<IDataStore<TripOtd>, TripDataStore>();
+                ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
+            }
         }
     }
 }
