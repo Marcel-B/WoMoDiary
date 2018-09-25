@@ -21,7 +21,7 @@ namespace WoMoDiary.BackEnd.Controllers
 
         // GET api/trip
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TripOtd>>> Get()
+        public async Task<ActionResult<IEnumerable<Trip>>> Get()
         {
             //return new List<TripOtd>
             //{

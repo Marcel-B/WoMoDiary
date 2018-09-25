@@ -24,7 +24,7 @@ namespace WoMoDiary.Droid.Fragments
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
-            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
+            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
             ListAdapter = new TripAdapter(Activity, (await store.GetItemsAsync()).ToList());
         }
     }

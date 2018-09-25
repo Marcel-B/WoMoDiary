@@ -7,6 +7,7 @@ using WoMoDiary.Droid.Activities;
 using WoMoDiary.Droid.Adapter;
 using System.Linq;
 using Android.Support.V7.Widget;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary.Droid
 {
@@ -21,8 +22,8 @@ namespace WoMoDiary.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MainLayout);
-            //var store = MockDataStore.GetInstance();
-            var store  = new  CloudDataStore();
+            //var store = MockDataStore.GetInstanc
+            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
 
             var list = await store.GetItemsAsync(true);
             //ListAdapter = new TripAdapter(this, list.ToList());

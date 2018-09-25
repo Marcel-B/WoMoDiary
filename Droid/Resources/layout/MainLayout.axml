@@ -5,7 +5,7 @@
 		android:id="@+id/toolbarFoo"
 		android:layout_width="match_parent"
         android:layout_height="wrap_content"
-		/>
+		>
 
 	<LinearLayout  
 		android:orientation="vertical"
@@ -22,3 +22,4 @@
         android:id="@+id/textView1"
         android:text="Hello, This is a test" />
 </LinearLayout>
+</android.support.v7.widget.Toolbar>

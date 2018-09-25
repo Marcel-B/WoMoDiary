@@ -10,9 +10,9 @@ namespace WoMoDiary.Droid.Adapter
     public class TripAdapter : BaseAdapter
     {
         Context _context;
-        IList<TripOtd> _trips;
+        IList<Trip> _trips;
 
-        public TripAdapter(Context context, IList<TripOtd> trips)
+        public TripAdapter(Context context, IList<Trip> trips)
         {
             _trips = trips;
             _context = context;
@@ -43,7 +43,7 @@ namespace WoMoDiary.Droid.Adapter
                 view.Tag = holder;
             }
             holder.Name.Text = _trips[position].Name;
-            holder.Time.Text = _trips[position].Created.ToString("D");
+            holder.Time.Text = _trips[position].Created.ToString();
             return view;
         }
 

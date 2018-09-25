@@ -1,7 +1,5 @@
 ﻿using System;
 using WoMoDiary.Domain;
-using Network;
-
 namespace WoMoDiary.ViewModels
 {
     public class NewTripViewModel : BaseViewModel
