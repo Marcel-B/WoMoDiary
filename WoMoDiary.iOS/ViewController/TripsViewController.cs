@@ -20,7 +20,7 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
+            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
             //var trip = store.CurrentTrip;
             //Places = trip.Places;
             TableView.ReloadData();
@@ -41,8 +41,7 @@ namespace WoMoDiary.iOS
             cell.Trip = trip.Name;
             cell.DescriptionT = trip.Description;
             cell.ImagePath.Image = UIImage.FromBundle(trip.AssetName);
-            if (!trip.IsGood.HasValue) { }
-            else cell.Rating.Image = (bool)trip.IsGood ? UIImage.FromBundle("ThumbUp") : UIImage.FromBundle("ThumbDown");
+            cell.Rating.Image = trip.Rating > 0 ? UIImage.FromBundle("ThumbUp") : UIImage.FromBundle("ThumbDown");
             //cell.PlacesCount = $"{trip.Places.Count} Places saved.";
             return cell;
         }

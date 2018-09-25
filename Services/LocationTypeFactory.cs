@@ -8,15 +8,15 @@ namespace WoMoDiary.Services
         {
         }
 
-        public static IPlace Create(string type)
-        {
-            switch (type)
-            {
-                case "Campingplatz":
-                    return new CampingPlace();
-                default:
-                    return null;
-            }
-        }
+        //public static Place Create(string type)
+        //{
+        //    switch (type)
+        //    {
+        //        case "Campingplatz":
+        //            return new CampingPlace();
+        //        default:
+        //            return null;
+        //    }
+        //}
     }
 }

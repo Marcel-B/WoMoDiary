@@ -62,8 +62,7 @@ namespace WoMoDiary
             if (forceRefresh && CrossConnectivity.Current.IsConnected)
             {
                 var json = await client.GetStringAsync(Route);
-                var item = JsonConvert.DeserializeObject<T>(json);
-                items.Append(item);
+                items = JsonConvert.DeserializeObject<T[]>(json);
             }
             return items;
         }
@@ -80,7 +79,7 @@ namespace WoMoDiary
         }
     }
 
-    public class TripDataStore : CloudDataStore<TripOtd>
+    public class TripDataStore : CloudDataStore<Trip>
     {
         protected override string Route
         {
@@ -90,7 +89,7 @@ namespace WoMoDiary
 
         public TripDataStore()
         {
-            items = new List<TripOtd>();
+            items = new List<Trip>();
         }
     }
 }

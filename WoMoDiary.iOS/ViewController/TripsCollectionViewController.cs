@@ -11,19 +11,19 @@ namespace WoMoDiary.iOS
 {
     public partial class TripsCollectionViewController : UICollectionViewController
     {
-        IList<TripOtd> Trips;
-        TripOtd SelectedTrip { get; set; }
+        IList<Trip> Trips;
+        Trip SelectedTrip { get; set; }
 
         public TripsCollectionViewController(IntPtr handle) : base(handle)
         {
-            Trips = new List<TripOtd>();
+            Trips = new List<Trip>();
         }
 
         public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
             NavigationItem.SetHidesBackButton(true, false);
-            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
+            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
 
             Trips = (await store.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
             var flowLayout = Layout as UICollectionViewFlowLayout;
@@ -45,7 +45,7 @@ namespace WoMoDiary.iOS
                 trip.Places = new List<Place>();
             cell.Count = $"{trip.Places.Count} places";
             cell.Tag = indexPath.Row;
-            cell.TimeSpan = trip.Created.ToString("D");
+            cell.TimeSpan = trip.Created.ToString();
             return cell;
         }
 

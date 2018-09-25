@@ -18,7 +18,7 @@ namespace WoMoDiary.ViewModels
         {
             System.Diagnostics.Debug.WriteLine($"Location Saved: Long {Longitude} - Lat {Latitude} - Alt {Altitude}");
             var store = AppStore.GetInstance();
-            var location = new Location
+            var place = new Place
             {
                 Id = Guid.NewGuid(),
                 Name = Name,
@@ -27,7 +27,7 @@ namespace WoMoDiary.ViewModels
                 Latitude = Latitude,
                 Created = DateTimeOffset.Now
             };
-            store.CurrentLocation = location;
+            store.CurrentPlace = place;
         }
 
         private string _name;

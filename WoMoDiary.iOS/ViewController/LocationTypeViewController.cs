@@ -43,7 +43,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbUp.BackgroundColor = UIColor.Green;
                 ButtonThumbUp.TintColor = UIColor.Black;
 
-                viewModel.Place.IsGood = true;
+                viewModel.Place.Rating = 1;
             };
             ButtonThumbDown.TouchUpInside += (sender, e) =>
             {
@@ -56,7 +56,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbDown.BackgroundColor = UIColor.Green;
                 ButtonThumbDown.TintColor = UIColor.Black;
 
-                viewModel.Place.IsGood = false;
+                viewModel.Place.Rating = 0;
             };
 
             PickerViewLocationType.Model.Selected(PickerViewLocationType, 0, 0);
@@ -69,13 +69,13 @@ namespace WoMoDiary.iOS
 
         private class LocationTypePickerViewModel : UIPickerViewModel
         {
-            public IPlace SelectedType { get; set; }
+            public Place SelectedType { get; set; }
 
-            private readonly IList<IPlace> _locationTypes;
+            private readonly IList<Place> _locationTypes;
             private Action<object, PickerChangedEventArgs> pickerChanged;
             public LocationTypePickerViewModel(Action<object, PickerChangedEventArgs> pickerChanged)
             {
-                _locationTypes = new List<IPlace>
+                _locationTypes = new List<Place>
                 {
                     new CampingPlace(),
                     new Hotel(),
@@ -103,7 +103,7 @@ namespace WoMoDiary.iOS
 
         private class PickerChangedEventArgs : EventArgs
         {
-            public IPlace Place { get; set; }
+            public Place Place { get; set; }
         }
     }
 }

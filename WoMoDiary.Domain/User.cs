@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 namespace WoMoDiary.Domain
 {
-    public class User
+    public class User : IItem
     {
         public User()
         {
+            Created = DateTimeOffset.Now;
         }
 
         public Guid Id { get; set; }
