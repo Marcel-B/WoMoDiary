@@ -39,6 +39,7 @@ namespace WoMoDiary.BackEnd.Controllers
         public async Task<ActionResult> Post([FromBody] Place value)
         {
             var place = await _context.Places.AddAsync(value);
+            var result = await _context.SaveChangesAsync();
             return new OkObjectResult(place);
         }
 
