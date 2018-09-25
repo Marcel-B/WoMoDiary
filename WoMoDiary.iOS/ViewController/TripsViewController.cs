@@ -20,10 +20,9 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var store = MockDataStore.GetInstance();
-            
-            var trip = AppStore.GetInstance().CurrentTrip;
-            Places = trip.Places;
+            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
+            //var trip = store.CurrentTrip;
+            //Places = trip.Places;
             TableView.ReloadData();
         }
 

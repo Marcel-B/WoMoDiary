@@ -10,15 +10,7 @@ namespace WoMoDiary
     {
         List<TripOtd> items;
 
-        private static MockDataStore _dataStore;
-        public static MockDataStore GetInstance()
-        {
-            if (_dataStore == null)
-                _dataStore = new MockDataStore();
-            return _dataStore;
-        }
-
-        protected MockDataStore()
+        public MockDataStore()
         {
             items = new List<TripOtd>();
             var _items = new List<TripOtd>

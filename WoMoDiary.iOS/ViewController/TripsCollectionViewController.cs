@@ -19,14 +19,14 @@ namespace WoMoDiary.iOS
             Trips = new List<TripOtd>();
         }
 
-        public async override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
             NavigationItem.SetHidesBackButton(true, false);
-            var store = MockDataStore.GetInstance();
-            var cloud = new CloudDataStore();
+            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
+            //var cloud = new CloudDataStore();
 
-            Trips = (await cloud.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
+            Trips = (await store.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var w = collectionView.Frame.Width - 16;

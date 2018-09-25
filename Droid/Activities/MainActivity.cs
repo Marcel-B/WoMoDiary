@@ -6,23 +6,27 @@ using WoMoDiary.Droid.Fragments;
 using WoMoDiary.Droid.Activities;
 using WoMoDiary.Droid.Adapter;
 using System.Linq;
+using Android.Support.V7.Widget;
 
 namespace WoMoDiary.Droid
 {
     [Activity(Label = "WoMo", MainLauncher = true, Icon = "@mipmap/icon")]
     //public class MainActivity : Android.Support.V4.App.FragmentActivity
-    public class MainActivity : ListActivity
+    public class MainActivity : Activity
     {
         //public Android.Support.Design.Widget.TabLayout TabLayout { get; set; }
-        //public Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
+        public Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
-        async protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            //SetContentView(Resource.Layout.MainLayout);
+            SetContentView(Resource.Layout.MainLayout);
             //var store = MockDataStore.GetInstance();
             var store  = new  CloudDataStore();
-            ListAdapter = new TripAdapter(this, (await store.GetItemsAsync(true)).ToList());
+
+            var list = await store.GetItemsAsync(true);
+            //ListAdapter = new TripAdapter(this, list.ToList());
+
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
@@ -31,6 +35,8 @@ namespace WoMoDiary.Droid
                  .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
                  .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
 
+            Toolbar = FindViewById<Toolbar>(Resource.Id.toolbarFoo);
+            Toolbar.InflateMenu(Resource.Id.home);
             //TabLayout = FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.mainTabLayout);
             //Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbarMain);
             //Toolbar.InflateMenu(Resource.Menu.top_menus);

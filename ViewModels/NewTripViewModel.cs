@@ -15,7 +15,7 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteSaveTrip(object obj)
         {
-            var store = MockDataStore.GetInstance();
+            var store = ServiceLocator.Instance.Get<IDataStore<TripOtd>>();
             var trip = new TripOtd
             {
                 Id = Guid.NewGuid(),
