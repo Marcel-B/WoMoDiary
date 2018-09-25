@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 namespace WoMoDiary.Domain
 {
     public class User
@@ -14,5 +17,7 @@ namespace WoMoDiary.Domain
         public byte[] Salt { get; set; }
         public DateTimeOffset? Created { get; set; }
         public DateTimeOffset? LastEdit { get; set; }
+        public IEnumerable<Trip> Trips { get; set; }
+
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WoMoDiary.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -9,36 +11,59 @@ namespace WoMoDiary.BackEnd.Controllers
     [ApiController]
     public class PlaceController : ControllerBase
     {
+        private readonly WoMoContext _context;
+        public PlaceController(WoMoContext context)
+        {
+            _context = context;
+        }
+
         // GET api/place
         [HttpGet]
-        public ActionResult<IEnumerable<Place>> Get()
+        public async Task<ActionResult<IEnumerable<Place>>> Get()
         {
-            return new List<Place>();
+            var places = await _context.Places.ToListAsync();
+            return new OkObjectResult(places);
         }
 
         // GET api/place/5
         [HttpGet("{id}")]
-        public ActionResult<Place> Get(Guid id)
+        public async Task<ActionResult<Place>> Get(Guid id)
         {
-            return new Place { Id = id };
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            if (place == null) return new UnprocessableEntityObjectResult(id);
+            return new OkObjectResult(place);
         }
 
         // POST api/place
         [HttpPost]
-        public void Post([FromBody] Place value)
+        public async Task<ActionResult> Post([FromBody] Place value)
         {
+            var place = await _context.Places.AddAsync(value);
+            return new OkObjectResult(place);
         }
 
         // PUT api/place/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody] Place value)
+        public async Task<ActionResult> Put(Guid id, [FromBody] Place value)
         {
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            if (place == null) return new UnprocessableEntityObjectResult(id);
+            _context.Remove(place);
+            value.LastEdit = DateTimeOffset.Now;
+            var re = await _context.Places.AddAsync(value);
+            var i = await _context.SaveChangesAsync();
+            return new OkResult();
         }
 
         // DELETE api/place/5
         [HttpDelete("{id}")]
-        public void Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            if (place == null) return new NotFoundResult();
+            _context.Places.Remove(place);
+            var result = await _context.SaveChangesAsync();
+            return Ok();
         }
     }
 }
