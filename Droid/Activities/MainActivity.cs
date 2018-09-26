@@ -18,14 +18,16 @@ namespace WoMoDiary.Droid
         //public Android.Support.Design.Widget.TabLayout TabLayout { get; set; }
         public Android.Support.V7.Widget.Toolbar Toolbar { get; set; }
 
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MainLayout);
+            Toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
+            Toolbar.InflateMenu(Resource.Menu.home);
             //var store = MockDataStore.GetInstanc
-            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
+            //var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
 
-            var list = await store.GetItemsAsync(true);
+            // var list = await store.GetItemsAsync(true);
             //ListAdapter = new TripAdapter(this, list.ToList());
 
             I18N.Current
@@ -36,8 +38,7 @@ namespace WoMoDiary.Droid
                  .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
                  .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
 
-            Toolbar = FindViewById<Toolbar>(Resource.Id.toolbarFoo);
-            Toolbar.InflateMenu(Resource.Id.home);
+
             //TabLayout = FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.mainTabLayout);
             //Toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbarMain);
             //Toolbar.InflateMenu(Resource.Menu.top_menus);

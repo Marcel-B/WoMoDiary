@@ -46,13 +46,4 @@ namespace WoMoDiary.Domain
         [JsonProperty("tripFk")]
         public Guid TripFk { get; set; }
     }
-
-    public enum PlaceType
-    {
-        Hotel,
-        CampingPlace,
-        MotorhomePlace,
-        Restaurant,
-        SightSeeing
-    }
 }
