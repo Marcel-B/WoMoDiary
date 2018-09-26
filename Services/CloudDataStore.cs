@@ -6,19 +6,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using WoMoDiary.Domain;
-using System.Linq;
 
 namespace WoMoDiary
 {
-    public class PlaceDataStore : CloudDataStore<Place>
-    {
-        protected override string Route
-        {
-            get => $"api/place/";
-            set => Route = value;
-        }
-    }
-
     public abstract class CloudDataStore<T> : IDataStore<T> where T : IItem
     {
         protected HttpClient client;
@@ -26,8 +16,10 @@ namespace WoMoDiary
         protected abstract string Route { get; set; }
         protected CloudDataStore()
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri($"{App.BackendUrl}/");
+            client = new HttpClient
+            {
+                BaseAddress = new Uri($"{App.BackendUrl}/")
+            };
         }
 
         public async Task<bool> AddItemAsync(T item)
@@ -79,17 +71,5 @@ namespace WoMoDiary
         }
     }
 
-    public class TripDataStore : CloudDataStore<Trip>
-    {
-        protected override string Route
-        {
-            get => $"api/trip/";
-            set => Route = value;
-        }
 
-        public TripDataStore()
-        {
-            items = new List<Trip>();
-        }
-    }
 }

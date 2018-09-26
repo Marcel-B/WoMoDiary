@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.BackEnd", "WoMoDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.Domain", "WoMoDiary.Domain\WoMoDiary.Domain.csproj", "{D47E86C8-3276-4088-A2FF-8F4A9ADC9280}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.Repository", "WoMoDiary.Repository\WoMoDiary.Repository.csproj", "{60041B6C-6F0A-4708-A851-9D40DADA7EE6}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		WoMoDiary.projitems*{52bbeeaf-63f8-4de3-bd9f-99f4df025185}*SharedItemsImports = 4
@@ -76,6 +78,18 @@ Global
 		{D47E86C8-3276-4088-A2FF-8F4A9ADC9280}.Release|iPhone.Build.0 = Release|Any CPU
 		{D47E86C8-3276-4088-A2FF-8F4A9ADC9280}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{D47E86C8-3276-4088-A2FF-8F4A9ADC9280}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|iPhone.Build.0 = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{60041B6C-6F0A-4708-A851-9D40DADA7EE6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

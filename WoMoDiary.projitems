@@ -13,7 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ServiceLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CloudDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\MockDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockTripDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
@@ -21,7 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewTripViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationTypeViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\LocationTypeFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\PlaceDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TripDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockPlaceDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

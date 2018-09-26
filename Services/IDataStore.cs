@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
-    public interface IDataStore<T>
+    public interface IDataStore<T> where T : IItem
     {
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);

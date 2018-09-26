@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,22 +6,16 @@ using WoMoDiary.Domain;
 
 namespace WoMoDiary
 {
-    public class MockDataStore : IDataStore<Trip>
+    public class MockTripDataStore : IDataStore<Trip>
     {
         List<Trip> items;
 
-        public MockDataStore()
+        public MockTripDataStore()
         {
             items = new List<Trip>();
             var _items = new List<Trip>
             {
-                new Trip { Id = Guid.NewGuid(), Name = "Italien", Description="This is a nice description", Places = new List<Place>
-                    {
-                        new CampingPlace{Name = "Futzi und Emma", Description ="No fresh water", Longitude = 4, Latitude = 55 },
-                        new Restaurant{Name = "Denn's in", Description = "Funny little room", Longitude = 11, Latitude = 11 },
-                        new NicePlace{ Name = "Waterfall", Description ="Awesome Waterfall", Longitude = 11, Latitude = 22 }
-                    }
-                }
+                new Trip { Id = App.FirstTrip, Name = "Italien", Description="This is a nice description"}
             };
 
             foreach (Trip item in _items)

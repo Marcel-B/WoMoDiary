@@ -46,13 +46,15 @@ namespace WoMoDiary.iOS
             return cell;
         }
 
-        public override void ViewDidAppear(bool animated)
+        public async override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            TableView.ReloadData();
             var currentTrip = AppStore.GetInstance().CurrentTrip;
 
             if (currentTrip == null) return;
+            var store = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            Places = (await store.GetItemsAsync()).Where(i => i.TripFk == currentTrip.Id).ToList();
+            TableView.ReloadData();
             //var idx = Places.IndexOf(store.CurrentTrip);
 
             //if (idx < 0) return;

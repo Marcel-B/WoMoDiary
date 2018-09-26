@@ -157,14 +157,14 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" id="5108" image="Position" selectedImage="Poi"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationItem title="Foobar" id="53177" key="navigationItem">
+                    <navigationItem title="Foobar" id="53177" key="navigationItem" largeTitleDisplayMode="always">
                         <barButtonItem key="rightBarButtonItem" id="53178" systemItem="add">
                             <connections>
                                 <segue id="53285" destination="9856" kind="show"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -238,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9858" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1697" y="-774"/>
+            <point key="canvasLocation" x="1528" y="-442"/>
         </scene>
         <scene sceneID="15290">
             <objects>
@@ -261,6 +261,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15334" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="68" y="294" width="243" height="30"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <segue id="55208" destination="5069" kind="show"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47092" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="289" width="40" height="40"/>
