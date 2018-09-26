@@ -22,6 +22,7 @@ namespace WoMoDiary.Services
                 Altitude = 186,
                 TripFk = App.FirstTrip,
                 Rating = 0,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
             place = new Restaurant
@@ -33,7 +34,8 @@ namespace WoMoDiary.Services
                 Longitude = 11.38875844,
                 Latitude = 43.9535555,
                 Altitude = 191,
-                Rating = 2
+                Rating = 2,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
             place = new NicePlace
@@ -46,6 +48,7 @@ namespace WoMoDiary.Services
                 Latitude = 47.46171372,
                 Altitude = 347,
                 Rating = 5,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
         }
@@ -69,6 +72,11 @@ namespace WoMoDiary.Services
                 }
                 return ret;
             });
+
+        public Task<IEnumerable<Place>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<bool> UpdateItemAsync(Place item)
             => await Task.Run(() =>

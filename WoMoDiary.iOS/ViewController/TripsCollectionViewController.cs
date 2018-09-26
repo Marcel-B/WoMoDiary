@@ -45,7 +45,7 @@ namespace WoMoDiary.iOS
                 trip.Places = new List<Place>();
             cell.Count = $"{trip.Places.Count} places";
             cell.Tag = indexPath.Row;
-            cell.TimeSpan = trip.Created.ToString();
+            cell.TimeSpan = trip.Created.ToString("D");
             return cell;
         }
 

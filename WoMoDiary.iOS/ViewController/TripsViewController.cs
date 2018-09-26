@@ -11,18 +11,20 @@ namespace WoMoDiary.iOS
     public partial class TripsViewController : UITableViewController
     {
         IList<Place> Places;
+        public int SelectedIndex { get; set; }
 
         public TripsViewController(IntPtr handle) : base(handle)
         {
             Places = new List<Place>();
         }
 
-        public override void ViewDidLoad()
+        public async override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-            //var trip = store.CurrentTrip;
-            //Places = trip.Places;
+            var cloud = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            var store = AppStore.GetInstance();
+            var trip = store.CurrentTrip;
+            Places = (await cloud.GetItemsAsync(trip.Id, true)).ToList();
             TableView.ReloadData();
         }
 
@@ -46,6 +48,11 @@ namespace WoMoDiary.iOS
             return cell;
         }
 
+        //public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        //{
+        //    SelectedIndex = indexPath.Row;
+        //}   
+
         public async override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
@@ -64,8 +71,16 @@ namespace WoMoDiary.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            //var store = AppStore.GetInstance();
-            //store.CurrentTrip = Places[indexPath.Row];
+            var store = AppStore.GetInstance();
+            store.CurrentPlace = Places[indexPath.Row];
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if(segue.DestinationViewController is PlaceDetailViewController dest){
+                //var store = AppStore.GetInstance();
+                //store.CurrentPlace = Places[SelectedIndex];
+            }
         }
     }
 }

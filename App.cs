@@ -7,7 +7,7 @@ namespace WoMoDiary
 {
     public class App
     {
-        public static bool UseMockDataStore = true;
+        public static bool UseMockDataStore = false;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();

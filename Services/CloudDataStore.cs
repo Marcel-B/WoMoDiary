@@ -14,6 +14,7 @@ namespace WoMoDiary
         protected HttpClient client;
         protected IEnumerable<T> items;
         protected abstract string Route { get; set; }
+        protected abstract string RouteSpecial { get; set; }
         protected CloudDataStore()
         {
             client = new HttpClient
@@ -48,7 +49,15 @@ namespace WoMoDiary
             }
             return default(T);
         }
-
+        public async Task<IEnumerable<T>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        {
+            if (forceRefresh && CrossConnectivity.Current.IsConnected)
+            {
+                var json = await client.GetStringAsync(RouteSpecial + id.ToString());
+                items = JsonConvert.DeserializeObject<T[]>(json);
+            }
+            return items;
+        }
         public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
         {
             if (forceRefresh && CrossConnectivity.Current.IsConnected)

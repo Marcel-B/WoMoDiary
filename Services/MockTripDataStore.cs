@@ -14,12 +14,19 @@ namespace WoMoDiary
         {
             _items = new List<Trip>
             {
-                new Trip { Id = App.FirstTrip, Name = "Italien", Description="This is a nice description"},
-                new Trip { Id = App.SecondTrip, Name = "Holland", Description="This is a nice description"},
+                new Trip {
+                    Id = App.FirstTrip,
+                    Name = "Italien",
+                    Description="This is a nice description",
+                    Created = DateTimeOffset.Now,
+                },
+                new Trip {
+                    Id = App.SecondTrip,
+                    Name = "Holland",
+                    Description="This is a nice description",
+                    Created = DateTimeOffset.Now,
+                },
             };
-
-            foreach (var item in _items)
-                _items.Add(item);
         }
 
         public async Task<bool> AddItemAsync(Trip item)
@@ -50,5 +57,10 @@ namespace WoMoDiary
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
             => await Task.FromResult(_items);
+
+        public Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
