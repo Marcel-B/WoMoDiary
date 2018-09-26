@@ -51,6 +51,13 @@ namespace WoMoDiary.BackEnd.Controllers
             return new OkObjectResult(trips);
         }
 
+        // GET api/trip
+        [HttpGet("/byid/{userId}")]
+        public async Task<ActionResult<IEnumerable<Trip>>> GetById(Guid userId)
+        {
+            var trips = await _context.Trips.Where(i => i.UserFk == userId).ToListAsync();
+            return new OkObjectResult(trips);
+        }
         // GET api/trip/
         [HttpGet("{id}")]
         public async Task<ActionResult<Trip>> Get(Guid id)

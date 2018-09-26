@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WoMoDiary.Domain;
@@ -25,6 +26,13 @@ namespace WoMoDiary.BackEnd.Controllers
             return new OkObjectResult(places);
         }
 
+        // GET api/place
+        [HttpGet("bytrip/{tripId}")]
+        public async Task<ActionResult<IEnumerable<Place>>> GetByTrip(Guid tripId)
+        {
+            var places = await _context.Places.Where(p => p.TripFk == tripId).ToListAsync();
+            return new OkObjectResult(places);
+        }
         // GET api/place/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Place>> Get(Guid id)
