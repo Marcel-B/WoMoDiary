@@ -26,14 +26,15 @@ namespace WoMoDiary.BackEnd.Controllers
             return new OkObjectResult(places);
         }
 
-        // GET api/place
+        // GET api/place/bytrip/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpGet("bytrip/{tripId}")]
         public async Task<ActionResult<IEnumerable<Place>>> GetByTrip(Guid tripId)
         {
             var places = await _context.Places.Where(p => p.TripFk == tripId).ToListAsync();
             return new OkObjectResult(places);
         }
-        // GET api/place/5
+
+        // GET api/place/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpGet("{id}")]
         public async Task<ActionResult<Place>> Get(Guid id)
         {

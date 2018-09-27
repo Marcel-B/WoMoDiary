@@ -8,24 +8,6 @@ namespace WoMoDiary.BackEnd.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Location",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    Longitude = table.Column<double>(nullable: false),
-                    Latitude = table.Column<double>(nullable: false),
-                    Altitude = table.Column<double>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTimeOffset>(nullable: false),
-                    LastEdit = table.Column<DateTimeOffset>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Location", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -34,7 +16,7 @@ namespace WoMoDiary.BackEnd.Migrations
                     Email = table.Column<string>(nullable: true),
                     Hash = table.Column<byte[]>(nullable: true),
                     Salt = table.Column<byte[]>(nullable: true),
-                    Created = table.Column<DateTimeOffset>(nullable: true),
+                    Created = table.Column<DateTimeOffset>(nullable: false),
                     LastEdit = table.Column<DateTimeOffset>(nullable: true)
                 },
                 constraints: table =>
@@ -49,8 +31,9 @@ namespace WoMoDiary.BackEnd.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTimeOffset>(nullable: true),
+                    Created = table.Column<DateTimeOffset>(nullable: false),
                     LastEdit = table.Column<DateTimeOffset>(nullable: true),
+                    UserFk = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
@@ -69,25 +52,22 @@ namespace WoMoDiary.BackEnd.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Trip = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
-                    Created = table.Column<DateTimeOffset>(nullable: true),
-                    LastEdit = table.Column<DateTimeOffset>(nullable: true),
-                    LocationId = table.Column<Guid>(nullable: true),
                     AssetName = table.Column<string>(nullable: true),
-                    IsGood = table.Column<bool>(nullable: true),
+                    Rating = table.Column<short>(nullable: false),
+                    Longitude = table.Column<double>(nullable: false),
+                    Latitude = table.Column<double>(nullable: false),
+                    Altitude = table.Column<double>(nullable: false),
+                    Type = table.Column<int>(nullable: false),
+                    Created = table.Column<DateTimeOffset>(nullable: false),
+                    LastEdit = table.Column<DateTimeOffset>(nullable: false),
+                    TripFk = table.Column<Guid>(nullable: false),
                     TripId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Places", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Places_Location_LocationId",
-                        column: x => x.LocationId,
-                        principalTable: "Location",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Places_Trips_TripId",
                         column: x => x.TripId,
@@ -95,11 +75,6 @@ namespace WoMoDiary.BackEnd.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Places_LocationId",
-                table: "Places",
-                column: "LocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Places_TripId",
@@ -116,9 +91,6 @@ namespace WoMoDiary.BackEnd.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Places");
-
-            migrationBuilder.DropTable(
-                name: "Location");
 
             migrationBuilder.DropTable(
                 name: "Trips");

@@ -10,8 +10,8 @@ using WoMoDiary.BackEnd;
 namespace WoMoDiary.BackEnd.Migrations
 {
     [DbContext(typeof(WoMoContext))]
-    [Migration("20180925203213_Third")]
-    partial class Third
+    [Migration("20180927202555_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

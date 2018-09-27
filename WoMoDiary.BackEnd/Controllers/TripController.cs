@@ -52,7 +52,7 @@ namespace WoMoDiary.BackEnd.Controllers
         }
 
         // GET api/trip
-        [HttpGet("/byid/{userId}")]
+        [HttpGet("byid/{userId}")]
         public async Task<ActionResult<IEnumerable<Trip>>> GetById(Guid userId)
         {
             var trips = await _context.Trips.Where(i => i.UserFk == userId).ToListAsync();

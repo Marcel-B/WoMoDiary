@@ -11,19 +11,19 @@ namespace WoMoDiary.BackEnd.Controllers
     [ApiController]
     public class LoginController : ControllerBase
     {
-        WoMoContext _context;
+        private readonly WoMoContext _context;
+
         public LoginController(WoMoContext context)
         {
             _context = context;
         }
+
         // GET api/trip
         [HttpGet]
         public ActionResult<IEnumerable<User>> Get()
-        {
-            return new OkResult();
-        }
+            => new OkResult();
 
-        // GET api/user/
+        // GET api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> Get(Guid id)
         {
@@ -38,10 +38,10 @@ namespace WoMoDiary.BackEnd.Controllers
         {
             var user = await _context.Users.AddAsync(value);
             var result = await _context.SaveChangesAsync();
-            return new CreatedResult("/api/user", user);
+            return new OkObjectResult(user);
         }
 
-        // PUT api/user/5
+        // PUT api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(Guid id, [FromBody] User value)
         {
@@ -50,10 +50,10 @@ namespace WoMoDiary.BackEnd.Controllers
             value.LastEdit = DateTimeOffset.Now;
             var newUser = await _context.Users.AddAsync(value);
             var result = await _context.SaveChangesAsync();
-            return new OkResult();
+            return new OkObjectResult(newUser);
         }
 
-        // DELETE api/user/
+        // DELETE api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
@@ -61,7 +61,7 @@ namespace WoMoDiary.BackEnd.Controllers
             if (toDelete == null) return new NotFoundResult();
             _context.Remove(toDelete);
             var result = await _context.SaveChangesAsync();
-            return new OkResult();
+            return new OkObjectResult(result);
         }
     }
 }
