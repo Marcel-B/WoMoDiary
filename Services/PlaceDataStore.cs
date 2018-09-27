@@ -1,5 +1,4 @@
-﻿using System;
-using WoMoDiary.Domain;
+﻿using WoMoDiary.Domain;
 using System.Collections.Generic;
 
 namespace WoMoDiary.Services
@@ -9,13 +8,11 @@ namespace WoMoDiary.Services
         protected override string Route
         {
             get => $"api/place/";
-            set => Route = value;
         }
 
         protected override string RouteSpecial
         {
             get => $"api/place/bytrip/";
-            set => Route = value;
         }
 
         public PlaceDataStore()

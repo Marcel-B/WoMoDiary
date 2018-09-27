@@ -24,6 +24,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\PlaceDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TripDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockPlaceDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\MockUserDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserDataStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

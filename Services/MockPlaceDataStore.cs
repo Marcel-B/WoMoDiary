@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
+using System.Linq;
 
 namespace WoMoDiary.Services
 {
@@ -73,11 +74,23 @@ namespace WoMoDiary.Services
                 return ret;
             });
 
-        public Task<IEnumerable<Place>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        public async Task<IEnumerable<Place>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        => await Task.Run(() =>
         {
-            throw new NotImplementedException();
-        }
+            var list = new List<Place>();
+            foreach (var place in _places.Values)
+            {
+                if (place.TripFk == id)
+                    list.Add(place);
+            }
+            return list;
+        })    ;
 
+        /// <summary>
+        /// Updates the item async.
+        /// </summary>
+        /// <returns>Success of operation</returns>
+        /// <param name="item">A Place</param>
         public async Task<bool> UpdateItemAsync(Place item)
             => await Task.Run(() =>
             {

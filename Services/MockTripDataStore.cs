@@ -16,6 +16,7 @@ namespace WoMoDiary
             {
                 new Trip {
                     Id = App.FirstTrip,
+                    UserFk = App.UserId,
                     Name = "Italien",
                     Description="This is a nice description",
                     Created = DateTimeOffset.Now,
@@ -58,9 +59,7 @@ namespace WoMoDiary
         public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
             => await Task.FromResult(_items);
 
-        public Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
+            => await Task.Run(() => _items.Where(t => t.UserFk == id));
     }
 }

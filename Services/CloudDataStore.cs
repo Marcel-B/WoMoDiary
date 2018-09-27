@@ -13,8 +13,8 @@ namespace WoMoDiary
     {
         protected HttpClient client;
         protected IEnumerable<T> items;
-        protected abstract string Route { get; set; }
-        protected abstract string RouteSpecial { get; set; }
+        protected abstract string Route { get; }
+        protected abstract string RouteSpecial { get; }
         protected CloudDataStore()
         {
             client = new HttpClient
@@ -53,7 +53,10 @@ namespace WoMoDiary
         {
             if (forceRefresh && CrossConnectivity.Current.IsConnected)
             {
-                var json = await client.GetStringAsync(RouteSpecial + id.ToString());
+                var result = await client.GetAsync(RouteSpecial + id.ToString());
+                if (!result.IsSuccessStatusCode)
+                    return new List<T>();
+                var json = await result.Content.ReadAsStringAsync();
                 items = JsonConvert.DeserializeObject<T[]>(json);
             }
             return items;
@@ -79,6 +82,4 @@ namespace WoMoDiary
             return response.IsSuccessStatusCode;
         }
     }
-
-
 }
