@@ -10,14 +10,14 @@ using WoMoDiary.BackEnd;
 namespace WoMoDiary.BackEnd.Migrations
 {
     [DbContext(typeof(WoMoContext))]
-    [Migration("20180927202555_InitialCreate")]
+    [Migration("20180927205806_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 

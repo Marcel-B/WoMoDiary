@@ -51,6 +51,7 @@ namespace WoMoDiary.ViewModels
             place.Rating = Rating;
             place.TripFk = trip.Id;
             trip.Places.Add(place);
+            
             var result = await cloud.AddItemAsync(place);
             System.Diagnostics.Debug.WriteLine($"Location'{place.Name}' saved: {result}");
         }

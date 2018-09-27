@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 namespace WoMoDiary.Domain
@@ -22,6 +23,7 @@ namespace WoMoDiary.Domain
         public DateTimeOffset? LastEdit { get; set; }
 
         [JsonProperty("userFk")]
+        [ForeignKey("UserForeignKey")]
         public Guid UserFk { get; set; }
 
         [JsonProperty("places")]

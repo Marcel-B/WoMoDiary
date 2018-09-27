@@ -19,6 +19,5 @@ namespace WoMoDiary.Domain
         public DateTimeOffset Created { get; set; }
         public DateTimeOffset? LastEdit { get; set; }
         public IEnumerable<Trip> Trips { get; set; }
-
     }
 }
