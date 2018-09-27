@@ -24,8 +24,7 @@ namespace WoMoDiary.iOS
             // Code to start the Xamarin Test Cloud Agent
             //#if ENABLE_TEST_CLOUD
             //			Xamarin.Calabash.Start();
-            //#endif
-            App.Initialize();
+            //#endif     
             return true;
         }
 

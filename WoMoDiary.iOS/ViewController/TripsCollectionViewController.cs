@@ -19,13 +19,12 @@ namespace WoMoDiary.iOS
             Trips = new List<Trip>();
         }
 
-        public override async void ViewDidLoad()
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewDidLoad();
+            base.ViewDidAppear(animated);
             NavigationItem.SetHidesBackButton(true, false);
-            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-
-            Trips = (await store.GetItemsAsync(true)).ToList();// (await store.GetItemsAsync()).ToList();
+            var store = AppStore.GetInstance();
+            Trips = store.Trips;
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var w = collectionView.Frame.Width - 16;
@@ -45,7 +44,7 @@ namespace WoMoDiary.iOS
                 trip.Places = new List<Place>();
             cell.Count = $"{trip.Places.Count} places";
             cell.Tag = indexPath.Row;
-            cell.TimeSpan = trip.Created.ToString();
+            cell.TimeSpan = trip.Created.ToString("D");
             return cell;
         }
 
@@ -53,7 +52,7 @@ namespace WoMoDiary.iOS
         {
             var s = segue;
             var i = segue.DestinationViewController;
-            if (segue.DestinationViewController is TripsViewController target)
+            if (segue.DestinationViewController is PlacesViewController target)
             {
                 if (sender is UICollectionViewCell cell)
                 {

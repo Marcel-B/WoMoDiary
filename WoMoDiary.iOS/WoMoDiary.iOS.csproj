@@ -382,13 +382,17 @@
     <Compile Include="ViewController\TripsCollectionViewController.designer.cs">
       <DependentUpon>TripsCollectionViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\TripsViewController.cs" />
-    <Compile Include="ViewController\TripsViewController.designer.cs">
-      <DependentUpon>TripsViewController.cs</DependentUpon>
+    <Compile Include="ViewController\PlacesViewController.cs" />
+    <Compile Include="ViewController\PlacesViewController.designer.cs">
+      <DependentUpon>PlacesViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewController\NewTripViewController.cs" />
     <Compile Include="ViewController\NewTripViewController.designer.cs">
       <DependentUpon>NewTripViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\PlaceDetailViewController.cs" />
+    <Compile Include="ViewController\PlaceDetailViewController.designer.cs">
+      <DependentUpon>PlaceDetailViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

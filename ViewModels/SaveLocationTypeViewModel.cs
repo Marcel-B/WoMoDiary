@@ -1,13 +1,14 @@
 ﻿using System;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
-using System.Collections.Generic;
 
 namespace WoMoDiary.ViewModels
 {
     public class SaveLocationTypeViewModel : BaseViewModel
     {
-        public Place Place { get; set; }
+        public PlaceType PlaceType { get; set; }
+        public short Rating { get; set; }
+
         public Command SaveLocationTypeCommand { get; set; }
 
         public SaveLocationTypeViewModel()
@@ -22,18 +23,36 @@ namespace WoMoDiary.ViewModels
         {
             var cloud = ServiceLocator.Instance.Get<IDataStore<Place>>();
             var store = AppStore.GetInstance();
+
             var place = store.CurrentPlace;
             var trip = store.CurrentTrip;
-            Place.Id = Guid.NewGuid();
-            Place.Name = place.Name;
-            Place.Description = place.Description;
-            Place.TripFk = trip.Id;
-            Place.Longitude = place.Longitude;
-            Place.Latitude = place.Latitude;
-            Place.Altitude = place.Altitude;
-            trip.Places.Add(Place);
-            await cloud.AddItemAsync(Place);
-            System.Diagnostics.Debug.WriteLine("Location saved");
+            place.Type = PlaceType;
+            switch (PlaceType)
+            {
+                case PlaceType.CampingPlace:
+                    place.AssetName = "Camping";
+                    break;
+                case PlaceType.SightSeeing:
+                    place.AssetName = "SightSeeing";
+                    break;
+                case PlaceType.Hotel:
+                    place.AssetName = "Hotel";
+                    break;
+                case PlaceType.Restaurant:
+                    place.AssetName = "Restaurant";
+                    break;
+                case PlaceType.MotorhomePlace:
+                    place.AssetName = "Camping";
+                    break;
+                default:
+                    place.AssetName = "Default";
+                    break;
+            }
+            place.Rating = Rating;
+            place.TripFk = trip.Id;
+            trip.Places.Add(place);
+            var result = await cloud.AddItemAsync(place);
+            System.Diagnostics.Debug.WriteLine($"Location'{place.Name}' saved: {result}");
         }
     }
 }

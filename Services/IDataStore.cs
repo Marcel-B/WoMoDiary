@@ -12,5 +12,6 @@ namespace WoMoDiary
         Task<bool> DeleteItemAsync(Guid id);
         Task<T> GetItemAsync(Guid id);
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<IEnumerable<T>> GetItemsAsync(Guid id, bool forceRefresh = false);
     }
 }

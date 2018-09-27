@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
+using System.Linq;
 
 namespace WoMoDiary.Services
 {
@@ -22,6 +23,7 @@ namespace WoMoDiary.Services
                 Altitude = 186,
                 TripFk = App.FirstTrip,
                 Rating = 0,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
             place = new Restaurant
@@ -33,7 +35,8 @@ namespace WoMoDiary.Services
                 Longitude = 11.38875844,
                 Latitude = 43.9535555,
                 Altitude = 191,
-                Rating = 2
+                Rating = 2,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
             place = new NicePlace
@@ -46,6 +49,7 @@ namespace WoMoDiary.Services
                 Latitude = 47.46171372,
                 Altitude = 347,
                 Rating = 5,
+                Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
         }
@@ -70,6 +74,23 @@ namespace WoMoDiary.Services
                 return ret;
             });
 
+        public async Task<IEnumerable<Place>> GetItemsAsync(Guid id, bool forceRefresh = false)
+        => await Task.Run(() =>
+        {
+            var list = new List<Place>();
+            foreach (var place in _places.Values)
+            {
+                if (place.TripFk == id)
+                    list.Add(place);
+            }
+            return list;
+        })    ;
+
+        /// <summary>
+        /// Updates the item async.
+        /// </summary>
+        /// <returns>Success of operation</returns>
+        /// <param name="item">A Place</param>
         public async Task<bool> UpdateItemAsync(Place item)
             => await Task.Run(() =>
             {

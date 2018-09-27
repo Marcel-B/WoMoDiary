@@ -4,7 +4,6 @@ using CoreLocation;
 using MapKit;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
-using Foundation;
 
 namespace WoMoDiary.iOS
 {
@@ -12,16 +11,18 @@ namespace WoMoDiary.iOS
     {
         SaveLocationViewModel viewModel;
         private CLLocationManager _locationManager;
+
         public MapViewController(IntPtr handle) : base(handle)
         {
             viewModel = new SaveLocationViewModel();
         }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
             var store = AppStore.GetInstance();
             if (store.CurrentTrip == null) return;
-            this.Title = $"For Trip {store.CurrentTrip.Name}";
+            this.Title = $"- {store.CurrentTrip.Name} -";
         }
 
         public override void ViewDidLoad()
@@ -48,13 +49,6 @@ namespace WoMoDiary.iOS
                         map.Region = new MKCoordinateRegion(coordinates, span);
                         viewModel.Longitude = coordinates.Longitude;
                         viewModel.Latitude = coordinates.Latitude;
-
-                        //map.RemoveAnnotations();
-                        //map.AddAnnotation(new MKPointAnnotation
-                        //{
-                        //    Coordinate = coordinates,
-                        //    Title = "Ping!"
-                        //});
                     }
             };
 

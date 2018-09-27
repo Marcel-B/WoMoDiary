@@ -10,6 +10,7 @@ namespace WoMoDiary.iOS
     public partial class LocationTypeViewController : UIViewController
     {
         SaveLocationTypeViewModel viewModel;
+
         public LocationTypeViewController(IntPtr handle) : base(handle)
         {
             viewModel = new SaveLocationTypeViewModel();
@@ -22,15 +23,8 @@ namespace WoMoDiary.iOS
             ButtonSave.TouchUpInside += (sender, e) =>
             {
                 if (sender is UIButton button)
-                {
                     viewModel.SaveLocationTypeCommand.Execute(null);
-                }
             };
-
-            //TextFieldDescription.EditingChanged += (sender, e) =>
-            //{
-            //    viewModel.Place.Description = ((UITextField)sender).Text;
-            //};
 
             ButtonThumbUp.TouchUpInside += (object sender, EventArgs e) =>
             {
@@ -43,7 +37,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbUp.BackgroundColor = UIColor.Green;
                 ButtonThumbUp.TintColor = UIColor.Black;
 
-                viewModel.Place.Rating = 1;
+                viewModel.Rating = 5;
             };
             ButtonThumbDown.TouchUpInside += (sender, e) =>
             {
@@ -56,7 +50,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbDown.BackgroundColor = UIColor.Green;
                 ButtonThumbDown.TintColor = UIColor.Black;
 
-                viewModel.Place.Rating = 0;
+                viewModel.Rating = 0;
             };
 
             PickerViewLocationType.Model.Selected(PickerViewLocationType, 0, 0);
@@ -64,7 +58,7 @@ namespace WoMoDiary.iOS
 
         private void PickerChangedEvent(object sender, PickerChangedEventArgs args)
         {
-            viewModel.Place = args.Place;
+            viewModel.PlaceType = args.Place.Type;
         }
 
         private class LocationTypePickerViewModel : UIPickerViewModel

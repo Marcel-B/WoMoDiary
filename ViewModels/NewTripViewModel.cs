@@ -1,5 +1,7 @@
 ﻿using System;
 using WoMoDiary.Domain;
+using WoMoDiary.Services;
+using Foundation;
 namespace WoMoDiary.ViewModels
 {
     public class NewTripViewModel : BaseViewModel
@@ -14,13 +16,17 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteSaveTrip(object obj)
         {
+            var localStore = AppStore.GetInstance();
             var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
             var trip = new Trip
             {
                 Id = Guid.NewGuid(),
                 Name = TripName,
-                Description = Description
+                Description = Description,
+                Created = DateTimeOffset.Now,
+                UserFk = localStore.UserId
             };
+            localStore.Trips.Add(trip);
             await store.AddItemAsync(trip);
         }
 

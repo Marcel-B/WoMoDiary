@@ -12,7 +12,7 @@ using UIKit;
 namespace WoMoDiary.iOS
 {
     [Register ("TripsViewController")]
-    partial class TripsViewController
+    partial class PlacesViewController
     {
         void ReleaseDesignerOutlets ()
         {
