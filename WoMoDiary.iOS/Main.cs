@@ -2,6 +2,7 @@
 using UIKit;
 using System;
 using WoMoDiary.Services;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary.iOS
 {
@@ -26,8 +27,7 @@ namespace WoMoDiary.iOS
 
             var userId = plist["UserId"].ToString();
             var localStore = AppStore.GetInstance();
-            App.UserId = Guid.Parse(userId);
-            localStore.UserId = Guid.Parse(userId);
+            App.User = new User { Id = Guid.Parse(userId) };
             App.Initialize();
             UIApplication.Main(args, null, "AppDelegate");
         }

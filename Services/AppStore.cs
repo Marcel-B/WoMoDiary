@@ -16,7 +16,6 @@ namespace WoMoDiary.Services
 
         protected AppStore() { Trips = new List<Trip>(); }
 
-        public Guid UserId { get; set; }
         public Trip CurrentTrip { get; set; }
         public Place CurrentPlace { get; set; }
         public IList<Trip> Trips { get; set; }

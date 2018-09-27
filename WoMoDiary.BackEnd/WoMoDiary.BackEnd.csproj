@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <Compile Remove="Models\Trip.cs" />
+    <Compile Remove="Migrations\20180927205806_InitialCreate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WoMoDiary.Domain\WoMoDiary.Domain.csproj" />

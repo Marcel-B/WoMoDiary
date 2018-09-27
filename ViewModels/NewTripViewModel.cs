@@ -23,7 +23,7 @@ namespace WoMoDiary.ViewModels
                 Name = TripName,
                 Description = Description,
                 Created = DateTimeOffset.Now,
-                UserFk = localStore.UserId
+                User = App.User
             };
             localStore.Trips.Add(trip);
             await store.AddItemAsync(trip);

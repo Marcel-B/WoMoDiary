@@ -30,7 +30,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpGet("bytrip/{tripId}")]
         public async Task<ActionResult<IEnumerable<Place>>> GetByTrip(Guid tripId)
         {
-            var places = await _context.Places.Where(p => p.TripFk == tripId).ToListAsync();
+            var places = await _context.Places.Where(p => p.Trip.Id == tripId).ToListAsync();
             return new OkObjectResult(places);
         }
 

@@ -16,7 +16,7 @@ namespace WoMoDiary
             {
                 new Trip {
                     Id = App.FirstTrip,
-                    UserFk = App.UserId,
+                    User = App.User,
                     Name = "Italien",
                     Description="This is a nice description",
                     Created = DateTimeOffset.Now,
@@ -60,6 +60,6 @@ namespace WoMoDiary
             => await Task.FromResult(_items);
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
-            => await Task.Run(() => _items.Where(t => t.UserFk == id));
+            => await Task.Run(() => _items.Where(t => t.User.Id == id));
     }
 }

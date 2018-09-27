@@ -49,7 +49,7 @@ namespace WoMoDiary.ViewModels
                     break;
             }
             place.Rating = Rating;
-            place.TripFk = trip.Id;
+            place.Trip = trip;
             trip.Places.Add(place);
             
             var result = await cloud.AddItemAsync(place);

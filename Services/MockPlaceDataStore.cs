@@ -21,7 +21,7 @@ namespace WoMoDiary.Services
                 Longitude = 11.39227126,
                 Latitude = 43.94877581,
                 Altitude = 186,
-                TripFk = App.FirstTrip,
+                //TripFk = App.FirstTrip,
                 Rating = 0,
                 Created = DateTimeOffset.Now,
             };
@@ -29,7 +29,7 @@ namespace WoMoDiary.Services
             place = new Restaurant
             {
                 Id = Guid.NewGuid(),
-                TripFk = App.FirstTrip,
+                //TripFk = App.FirstTrip,
                 Name = "Denn's in",
                 Description = "Funny little restaurant",
                 Longitude = 11.38875844,
@@ -42,7 +42,7 @@ namespace WoMoDiary.Services
             place = new NicePlace
             {
                 Id = Guid.NewGuid(),
-                TripFk = App.SecondTrip,
+                //TripFk = App.SecondTrip,
                 Name = "Waterfall",
                 Description = "Awesome Waterfall",
                 Longitude = 8.16295347,
@@ -78,11 +78,11 @@ namespace WoMoDiary.Services
         => await Task.Run(() =>
         {
             var list = new List<Place>();
-            foreach (var place in _places.Values)
-            {
-                if (place.TripFk == id)
-                    list.Add(place);
-            }
+            //foreach (var place in _places.Values)
+            //{
+            //    if (place.TripFk == id)
+            //        list.Add(place);
+            //}
             return list;
         })    ;
 

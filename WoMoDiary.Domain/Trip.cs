@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 namespace WoMoDiary.Domain
@@ -8,6 +8,7 @@ namespace WoMoDiary.Domain
     public class Trip : IItem
     {
         [JsonProperty("id")]
+        [Key]
         public Guid Id { get; set; }
 
         [JsonProperty("name")]
@@ -22,9 +23,8 @@ namespace WoMoDiary.Domain
         [JsonProperty("lastEdit")]
         public DateTimeOffset? LastEdit { get; set; }
 
-        [JsonProperty("userFk")]
-        [ForeignKey("UserForeignKey")]
-        public Guid UserFk { get; set; }
+        [JsonProperty("user")]
+        public User User { get; set; }
 
         [JsonProperty("places")]
         public List<Place> Places { get; set; }

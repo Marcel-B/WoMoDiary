@@ -12,7 +12,7 @@ namespace WoMoDiary
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();
-        public static Guid UserId { get; set; }
+        public static User User { get; set; }
 
         public App()
         {
@@ -44,7 +44,7 @@ namespace WoMoDiary
             var placeStore = ServiceLocator.Instance.Get<IDataStore<Place>>();
             var localStore = AppStore.GetInstance();
 
-            var trips = await store.GetItemsAsync(localStore.UserId, true);
+            var trips = await store.GetItemsAsync(App.User.Id, true);
             foreach (var trip in trips)
             {
                 var places = await placeStore.GetItemsAsync(trip.Id, true);

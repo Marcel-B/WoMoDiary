@@ -33,7 +33,6 @@ namespace WoMoDiary.BackEnd.Migrations
                     Description = table.Column<string>(nullable: true),
                     Created = table.Column<DateTimeOffset>(nullable: false),
                     LastEdit = table.Column<DateTimeOffset>(nullable: true),
-                    UserFk = table.Column<Guid>(nullable: false),
                     UserId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
@@ -62,7 +61,6 @@ namespace WoMoDiary.BackEnd.Migrations
                     Type = table.Column<int>(nullable: false),
                     Created = table.Column<DateTimeOffset>(nullable: false),
                     LastEdit = table.Column<DateTimeOffset>(nullable: false),
-                    TripFk = table.Column<Guid>(nullable: false),
                     TripId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>

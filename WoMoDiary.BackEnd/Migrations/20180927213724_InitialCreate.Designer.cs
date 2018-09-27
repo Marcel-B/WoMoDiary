@@ -10,7 +10,7 @@ using WoMoDiary.BackEnd;
 namespace WoMoDiary.BackEnd.Migrations
 {
     [DbContext(typeof(WoMoContext))]
-    [Migration("20180927205806_InitialCreate")]
+    [Migration("20180927213724_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,8 +44,6 @@ namespace WoMoDiary.BackEnd.Migrations
 
                     b.Property<short>("Rating");
 
-                    b.Property<Guid>("TripFk");
-
                     b.Property<Guid?>("TripId");
 
                     b.Property<int>("Type");
@@ -69,8 +67,6 @@ namespace WoMoDiary.BackEnd.Migrations
                     b.Property<DateTimeOffset?>("LastEdit");
 
                     b.Property<string>("Name");
-
-                    b.Property<Guid>("UserFk");
 
                     b.Property<Guid?>("UserId");
 
@@ -105,14 +101,14 @@ namespace WoMoDiary.BackEnd.Migrations
 
             modelBuilder.Entity("WoMoDiary.Domain.Place", b =>
                 {
-                    b.HasOne("WoMoDiary.Domain.Trip")
+                    b.HasOne("WoMoDiary.Domain.Trip", "Trip")
                         .WithMany("Places")
                         .HasForeignKey("TripId");
                 });
 
             modelBuilder.Entity("WoMoDiary.Domain.Trip", b =>
                 {
-                    b.HasOne("WoMoDiary.Domain.User")
+                    b.HasOne("WoMoDiary.Domain.User", "User")
                         .WithMany("Trips")
                         .HasForeignKey("UserId");
                 });
