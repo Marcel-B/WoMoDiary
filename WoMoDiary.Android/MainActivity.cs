@@ -18,6 +18,11 @@ namespace WoMoDiary.Android
             SetContentView(Resource.Layout.activity_main);
             toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
             toolbar.InflateMenu(Resource.Menu.addTrip);
+            toolbar.MenuItemClick += (object sender, Toolbar.MenuItemClickEventArgs e) =>
+            {
+                var itemId = e.Item.ItemId;
+                var action = Resource.Id.action_add;
+            };
         }
     }
 }

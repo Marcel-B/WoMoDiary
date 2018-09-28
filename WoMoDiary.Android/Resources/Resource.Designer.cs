@@ -2345,6 +2345,9 @@ namespace WoMoDiary.Android
 			// aapt resource value: 0x7f08009d
 			public const int action0 = 2131230877;
 			
+			// aapt resource value: 0x7f0800b0
+			public const int action_add = 2131230896;
+			
 			// aapt resource value: 0x7f08007c
 			public const int action_bar = 2131230844;
 			
@@ -2375,9 +2378,6 @@ namespace WoMoDiary.Android
 			// aapt resource value: 0x7f0800a1
 			public const int action_divider = 2131230881;
 			
-			// aapt resource value: 0x7f0800b0
-			public const int action_edit = 2131230896;
-			
 			// aapt resource value: 0x7f08009b
 			public const int action_image = 2131230875;
 			
@@ -2395,9 +2395,6 @@ namespace WoMoDiary.Android
 			
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
-			
-			// aapt resource value: 0x7f0800b1
-			public const int action_save = 2131230897;
 			
 			// aapt resource value: 0x7f08009c
 			public const int action_text = 2131230876;
