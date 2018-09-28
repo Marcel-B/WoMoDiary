@@ -14,7 +14,7 @@ namespace WoMoDiary.iOS
         }
 
         public override void ViewDidLoad()
-        {
+        { 
             base.ViewDidLoad();
             var o = AppStore.GetInstance();
             var i = o.CurrentPlace;

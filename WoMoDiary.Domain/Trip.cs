@@ -7,6 +7,12 @@ namespace WoMoDiary.Domain
 {
     public class Trip : IItem
     {
+        public Trip()
+        {
+            Created = DateTimeOffset.Now;
+            Places = new List<Place>();
+        }
+
         [JsonProperty("id")]
         [Key]
         public Guid Id { get; set; }

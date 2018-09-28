@@ -22,7 +22,8 @@ namespace WoMoDiary.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            NavigationItem.SetHidesBackButton(true, false);
+            Title = "Trips";
+            //NavigationItem.SetHidesBackButton(true, false);
             var store = AppStore.GetInstance();
             Trips = store.Trips;
             var flowLayout = Layout as UICollectionViewFlowLayout;

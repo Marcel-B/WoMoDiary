@@ -374,10 +374,6 @@
     <Compile Include="ViewController\LocationTypeViewController.designer.cs">
       <DependentUpon>LocationTypeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\MainTabBarViewController.cs" />
-    <Compile Include="ViewController\MainTabBarViewController.designer.cs">
-      <DependentUpon>MainTabBarViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewController\TripsCollectionViewController.cs" />
     <Compile Include="ViewController\TripsCollectionViewController.designer.cs">
       <DependentUpon>TripsCollectionViewController.cs</DependentUpon>

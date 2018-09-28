@@ -24,6 +24,7 @@ namespace WoMoDiary.iOS
             {
                 if (sender is UIButton button)
                     viewModel.SaveLocationTypeCommand.Execute(null);
+                NavigationController.PopToRootViewController(true);
             };
 
             ButtonThumbUp.TouchUpInside += (object sender, EventArgs e) =>

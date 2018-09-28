@@ -8,7 +8,7 @@ namespace WoMoDiary
 {
     public class App
     {
-        public static bool UseMockDataStore = false;
+        public static bool UseMockDataStore = true;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();
@@ -23,7 +23,6 @@ namespace WoMoDiary
         {
             if (UseMockDataStore)
             {
-
                 ServiceLocator.Instance.Register<IDataStore<Trip>, MockTripDataStore>();
                 ServiceLocator.Instance.Register<IDataStore<Place>, MockPlaceDataStore>();
                 ServiceLocator.Instance.Register<IDataStore<User>, MockUserDataStore>();
@@ -45,11 +44,11 @@ namespace WoMoDiary
             var localStore = AppStore.GetInstance();
 
             var trips = await store.GetItemsAsync(App.User.Id, true);
-            foreach (var trip in trips)
-            {
-                var places = await placeStore.GetItemsAsync(trip.Id, true);
-                trip.Places = places.ToList();
-            }
+            //foreach (var trip in trips)
+            //{
+            //    var places = await placeStore.GetItemsAsync(trip.Id, true);
+            //    trip.Places = places.ToList();
+            //}
             localStore.Trips = trips.ToList();
         }
     }

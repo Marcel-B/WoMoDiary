@@ -10,6 +10,7 @@ namespace WoMoDiary.Domain
         public User()
         {
             Created = DateTimeOffset.Now;
+            Trips = new List<Trip>();
         }
 
         [Key]
@@ -35,6 +36,6 @@ namespace WoMoDiary.Domain
         public DateTimeOffset? LastEdit { get; set; }
 
         [JsonProperty("Trips")]
-        public IEnumerable<Trip> Trips { get; set; }
+        public List<Trip> Trips { get; set; }
     }
 }

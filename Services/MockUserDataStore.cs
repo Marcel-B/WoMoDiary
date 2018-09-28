@@ -10,10 +10,10 @@ namespace WoMoDiary.Services
     {
         public static Guid FirstUserId = Guid.Parse("569dd649-f9f8-4990-b31b-45d43dda82c2");
         public static Guid SecondUserId = Guid.NewGuid();
-        private readonly IList<User> _users;
+        public IList<User> Users;
         public MockUserDataStore()
         {
-            _users = new List<User>
+            Users = new List<User>
             {
                 new User{
                     Id = FirstUserId,
@@ -21,31 +21,32 @@ namespace WoMoDiary.Services
                     Name = "Harry"
                 }
             };
+            App.User = Users[0];
         }
 
         public async Task<bool> AddItemAsync(User item)
         {
-            await Task.Run(() => _users.Add(item));
+            await Task.Run(() => Users.Add(item));
             return true;
         }
 
         public async Task<bool> DeleteItemAsync(Guid id)
-            => await Task.Run(() => _users.Remove(_users.SingleOrDefault(u => u.Id == id)));
+            => await Task.Run(() => Users.Remove(Users.SingleOrDefault(u => u.Id == id)));
 
         public async Task<User> GetItemAsync(Guid id)
-            => await Task.Run(() => _users.SingleOrDefault(u => u.Id == id));
+            => await Task.Run(() => Users.SingleOrDefault(u => u.Id == id));
 
         public async Task<IEnumerable<User>> GetItemsAsync(bool forceRefresh = false)
-            => await Task.Run(() => _users);
+            => await Task.Run(() => Users);
 
         public async Task<IEnumerable<User>> GetItemsAsync(Guid id, bool forceRefresh = false)
-            => await Task.Run(() => _users.Where(u => u.Id == id));
+            => await Task.Run(() => Users.Where(u => u.Id == id));
 
         public async Task<bool> UpdateItemAsync(User item)
         {
-            var user = await Task.Run(() => _users.SingleOrDefault(u => u.Id == item.Id));
-            _users.Remove(user);
-            _users.Add(item);
+            var user = await Task.Run(() => Users.SingleOrDefault(u => u.Id == item.Id));
+            Users.Remove(user);
+            Users.Add(item);
             return true;
         }
     }

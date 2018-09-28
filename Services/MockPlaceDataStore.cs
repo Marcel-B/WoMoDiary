@@ -12,6 +12,7 @@ namespace WoMoDiary.Services
 
         public MockPlaceDataStore()
         {
+            var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>() as MockTripDataStore;
             _places = new Dictionary<Guid, Place>();
             Place place = new CampingPlace
             {
@@ -21,15 +22,16 @@ namespace WoMoDiary.Services
                 Longitude = 11.39227126,
                 Latitude = 43.94877581,
                 Altitude = 186,
-                //TripFk = App.FirstTrip,
+                Trip = tripStore.Trips[0],
                 Rating = 0,
                 Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
+            tripStore.Trips[0].Places.Add(place);
             place = new Restaurant
             {
                 Id = Guid.NewGuid(),
-                //TripFk = App.FirstTrip,
+                Trip = tripStore.Trips[0],
                 Name = "Denn's in",
                 Description = "Funny little restaurant",
                 Longitude = 11.38875844,
@@ -39,10 +41,11 @@ namespace WoMoDiary.Services
                 Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
+            tripStore.Trips[0].Places.Add(place);
             place = new NicePlace
             {
                 Id = Guid.NewGuid(),
-                //TripFk = App.SecondTrip,
+                Trip = tripStore.Trips[1],
                 Name = "Waterfall",
                 Description = "Awesome Waterfall",
                 Longitude = 8.16295347,
@@ -52,6 +55,7 @@ namespace WoMoDiary.Services
                 Created = DateTimeOffset.Now,
             };
             _places[place.Id] = place;
+            tripStore.Trips[1].Places.Add(place);
         }
 
         public async Task<bool> AddItemAsync(Place item)

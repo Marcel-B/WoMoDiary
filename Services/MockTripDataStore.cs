@@ -3,63 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
+using WoMoDiary.Services;
 
 namespace WoMoDiary
 {
     public class MockTripDataStore : IDataStore<Trip>
     {
-        private readonly List<Trip> _items;
+        public readonly List<Trip> Trips;
 
         public MockTripDataStore()
         {
-            _items = new List<Trip>
+            var userStore = ServiceLocator.Instance.Get<IDataStore<User>>() as MockUserDataStore;
+            var user = userStore.Users[0];
+            Trips = new List<Trip>();
+            var firstTrip = new Trip
             {
-                new Trip {
-                    Id = App.FirstTrip,
-                    User = App.User,
-                    Name = "Italien",
-                    Description="This is a nice description",
-                    Created = DateTimeOffset.Now,
-                },
-                new Trip {
-                    Id = App.SecondTrip,
-                    Name = "Holland",
-                    Description="This is a nice description",
-                    Created = DateTimeOffset.Now,
-                },
+                Id = App.FirstTrip,
+                User = user,
+                Name = "Italien",
+                Description = "This is a nice description",
+                Created = DateTimeOffset.Now,
             };
+            var secondTrip = new Trip
+            {
+                Id = App.SecondTrip,
+                Name = "Holland",
+                User = user,
+                Description = "This is a nice description",
+                Created = DateTimeOffset.Now,
+            };
+            user.Trips.Add(firstTrip);
+            user.Trips.Add(secondTrip);
+            Trips.Add(firstTrip);
+            Trips.Add(secondTrip);
         }
 
         public async Task<bool> AddItemAsync(Trip item)
             => await Task.Run(() =>
             {
-                _items.Add(item);
+                Trips.Add(item);
                 return true;
             });
 
         public async Task<bool> UpdateItemAsync(Trip item)
         {
-            var tmpItem = await Task.Run(() => _items.SingleOrDefault(i => i.Id == item.Id));
+            var tmpItem = await Task.Run(() => Trips.SingleOrDefault(i => i.Id == item.Id));
             if (tmpItem != null)
-                _items.Remove(tmpItem);
-            _items.Add(item);
+                Trips.Remove(tmpItem);
+            Trips.Add(item);
             return true;
         }
 
         public async Task<bool> DeleteItemAsync(Guid id)
         {
-            var item = await Task.Run(() => _items.SingleOrDefault(i => i.Id == id));
-            _items.Remove(item);
+            var item = await Task.Run(() => Trips.SingleOrDefault(i => i.Id == id));
+            Trips.Remove(item);
             return true;
         }
 
         public async Task<Trip> GetItemAsync(Guid id)
-            => await Task.FromResult(_items.FirstOrDefault(s => s.Id == id));
+            => await Task.FromResult(Trips.FirstOrDefault(s => s.Id == id));
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
-            => await Task.FromResult(_items);
+            => await Task.FromResult(Trips);
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
-            => await Task.Run(() => _items.Where(t => t.User.Id == id));
+            => await Task.Run(() => Trips.Where(t => t.User.Id == id));
     }
 }
