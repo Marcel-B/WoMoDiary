@@ -42,7 +42,7 @@ namespace WoMoDiary
 
         public void ToPlaceView(Trip place)
         {
-            StartActivity(typeof(PlaceListActivity));
+            StartActivity(typeof(PlaceActivity));
         }
     }
 }

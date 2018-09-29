@@ -48,8 +48,8 @@ namespace WoMoDiary.Android
             //var transaction = FragmentManager.BeginTransaction();
             ToList?.Invoke(trips[position] );
             //var ine = new Intent();
-            //Activity.StartActivity(typeof(PlaceListActivity));
-            //transaction.Replace(Resource.Id.contentFrame, new PlaceListActivity());
+            //Activity.StartActivity(typeof(PlaceListFragment));
+            //transaction.Replace(Resource.Id.contentFrame, new PlaceListFragment());
             //transaction.Commit();
         }
     }
