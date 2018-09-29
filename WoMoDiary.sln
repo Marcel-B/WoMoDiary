@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.Domain", "WoMoDia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.Repository", "WoMoDiary.Repository\WoMoDiary.Repository.csproj", "{60041B6C-6F0A-4708-A851-9D40DADA7EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary.Android", "WoMoDiary.Android\WoMoDiary.Android.csproj", "{33D3E43F-0385-4084-8F4C-09219AB016F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WoMoDiary", "WoMoDiary.Android\WoMoDiary.csproj", "{33D3E43F-0385-4084-8F4C-09219AB016F0}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
