@@ -5,10 +5,10 @@
 
   <item android:id="@+id/action_search"
         android:showAsAction="always"
-        android:icon="@drawable/ic_save"
         android:text="Search" />
 
 </menu>
+<!--android:icon="@drawable/ic_save"-->
 
 <!-- Code to implement into Activity:
         

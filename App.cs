@@ -3,11 +3,14 @@ using System.Reflection;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace WoMoDiary
 {
     public class App
     {
+        public static bool Init { get; set; }
+
         public static bool UseMockDataStore = true;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
@@ -19,8 +22,11 @@ namespace WoMoDiary
             Console.WriteLine(GetType().GetTypeInfo().Assembly);
         }
 
-        public static void Initialize()
+        public async static Task Initialize()
         {
+            if (Init)
+                return;
+            Init = true;
             if (UseMockDataStore)
             {
                 ServiceLocator.Instance.Register<IDataStore<Trip>, MockTripDataStore>();
@@ -34,10 +40,11 @@ namespace WoMoDiary
                 ServiceLocator.Instance.Register<IDataStore<User>, UserDataStore>();
             }
             var store = AppStore.GetInstance();
-            PullData();
+            await PullData();
+            return;
         }
 
-        public async static void PullData()
+        public async static Task PullData()
         {
             var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
             var placeStore = ServiceLocator.Instance.Get<IDataStore<Place>>();
@@ -50,6 +57,7 @@ namespace WoMoDiary
             //    trip.Places = places.ToList();
             //}
             localStore.Trips = trips.ToList();
+            return;
         }
     }
 }

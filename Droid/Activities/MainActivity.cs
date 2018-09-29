@@ -22,21 +22,21 @@ namespace WoMoDiary.Droid
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MainLayout);
-            Toolbar = FindViewById<Toolbar>(Resource.Id.toolbar_bottom);
-            Toolbar.InflateMenu(Resource.Menu.home);
+            //Toolbar = FindViewById<Toolbar>(Resource.Id.mainToolbar);
+            //Toolbar.InflateMenu(Resource.Menu.home);
             //var store = MockDataStore.GetInstanc
             //var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
 
             // var list = await store.GetItemsAsync(true);
             //ListAdapter = new TripAdapter(this, list.ToList());
 
-            I18N.Current
-                 .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
-                 .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
-                 .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
-                 .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
-                 .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
-                 .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
+            //I18N.Current
+            //     .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
+            //     .SetFallbackLocale("de") // Optional but recommended: locale to load in case the system locale is not supported
+            //     .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
+            //     .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
+            //     .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
+            //     .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
 
 
             //TabLayout = FindViewById<Android.Support.Design.Widget.TabLayout>(Resource.Id.mainTabLayout);
@@ -76,11 +76,11 @@ namespace WoMoDiary.Droid
             //FragmentNavigate(new TripsFragment());
         }
 
-        private void FragmentNavigate(Android.Support.V4.App.Fragment fragment)
-        {
-            //var transaction = SupportFragmentManager.BeginTransaction();
-            //transaction.Replace(Resource.Id.contentFrame, fragment);
-            //transaction.Commit();
-        }
+        //private void FragmentNavigate(Android.Support.V4.App.Fragment fragment)
+        //{
+        //    //var transaction = SupportFragmentManager.BeginTransaction();
+        //    //transaction.Replace(Resource.Id.contentFrame, fragment);
+        //    //transaction.Commit();
+        //}
     }
 }

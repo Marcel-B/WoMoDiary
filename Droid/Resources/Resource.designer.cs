@@ -3113,11 +3113,11 @@ namespace WoMoDiary.Droid
 			// aapt resource value: 0x7f0b0079
 			public const int title_template = 2131427449;
 			
+			// aapt resource value: 0x7f0b00a6
+			public const int toolbar = 2131427494;
+			
 			// aapt resource value: 0x7f0b00c2
 			public const int toolbarMain = 2131427522;
-			
-			// aapt resource value: 0x7f0b00a6
-			public const int toolbar_bottom = 2131427494;
 			
 			// aapt resource value: 0x7f0b0049
 			public const int top = 2131427401;
@@ -4177,6 +4177,12 @@ namespace WoMoDiary.Droid
 			
 			// aapt resource value: 0x7f0c0003
 			public const int CardView_Light = 2131492867;
+			
+			// aapt resource value: 0x7f0c0184
+			public const int MyTheme = 2131493252;
+			
+			// aapt resource value: 0x7f0c0185
+			public const int MyTheme_Base = 2131493253;
 			
 			// aapt resource value: 0x7f0c0022
 			public const int Platform_AppCompat = 2131492898;
