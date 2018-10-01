@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
 
-namespace WoMoDiary
+namespace WoMoDiary.Services
 {
     public interface IDataStore<T> where T : IItem
     {

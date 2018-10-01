@@ -8,5 +8,10 @@
             AssetName = "Restaurant";
             Type = PlaceType.Restaurant;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

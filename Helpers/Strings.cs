@@ -1,5 +1,4 @@
-﻿using System;
-namespace WoMoDiary.Helpers
+﻿namespace WoMoDiary.Helpers
 {
     public static class Strings
     {

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using WoMoDiary.Domain;
 
 namespace WoMoDiary.Android
@@ -39,7 +37,7 @@ namespace WoMoDiary.Android
                 holder = new TripAdapterViewHolder();
                 var inflater = context.GetSystemService(Context.LayoutInflaterService)
                                       .JavaCast<LayoutInflater>();
-                view = inflater.Inflate(Resource.Layout.TripAdapterCellLayout, parent, false);
+                view = inflater.Inflate(Resource.Layout.tripAdapterCellLayout, parent, false);
                 holder.TripName = view.FindViewById<TextView>(Resource.Id.textViewTripName);
                 holder.TripTimespan = view.FindViewById<TextView>(Resource.Id.textViewTripTimeSpan);
                 view.Tag = holder;

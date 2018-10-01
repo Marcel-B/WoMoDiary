@@ -1,18 +1,12 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.OS;
-using Toolbar = Android.Support.V7.Widget.Toolbar;
-using WoMoDiary.Domain;
-using System.Linq;
-using Android.Support.V7.App;
-using Android.Support.V4.App;
-using WoMoDiary.Android;
-using Android.Views.Accessibility;
-using System;
-using Android.Content;
 using Android.Preferences;
-using WoMoDiary.Services;
+using Android.Support.V4.App;
+using WoMoDiary.Domain;
+using Toolbar = Android.Support.V7.Widget.Toolbar;
 
-namespace WoMoDiary
+namespace WoMoDiary.Android
 {
 
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]

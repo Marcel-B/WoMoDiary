@@ -1,31 +1,52 @@
-﻿
-using System;
+﻿using System;
+using Android;
 using Android.App;
 using Android.Gms.Maps;
 using Android.Locations;
 using Android.OS;
 using Android.Widget;
 using WoMoDiary.Domain;
+using WoMoDiary.Helpers;
 using WoMoDiary.Services;
+using WoMoDiary.ViewModels;
+using Reces = Android.Resource;
 
 namespace WoMoDiary.Android
 {
     [Activity(Label = "NewPlaceActivity")]
     public class NewPlaceActivity : Activity, IOnMapReadyCallback, ILocationListener
     {
+        private NewPlaceViewModel _viewModel;
         private MapFragment _mapFragment;
         private GoogleMap _map;
         public LocationManager LocationManager { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+        public NewPlaceActivity()
+        {
+            _viewModel = new NewPlaceViewModel();
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.newPlaceLayout);
             var button = FindViewById<Button>(Resource.Id.saveNewPlaceButton);
-
+            var spinner = FindViewById<Spinner>(Resource.Id.spinnerPlaceType);
+            var foo = new Place[]
+            {
+                new CampingPlace(),
+                new Hotel(),
+                new NicePlace(),
+                new Restaurant()
+            };
+            //var adapter = ArrayAdapter.FromArray(foo);
+            //adapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            var adapter = new ArrayAdapter<Place>(this,
+                Reces.Layout.SimpleSpinnerItem, foo);
             _mapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentNewPlace);
+            spinner.Adapter = adapter;
             //var mapOptions = new GoogleMapOptions()
             //    .InvokeMapType(GoogleMap.MapTypeSatellite)
             //    .InvokeZoomControlsEnabled(false)

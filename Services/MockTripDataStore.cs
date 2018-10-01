@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
-using WoMoDiary.Services;
+using WoMoDiary.Helpers;
 
-namespace WoMoDiary
+namespace WoMoDiary.Services
 {
     public class MockTripDataStore : IDataStore<Trip>
     {

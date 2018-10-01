@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using Android.OS;
-using WoMoDiary.Services;
-using Android.App;
 using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
+using WoMoDiary.Services;
 using ListFragment = Android.Support.V4.App.ListFragment;
 
 namespace WoMoDiary.Android

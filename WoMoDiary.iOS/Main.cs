@@ -1,8 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using WoMoDiary.Services;
 using WoMoDiary.Domain;
+using WoMoDiary.iOS.Services;
 
 namespace WoMoDiary.iOS
 {

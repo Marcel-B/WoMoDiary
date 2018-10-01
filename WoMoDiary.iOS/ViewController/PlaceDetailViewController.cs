@@ -3,7 +3,7 @@ using Foundation;
 using MapKit;
 using System;
 using UIKit;
-using WoMoDiary.Services;
+using WoMoDiary.iOS.Services;
 
 namespace WoMoDiary.iOS
 {

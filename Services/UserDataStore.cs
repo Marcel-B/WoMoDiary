@@ -1,5 +1,5 @@
-﻿using WoMoDiary.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using WoMoDiary.Domain;
 
 namespace WoMoDiary.Services
 {

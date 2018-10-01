@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewPlaceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewTripViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppStore.cs" />

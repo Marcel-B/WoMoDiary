@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UIKit;
 using WoMoDiary.Domain;
-using WoMoDiary.Services;
+using WoMoDiary.iOS.Services;
 
 namespace WoMoDiary.iOS
 {

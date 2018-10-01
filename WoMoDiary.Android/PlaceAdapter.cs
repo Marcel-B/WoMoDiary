@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using Java.Lang;
 using WoMoDiary.Domain;
 
 namespace WoMoDiary.Android
@@ -38,7 +36,7 @@ namespace WoMoDiary.Android
                 holder = new PlaceAdapterViewHolder();
                 var inflater = context.GetSystemService(Context.LayoutInflaterService)
                                       .JavaCast<LayoutInflater>();
-                view = inflater.Inflate(Resource.Layout.TripAdapterCellLayout, parent, false);
+                view = inflater.Inflate(Resource.Layout.tripAdapterCellLayout, parent, false);
                 holder.PlaceName = view.FindViewById<TextView>(Resource.Id.textViewTripName);
                 holder.PlaceDescription = view.FindViewById<TextView>(Resource.Id.textViewTripTimeSpan);
                 view.Tag = holder;

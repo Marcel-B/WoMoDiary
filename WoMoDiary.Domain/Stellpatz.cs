@@ -8,5 +8,10 @@
             AssetName = "Camping";
             Type = PlaceType.MotorhomePlace;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

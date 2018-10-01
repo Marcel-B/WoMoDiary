@@ -1,5 +1,5 @@
-﻿using System;
-using WoMoDiary.Domain;
+﻿using WoMoDiary.Domain;
+using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 
 namespace WoMoDiary.ViewModels

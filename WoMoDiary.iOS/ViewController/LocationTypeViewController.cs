@@ -2,8 +2,7 @@ using System;
 using UIKit;
 using System.Collections.Generic;
 using WoMoDiary.Domain;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Services;
+using WoMoDiary.iOS.ViewModels;
 
 namespace WoMoDiary.iOS
 {

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Reflection;
-using WoMoDiary.Domain;
-using WoMoDiary.Services;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using WoMoDiary.Domain;
+using WoMoDiary.Helpers;
+using WoMoDiary.Services;
 
 namespace WoMoDiary
 {
@@ -11,7 +12,7 @@ namespace WoMoDiary
     {
         public static bool Init { get; set; }
 
-        public static bool UseMockDataStore = false;
+        public static bool UseMockDataStore = true;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();
@@ -44,7 +45,7 @@ namespace WoMoDiary
             return;
         }
 
-        public async static Task PullData()
+        public static async Task PullData()
         {
             var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
             var placeStore = ServiceLocator.Instance.Get<IDataStore<Place>>();

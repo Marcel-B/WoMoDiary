@@ -1,6 +1,7 @@
-﻿using WoMoDiary.Services;
-using System;
+﻿using System;
 using WoMoDiary.Domain;
+using WoMoDiary.Helpers;
+using WoMoDiary.Services;
 
 namespace WoMoDiary.ViewModels
 {

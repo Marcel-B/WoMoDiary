@@ -8,5 +8,7 @@
             AssetName = "SightSeeing";
             Type = PlaceType.SightSeeing;
         }
+        public override string ToString()
+            => Name;
     }
 }

@@ -1,34 +1,29 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
-using Android.Content;
 
 namespace WoMoDiary.Android
 {
     public class TripListFragment : ListFragment
     {
-        IList<Trip> trips;
-        Action<Trip> ToList;
+        private IList<Trip> _trips;
+        private readonly Action<Trip> _toList;
         public TripListFragment(Action<Trip> tolist)
         {
-            ToList = tolist;
+            _toList = tolist;
         }
-        public async override void OnCreate(Bundle savedInstanceState)
+        public override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             await App.Initialize();
             var tripStore = AppStore.GetInstance();
-            trips = tripStore.Trips;
-            ListAdapter = new TripAdapter(Activity, trips);
+            _trips = tripStore.Trips;
+            ListAdapter = new TripAdapter(Activity, _trips);
             // Create your fragment here
         }
 
@@ -41,11 +36,11 @@ namespace WoMoDiary.Android
 
         public override void OnListItemClick(ListView l, View v, int position, long id)
         {
-            System.Diagnostics.Debug.WriteLine($"Selected Trip '{trips[position].Name}'");
+            System.Diagnostics.Debug.WriteLine($"Selected Trip '{_trips[position].Name}'");
             var store = AppStore.GetInstance();
-            store.CurrentTrip = trips[position];
+            store.CurrentTrip = _trips[position];
             //var transaction = FragmentManager.BeginTransaction();
-            ToList?.Invoke(trips[position] );
+            _toList?.Invoke(_trips[position] );
             //var ine = new Intent();
             //Activity.StartActivity(typeof(PlaceListFragment));
             //transaction.Replace(Resource.Id.contentFrame, new PlaceListFragment());

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using WoMoDiary.Domain;
-using System.Collections.Generic;
+
 namespace WoMoDiary.Services
 {
     public class AppStore

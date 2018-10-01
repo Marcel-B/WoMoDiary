@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
-using System.Linq;
+using WoMoDiary.Helpers;
 
 namespace WoMoDiary.Services
 {
