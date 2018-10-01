@@ -2,18 +2,15 @@ using System;
 using UIKit;
 using System.Collections.Generic;
 using WoMoDiary.Domain;
-using WoMoDiary.iOS.ViewModels;
+using WoMoDiary.ViewModels;
 
 namespace WoMoDiary.iOS
 {
     public partial class LocationTypeViewController : UIViewController
     {
-        SaveLocationTypeViewModel viewModel;
+        public NewPlaceViewModel ViewModel { get; set; }
 
-        public LocationTypeViewController(IntPtr handle) : base(handle)
-        {
-            viewModel = new SaveLocationTypeViewModel();
-        }
+        public LocationTypeViewController(IntPtr handle) : base(handle) { }
 
         public override void ViewDidLoad()
         {
@@ -22,7 +19,7 @@ namespace WoMoDiary.iOS
             ButtonSave.TouchUpInside += (sender, e) =>
             {
                 if (sender is UIButton button)
-                    viewModel.SaveLocationTypeCommand.Execute(null);
+                    ViewModel.SavePlaceCommand.Execute(null);
                 NavigationController.PopToRootViewController(true);
             };
 
@@ -37,7 +34,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbUp.BackgroundColor = UIColor.Green;
                 ButtonThumbUp.TintColor = UIColor.Black;
 
-                viewModel.Rating = 5;
+                ViewModel.Rating = 5;
             };
             ButtonThumbDown.TouchUpInside += (sender, e) =>
             {
@@ -50,7 +47,7 @@ namespace WoMoDiary.iOS
                 ButtonThumbDown.BackgroundColor = UIColor.Green;
                 ButtonThumbDown.TintColor = UIColor.Black;
 
-                viewModel.Rating = 0;
+                ViewModel.Rating = 0;
             };
 
             PickerViewLocationType.Model.Selected(PickerViewLocationType, 0, 0);
@@ -58,7 +55,7 @@ namespace WoMoDiary.iOS
 
         private void PickerChangedEvent(object sender, PickerChangedEventArgs args)
         {
-            viewModel.PlaceType = args.Place.Type;
+            ViewModel.Type = args.Place.Type;
         }
 
         private class LocationTypePickerViewModel : UIPickerViewModel

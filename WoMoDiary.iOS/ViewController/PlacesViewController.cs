@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UIKit;
 using WoMoDiary.Domain;
-using WoMoDiary.iOS.Services;
+using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
 {

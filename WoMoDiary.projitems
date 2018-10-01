@@ -18,10 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewPlaceViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewTripViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppStore.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SaveLocationTypeViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\PlaceDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\TripDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockPlaceDataStore.cs" />

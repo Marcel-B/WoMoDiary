@@ -1,6 +1,6 @@
 using System;
 using UIKit;
-using WoMoDiary.iOS.ViewModels;
+using WoMoDiary.ViewModels;
 
 namespace WoMoDiary.iOS
 {

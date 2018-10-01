@@ -192,7 +192,7 @@
                                 <size key="titleShadowOffset" width="5" height="0"/>
                                 <state key="normal" title="Next" image="Image"/>
                                 <connections>
-                                    <segue id="15329" destination="15291" kind="show"/>
+                                    <segue id="15329" destination="15291" kind="show" identifier="ToPlaceType"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="11940" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Enter name" misplaced="YES">

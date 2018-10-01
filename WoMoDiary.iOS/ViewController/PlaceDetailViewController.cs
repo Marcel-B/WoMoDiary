@@ -1,9 +1,8 @@
 using CoreLocation;
-using Foundation;
 using MapKit;
 using System;
 using UIKit;
-using WoMoDiary.iOS.Services;
+using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
 {

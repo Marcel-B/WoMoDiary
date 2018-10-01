@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
-using Android.Util;
 
 namespace WoMoDiary.ViewModels
 {

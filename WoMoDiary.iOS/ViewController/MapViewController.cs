@@ -2,19 +2,20 @@ using System;
 using UIKit;
 using CoreLocation;
 using MapKit;
-using WoMoDiary.iOS.Services;
-using WoMoDiary.iOS.ViewModels;
+using WoMoDiary.Services;
+using WoMoDiary.ViewModels;
+using Foundation;
 
 namespace WoMoDiary.iOS
 {
     public partial class MapViewController : UIViewController
     {
-        SaveLocationViewModel viewModel;
+        private NewPlaceViewModel _viewModel;
         private CLLocationManager _locationManager;
 
         public MapViewController(IntPtr handle) : base(handle)
         {
-            viewModel = new SaveLocationViewModel();
+            _viewModel = new NewPlaceViewModel();
         }
 
         public override void ViewDidAppear(bool animated)
@@ -47,8 +48,8 @@ namespace WoMoDiary.iOS
                         var coordinates = map.UserLocation.Coordinate;
                         var span = new MKCoordinateSpan(.015, .015);
                         map.Region = new MKCoordinateRegion(coordinates, span);
-                        viewModel.Longitude = coordinates.Longitude;
-                        viewModel.Latitude = coordinates.Latitude;
+                        _viewModel.Longitude = coordinates.Longitude;
+                        _viewModel.Latitude = coordinates.Latitude;
                     }
             };
 
@@ -64,20 +65,27 @@ namespace WoMoDiary.iOS
             };
             TextFieldName.EditingChanged += (sender, e) =>
             {
-                viewModel.Name = ((UITextField)sender).Text;
-                ButtonSavePosition.Enabled = viewModel.SaveLocationCommand.CanExecute(null);
+                _viewModel.Name = ((UITextField)sender).Text;
+                ButtonSavePosition.Enabled = _viewModel.SavePlaceCommand.CanExecute(null);
             };
             TextFieldDescription.EditingChanged += (sender, e) =>
             {
-                viewModel.Description = ((UITextField)sender).Text;
-                ButtonSavePosition.Enabled = viewModel.SaveLocationCommand.CanExecute(null);
+                _viewModel.Description = ((UITextField)sender).Text;
+                ButtonSavePosition.Enabled = _viewModel.SavePlaceCommand.CanExecute(null);
             };
             ButtonSavePosition.TouchUpInside += (sender, e) =>
             {
                 TextFieldName.ResignFirstResponder();
-                viewModel.SaveLocationCommand.Execute(null);
-
+                _viewModel.SavePlaceCommand.Execute(null);
             };
+        }
+
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.DestinationViewController is LocationTypeViewController target)
+            {
+                target.ViewModel = this._viewModel;
+            }
         }
     }
 }
