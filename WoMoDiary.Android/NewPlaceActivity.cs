@@ -7,6 +7,8 @@ using Android.Widget;
 using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
 using Reces = Android.Resource;
+using Android.Graphics;
+using Android.Gms.Maps.Model;
 
 namespace WoMoDiary.Android
 {
@@ -46,7 +48,7 @@ namespace WoMoDiary.Android
                 {
                     if (!(sender is EditText box)) return;
                     _viewModel.Name = box.Text;
-                }; 
+                };
 
             FindViewById<EditText>(Resource.Id.editTextNewPlaceDescription)
                 .AfterTextChanged += (sender, args) =>
@@ -55,11 +57,28 @@ namespace WoMoDiary.Android
                     _viewModel.Description = box.Text;
                 };
 
-            FindViewById<ImageButton>(Resource.Id.imageButtonRatingUp)
-                .Click += (sender, args) => _viewModel.Rating = 4;
+            var imgBtnUp = FindViewById<ImageButton>(Resource.Id.imageButtonRatingUp);
+            var imgBtnDown = FindViewById<ImageButton>(Resource.Id.imageButtonRatingDown);
+            var color = imgBtnUp.Background;
+            imgBtnUp.Click += (sender, args) =>
+                {
+                    _viewModel.Rating = 4;
+                    if (sender is ImageButton tmp)
+                    {
+                        imgBtnUp.SetBackgroundColor(Color.Green);
+                        imgBtnDown.Background = color;
+                    }
+                };
 
-            FindViewById<ImageButton>(Resource.Id.imageButtonRatingDown)
-                .Click += (sender, args) => _viewModel.Rating = 0;
+            imgBtnDown.Click += (sender, args) =>
+                {
+                    _viewModel.Rating = 0;
+                    if (sender is ImageButton tmp)
+                    {
+                        imgBtnUp.Background = color;
+                        imgBtnDown.SetBackgroundColor(Color.Green);
+                    }
+                };
 
             var places = new Place[]
             {
@@ -95,7 +114,26 @@ namespace WoMoDiary.Android
                 StartActivity(typeof(PlaceActivity));
             };
             // Create your application here
+            LocationManager = GetSystemService(LocationService) as LocationManager;
+            const string provider = LocationManager.GpsProvider;
+            try
+            {
+                if (LocationManager.IsProviderEnabled(provider))
+                    LocationManager.RequestLocationUpdates(provider, 500, 1, this);
+                var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
+                Latitude = location.Latitude;
+                Longitude = location.Longitude;
+                _viewModel.Latitude = location.Latitude;
+                _viewModel.Longitude = location.Longitude;
+                _viewModel.Altitude = location.Altitude;
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+            }
+            _mapFragment.GetMapAsync(this);
         }
+
         protected override void OnResume()
         {
             base.OnResume();
@@ -124,8 +162,17 @@ namespace WoMoDiary.Android
             base.OnPause();
             LocationManager.RemoveUpdates(this);
         }
+
         public void OnMapReady(GoogleMap googleMap)
-            => _map = googleMap;
+        {
+            _map = googleMap;
+            var marker = new MarkerOptions();
+            marker.SetPosition(new LatLng(Latitude, Longitude));
+            marker.SetTitle("Your Location");
+            _map.AddMarker(marker);
+            _map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Latitude, Longitude), 66));
+        }
+
 
         public void OnLocationChanged(Location location)
         {

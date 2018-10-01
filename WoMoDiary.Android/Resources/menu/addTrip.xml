@@ -15,9 +15,10 @@
          app:showAsAction="ifRoom|withText"/>-->
 
   <item android:id="@+id/action_add"
-        android:title="Add"
-        android:icon="@drawable/thumb_up"
-        app:showAsAction="ifRoom|withText"/>
+        android:title=""
+        android:icon="@drawable/ic_action_motorhome"
+       app:showAsAction="ifRoom|withText"
+        />
 </menu>
 
 <!-- Code to implement into Activity:

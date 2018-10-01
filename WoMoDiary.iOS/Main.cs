@@ -2,7 +2,7 @@
 using UIKit;
 using System;
 using WoMoDiary.Domain;
-using WoMoDiary.iOS.Services;
+using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
 {
