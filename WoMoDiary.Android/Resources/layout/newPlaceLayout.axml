@@ -13,17 +13,46 @@
 		android:layout_height="wrap_content"
 		android:hint="Enter place description"
 		android:id="@+id/editTextNewPlaceDescription" />
-	
 	<Spinner
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/spinnerPlaceType"/>
-
-	<Button
+		android:id="@+id/spinnerPlaceType"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="8dp" />
+	
+	<GridLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/saveNewPlaceButton"
-        android:text="Save Place" />
+		android:columnCount="3"
+		android:rowCount="1"
+		>
+		<ImageButton
+			android:layout_marginLeft="8dp"
+			android:layout_columnWeight="1"
+			android:layout_height="wrap_content"
+			android:id="@+id/imageButtonRatingUp"
+			android:pointerIcon="none"
+			android:src="@drawable/thumb_up"
+/>
+		<Button
+			android:layout_columnWeight="4"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:id="@+id/saveNewPlaceButton"
+			android:text="Save Place"
+			android:layout_gravity="fill"
+			android:layout_marginLeft="8dp"
+			android:layout_marginRight="8dp"/>
+		<ImageButton
+			android:src="@drawable/thumb_down"
+			android:layout_height="wrap_content"
+			android:layout_columnWeight="1"
+			android:layout_marginRight="8dp"
+			android:id="@+id/imageButtonRatingDown" />
+
+	</GridLayout>
+
+
 	
 	<fragment
         class="com.google.android.gms.maps.MapFragment"

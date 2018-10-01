@@ -16,7 +16,7 @@
 
   <item android:id="@+id/action_add"
         android:title="Add"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/thumb_up"
         app:showAsAction="ifRoom|withText"/>
 </menu>
 
