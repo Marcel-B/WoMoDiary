@@ -11,7 +11,7 @@ namespace WoMoDiary
     {
         public static bool Init { get; set; }
 
-        public static bool UseMockDataStore = true;
+        public static bool UseMockDataStore = false;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();
@@ -22,7 +22,7 @@ namespace WoMoDiary
             Console.WriteLine(GetType().GetTypeInfo().Assembly);
         }
 
-        public async static Task Initialize()
+        public static async Task Initialize()
         {
             if (Init)
                 return;

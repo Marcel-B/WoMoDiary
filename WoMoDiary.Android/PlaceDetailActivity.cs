@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using WoMoDiary.Services;
 
 namespace WoMoDiary.Android
 {
@@ -19,7 +20,15 @@ namespace WoMoDiary.Android
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.placeDetailLayout);
+
             // Create your application here
+            var name = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
+            var description = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
+
+            var localStore = AppStore.GetInstance();
+            var place = localStore.CurrentPlace;
+            name.Text = place.Name;
+            description.Text = place.Description;
         }
     }
 }

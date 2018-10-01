@@ -6,14 +6,24 @@
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/editTextNewPlaceName" />
+		android:id="@+id/editTextNewPlaceName"
+		android:hint="Enter place name" />
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		android:hint="Enter place description"
 		android:id="@+id/editTextNewPlaceDescription" />
+	    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveNewPlaceButton"
+        android:text="Save Place" />
+	
 	<fragment
         class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/mapFragmentNewPlace"/>
+        android:layout_height="match_parent"
+		android:layout_margin="16px"
+        android:id="@+id/mapFragmentNewPlace"
+	/>
 </LinearLayout>

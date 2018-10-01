@@ -37,7 +37,6 @@ namespace WoMoDiary.Android
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Replace(Resource.Id.contentPlacesFrame, new PlaceListFragment());
             transaction.Commit();
-
             // Create your application here
         }
     }

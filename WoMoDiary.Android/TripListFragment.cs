@@ -42,7 +42,6 @@ namespace WoMoDiary.Android
         public override void OnListItemClick(ListView l, View v, int position, long id)
         {
             System.Diagnostics.Debug.WriteLine($"Selected Trip '{trips[position].Name}'");
-            // TODO - Navigate to Places List
             var store = AppStore.GetInstance();
             store.CurrentTrip = trips[position];
             //var transaction = FragmentManager.BeginTransaction();

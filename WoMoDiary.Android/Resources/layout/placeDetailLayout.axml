@@ -3,22 +3,28 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
 	<TextView
 		android:text="Large Text"
+		android:layout_margin="16px"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/textViewDetailPlaceName" />
+	
 	<TextView
 		android:text="Medium Text"
+		android:layout_margin="24px"
 		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/textViewDetailPlaceDescription" />
 
-		<fragment
+	<fragment
         class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/mapFragmentPlaceDetail"/>
+        android:layout_height="match_parent"
+		android:layout_margin="16px"
+        android:id="@+id/mapFragmentPlaceDetail" />
+
 </LinearLayout>
