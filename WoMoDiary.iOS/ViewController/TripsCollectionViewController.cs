@@ -25,7 +25,7 @@ namespace WoMoDiary.iOS
             Title = "Trips";
             //NavigationItem.SetHidesBackButton(true, false);
             var store = AppStore.GetInstance();
-            Trips = store.Trips;
+            Trips = store.User.Trips;
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var w = collectionView.Frame.Width - 16;

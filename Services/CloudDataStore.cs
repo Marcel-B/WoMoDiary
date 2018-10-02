@@ -44,7 +44,9 @@ namespace WoMoDiary.Services
         {
             if (id != null && CrossConnectivity.Current.IsConnected)
             {
-                var jj = await client.GetAsync(Route + id.ToString());
+                var clientOne = new HttpClient();
+
+                var jj = await clientOne.GetAsync($"{App.BackendUrl}/{Route + id.ToString()}");
                 if (jj.IsSuccessStatusCode) {
                     var j = await jj.Content.ReadAsStringAsync();
                     return await Task.Run(() => JsonConvert.DeserializeObject<T>(j));
@@ -80,10 +82,14 @@ namespace WoMoDiary.Services
             if (item == null || item.Id == null || !CrossConnectivity.Current.IsConnected)
                 return false;
             var serializedItem = JsonConvert.SerializeObject(item);
+            var clientOne = new HttpClient();
+            var cnt = new StringContent(serializedItem, Encoding.UTF8, "application/json");
             var buffer = Encoding.UTF8.GetBytes(serializedItem);
             var byteContent = new ByteArrayContent(buffer);
-            var response = await client.PutAsync(new Uri(Route + item.Id), byteContent);
-            return response.IsSuccessStatusCode;
+            var response = await clientOne.PutAsync( $"{App.BackendUrl}/{Route + item.Id}", cnt);
+            var result = response.IsSuccessStatusCode;
+            clientOne.Dispose();
+            return result;
         }
     }
 }

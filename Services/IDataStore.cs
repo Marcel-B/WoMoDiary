@@ -5,7 +5,7 @@ using WoMoDiary.Domain;
 
 namespace WoMoDiary.Services
 {
-    public interface IDataStore<T> where T : IItem
+    public interface IDataStore<T> // where T : IItem
     {
         Task<bool> AddItemAsync(T item);
         Task<bool> UpdateItemAsync(T item);
