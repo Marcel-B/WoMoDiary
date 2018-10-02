@@ -16,7 +16,7 @@ namespace WoMoDiary.Android
         {
         }
         private Toolbar _toolbar;
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override  void OnCreate(Bundle savedInstanceState)
         {
 
             base.OnCreate(savedInstanceState);
@@ -29,9 +29,9 @@ namespace WoMoDiary.Android
             editor.Apply();        // applies changes asynchronously on newer APIs
             App.User = new User
             {
-                Id = Guid.Parse(str)
+                UserId = Guid.Parse(str)
             };
-            await App.Initialize();
+            App.Initialize(str);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             _toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);

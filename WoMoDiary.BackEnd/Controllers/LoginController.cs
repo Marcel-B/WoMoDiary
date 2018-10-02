@@ -32,7 +32,7 @@ namespace WoMoDiary.BackEnd.Controllers
         public async Task<ActionResult<User>> Get(Guid id)
         {
             _logger.LogWarning($"Looking for User with GUID '{id.ToString()}'");
-            var user = await _context.Users.SingleOrDefaultAsync(i => i.Id == id);
+            var user = await _context.Users.SingleOrDefaultAsync(i => i.UserId == id);
             if (user == null) return new NotFoundObjectResult("Error");
             _logger.LogWarning($"Returns with User '{user}'");
             return user;
@@ -51,7 +51,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<User>> Put(Guid id, [FromBody] User value)
         {
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserId == id);
             _context.Users.Remove(user);
             value.LastEdit = DateTimeOffset.Now;
             var newUser = await _context.Users.AddAsync(value);
@@ -63,7 +63,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var toDelete = await _context.Users.SingleOrDefaultAsync(u => u.Id == id);
+            var toDelete = await _context.Users.SingleOrDefaultAsync(u => u.UserId == id);
             if (toDelete == null) return new NotFoundResult();
             _context.Remove(toDelete);
             var result = await _context.SaveChangesAsync();

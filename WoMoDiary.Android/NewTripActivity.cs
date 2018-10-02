@@ -17,7 +17,7 @@ namespace WoMoDiary.Android
             if (App.User == null)
                 App.User = new User
                 {
-                    Id = Guid.Parse("569dd649-f9f8-4990-b31b-45d43dda82c2"),
+                    UserId = Guid.Parse("569dd649-f9f8-4990-b31b-45d43dda82c2"),
                     Created = DateTimeOffset.Now
                 };
             // Create your application here
@@ -31,7 +31,7 @@ namespace WoMoDiary.Android
 
                 var trip =new Trip
                 {
-                    Id = Guid.NewGuid(),
+                    TripId = Guid.NewGuid(),
                     Name = tripName.Text,
                     Description = tripDescription.Text,
                     Created = DateTimeOffset.Now,

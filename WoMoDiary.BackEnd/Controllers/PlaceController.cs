@@ -30,7 +30,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpGet("bytrip/{tripId}")]
         public async Task<ActionResult<IEnumerable<Place>>> GetByTrip(Guid tripId)
         {
-            var places = await _context.Places.Where(p => p.Trip.Id == tripId).ToListAsync();
+            var places = await _context.Places.Where(p => p.Trip.TripId == tripId).ToListAsync();
             return new OkObjectResult(places);
         }
 
@@ -38,7 +38,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Place>> Get(Guid id)
         {
-            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.PlaceId == id);
             if (place == null) return new UnprocessableEntityObjectResult(id);
             return new OkObjectResult(place);
         }
@@ -56,7 +56,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(Guid id, [FromBody] Place value)
         {
-            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.PlaceId == id);
             if (place == null) return new UnprocessableEntityObjectResult(id);
             _context.Remove(place);
             value.LastEdit = DateTimeOffset.Now;
@@ -69,7 +69,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var place = await _context.Places.SingleOrDefaultAsync(p => p.Id == id);
+            var place = await _context.Places.SingleOrDefaultAsync(p => p.PlaceId == id);
             if (place == null) return new NotFoundResult();
             _context.Places.Remove(place);
             var result = await _context.SaveChangesAsync();

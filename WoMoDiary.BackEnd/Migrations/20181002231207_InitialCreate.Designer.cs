@@ -10,20 +10,20 @@ using WoMoDiary.BackEnd;
 namespace WoMoDiary.BackEnd.Migrations
 {
     [DbContext(typeof(WoMoContext))]
-    [Migration("20180927213724_InitialCreate")]
+    [Migration("20181002231207_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846")
+                .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("WoMoDiary.Domain.Place", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("PlaceId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<double>("Altitude");
@@ -44,11 +44,11 @@ namespace WoMoDiary.BackEnd.Migrations
 
                     b.Property<short>("Rating");
 
-                    b.Property<Guid?>("TripId");
+                    b.Property<Guid>("TripId");
 
                     b.Property<int>("Type");
 
-                    b.HasKey("Id");
+                    b.HasKey("PlaceId");
 
                     b.HasIndex("TripId");
 
@@ -57,7 +57,7 @@ namespace WoMoDiary.BackEnd.Migrations
 
             modelBuilder.Entity("WoMoDiary.Domain.Trip", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("TripId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("Created");
@@ -68,9 +68,9 @@ namespace WoMoDiary.BackEnd.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<Guid?>("UserId");
+                    b.Property<Guid>("UserId");
 
-                    b.HasKey("Id");
+                    b.HasKey("TripId");
 
                     b.HasIndex("UserId");
 
@@ -79,7 +79,7 @@ namespace WoMoDiary.BackEnd.Migrations
 
             modelBuilder.Entity("WoMoDiary.Domain.User", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTimeOffset>("Created");
@@ -88,13 +88,13 @@ namespace WoMoDiary.BackEnd.Migrations
 
                     b.Property<byte[]>("Hash");
 
-                    b.Property<DateTimeOffset?>("LastEdit");
+                    b.Property<DateTimeOffset>("LastEdit");
 
                     b.Property<string>("Name");
 
                     b.Property<byte[]>("Salt");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
                 });
@@ -103,14 +103,16 @@ namespace WoMoDiary.BackEnd.Migrations
                 {
                     b.HasOne("WoMoDiary.Domain.Trip", "Trip")
                         .WithMany("Places")
-                        .HasForeignKey("TripId");
+                        .HasForeignKey("TripId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WoMoDiary.Domain.Trip", b =>
                 {
                     b.HasOne("WoMoDiary.Domain.User", "User")
                         .WithMany("Trips")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

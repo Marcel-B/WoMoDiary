@@ -32,7 +32,7 @@ namespace WoMoDiary.Domain
 
         public DateTimeOffset LastEdit { get; set; }
 
-        public Trip TripId { get; set; }
+        public Guid TripId { get; set; }
 
         public Trip Trip { get; set; }
     }

@@ -55,14 +55,14 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpGet("byid/{userId}")]
         public async Task<ActionResult<IEnumerable<Trip>>> GetById(Guid userId)
         {
-            var trips = await _context.Trips.Where(i => i.User.Id == userId).ToListAsync();
+            var trips = await _context.Trips.Where(i => i.User.UserId == userId).ToListAsync();
             return new OkObjectResult(trips);
         }
         // GET api/trip/
         [HttpGet("{id}")]
         public async Task<ActionResult<Trip>> Get(Guid id)
         {
-            var foo = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            var foo = await _context.Trips.SingleOrDefaultAsync(i => i.TripId == id);
             return foo;
         }
 
@@ -79,7 +79,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult> Put(Guid id, [FromBody] Trip value)
         {
-            var s = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            var s = await _context.Trips.SingleOrDefaultAsync(i => i.TripId == id);
             if (s == null) return new NotFoundObjectResult(id);
             _context.Trips.Remove(s);
             await _context.AddAsync(value);
@@ -91,7 +91,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var s = await _context.Trips.SingleOrDefaultAsync(i => i.Id == id);
+            var s = await _context.Trips.SingleOrDefaultAsync(i => i.TripId == id);
             if (s == null) return new NotFoundObjectResult(id);
             _context.Trips.Remove(s);
             var result = await _context.SaveChangesAsync();
