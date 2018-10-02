@@ -2,6 +2,7 @@
 using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
+using System.Linq;
 
 namespace WoMoDiary.ViewModels
 {
@@ -53,12 +54,16 @@ namespace WoMoDiary.ViewModels
             tmp.Created = DateTimeOffset.Now;
             tmp.Description = Description;
             tmp.Name = Name;
-            tmp.Id = Guid.NewGuid();
-            store.CurrentTrip.Places.Add(tmp);
+            tmp.PlaceId = Guid.NewGuid();
+            tmp.Trip = store.CurrentTrip;
+            store.User.Trips.Single(t => t.TripId == store.CurrentTrip.TripId).Places.Add(tmp);
+            var tripStore = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            //await tripStore.Add(tmp);
+            //store.CurrentTrip.Places.Add(tmp);
             //var pl = ServiceLocator.Instance.Get<IDataStore<Place>>();
             //await pl.AddItemAsync(tmp);
-            var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-            await tripStore.UpdateItemAsync(store.CurrentTrip);
+            //var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
+            //await tripStore.UpdateItemAsync(store.CurrentTrip);
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 namespace WoMoDiary.Domain
 {
-    public class Trip : IItem
+    public class Trip
     {
         public Trip()
         {
@@ -13,26 +11,20 @@ namespace WoMoDiary.Domain
             Places = new List<Place>();
         }
 
-        [JsonProperty("id")]
-        [Key]
-        public Guid Id { get; set; }
+        public Guid TripId { get; set; }
 
-        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("created")]
         public DateTimeOffset Created { get; set; }
 
-        [JsonProperty("lastEdit")]
         public DateTimeOffset? LastEdit { get; set; }
 
-        [JsonProperty("user")]
+        public Guid UserId { get; set; }
+
         public User User { get; set; }
 
-        [JsonProperty("places")]
         public List<Place> Places { get; set; }
     }
 }

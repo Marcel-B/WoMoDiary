@@ -17,10 +17,10 @@ namespace WoMoDiary.Android
         {
             _toList = tolist;
         }
-        public override async void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            await App.Initialize();
+            App.Initialize();
             var tripStore = AppStore.GetInstance();
             _trips = tripStore.Trips;
             ListAdapter = new TripAdapter(Activity, _trips);
