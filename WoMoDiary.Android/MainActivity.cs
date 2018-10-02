@@ -15,7 +15,7 @@ namespace WoMoDiary.Android
         public MainActivity()
         {
         }
-        private Toolbar toolbar;
+        private Toolbar _toolbar;
         protected override async void OnCreate(Bundle savedInstanceState)
         {
 
@@ -34,9 +34,9 @@ namespace WoMoDiary.Android
             await App.Initialize();
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
-            toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
-            toolbar.InflateMenu(Resource.Menu.addTrip);
-            toolbar.MenuItemClick += (object sender, Toolbar.MenuItemClickEventArgs e) =>
+            _toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            _toolbar.InflateMenu(Resource.Menu.addTrip);
+            _toolbar.MenuItemClick += (object sender, Toolbar.MenuItemClickEventArgs e) =>
             {
                 var itemId = e.Item.ItemId;
                 var action = Resource.Id.action_add;
