@@ -31,75 +31,34 @@ namespace WoMoDiary.ViewModels
             switch (Type)
             {
                 case PlaceType.CampingPlace:
-                    tmp = new CampingPlace
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = Name,
-                        Description = Description,
-                        Latitude = Latitude,
-                        Longitude = Longitude,
-                        Altitude = Altitude,
-                        Rating = Rating,
-                        Created = DateTimeOffset.Now
-                    };
+                    tmp = new CampingPlace();
                     break;
                 case PlaceType.Hotel:
-                    tmp = new Hotel
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = Name,
-                        Description = Description,
-                        Latitude = Latitude,
-                        Longitude = Longitude,
-                        Altitude = Altitude,
-                        Rating = Rating,
-                        Created = DateTimeOffset.Now
-                    };
+                    tmp = new Hotel();
                     break;
                 case PlaceType.MotorhomePlace:
-                    tmp = new Stellpatz
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = Name,
-                        Description = Description,
-                        Latitude = Latitude,
-                        Longitude = Longitude,
-                        Altitude = Altitude,
-                        Rating = Rating,
-                        Created = DateTimeOffset.Now
-                    };
+                    tmp = new Stellpatz();
                     break;
                 case PlaceType.Restaurant:
-                    tmp = new Restaurant
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = Name,
-                        Description = Description,
-                        Latitude = Latitude,
-                        Longitude = Longitude,
-                        Altitude = Altitude,
-                        Rating = Rating,
-                        Created = DateTimeOffset.Now
-                    };
+                    tmp = new Restaurant();
                     break;
                 case PlaceType.SightSeeing:
-                    tmp = new NicePlace
-                    {
-                        Id = Guid.NewGuid(),
-                        Name = Name,
-                        Description = Description,
-                        Latitude = Latitude,
-                        Longitude = Longitude,
-                        Altitude = Altitude,
-                        Rating = Rating,
-                        Created = DateTimeOffset.Now
-                    };
+                    tmp = new NicePlace();
                     break;
-
             }
+            tmp.Latitude = Latitude;
+            tmp.Longitude = Longitude;
+            tmp.Rating = Rating;
+            tmp.Altitude = Altitude;
+            tmp.Created = DateTimeOffset.Now;
+            tmp.Description = Description;
+            tmp.Name = Name;
+            tmp.Id = Guid.NewGuid();
             store.CurrentTrip.Places.Add(tmp);
-            var pl = ServiceLocator.Instance.Get<IDataStore<Place>>();
-            await pl.AddItemAsync(tmp);
+            //var pl = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            //await pl.AddItemAsync(tmp);
+            var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
+            await tripStore.UpdateItemAsync(store.CurrentTrip);
         }
     }
 }

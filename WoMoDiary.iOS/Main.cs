@@ -27,7 +27,12 @@ namespace WoMoDiary.iOS
 
             var userId = plist["UserId"].ToString();
             var localStore = AppStore.GetInstance();
-            App.User = new User { Id = Guid.Parse(userId) };
+            App.User = new User
+            {
+                Id = Guid.Parse(userId),
+                Name = "Marcel Benders",
+                Created = DateTimeOffset.Now,
+            };
             App.Initialize();
             UIApplication.Main(args, null, "AppDelegate");
         }

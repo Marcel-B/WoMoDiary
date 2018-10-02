@@ -11,8 +11,8 @@ namespace WoMoDiary
     public class App
     {
         public static bool Init { get; set; }
-
-        public static bool UseMockDataStore = true;
+        public const string USER_ID = "2c3facaef-14ef-4cc8-874f-0f9917082959";
+        public static bool UseMockDataStore = false;
         public static string BackendUrl = "https://womo.marcelbenders.de";
         public static Guid FirstTrip = Guid.NewGuid();
         public static Guid SecondTrip = Guid.NewGuid();
@@ -47,17 +47,16 @@ namespace WoMoDiary
 
         public static async Task PullData()
         {
-            var store = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-            var placeStore = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            var userStore = ServiceLocator.Instance.Get<IDataStore<User>>();
             var localStore = AppStore.GetInstance();
-
-            var trips = await store.GetItemsAsync(App.User.Id, true);
+            var foo = await userStore.UpdateItemAsync(App.User);
+            var user = await userStore.GetItemAsync(App.User.Id);
             //foreach (var trip in trips)
             //{
             //    var places = await placeStore.GetItemsAsync(trip.Id, true);
             //    trip.Places = places.ToList();
             //}
-            localStore.Trips = trips.ToList();
+            localStore.Trips = user.Trips.ToList();
             return;
         }
     }

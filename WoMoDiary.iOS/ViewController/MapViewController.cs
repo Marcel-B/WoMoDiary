@@ -76,7 +76,7 @@ namespace WoMoDiary.iOS
             ButtonSavePosition.TouchUpInside += (sender, e) =>
             {
                 TextFieldName.ResignFirstResponder();
-                _viewModel.SavePlaceCommand.Execute(null);
+                //_viewModel.SavePlaceCommand.Execute(null);
             };
         }
 

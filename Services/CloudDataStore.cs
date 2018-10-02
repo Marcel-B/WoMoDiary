@@ -44,8 +44,12 @@ namespace WoMoDiary.Services
         {
             if (id != null && CrossConnectivity.Current.IsConnected)
             {
-                var json = await client.GetStringAsync(Route + id);
-                return await Task.Run(() => JsonConvert.DeserializeObject<T>(json));
+                var jj = await client.GetAsync(Route + id.ToString());
+                if (jj.IsSuccessStatusCode) {
+                    var j = await jj.Content.ReadAsStringAsync();
+                    return await Task.Run(() => JsonConvert.DeserializeObject<T>(j));
+                }
+                //var json = await client.GetStringAsync(Route + id);
             }
             return default(T);
         }
