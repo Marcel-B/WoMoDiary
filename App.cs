@@ -40,9 +40,9 @@ namespace WoMoDiary
             //}
             //else
             //{
-                //ServiceLocator.Instance.Register<IDataStore<Trip>, TripDataStore>();
-                //ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
-                ServiceLocator.Instance.Register<IDataStore<User>, UserDataStore>();
+            //ServiceLocator.Instance.Register<IDataStore<Trip>, TripDataStore>();
+            //ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
+            ServiceLocator.Instance.Register<IDataStore<User>, UserDataStore>();
             //}
             var store = AppStore.GetInstance();
             PullData(Guid.Parse(userId));
@@ -52,9 +52,9 @@ namespace WoMoDiary
         public static void PullData(Guid userId)
         {
             var userStore = ServiceLocator.Instance.Get<IDataStore<User>>();
+            //var result = userStore.AddItemAsync(App.User).Result;
             var localStore = AppStore.GetInstance();
             var clientOne = new HttpClient();
-
             var jj = clientOne.GetAsync($"https://womo.marcelbenders.de/api/login/{userId.ToString()}").Result;
             if (jj.IsSuccessStatusCode)
             {

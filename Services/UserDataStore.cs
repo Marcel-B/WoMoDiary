@@ -10,8 +10,11 @@ namespace WoMoDiary.Services
 {
     public class UserDataStore : IDataStore<User>
     {
+        public string BaseUrl { get; set; }
+
         public UserDataStore()
         {
+            BaseUrl = "https://womo.marcelbenders.de/";
         }
 
         protected  string Route
@@ -25,10 +28,13 @@ namespace WoMoDiary.Services
 
         public async Task<bool> AddItemAsync(User item)
         {
-            var httpClient = new HttpClient();
+            var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(BaseUrl)
+            };
             var obj = JsonConvert.SerializeObject(item);
             var stringContent = new StringContent(obj,Encoding.UTF8, "application/json");
-            await httpClient.PostAsync($"https://womo.marcelbenders.de/api/login", stringContent);
+            await httpClient.PostAsync($"api/login", stringContent);
             httpClient.Dispose();
             return true;
         }

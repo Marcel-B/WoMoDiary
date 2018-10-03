@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace WoMoDiary.Domain
 {
@@ -34,6 +35,7 @@ namespace WoMoDiary.Domain
 
         public Guid TripId { get; set; }
 
+        [JsonIgnoreAttribute]
         public Trip Trip { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 namespace WoMoDiary.Domain
 {
     public class Trip
@@ -23,6 +24,8 @@ namespace WoMoDiary.Domain
 
         public Guid UserId { get; set; }
 
+
+        [JsonIgnoreAttribute]
         public User User { get; set; }
 
         public List<Place> Places { get; set; }

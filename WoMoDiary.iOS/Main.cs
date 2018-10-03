@@ -27,14 +27,14 @@ namespace WoMoDiary.iOS
                 plist.SetString("569dd649-f9f8-4990-b31b-45d43dda82c2", "UserId");
 
             var userId = plist["UserId"].ToString();
-            //var localStore = AppStore.GetInstance();
-            //App.User = new User
-            //{
-            //    Id = Guid.Parse(userId),
-            //    Name = "Marcel Benders",
-            //    Email = "marcel.benders@outlook.de",
-            //    Created = DateTimeOffset.Now,
-            //};
+            var localStore = AppStore.GetInstance();
+            App.User = new User
+            {
+                UserId = Guid.Parse(userId),
+                Name = "Marcel Benders",
+                Email = "marcel.benders@outlook.de",
+                Created = DateTimeOffset.Now,
+            };
             App.Initialize(userId);
             UIApplication.Main(args, null, "AppDelegate");
         }
