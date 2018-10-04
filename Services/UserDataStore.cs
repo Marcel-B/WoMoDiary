@@ -17,14 +17,8 @@ namespace WoMoDiary.Services
             BaseUrl = "https://womo.marcelbenders.de/";
         }
 
-        protected  string Route
-        {
-            get => "api/login/";
-        }
-        protected  string RouteSpecial
-        {
-            get => "api/login/byusername/";
-        }
+        protected  string Route => "api/login/";
+        protected  string RouteSpecial => "api/user/byusername/";
 
         public async Task<bool> AddItemAsync(User item)
         {
@@ -34,19 +28,17 @@ namespace WoMoDiary.Services
             };
             var obj = JsonConvert.SerializeObject(item);
             var stringContent = new StringContent(obj,Encoding.UTF8, "application/json");
-            await httpClient.PostAsync($"api/login", stringContent);
+            await httpClient.PostAsync($"api/user", stringContent);
             httpClient.Dispose();
             return true;
         }
 
         public Task<bool> DeleteItemAsync(Guid id)
-        {
-            return null;
-        }
+            => null;
         public async Task<User> GetItemAsync(Guid id)
         {
             var httpClient = new HttpClient();
-            var request = await httpClient.GetAsync($"https://womo.marcelbenders.de/api/login/byusername/{id}");
+            var request = await httpClient.GetAsync($"https://womo.marcelbenders.de/api/user/byusername/{id}");
             var body = await request.Content.ReadAsStringAsync();
             var user = JsonConvert.DeserializeObject<User>(body);
             httpClient.Dispose();
@@ -61,7 +53,7 @@ namespace WoMoDiary.Services
         public async Task<User> GetItemsAsync(Guid id, bool forceRefresh = false)
         {
             var httpClient = new HttpClient();
-            var request = await httpClient.GetAsync($"https://womo.marcelbenders.de/api/login/byusername/{id}");
+            var request = await httpClient.GetAsync($"https://womo.marcelbenders.de/api/user/byusername/{id}");
             var body = await request.Content.ReadAsStringAsync();
             var user = JsonConvert.DeserializeObject<User>(body);
             httpClient.Dispose();
@@ -73,7 +65,7 @@ namespace WoMoDiary.Services
             var httpClient = new HttpClient();
             var obj = JsonConvert.SerializeObject(item);
             var stringContent = new StringContent(obj, Encoding.UTF8, "application/json");
-            await httpClient.PutAsync($"https://womo.marcelbenders.de/api/login/{item.UserId}", stringContent);
+            await httpClient.PutAsync($"https://womo.marcelbenders.de/api/user/{item.UserId}", stringContent);
             httpClient.Dispose();
             return true;
         }

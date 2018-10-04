@@ -88,7 +88,7 @@
 //            //        list.Add(place);
 //            //}
 //            return list;
-//        })    ;
+//        });
 
 //        /// <summary>
 //        /// Updates the item async.

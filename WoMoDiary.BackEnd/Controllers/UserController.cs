@@ -12,12 +12,12 @@ namespace WoMoDiary.BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class LoginController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly WoMoContext _context;
-        private ILogger<LoginController> _logger;
+        private readonly ILogger<UserController> _logger;
 
-        public LoginController(WoMoContext context, ILogger<LoginController> logger)
+        public UserController(WoMoContext context, ILogger<UserController> logger)
         {
             _context = context;
             _logger = logger;
@@ -43,7 +43,7 @@ namespace WoMoDiary.BackEnd.Controllers
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] string value)
         {
-            var usr =  JsonConvert.DeserializeObject<User>(value);
+            var usr = JsonConvert.DeserializeObject<User>(value);
             var user = await _context.Users.AddAsync(usr);
             var result = await _context.SaveChangesAsync();
             return new OkObjectResult(user);
@@ -51,15 +51,25 @@ namespace WoMoDiary.BackEnd.Controllers
 
         // PUT api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Put(Guid id, [FromBody] string value)
+        public async Task<ActionResult<User>> Put(Guid id, [FromBody] User value)
         {
-            var vl = JsonConvert.DeserializeObject<User>(value);
-            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserId == id);
-            _context.Users.Remove(user);
-            vl.LastEdit = DateTimeOffset.Now;
-            var newUser = await _context.Users.AddAsync(vl);
-            var result = await _context.SaveChangesAsync();
-            return vl;
+            try
+            {
+                value.LastEdit = DateTimeOffset.Now;
+                _context.Entry(value).State = EntityState.Modified;
+                _context.Users.Update(value);
+                var currentTrips =
+                    await _context.Trips.Where(t => t.UserId == value.UserId).ToListAsync();
+
+                _logger.LogInformation($"I have '{currentTrips.Count}' Trips for this User");
+                var result = await _context.SaveChangesAsync();
+                return value;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(new EventId(42), ex, $"Exception occured while put user '{value.UserId}'.{Environment.NewLine}");
+                return StatusCode(500);
+            }
         }
 
         // DELETE api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
