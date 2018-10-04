@@ -1,11 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
 namespace WoMoDiary.Domain
 {
-    public class Place
+    public class Place : IItem
     {
+        [NotMapped]
+        [JsonIgnoreAttribute]
+        public Guid Id { get => PlaceId; set => PlaceId = value; }
+
         public Place()
         {
             Created = DateTimeOffset.Now;

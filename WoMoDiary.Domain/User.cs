@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
 namespace WoMoDiary.Domain
 {
-    public class User
+    public class User : IItem
     {
+
+        [NotMapped]
+        [JsonIgnoreAttribute]
+        public Guid Id { get => UserId; set => UserId = value; }
+
         public User()
         {
             Created = DateTimeOffset.Now;
