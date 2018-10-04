@@ -11,85 +11,63 @@ namespace WoMoDiary.Services
 {
     public abstract class CloudDataStore<T> : IDataStore<T> where T : IItem
     {
-        protected HttpClient client;
-        protected IEnumerable<T> items;
+        protected HttpClient Client;
+        protected IEnumerable<T> Items;
         protected abstract string Route { get; }
         protected abstract string RouteSpecial { get; }
+        public abstract Task<IEnumerable<T>> GetItemsByFkAsync(Guid fk);
+
         protected CloudDataStore()
         {
-            client = new HttpClient
+            Client = new HttpClient
             {
                 BaseAddress = new Uri($"{App.BackendUrl}/")
             };
         }
 
-        public async Task<bool> AddItemAsync(T item)
+        public async Task<T> UpdateItemAsync(T item)
         {
             if (item == null || !CrossConnectivity.Current.IsConnected)
-                return false;
+                return default(T);
             var serializedItem = JsonConvert.SerializeObject(item);
-            var response = await client.PostAsync(Route, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-            return response.IsSuccessStatusCode;
+            var buffer = Encoding.UTF8.GetBytes(serializedItem);
+            var byteContent = new ByteArrayContent(buffer);
+            var response = await Client.PutAsync(Route + item.Id, byteContent);
+            return response.IsSuccessStatusCode ? item : default(T);
         }
 
         public async Task<bool> DeleteItemAsync(Guid id)
         {
             if (id != Guid.Empty && !CrossConnectivity.Current.IsConnected)
                 return false;
-            var response = await client.DeleteAsync(Route + id);
+            var response = await Client.DeleteAsync(Route + id);
             return response.IsSuccessStatusCode;
         }
 
         public async Task<T> GetItemAsync(Guid id)
         {
-            if (id != null && CrossConnectivity.Current.IsConnected)
-            {
-                var clientOne = new HttpClient();
+            if (!CrossConnectivity.Current.IsConnected) return default(T);
+            var response = await Client.GetAsync(Route + id);
+            if (!response.IsSuccessStatusCode) return default(T);
+            var content = await response.Content.ReadAsStringAsync();
+            return  JsonConvert.DeserializeObject<T>(content);
+        }
 
-                var jj = await clientOne.GetAsync($"{App.BackendUrl}/{Route + id.ToString()}");
-                if (jj.IsSuccessStatusCode) {
-                    var j = await jj.Content.ReadAsStringAsync();
-                    return await Task.Run(() => JsonConvert.DeserializeObject<T>(j));
-                }
-                //var json = await client.GetStringAsync(Route + id);
-            }
-            return default(T);
-        }
-        public async Task<IEnumerable<T>> GetItemsAsync(Guid id, bool forceRefresh = false)
-        {
-            if (forceRefresh && CrossConnectivity.Current.IsConnected)
-            {
-                var result = await client.GetAsync(RouteSpecial + id.ToString());
-                if (!result.IsSuccessStatusCode)
-                    return new List<T>();
-                var json = await result.Content.ReadAsStringAsync();
-                items = JsonConvert.DeserializeObject<T[]>(json);
-            }
-            return items;
-        }
         public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
         {
-            if (forceRefresh && CrossConnectivity.Current.IsConnected)
-            {
-                var json = await client.GetStringAsync(Route);
-                items = JsonConvert.DeserializeObject<T[]>(json);
-            }
-            return items;
+            if (!forceRefresh || !CrossConnectivity.Current.IsConnected) return Items;
+            var json = await Client.GetStringAsync(Route);
+            Items = JsonConvert.DeserializeObject<T[]>(json);
+            return Items;
         }
 
-        public async Task<bool> UpdateItemAsync(T item)
+        public async Task<T> AddItemAsync(T item)
         {
-            if (item == null || item.Id == null || !CrossConnectivity.Current.IsConnected)
-                return false;
+            if (item == null || !CrossConnectivity.Current.IsConnected)
+                return default(T);
             var serializedItem = JsonConvert.SerializeObject(item);
-            var clientOne = new HttpClient();
-            var cnt = new StringContent(serializedItem, Encoding.UTF8, "application/json");
-            var buffer = Encoding.UTF8.GetBytes(serializedItem);
-            var byteContent = new ByteArrayContent(buffer);
-            var response = await clientOne.PutAsync( $"{App.BackendUrl}/{Route + item.Id}", cnt);
-            var result = response.IsSuccessStatusCode;
-            clientOne.Dispose();
-            return result;
+            var response = await Client.PostAsync(Route, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+            return response.IsSuccessStatusCode ? item : default(T);
         }
     }
 }
