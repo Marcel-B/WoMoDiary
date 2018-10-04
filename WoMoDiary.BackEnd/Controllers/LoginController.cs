@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using WoMoDiary.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -40,23 +41,25 @@ namespace WoMoDiary.BackEnd.Controllers
 
         // POST api/user
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] User value)
+        public async Task<ActionResult> Post([FromBody] string value)
         {
-            var user = await _context.Users.AddAsync(value);
+            var usr =  JsonConvert.DeserializeObject<User>(value);
+            var user = await _context.Users.AddAsync(usr);
             var result = await _context.SaveChangesAsync();
             return new OkObjectResult(user);
         }
 
         // PUT api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> Put(Guid id, [FromBody] User value)
+        public async Task<ActionResult<User>> Put(Guid id, [FromBody] string value)
         {
+            var vl = JsonConvert.DeserializeObject<User>(value);
             var user = await _context.Users.SingleOrDefaultAsync(u => u.UserId == id);
             _context.Users.Remove(user);
-            value.LastEdit = DateTimeOffset.Now;
-            var newUser = await _context.Users.AddAsync(value);
+            vl.LastEdit = DateTimeOffset.Now;
+            var newUser = await _context.Users.AddAsync(vl);
             var result = await _context.SaveChangesAsync();
-            return value;
+            return vl;
         }
 
         // DELETE api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
