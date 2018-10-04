@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace WoMoDiary.BackEnd.Controllers
 {
@@ -13,10 +14,13 @@ namespace WoMoDiary.BackEnd.Controllers
     [ApiController]
     public class TripController : ControllerBase
     {
-        WoMoContext _context;
-        public TripController(WoMoContext context)
+        private readonly WoMoContext _context;
+        private readonly ILogger<TripController> _logger;
+
+        public TripController(WoMoContext context, ILogger<TripController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET api/trip
@@ -51,13 +55,22 @@ namespace WoMoDiary.BackEnd.Controllers
             return new OkObjectResult(trips);
         }
 
-        // GET api/trip
-        [HttpGet("byid/{userId}")]
+        // GET api/trip/byuser/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
+        [HttpGet("byuser/{userId}")]
         public async Task<ActionResult<IEnumerable<Trip>>> GetById(Guid userId)
         {
-            var trips = await _context.Trips.Where(i => i.User.UserId == userId).ToListAsync();
-            return new OkObjectResult(trips);
+            try
+            {
+                var trips = await _context.Trips.Where(t => t.User.UserId == userId).ToListAsync();
+                return new OkObjectResult(trips);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(new EventId(42), ex, $"Error occured while loading trips by user '{userId}'");
+                return StatusCode(500);
+            }
         }
+
         // GET api/trip/
         [HttpGet("{id}")]
         public async Task<ActionResult<Trip>> Get(Guid id)

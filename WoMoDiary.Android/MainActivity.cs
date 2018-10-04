@@ -22,16 +22,16 @@ namespace WoMoDiary.Android
             base.OnCreate(savedInstanceState);
 
             var prefs = PreferenceManager.GetDefaultSharedPreferences(this);
-            var str = prefs.GetString("UserGuid", Guid.NewGuid().ToString());
+            var str = prefs.GetString("UserGuid", "569DD649-F9F8-4990-B31B-45D43DDA82C2");
             var editor = prefs.Edit();
             editor.PutString("UserGuid", str);
             // editor.Commit();    // applies changes synchronously on older APIs
             editor.Apply();        // applies changes asynchronously on newer APIs
-            App.User = new User
-            {
-                UserId = Guid.Parse(str)
-            };
-            App.Initialize(str);
+            //App.User = new User
+            //{
+            //    UserId = Guid.Parse(str)
+            //};
+            App.Initialize("569DD649-F9F8-4990-B31B-45D43DDA82C2");
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             _toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
