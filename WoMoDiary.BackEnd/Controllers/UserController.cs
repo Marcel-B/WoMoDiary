@@ -41,12 +41,19 @@ namespace WoMoDiary.BackEnd.Controllers
 
         // POST api/user
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] string value)
+        public async Task<ActionResult> Post([FromBody] User value)
         {
-            var usr = JsonConvert.DeserializeObject<User>(value);
-            var user = await _context.Users.AddAsync(usr);
-            var result = await _context.SaveChangesAsync();
-            return new OkObjectResult(user);
+            try
+            {
+                var user = await _context.Users.AddAsync(value);
+                var result = await _context.SaveChangesAsync();
+                return new OkObjectResult(user.Entity);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(new EventId(42), ex, $"Error occured while inserting User with UserId: '{value.Id}'.");
+                return StatusCode(500);
+            }
         }
 
         // PUT api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
