@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4133">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,7 +14,7 @@
             <objects>
                 <navigationController id="4133" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4135" largeTitles="YES">
-                        <rect key="frame" x="0.0" y="20" width="375" height="102"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -33,7 +33,7 @@
                         <viewControllerLayoutGuide type="bottom" id="4810"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4813">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
@@ -89,15 +89,15 @@
             <objects>
                 <tableViewController id="5069" sceneMemberID="viewController" customClass="TripsViewController" title="Places">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5070">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5073" reuseIdentifier="MyCell" customClass="TripsTableViewCell" rowHeight="100">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5073" id="5074">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5709" key="tableHeaderView">
@@ -113,7 +113,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="40943" translatesAutoresizingMaskIntoConstraints="NO">
-                                            <rect key="frame" x="329" y="8" width="30" height="30"/>
+                                            <rect key="frame" x="304" y="8" width="0.0" height="30"/>
                                             <constraints>
                                                 <constraint id="40944" firstAttribute="width" constant="30"/>
                                                 <constraint id="40945" firstAttribute="height" constant="30"/>
@@ -177,7 +177,7 @@
                         <viewControllerLayoutGuide type="bottom" id="9854"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9857">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
@@ -247,7 +247,7 @@
                         <viewControllerLayoutGuide type="bottom" id="15289"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="15292">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
@@ -258,11 +258,11 @@
                                 </constraints>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="15334" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="68" y="294" width="243" height="30"/>
+                                <rect key="frame" x="68" y="293.5" width="188" height="30"/>
                                 <state key="normal" title="Save"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47092" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="20" y="289" width="40" height="40"/>
+                                <rect key="frame" x="20" y="288.5" width="40" height="40"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.17254901960784313" green="0.596078431372549" blue="0.85490196078431369" alpha="1"/>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0.81568627450980391" green="0.84313725490196079" blue="0.87450980392156863" alpha="1"/>
                                 <state key="normal" image="ThumbUp">
@@ -279,7 +279,7 @@
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="47093" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="319" y="289" width="40" height="40"/>
+                                <rect key="frame" x="264" y="288.5" width="40" height="40"/>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0.81568627450980391" green="0.84313725490196079" blue="0.87450980392156863" alpha="1"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.17254901960784313" green="0.596078431372549" blue="0.85490196078431369" alpha="1"/>
                                 <userDefinedRuntimeAttributes>
@@ -294,7 +294,7 @@
                                 </constraints>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select place type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="50879" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="19" y="90" width="340" height="21"/>
+                                <rect key="frame" x="19" y="90" width="285" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -335,7 +335,7 @@
             <objects>
                 <collectionViewController id="30217" sceneMemberID="viewController" customClass="TripsCollectionViewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="30218">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" id="30222" minimumLineSpacing="8" minimumInteritemSpacing="8">
                             <size key="itemSize" width="394" height="100"/>
@@ -429,7 +429,7 @@
                         <viewControllerLayoutGuide type="bottom" id="54658"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="54661">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
@@ -483,31 +483,31 @@
                         <viewControllerLayoutGuide type="bottom" id="58525"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="58528">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="58594" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="211" width="343" height="30"/>
+                                <rect key="frame" x="16" y="211" width="288" height="30"/>
                                 <state key="normal" title="Login"/>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="58657" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Username">
-                                <rect key="frame" x="16" y="135" width="343" height="30"/>
+                                <rect key="frame" x="16" y="135" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="58658" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
-                                <rect key="frame" x="16" y="173" width="343" height="30"/>
+                                <rect key="frame" x="16" y="173" width="288" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" spellCheckingType="no" autocorrectionType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="58662" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="16" y="249" width="343" height="30"/>
+                                <rect key="frame" x="16" y="249" width="288" height="30"/>
                                 <state key="normal" title="New Account"/>
                                 <connections>
-                                    <segue id="58697" destination="58534" kind="show"/>
+                                    <segue id="58697" destination="58534" kind="show" identifier="ToNewUser"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -546,10 +546,69 @@
                         <viewControllerLayoutGuide type="bottom" id="58532"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="58535">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="102870" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Username">
+                                <rect key="frame" x="16" y="135" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="102871" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email">
+                                <rect key="frame" x="16" y="173" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email" keyboardType="emailAddress"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="102872" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
+                                <rect key="frame" x="16" y="211" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="102873" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Confirm password">
+                                <rect key="frame" x="16" y="249" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="102874" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="287" width="288" height="30"/>
+                                <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <segue id="103785" destination="30217" kind="show"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="102875" firstItem="102870" firstAttribute="leading" secondItem="58535" secondAttribute="leadingMargin"/>
+                            <constraint id="103022" firstItem="102870" firstAttribute="top" secondItem="58531" secondAttribute="bottom" constant="13"/>
+                            <constraint id="103023" firstItem="102870" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103024" firstItem="102871" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103025" firstItem="102872" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103026" firstItem="102873" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103027" firstItem="102874" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103028" firstItem="102874" firstAttribute="top" secondItem="102873" secondAttribute="bottom" constant="8"/>
+                            <constraint id="103029" firstItem="102873" firstAttribute="top" secondItem="102872" secondAttribute="bottom" constant="8"/>
+                            <constraint id="103543" firstItem="102871" firstAttribute="leading" secondItem="102874" secondAttribute="leading"/>
+                            <constraint id="103544" firstItem="102871" firstAttribute="top" secondItem="102870" secondAttribute="bottom" constant="8"/>
+                            <constraint id="103545" firstItem="102871" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103546" firstItem="102871" firstAttribute="trailing" secondItem="58535" secondAttribute="trailingMargin"/>
+                            <constraint id="103547" firstItem="102871" firstAttribute="leading" secondItem="58535" secondAttribute="leadingMargin"/>
+                            <constraint id="103548" firstItem="102872" firstAttribute="leading" secondItem="58535" secondAttribute="leadingMargin"/>
+                            <constraint id="103549" firstItem="102872" firstAttribute="top" secondItem="102871" secondAttribute="bottom" constant="8"/>
+                            <constraint id="103550" firstItem="102873" firstAttribute="leading" secondItem="58535" secondAttribute="leadingMargin"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="TextFieldUsername" destination="102870" id="name-outlet-102870"/>
+                        <outlet property="TextFieldEmail" destination="102871" id="name-outlet-102871"/>
+                        <outlet property="TextFieldPassword" destination="102872" id="name-outlet-102872"/>
+                        <outlet property="TextFieldConfirmPassword" destination="102873" id="name-outlet-102873"/>
+                        <outlet property="ButtonConfirm" destination="102874" id="name-outlet-102874"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58536" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

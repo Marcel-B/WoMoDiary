@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using WoMoDiary.Domain;
+using System.Linq.Expressions;
 
 namespace WoMoDiary.Services
 {
@@ -77,9 +78,19 @@ namespace WoMoDiary.Services
         {
             if (item == null || !CrossConnectivity.Current.IsConnected)
                 return default(T);
-            var serializedItem = JsonConvert.SerializeObject(item);
-            var response = await Client.PostAsync(Route, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
-            return response.IsSuccessStatusCode ? item : default(T);
+            try
+            {
+                var serializedItem = JsonConvert.SerializeObject(item);
+                var content = new StringContent(serializedItem, Encoding.UTF8, "application/json");
+                var response = await Client.PostAsync(Route, content);
+                return response.IsSuccessStatusCode ? item : default(T);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return default(T);
+            }
+
         }
     }
 }

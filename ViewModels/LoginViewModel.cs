@@ -15,9 +15,18 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteLogin(object obj)
         {
-            var user = await UserStore.GetItemAsync(AppStore.GetInstance().UserId);
-            IsValid = PasswordHelper.VerifyPasswordHash(Password, user.Hash, user.Salt);
+            await UserStore.GetItemAsync(AppStore.GetInstance().UserId).ContinueWith(HandleAction);
         }
+
+        void HandleAction(System.Threading.Tasks.Task<Domain.User> obj)
+        {
+            var user = obj.Result;
+            if (user == null)
+                IsValid = false;
+            else
+                IsValid = PasswordHelper.VerifyPasswordHash(Password, user.Hash, user.Salt);
+        }
+
 
         private bool _isValid;
         public bool IsValid { get => _isValid; set => SetProperty(ref _isValid, value); }

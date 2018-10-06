@@ -64,7 +64,7 @@ namespace WoMoDiary.iOS
             };
         }
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
-            => ViewModel.IsValid;
+            => segueIdentifier == "ToTrip" ? ViewModel.IsValid : true;
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
