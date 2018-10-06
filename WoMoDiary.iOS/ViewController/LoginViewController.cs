@@ -58,16 +58,17 @@ namespace WoMoDiary.iOS
                     if (e.PropertyName == "IsValid")
                     {
                         if (viewModel.IsValid)
-                            PerformSegue("ToTrip", this);
+                        {
+                            BeginInvokeOnMainThread(() =>
+                            {
+                                PerformSegue("ToTrip", this);
+                            });
+                        }
                     }
                 }
             };
         }
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
             => segueIdentifier == "ToTrip" ? ViewModel.IsValid : true;
-
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-        }
     }
 }

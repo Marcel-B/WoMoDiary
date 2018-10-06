@@ -18,18 +18,18 @@ namespace WoMoDiary.ViewModels
         private async void ExecuteSaveTrip(object obj)
         {
             var localStore = AppStore.GetInstance();
-            var store = ServiceLocator.Instance.Get<IDataStore<User>>();
             var trip = new Trip
             {
                 TripId = Guid.NewGuid(),
                 Name = TripName,
                 Description = Description,
                 Created = DateTimeOffset.Now,
-                User = App.User
+                User = localStore.User,
+                UserId = localStore.User.Id
             };
             localStore.User.Trips.Add(trip);
             localStore.Trips.Add(trip);
-            await store.UpdateItemAsync(localStore.User);
+            var result = await TripStore.AddItemAsync(trip);
         }
 
         private string _tripName;
