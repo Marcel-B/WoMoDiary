@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using WoMoDiary.Domain;
+using System;
+using System.Collections.ObjectModel;
 
 namespace WoMoDiary.Services
 {
@@ -14,12 +16,13 @@ namespace WoMoDiary.Services
             return _instance;
         }
 
-        protected AppStore() { Trips = new List<Trip>(); }
+        protected AppStore() { Trips = new ObservableCollection<Trip>(); }
 
         public User User { get; set; }
+        public Guid UserId { get; set; }
         public Trip CurrentTrip { get; set; }
         public Place CurrentPlace { get; set; }
-        public IList<Trip> Trips { get; set; }
+        public ObservableCollection<Trip> Trips { get; set; }
 
     }
 }

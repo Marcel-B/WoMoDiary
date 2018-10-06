@@ -31,7 +31,7 @@ namespace WoMoDiary.Android
             //{
             //    UserId = Guid.Parse(str)
             //};
-            App.Initialize("569DD649-F9F8-4990-B31B-45D43DDA82C2");
+            App.Initialize();
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             _toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);

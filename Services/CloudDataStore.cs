@@ -27,13 +27,25 @@ namespace WoMoDiary.Services
 
         public async Task<T> UpdateItemAsync(T item)
         {
-            if (item == null || !CrossConnectivity.Current.IsConnected)
+            try
+            {
+                if (item == null || !CrossConnectivity.Current.IsConnected)
+                    return default(T);
+                var serializedItem = JsonConvert.SerializeObject(item);
+                var cnt = new StringContent(serializedItem, Encoding.UTF8, "application/json");
+                var buffer = Encoding.UTF8.GetBytes(serializedItem);
+                var byteContent = new ByteArrayContent(buffer);
+                var response = await Client.PutAsync(Route + item.Id, cnt);
+                var succ = response.IsSuccessStatusCode;
+                var result = await response.Content.ReadAsStreamAsync();
+
+                return response.IsSuccessStatusCode ? item : default(T);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return default(T);
-            var serializedItem = JsonConvert.SerializeObject(item);
-            var buffer = Encoding.UTF8.GetBytes(serializedItem);
-            var byteContent = new ByteArrayContent(buffer);
-            var response = await Client.PutAsync(Route + item.Id, byteContent);
-            return response.IsSuccessStatusCode ? item : default(T);
+            }
         }
 
         public async Task<bool> DeleteItemAsync(Guid id)
@@ -50,7 +62,7 @@ namespace WoMoDiary.Services
             var response = await Client.GetAsync(Route + id);
             if (!response.IsSuccessStatusCode) return default(T);
             var content = await response.Content.ReadAsStringAsync();
-            return  JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<T>(content);
         }
 
         public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)

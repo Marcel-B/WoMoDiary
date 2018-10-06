@@ -9,6 +9,7 @@ using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 using System.Collections;
 using System.Collections.Generic;
+using WoMoDiary.ViewModels;
 
 namespace WoMoDiary
 {
@@ -24,10 +25,13 @@ namespace WoMoDiary
 
         public App()
         {
-            Console.WriteLine(GetType().GetTypeInfo().Assembly);
+            System.Diagnostics.Debug.WriteLine(GetType().GetTypeInfo().Assembly);
         }
 
-        public static void Initialize(string userId)
+        /// <summary>
+        /// Initialization of IOC container
+        /// </summary>
+        public static void Initialize()
         {
             if (Init)
                 return;
@@ -44,44 +48,10 @@ namespace WoMoDiary
                 ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
                 ServiceLocator.Instance.Register<IDataStore<User>, UserDataStore>();
             }
-            var store = AppStore.GetInstance();
-            PullData(Guid.Parse(userId));
-            return;
-        }
-
-        public static async void PullData(Guid userId)
-        {
-            var userStore = ServiceLocator.Instance.Get<IDataStore<User>>();
-            var localStore = AppStore.GetInstance();
-            var user = userStore.GetItemAsync(userId).Result;
-            if (user != null)
-            {
-                var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-                var tmp = await tripStore.GetItemsByFkAsync(user.UserId);
-                if (tmp == null) return;
-                var trips = tmp.ToList();
-                foreach (var trip in trips)
-                {
-
-                    //trip.User = localStore.User;
-                    //var tmpPlace = clientOne.GetAsync($"https://womo.marcelbenders.de/api/trip/bytrip/{trip.TripId}").Result;
-                    //var places = tmpPlace.Content.ReadAsStringAsync().Result;
-                    //if (string.IsNullOrWhiteSpace(places)) continue;
-                    //var pla = JsonConvert.DeserializeObject<IList<Place>>(places);
-                    //trip.Places = pla.ToList();
-                }
-
-                localStore.User.Trips = trips;
-            }
-            //var currentUser = await userStore.GetItemAsync(userId);
-            //localStore.User = currentUser;
-            //var user = await userStore.GetItemAsync(App.User.Id);
-            //foreach (var trip in trips)
-            //{
-            //    var places = await placeStore.GetItemsAsync(trip.Id, true);
-            //    trip.Places = places.ToList();
-            //}
-            //localStore.Trips = currentUser.Trips.ToList();
+            ServiceLocator.Instance.Register<PlacesViewModel, PlacesViewModel>();
+            ServiceLocator.Instance.Register<TripsViewModel, TripsViewModel>();
+            ServiceLocator.Instance.Register<NewUserViewModel, NewUserViewModel>();
+            ServiceLocator.Instance.Register<LoginViewModel, LoginViewModel>();
             return;
         }
     }

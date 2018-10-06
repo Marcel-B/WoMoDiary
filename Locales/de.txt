@@ -1,4 +1,5 @@
 ﻿Trip = Reise
+Trips = Reisen
 No Camera = Keine Kamera
 Shoot = Aufnahme
 Trip Name = Reiseziel

@@ -2,11 +2,27 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
+using WoMoDiary.Domain;
+using WoMoDiary.Services;
+using WoMoDiary.Helpers;
+using System.Threading.Tasks;
 
 namespace WoMoDiary.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        protected readonly IDataStore<Place> PlaceStore;
+        protected readonly IDataStore<Trip> TripStore;
+        protected readonly IDataStore<User> UserStore;
+
+        public BaseViewModel()
+        {
+            PlaceStore = ServiceLocator.Instance.Get<IDataStore<Place>>();
+            TripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
+            UserStore = ServiceLocator.Instance.Get<IDataStore<User>>();
+        }
+
         bool isBusy = false;
         public bool IsBusy
         {

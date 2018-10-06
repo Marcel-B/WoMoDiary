@@ -18,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue id="30257" destination="30217" kind="relationship" relationship="rootViewController"/>
+                        <segue id="58592" destination="58527" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4136" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-126" y="-1220"/>
+            <point key="canvasLocation" x="-401" y="255"/>
         </scene>
         <scene sceneID="4811">
             <objects>
@@ -382,7 +382,7 @@
                                     <outlet property="LabelTrip" destination="30260" id="name-outlet-30260"/>
                                     <outlet property="LabelCount" destination="30261" id="name-outlet-30261"/>
                                     <outlet property="LabelTimespan" destination="30262" id="name-outlet-30262"/>
-                                    <segue id="53942" destination="5069" kind="show" identifier="ToPlaces"/>
+                                    <segue id="102384" destination="5069" kind="show"/>
                                 </connections>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="2" left="8" bottom="2" right="8" leading="2" trailing="2"/>
                                 <size key="customSize" width="394" height="132"/>
@@ -474,6 +474,86 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54662" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1747" y="-1509"/>
+        </scene>
+        <scene sceneID="58526">
+            <objects>
+                <viewController id="58527" sceneMemberID="viewController" customClass="LoginViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="58524"/>
+                        <viewControllerLayoutGuide type="bottom" id="58525"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="58528">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="58594" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="211" width="343" height="30"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="58657" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Username">
+                                <rect key="frame" x="16" y="135" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="58658" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Password">
+                                <rect key="frame" x="16" y="173" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" spellCheckingType="no" autocorrectionType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="58662" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="249" width="343" height="30"/>
+                                <state key="normal" title="New Account"/>
+                                <connections>
+                                    <segue id="58697" destination="58534" kind="show"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="58699" firstItem="58657" firstAttribute="top" secondItem="58524" secondAttribute="bottom" constant="13"/>
+                            <constraint id="58700" firstItem="58657" firstAttribute="leading" secondItem="58528" secondAttribute="leadingMargin"/>
+                            <constraint id="58701" firstItem="58657" firstAttribute="trailing" secondItem="58528" secondAttribute="trailingMargin"/>
+                            <constraint id="58702" firstItem="58658" firstAttribute="top" secondItem="58657" secondAttribute="bottom" constant="8"/>
+                            <constraint id="58703" firstItem="58658" firstAttribute="leading" secondItem="58528" secondAttribute="leadingMargin"/>
+                            <constraint id="58704" firstItem="58658" firstAttribute="trailing" secondItem="58528" secondAttribute="trailingMargin"/>
+                            <constraint id="58705" firstItem="58594" firstAttribute="top" secondItem="58658" secondAttribute="bottom" constant="8"/>
+                            <constraint id="58706" firstItem="58594" firstAttribute="leading" secondItem="58528" secondAttribute="leadingMargin"/>
+                            <constraint id="58707" firstItem="58594" firstAttribute="trailing" secondItem="58528" secondAttribute="trailingMargin"/>
+                            <constraint id="58708" firstItem="58662" firstAttribute="top" secondItem="58594" secondAttribute="bottom" constant="8"/>
+                            <constraint id="58709" firstItem="58662" firstAttribute="leading" secondItem="58528" secondAttribute="leadingMargin"/>
+                            <constraint id="58710" firstItem="58662" firstAttribute="trailing" secondItem="58528" secondAttribute="trailingMargin"/>
+                        </constraints>
+                    </view>
+                    <navigationItem title="Title" id="58591" key="navigationItem"/>
+                    <connections>
+                        <outlet property="TextFieldUsername" destination="58657" id="name-outlet-58657"/>
+                        <outlet property="TextFieldPassword" destination="58658" id="name-outlet-58658"/>
+                        <outlet property="ButtonLogin" destination="58594" id="name-outlet-58594"/>
+                        <segue id="93646" destination="30217" kind="show" identifier="ToTrip"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58529" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-333" y="-1388"/>
+        </scene>
+        <scene sceneID="58533">
+            <objects>
+                <viewController id="58534" sceneMemberID="viewController" customClass="NewUserViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="58531"/>
+                        <viewControllerLayoutGuide type="bottom" id="58532"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="58535">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="58536" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="240"/>
         </scene>
     </scenes>
     <resources>

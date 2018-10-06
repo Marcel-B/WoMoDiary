@@ -20,7 +20,7 @@ namespace WoMoDiary.Android
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            App.Initialize(Guid.NewGuid().ToString());
+            App.Initialize();
             var tripStore = AppStore.GetInstance();
             _trips = tripStore.Trips;
             ListAdapter = new TripAdapter(Activity, _trips);

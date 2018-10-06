@@ -25,6 +25,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockPlaceDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockUserDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TripsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlacesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewUserViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

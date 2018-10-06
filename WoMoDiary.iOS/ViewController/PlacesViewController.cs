@@ -4,21 +4,47 @@ using System.Collections.Generic;
 using UIKit;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
+using WoMoDiary.ViewModels;
+using WoMoDiary.Helpers;
+using System.Collections.Specialized;
+using System.Runtime.CompilerServices;
 
 namespace WoMoDiary.iOS
 {
     public partial class PlacesViewController : UITableViewController
     {
-        IList<Place> Places;
         public int SelectedIndex { get; set; }
+        public PlacesViewModel ViewModel { get; set; }
 
         public PlacesViewController(IntPtr handle) : base(handle)
         {
-            Places = new List<Place>();
+        }
+
+        public void Reload(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            try
+            {
+                BeginInvokeOnMainThread(() =>
+                {
+                    TableView.ReloadData();
+                });
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+        }
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            ViewModel = ServiceLocator.Instance.Get<PlacesViewModel>();
+            ViewModel.Places.CollectionChanged -= Reload;
+            ViewModel.Places.CollectionChanged += Reload;
+            ViewModel.PullPlaces();
         }
 
         public override nint RowsInSection(UITableView tableView, nint section)
-            => Places.Count;
+            => ViewModel.Places.Count;
 
         public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
             => 100f;
@@ -26,7 +52,7 @@ namespace WoMoDiary.iOS
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell("MyCell") as TripsTableViewCell;
-            var trip = Places[indexPath.Row];
+            var trip = ViewModel.Places[indexPath.Row];
             cell.Trip = trip.Name;
             cell.DescriptionT = trip.Description;
             cell.ImagePath.Image = UIImage.FromBundle(trip.AssetName);
@@ -34,21 +60,16 @@ namespace WoMoDiary.iOS
             return cell;
         }
 
-        public override void ViewDidAppear(bool animated)
+        public override void ViewWillDisappear(bool animated)
         {
-            base.ViewDidAppear(animated);
-            var currentTrip = AppStore
-                .GetInstance()
-                .CurrentTrip;
-            if (currentTrip == null) return;
-            Places = currentTrip.Places;
-            TableView.ReloadData();
+            base.ViewWillDisappear(animated);
+            ViewModel.Places.CollectionChanged -= Reload;
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
             var store = AppStore.GetInstance();
-            store.CurrentPlace = Places[indexPath.Row];
+            store.CurrentPlace = ViewModel.Places[indexPath.Row];
         }
     }
 }

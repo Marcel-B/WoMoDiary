@@ -1,4 +1,5 @@
 ﻿Trip = Trip
+Trips = Trips
 No Camera = No Camera
 Shoot = Shoot
 Trip Name = Trip Name

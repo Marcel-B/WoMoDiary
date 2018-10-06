@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WoMoDiary.Domain;
 
 namespace WoMoDiary.Services
@@ -15,9 +16,21 @@ namespace WoMoDiary.Services
         protected override string Route => $"api/place/";
         protected override string RouteSpecial => $"api/place/bytrip/";
 
-        public override Task<IEnumerable<Place>> GetItemsByFkAsync(Guid fk)
+        public override async Task<IEnumerable<Place>> GetItemsByFkAsync(Guid fk)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await Client.GetAsync(RouteSpecial + fk);
+                if (!response.IsSuccessStatusCode) return null;
+                var content = await response.Content.ReadAsStringAsync();
+                var places = JsonConvert.DeserializeObject<IEnumerable<Place>>(content);
+                return places;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error while GetItemsByFkAsync in PlaceDataStore with UserId: '{fk}'{Environment.NewLine}Exception Message: '{ex.Message}'");
+                return null;
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Foundation;
+﻿using System.Reflection;
+using Foundation;
+using I18NPortable;
 using UIKit;
 
 namespace WoMoDiary.iOS
@@ -25,6 +27,13 @@ namespace WoMoDiary.iOS
             //#if ENABLE_TEST_CLOUD
             //			Xamarin.Calabash.Start();
             //#endif     
+            I18N.Current
+                .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
+                .SetFallbackLocale("en") // Optional but recommended: locale to load in case the system locale is not supported
+                .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
+                .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
+                .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
+                .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
             return true;
         }
 

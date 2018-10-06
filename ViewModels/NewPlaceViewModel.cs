@@ -57,14 +57,8 @@ namespace WoMoDiary.ViewModels
             tmp.PlaceId = Guid.NewGuid();
             tmp.Trip = store.CurrentTrip;
             tmp.TripId = store.CurrentTrip.TripId;
-            store.User.Trips.Single(t => t.TripId == store.CurrentTrip.TripId).Places.Add(tmp);
-            var tripStore = ServiceLocator.Instance.Get<IDataStore<User>>();
-            await tripStore.UpdateItemAsync(store.User);
-            //store.CurrentTrip.Places.Add(tmp);
-            //var pl = ServiceLocator.Instance.Get<IDataStore<Place>>();
-            //await pl.AddItemAsync(tmp);
-            //var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-            //await tripStore.UpdateItemAsync(store.CurrentTrip);
+            //store.User.Trips.Single(t => t.TripId == store.CurrentTrip.TripId).Places.Add(tmp);
+            await PlaceStore.AddItemAsync(tmp);
         }
     }
 }
