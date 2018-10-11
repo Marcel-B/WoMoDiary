@@ -20,10 +20,11 @@ namespace WoMoDiary.Services
 
         protected CloudDataStore()
         {
-            Client = new HttpClient
-            {
-                BaseAddress = new Uri($"{App.BackendUrl}/")
-            };
+            if (Client == null)
+                Client = new HttpClient
+                {
+                    BaseAddress = new Uri($"{App.BackendUrl}/")
+                };
         }
 
         public async Task<T> UpdateItemAsync(T item)
@@ -60,10 +61,19 @@ namespace WoMoDiary.Services
         public async Task<T> GetItemAsync(Guid id)
         {
             if (!CrossConnectivity.Current.IsConnected) return default(T);
-            var response = await Client.GetAsync(Route + id);
-            if (!response.IsSuccessStatusCode) return default(T);
-            var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(content);
+            try
+            {
+                var response = await Client.GetAsync(Route + id);
+                if (!response.IsSuccessStatusCode) return default(T);
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<T>(content);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return default(T);
+            }
+
         }
 
         public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)
