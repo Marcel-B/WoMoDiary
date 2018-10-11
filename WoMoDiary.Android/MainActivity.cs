@@ -9,7 +9,7 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 namespace WoMoDiary.Android
 {
 
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : FragmentActivity // AppCompatActivity
     {
         public MainActivity()
