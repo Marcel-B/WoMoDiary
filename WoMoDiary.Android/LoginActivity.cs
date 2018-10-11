@@ -65,6 +65,10 @@ namespace WoMoDiary
                 {
                     StartActivity(typeof(MainActivity));
                 }
+                else
+                {
+                    StartActivity(typeof(NewUserActivity));
+                }
             };
         }
     }
