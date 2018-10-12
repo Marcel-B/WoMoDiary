@@ -52,7 +52,8 @@ namespace WoMoDiary
             ServiceLocator.Instance.Register<TripsViewModel, TripsViewModel>();
             ServiceLocator.Instance.Register<NewUserViewModel, NewUserViewModel>();
             ServiceLocator.Instance.Register<LoginViewModel, LoginViewModel>();
-            return;
+            ServiceLocator.Instance.Register<NewTripViewModel, NewTripViewModel>();
+                return;
         }
     }
 }

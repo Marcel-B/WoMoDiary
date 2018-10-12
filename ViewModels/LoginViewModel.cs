@@ -25,8 +25,12 @@ namespace WoMoDiary.ViewModels
                 IsValid = false;
             else
                 IsValid = PasswordHelper.VerifyPasswordHash(Password, user.Hash, user.Salt);
+            if (IsValid)
+                AppStore.GetInstance().User = user;
+            LoginReady?.Invoke(IsValid);
         }
 
+        public Action<bool> LoginReady { get; set; }
 
         private bool _isValid;
         public bool IsValid { get => _isValid; set => SetProperty(ref _isValid, value); }

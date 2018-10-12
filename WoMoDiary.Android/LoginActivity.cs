@@ -13,7 +13,7 @@ using System;
 
 namespace WoMoDiary
 {
-    [Activity(Label = "LoginActivity", MainLauncher = true)]
+    [Activity(Label = "WoMo Diary", MainLauncher = true)]
     public class LoginActivity : Activity
     {
         public LoginViewModel ViewModel { get; set; }
@@ -22,7 +22,21 @@ namespace WoMoDiary
         {
             App.Initialize();
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
+            ViewModel.LoginReady = IsReady;
         }
+
+        private void IsReady(bool isValid)
+        {
+            if (isValid)
+            {
+                StartActivity(typeof(MainActivity));
+            }
+            else
+            {
+                StartActivity(typeof(NewUserActivity));
+            }
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -61,14 +75,6 @@ namespace WoMoDiary
             button.Click += (sender, args) =>
             {
                 ViewModel.LoginCommand.Execute(null);
-                if (ViewModel.IsValid)
-                {
-                    StartActivity(typeof(MainActivity));
-                }
-                else
-                {
-                    StartActivity(typeof(NewUserActivity));
-                }
             };
         }
     }

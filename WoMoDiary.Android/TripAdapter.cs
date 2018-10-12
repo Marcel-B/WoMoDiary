@@ -1,22 +1,34 @@
-﻿using System.Collections.Generic;
-using Android.Content;
+﻿using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
+using WoMoDiary.ViewModels;
+using Android.App;
+using System.Security.Cryptography.X509Certificates;
 
 namespace WoMoDiary.Android
 {
     public class TripAdapter : BaseAdapter
     {
-        IList<Trip> Trips { get; set; }
+        public ObservableCollection<Trip> Trips { get; set; }
         Context context;
 
-        public TripAdapter(Context context, IList<Trip> trips)
+        public TripAdapter(Context context, ObservableCollection<Trip> trips)
         {
             Trips = trips;
             this.context = context;
+            Trips.CollectionChanged += Trips_CollectionChanged;
         }
+
+        void Trips_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
+        }
+
 
         public override int Count => Trips.Count;
 
@@ -48,12 +60,10 @@ namespace WoMoDiary.Android
             return view;
         }
 
-
         internal class TripAdapterViewHolder : Java.Lang.Object
         {
             public TextView TripName { get; set; }
             public TextView TripTimespan { get; set; }
-
         }
     }
 }

@@ -24,6 +24,7 @@ namespace WoMoDiary.ViewModels
                 Name = TripName,
                 Description = Description,
                 Created = DateTimeOffset.Now,
+                LastEdit = DateTimeOffset.Now,
                 User = localStore.User,
                 UserId = localStore.User.Id
             };

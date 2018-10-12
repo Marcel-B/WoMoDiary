@@ -7,14 +7,15 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
+using System.Collections.ObjectModel;
 
 namespace WoMoDiary.Android
 {
     public class PlaceAdapter : BaseAdapter
     {
-        IList<Place> Places;
+        ObservableCollection<Place> Places;
         Context context;
-        public PlaceAdapter(Context content, IList<Place> places)
+        public PlaceAdapter(Context content, ObservableCollection<Place> places)
         {
             Places = places;
             this.context = content;
