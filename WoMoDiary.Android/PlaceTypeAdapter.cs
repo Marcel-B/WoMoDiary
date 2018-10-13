@@ -3,7 +3,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     class PlaceTypeAdapter : BaseAdapter
     {

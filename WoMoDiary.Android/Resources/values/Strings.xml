@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">WoMoDiary.Android</string>
+  <string name="app_name">WoMo Diary</string>
   <string name="action_settings">Settings</string>
   <string-array name="placeTypesArray">
     <item>Camping</item>

@@ -16,6 +16,9 @@ namespace WoMoDiary.ViewModels
         protected readonly IDataStore<Trip> TripStore;
         protected readonly IDataStore<User> UserStore;
 
+        public Action<string> ErrorAction { get; set; }
+
+
         public BaseViewModel()
         {
             PlaceStore = ServiceLocator.Instance.Get<IDataStore<Place>>();

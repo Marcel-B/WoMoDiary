@@ -8,7 +8,7 @@ using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     public class TripListFragment : ListFragment
     {
@@ -19,7 +19,11 @@ namespace WoMoDiary.Android
         {
             _toList = tolist;
             ViewModel = ServiceLocator.Instance.Get<TripsViewModel>();
+            ViewModel.ErrorAction = ToastMessage;
         }
+
+        private void ToastMessage(string mssg)
+            => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
 
         public override void OnCreate(Bundle savedInstanceState)
         {

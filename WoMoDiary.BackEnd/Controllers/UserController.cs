@@ -29,6 +29,17 @@ namespace WoMoDiary.BackEnd.Controllers
             => new OkResult();
 
         // GET api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
+        [HttpGet("byusername/{username}")]
+        public async Task<ActionResult<User>> Get(string username)
+        {
+            _logger.LogWarning($"Looking for User with Username '{username.ToString()}'");
+            var user = await _context.Users.SingleOrDefaultAsync(i => i.Name == username);
+            if (user == null) return new NotFoundObjectResult("Error");
+            _logger.LogWarning($"Returns with User '{username}'");
+            return user;
+        }
+
+        // GET api/user/1436DD2A-3AE6-44AE-B369-8145E5AD69AD
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> Get(Guid id)
         {

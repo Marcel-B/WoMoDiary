@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Plugin.Connectivity;
 using WoMoDiary.Domain;
 
 namespace WoMoDiary.Services
@@ -16,9 +17,26 @@ namespace WoMoDiary.Services
         protected override string Route => "api/user/";
         protected override string RouteSpecial => "api/user/byusername/";
 
-        public override  Task<IEnumerable<User>> GetItemsByFkAsync(Guid fk)
+        public override Task<IEnumerable<User>> GetItemsByFkAsync(Guid fk)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<User> GetUserByUsername(string username)
+        {
+            if (!CrossConnectivity.Current.IsConnected) return null;
+            try
+            {
+                var response = await Client.GetAsync(RouteSpecial + username);
+                if (!response.IsSuccessStatusCode) return null;
+                var content = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<User>(content);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return null;
+            }
         }
     }
 }

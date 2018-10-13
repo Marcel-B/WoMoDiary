@@ -10,7 +10,7 @@ using WoMoDiary.ViewModels;
 using Android.App;
 using System.Security.Cryptography.X509Certificates;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     public class TripAdapter : BaseAdapter
     {

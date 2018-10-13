@@ -3,12 +3,13 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     [Activity(Label = "PlaceActivity")]
     public class PlaceActivity : FragmentActivity
     {
-        private Toolbar Toolbar { get; set; }
+        public Toolbar Toolbar { get; set; }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

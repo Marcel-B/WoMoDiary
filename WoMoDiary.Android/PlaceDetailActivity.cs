@@ -6,7 +6,7 @@ using Android.Widget;
 using WoMoDiary.Services;
 using WoMoDiary.Domain;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     [Activity(Label = "PlaceDetailActivity")]
     public class PlaceDetailActivity : Activity, IOnMapReadyCallback

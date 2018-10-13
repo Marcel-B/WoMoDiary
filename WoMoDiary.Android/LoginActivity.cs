@@ -5,7 +5,6 @@ using Android.Preferences;
 using Android.Widget;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
-using WoMoDiary.Android;
 using System.Reflection;
 using I18NPortable;
 using WoMoDiary.Services;
@@ -13,7 +12,7 @@ using System;
 
 namespace WoMoDiary
 {
-    [Activity(Label = "WoMo Diary", MainLauncher = true)]
+    [Activity(Label = "WoMo Diary", Theme = "@style/AppTheme", MainLauncher = true)]
     public class LoginActivity : Activity
     {
         public LoginViewModel ViewModel { get; set; }
@@ -29,7 +28,7 @@ namespace WoMoDiary
         {
             if (isValid)
             {
-                StartActivity(typeof(MainActivity));
+                StartActivity(typeof(TripActivity));
             }
             else
             {
@@ -61,13 +60,8 @@ namespace WoMoDiary
 
             SetContentView(Resource.Layout.loginLayout);
 
-            var username = FindViewById<EditText>(Resource.Id.editTextLoginUsername);
-            username.TextChanged += (sender, args) => { ViewModel.Username = username.Text; };
-
-            var password = FindViewById<EditText>(Resource.Id.editTextLoginPassword);
-            password.TextChanged += (sender, args) => { ViewModel.Password = password.Text; };
-
             var button = FindViewById<Button>(Resource.Id.buttonLoginUser);
+            button.Enabled = false;
             button.Click += (sender, args) =>
             {
                 ViewModel.LoginCommand.Execute(null);
@@ -78,6 +72,20 @@ namespace WoMoDiary
                 {
                     StartActivity(typeof(NewUserActivity));
                 };
+
+            FindViewById<EditText>(Resource.Id.editTextLoginUsername)
+                .TextChanged += (sender, e) =>
+                {
+                    ViewModel.Username = e.Text.ToString();
+                    button.Enabled = ViewModel.LoginCommand.CanExecute(null);
+                };
+
+            FindViewById<EditText>(Resource.Id.editTextLoginPassword)
+                 .TextChanged += (sender, e) =>
+                 {
+                     ViewModel.Password = e.Text.ToString();
+                     button.Enabled = ViewModel.LoginCommand.CanExecute(null);
+                 };
         }
     }
 }

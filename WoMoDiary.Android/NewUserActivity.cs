@@ -24,9 +24,14 @@ namespace WoMoDiary
         public NewUserActivity()
         {
             ViewModel = ServiceLocator.Instance.Get<NewUserViewModel>();
+            ViewModel.ErrorAction = ErrorMessage;
         }
 
-  
+        private void ErrorMessage(string message)
+        {
+            Toast.MakeText(this, message, ToastLength.Long).Show();
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);

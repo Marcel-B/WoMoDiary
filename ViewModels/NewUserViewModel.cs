@@ -2,6 +2,7 @@
 using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
+
 namespace WoMoDiary.ViewModels
 {
     public class NewUserViewModel : BaseViewModel
@@ -12,6 +13,8 @@ namespace WoMoDiary.ViewModels
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
 
+        
+
         public NewUserViewModel()
         {
             ConfirmNewUserCommand = new Command(Execute, CanExecute);
@@ -19,9 +22,10 @@ namespace WoMoDiary.ViewModels
 
         private bool CanExecute(object arg)
                => !string.IsNullOrWhiteSpace(Password) &&
-                   !string.IsNullOrWhiteSpace(ConfirmPassword) &&
-                   !string.IsNullOrWhiteSpace(Username) &&
-                   Password.Equals(ConfirmPassword) && !string.IsNullOrWhiteSpace(Email);
+                  !string.IsNullOrWhiteSpace(ConfirmPassword) &&
+                  !string.IsNullOrWhiteSpace(Username) &&
+                  !string.IsNullOrWhiteSpace(Email) &&
+                  Password.Equals(ConfirmPassword);
 
         private async void Execute(object obj)
         {
@@ -38,6 +42,8 @@ namespace WoMoDiary.ViewModels
                 Name = Username
             };
             var result = await UserStore.AddItemAsync(user);
+            if (result == null)
+                ErrorAction?.Invoke("Error to create new user.");
         }
     }
 }

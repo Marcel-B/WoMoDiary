@@ -15,7 +15,7 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteLogin(object obj)
         {
-            await UserStore.GetItemAsync(AppStore.GetInstance().UserId).ContinueWith(HandleAction);
+            await ((UserDataStore)UserStore).GetUserByUsername(Username).ContinueWith(HandleAction);
         }
 
         void HandleAction(System.Threading.Tasks.Task<Domain.User> obj)

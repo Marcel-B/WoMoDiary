@@ -20,6 +20,7 @@ namespace WoMoDiary.Services
 
         public User User { get; set; }
         public Guid UserId { get; set; }
+        public string Username { get; set; }
         public Trip CurrentTrip { get; set; }
         public Place CurrentPlace { get; set; }
         public ObservableCollection<Trip> Trips { get; set; }

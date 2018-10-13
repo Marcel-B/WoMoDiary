@@ -7,8 +7,10 @@ using WoMoDiary.Services;
 using ListFragment = Android.Support.V4.App.ListFragment;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
+using Toast = Android.Widget.Toast;
+using ToastLength = Android.Widget.ToastLength;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     public class PlaceListFragment : ListFragment
     {
@@ -17,13 +19,19 @@ namespace WoMoDiary.Android
         public PlaceListFragment()
         {
             ViewModel = ServiceLocator.Instance.Get<PlacesViewModel>();
+            ViewModel.ErrorAction = ToastMessage;
         }
 
-        public override void OnCreate(Bundle savedInstanceState)
+        private void ToastMessage(string mssg)
+            => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
+
+
+        public override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             var store = AppStore.GetInstance();
             var trip = store.CurrentTrip;
+            await ViewModel.PullPlaces(trip.Id);
             ListAdapter = new PlaceAdapter(Activity, ViewModel.Places);
         }
 

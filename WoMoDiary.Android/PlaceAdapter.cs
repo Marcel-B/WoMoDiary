@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using Android.Content;
-using Android.Content.Res;
-using Android.Graphics.Drawables;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
+using Android.App;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     public class PlaceAdapter : BaseAdapter
     {
@@ -19,6 +17,10 @@ namespace WoMoDiary.Android
         {
             Places = places;
             this.context = content;
+            Places.CollectionChanged += (sender, e) =>
+            {
+                ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
+            };
         }
 
         public override int Count => Places.Count;

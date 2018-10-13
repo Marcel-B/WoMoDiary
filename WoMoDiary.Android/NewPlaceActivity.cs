@@ -9,8 +9,11 @@ using WoMoDiary.ViewModels;
 using Reces = Android.Resource;
 using Android.Graphics;
 using Android.Gms.Maps.Model;
+using WoMoDiary.Helpers;
+using Toast = Android.Widget.Toast;
+using ToastLength = Android.Widget.ToastLength;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     public class CastJavaObject
     {
@@ -24,7 +27,8 @@ namespace WoMoDiary.Android
     [Activity(Label = "NewPlaceActivity")]
     public class NewPlaceActivity : Activity, IOnMapReadyCallback, ILocationListener
     {
-        private readonly NewPlaceViewModel _viewModel;
+        public NewPlaceViewModel ViewModel { get; set; }
+
         private MapFragment _mapFragment;
         private GoogleMap _map;
         public LocationManager LocationManager { get; set; }
@@ -33,8 +37,12 @@ namespace WoMoDiary.Android
 
         public NewPlaceActivity()
         {
-            _viewModel = new NewPlaceViewModel();
+            ViewModel = ServiceLocator.Instance.Get<NewPlaceViewModel>();
+            ViewModel.ErrorAction = ToastMessage;
         }
+
+        private void ToastMessage(string mssg)
+            => Toast.MakeText(this, mssg, ToastLength.Long).Show();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -47,14 +55,14 @@ namespace WoMoDiary.Android
                 .AfterTextChanged += (sender, args) =>
                 {
                     if (!(sender is EditText box)) return;
-                    _viewModel.Name = box.Text;
+                    ViewModel.Name = box.Text;
                 };
 
             FindViewById<EditText>(Resource.Id.editTextNewPlaceDescription)
                 .AfterTextChanged += (sender, args) =>
                 {
                     if (!(sender is EditText box)) return;
-                    _viewModel.Description = box.Text;
+                    ViewModel.Description = box.Text;
                 };
 
             var imgBtnUp = FindViewById<ImageButton>(Resource.Id.imageButtonRatingUp);
@@ -62,7 +70,7 @@ namespace WoMoDiary.Android
             var color = imgBtnUp.Background;
             imgBtnUp.Click += (sender, args) =>
                 {
-                    _viewModel.Rating = 4;
+                    ViewModel.Rating = 4;
                     if (sender is ImageButton tmp)
                     {
                         imgBtnUp.SetBackgroundColor(Color.Green);
@@ -72,7 +80,7 @@ namespace WoMoDiary.Android
 
             imgBtnDown.Click += (sender, args) =>
                 {
-                    _viewModel.Rating = 0;
+                    ViewModel.Rating = 0;
                     if (sender is ImageButton tmp)
                     {
                         imgBtnUp.Background = color;
@@ -97,7 +105,7 @@ namespace WoMoDiary.Android
             {
                 if (!(sender is Spinner spn)) return;
                 var place = CastJavaObject.Cast<Place>(spn.SelectedItem);
-                _viewModel.Type = place.Type;
+                ViewModel.Type = place.Type;
             };
             //var mapOptions = new GoogleMapOptions()
             //    .InvokeMapType(GoogleMap.MapTypeSatellite)
@@ -110,7 +118,7 @@ namespace WoMoDiary.Android
             //_mapFragment.GetMapAsync(this);
             button.Click += (sender, args) =>
             {
-                _viewModel.SavePlaceCommand.Execute(null);
+                ViewModel.SavePlaceCommand.Execute(null);
                 StartActivity(typeof(PlaceActivity));
             };
             // Create your application here
@@ -123,9 +131,9 @@ namespace WoMoDiary.Android
                 var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
                 Latitude = location.Latitude;
                 Longitude = location.Longitude;
-                _viewModel.Latitude = location.Latitude;
-                _viewModel.Longitude = location.Longitude;
-                _viewModel.Altitude = location.Altitude;
+                ViewModel.Latitude = location.Latitude;
+                ViewModel.Longitude = location.Longitude;
+                ViewModel.Altitude = location.Altitude;
             }
             catch (Exception e)
             {
@@ -146,9 +154,9 @@ namespace WoMoDiary.Android
                 var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
                 Latitude = location.Latitude;
                 Longitude = location.Longitude;
-                _viewModel.Latitude = location.Latitude;
-                _viewModel.Longitude = location.Longitude;
-                _viewModel.Altitude = location.Altitude;
+                ViewModel.Latitude = location.Latitude;
+                ViewModel.Longitude = location.Longitude;
+                ViewModel.Altitude = location.Altitude;
             }
             catch (Exception e)
             {
@@ -178,9 +186,9 @@ namespace WoMoDiary.Android
         {
             Latitude = location.Latitude;
             Longitude = location.Longitude;
-            _viewModel.Latitude = location.Latitude;
-            _viewModel.Longitude = location.Longitude;
-            _viewModel.Altitude = location.Altitude;
+            ViewModel.Latitude = location.Latitude;
+            ViewModel.Longitude = location.Longitude;
+            ViewModel.Altitude = location.Altitude;
             _mapFragment.GetMapAsync(this);
         }
 

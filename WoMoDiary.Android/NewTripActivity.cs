@@ -4,7 +4,7 @@ using Android.Widget;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary.Android
+namespace WoMoDiary
 {
     [Activity(Label = "NewTripActivity")]
     public class NewTripActivity : Activity
@@ -34,7 +34,7 @@ namespace WoMoDiary.Android
                 .Click += (sender, e) =>
                 {
                     ViewModel.SaveTripCommand.Execute(null);
-                    StartActivity(typeof(MainActivity));
+                    StartActivity(typeof(TripActivity));
                 };
         }
     }
