@@ -35,6 +35,7 @@ namespace WoMoDiary
             SetContentView(Resource.Layout.newUserLayout);
 
             var username = FindViewById<EditText>(Resource.Id.editTextNewUserUsername);
+            var email = FindViewById<EditText>(Resource.Id.editTextNewUserEmail);
             var password = FindViewById<EditText>(Resource.Id.editTextNewUserPassword);
             var confirmPassword = FindViewById<EditText>(Resource.Id.editTextNewUserConfirmPassword);
             var button = FindViewById<Button>(Resource.Id.buttonNewUserSave);
@@ -42,16 +43,22 @@ namespace WoMoDiary
             username.TextChanged += (sender, e) =>
             {
                 ViewModel.Username = e.Text.ToString();
+                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-
+            email.TextChanged += (sender, e) =>
+            {
+                ViewModel.Email = e.Text.ToString();
+                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
+            };
             password.TextChanged += (sender, e) =>
             {
                 ViewModel.Password = e.Text.ToString();
+                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-
             confirmPassword.TextChanged += (sender, e) =>
             {
                 ViewModel.ConfirmPassword = e.Text.ToString();
+                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
             button.Click += (sender, e) =>
             {

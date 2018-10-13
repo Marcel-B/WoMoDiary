@@ -4,20 +4,21 @@
 	android:orientation="vertical"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
-	<EditText
-		android:hint="username"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:minWidth="25px"
-		android:minHeight="25px"
-		android:id="@+id/editTextLoginUsername" />
     <EditText
-        android:hint="password"
+        android:hint="Username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/editTextLoginUsername" />
+    <EditText
+        android:hint="Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTextLoginPassword"
         android:password="true"
-        android:inputType="text" />
+        android:inputType="text"
+        android:capitalize="none" />
 	<Button
 		android:text="Login"
 		android:layout_width="match_parent"

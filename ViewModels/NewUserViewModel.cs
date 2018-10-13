@@ -18,7 +18,10 @@ namespace WoMoDiary.ViewModels
         }
 
         private bool CanExecute(object arg)
-            => Password.Equals(ConfirmPassword) && !string.IsNullOrWhiteSpace(Email);
+               => !string.IsNullOrWhiteSpace(Password) &&
+                   !string.IsNullOrWhiteSpace(ConfirmPassword) &&
+                   !string.IsNullOrWhiteSpace(Username) &&
+                   Password.Equals(ConfirmPassword) && !string.IsNullOrWhiteSpace(Email);
 
         private async void Execute(object obj)
         {

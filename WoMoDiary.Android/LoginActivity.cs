@@ -54,10 +54,6 @@ namespace WoMoDiary
             editor.PutString("UserGuid", str);
             // editor.Commit();    // applies changes synchronously on older APIs
             editor.Apply();        // applies changes asynchronously on newer APIs
-            //App.User = new User
-            //{
-            //    UserId = Guid.Parse(str)
-            //};
 
             // Create your application here
             var localStore = AppStore.GetInstance();
@@ -76,6 +72,12 @@ namespace WoMoDiary
             {
                 ViewModel.LoginCommand.Execute(null);
             };
+
+            FindViewById<Button>(Resource.Id.buttonNewUser)
+                .Click += (sender, args) =>
+                {
+                    StartActivity(typeof(NewUserActivity));
+                };
         }
     }
 }
