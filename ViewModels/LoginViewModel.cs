@@ -26,7 +26,10 @@ namespace WoMoDiary.ViewModels
             else
                 IsValid = PasswordHelper.VerifyPasswordHash(Password, user.Hash, user.Salt);
             if (IsValid)
+            {
                 AppStore.GetInstance().User = user;
+                AppStore.GetInstance().UserId = user.Id;
+            }
             LoginReady?.Invoke(IsValid);
         }
 

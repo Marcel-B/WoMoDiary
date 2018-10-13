@@ -8,3 +8,4 @@ Description = Beschreibung
 New Trip = Neue Reise
 Your Position = Deine Position
 Save Position = Position speichern
+New User = Neuer Benutzer

@@ -67,8 +67,9 @@ namespace WoMoDiary
                 ViewModel.LoginCommand.Execute(null);
             };
 
-            FindViewById<Button>(Resource.Id.buttonNewUser)
-                .Click += (sender, args) =>
+            var buttonNewUser = FindViewById<Button>(Resource.Id.buttonNewUser);
+            buttonNewUser.Text = "New User".Translate();
+            buttonNewUser.Click += (sender, args) =>
                 {
                     StartActivity(typeof(NewUserActivity));
                 };

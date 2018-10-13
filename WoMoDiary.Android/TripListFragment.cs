@@ -14,7 +14,10 @@ namespace WoMoDiary
     {
         public TripsViewModel ViewModel { get; set; }
         private readonly Action<Trip> _toList;
+        public TripListFragment()
+        {
 
+        }
         public TripListFragment(Action<Trip> tolist)
         {
             _toList = tolist;

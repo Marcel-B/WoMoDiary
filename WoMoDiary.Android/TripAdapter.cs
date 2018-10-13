@@ -4,11 +4,7 @@ using Android.Views;
 using Android.Widget;
 using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.Linq;
-using WoMoDiary.ViewModels;
 using Android.App;
-using System.Security.Cryptography.X509Certificates;
 
 namespace WoMoDiary
 {
@@ -21,6 +17,7 @@ namespace WoMoDiary
         {
             Trips = trips;
             this.context = context;
+            Trips.CollectionChanged -= Trips_CollectionChanged;
             Trips.CollectionChanged += Trips_CollectionChanged;
         }
 
@@ -28,7 +25,6 @@ namespace WoMoDiary
         {
             ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
         }
-
 
         public override int Count => Trips.Count;
 

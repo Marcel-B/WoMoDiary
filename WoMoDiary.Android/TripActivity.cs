@@ -1,7 +1,6 @@
 ﻿using System;
 using Android.App;
 using Android.OS;
-using Android.Preferences;
 using Android.Support.V4.App;
 using WoMoDiary.Domain;
 using Toolbar = Android.Support.V7.Widget.Toolbar;

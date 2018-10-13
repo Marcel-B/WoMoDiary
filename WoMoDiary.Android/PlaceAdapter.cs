@@ -17,11 +17,16 @@ namespace WoMoDiary
         {
             Places = places;
             this.context = content;
-            Places.CollectionChanged += (sender, e) =>
-            {
-                ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
-            };
+            Places.CollectionChanged -= Places_CollectionChanged;
+            Places.CollectionChanged += Places_CollectionChanged;
         }
+
+        void Places_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
+        }
+
+
 
         public override int Count => Places.Count;
 
@@ -50,24 +55,24 @@ namespace WoMoDiary
                 view.Tag = holder;
             }
 
-            var val = Places[position].Rating > 2 ? Resource.Drawable.thumb_up : Resource.Drawable.thumb_down;
+            var val = Places[position].Rating > 2 ? Resource.Drawable.thumb_up_light : Resource.Drawable.thumb_down_light;
             var v = 0;
             switch (Places[position].Type)
             {
                 case PlaceType.Hotel:
-                    v = Resource.Drawable.Hotel;
+                    v = Resource.Drawable.hotel_light;
                     break;
                 case PlaceType.CampingPlace:
-                    v = Resource.Drawable.Camping;
+                    v = Resource.Drawable.camping_light;
                     break;
                 case PlaceType.MotorhomePlace:
-                    v = Resource.Drawable.Camping;
+                    v = Resource.Drawable.camping_light;
                     break;
                 case PlaceType.Restaurant:
-                    v = Resource.Drawable.Restaurant;
+                    v = Resource.Drawable.restaurant_light;
                     break;
                 case PlaceType.SightSeeing:
-                    v = Resource.Drawable.SightSeeing;
+                    v = Resource.Drawable.sightseeing_light;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
