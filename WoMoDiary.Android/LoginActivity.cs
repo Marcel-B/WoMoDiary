@@ -22,7 +22,11 @@ namespace WoMoDiary
             App.Initialize();
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
             ViewModel.LoginReady = IsReady;
+            ViewModel.ErrorAction = ToastMessage;
         }
+
+        private void ToastMessage(string mssg)
+            => Toast.MakeText(this, mssg, ToastLength.Long).Show();
 
         private void IsReady(bool isValid)
         {
@@ -87,6 +91,7 @@ namespace WoMoDiary
                      ViewModel.Password = e.Text.ToString();
                      button.Enabled = ViewModel.LoginCommand.CanExecute(null);
                  };
+            ToastMessage("Login Successful");
         }
     }
 }

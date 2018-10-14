@@ -31,7 +31,7 @@ namespace WoMoDiary
             };
             Action<Trip> nav = ToPlaceView;
             var transaction = SupportFragmentManager.BeginTransaction();
-            transaction.Replace(Resource.Id.contentFrame, new TripListFragment(ToPlaceView));
+            transaction.Replace(Resource.Id.contentFrame, new TripListFragment());
             transaction.Commit();
         }
 

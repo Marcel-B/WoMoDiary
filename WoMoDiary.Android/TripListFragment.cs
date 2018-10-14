@@ -13,14 +13,9 @@ namespace WoMoDiary
     public class TripListFragment : ListFragment
     {
         public TripsViewModel ViewModel { get; set; }
-        private readonly Action<Trip> _toList;
+
         public TripListFragment()
         {
-
-        }
-        public TripListFragment(Action<Trip> tolist)
-        {
-            _toList = tolist;
             ViewModel = ServiceLocator.Instance.Get<TripsViewModel>();
             ViewModel.ErrorAction = ToastMessage;
         }
@@ -44,7 +39,7 @@ namespace WoMoDiary
             System.Diagnostics.Debug.WriteLine($"Selected Trip '{ViewModel.Trips[position].Name}'");
             var store = AppStore.GetInstance();
             store.CurrentTrip = ViewModel.Trips[position];
-            _toList?.Invoke(ViewModel.Trips[position]);
+            Activity.StartActivity(typeof(PlaceActivity));
         }
     }
 }
