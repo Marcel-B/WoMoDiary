@@ -10,6 +10,8 @@ namespace WoMoDiary.Services
     public class MockTripDataStore : IDataStore<Trip>
     {
         public readonly List<Trip> Trips;
+        public static Guid FirstTrip = Guid.NewGuid();
+        public static Guid SecondTrip = Guid.NewGuid();
 
         public MockTripDataStore()
         {
@@ -18,7 +20,7 @@ namespace WoMoDiary.Services
             Trips = new List<Trip>();
             var firstTrip = new Trip
             {
-                Id = App.FirstTrip,
+                Id = FirstTrip,
                 User = user,
                 Name = "Italien",
                 Description = "This is a nice description",
@@ -26,7 +28,7 @@ namespace WoMoDiary.Services
             };
             var secondTrip = new Trip
             {
-                Id = App.SecondTrip,
+                Id = SecondTrip,
                 Name = "Holland",
                 User = user,
                 Description = "This is a nice description",

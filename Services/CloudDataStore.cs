@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
 using WoMoDiary.Domain;
-using System.Linq.Expressions;
 
 namespace WoMoDiary.Services
 {
@@ -23,7 +22,7 @@ namespace WoMoDiary.Services
             if (Client == null)
                 Client = new HttpClient
                 {
-                    BaseAddress = new Uri($"{App.BackendUrl}/")
+                    BaseAddress = new Uri($"{App.BACKEND_URL}/")
                 };
         }
 

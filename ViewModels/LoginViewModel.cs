@@ -11,7 +11,7 @@ namespace WoMoDiary.ViewModels
         }
 
         private bool CanExecuteLogin(object arg)
-        => true;//!(string.IsNullOrWhiteSpace(Username) && string.IsNullOrWhiteSpace(Password));
+            => !(string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password));
 
         private async void ExecuteLogin(object obj)
         {

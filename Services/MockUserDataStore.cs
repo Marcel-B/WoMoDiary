@@ -8,6 +8,7 @@ namespace WoMoDiary.Services
 {
     public class MockUserDataStore : IDataStore<User>
     {
+        public const string USER_ID = "2c3facaef-14ef-4cc8-874f-0f9917082959";
         public static Guid FirstUserId = Guid.Parse("569dd649-f9f8-4990-b31b-45d43dda82c2");
         public static Guid SecondUserId = Guid.NewGuid();
         public IList<User> Users;
@@ -21,7 +22,7 @@ namespace WoMoDiary.Services
                     Name = "Harry"
                 }
             };
-            App.User = Users[0];
+            //App.User = Users[0];
         }
 
         public async Task<User> AddItemAsync(User item)

@@ -3,7 +3,6 @@ using System;
 using UIKit;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
-using WoMoDiary.Services;
 
 namespace WoMoDiary.iOS
 {
@@ -13,20 +12,22 @@ namespace WoMoDiary.iOS
         public LoginViewController(IntPtr handle) : base(handle)
         {
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
-            byte[] passwordHash;
-            byte[] saltHash;
-            string password = "Hy";
-            PasswordHelper.CreatePasswordHash(password, out passwordHash, out saltHash);
-
+            ViewModel.LoginReady = LoginReady;
         }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            TextFieldUsername.Text = AppStore.GetInstance().UserId.ToString();
-            TextFieldPassword.Text = "a";
-            ViewModel.Username = AppStore.GetInstance().UserId.ToString();
-            ViewModel.Password = "a";
             ViewModel.IsValid = false;
+        }
+
+        private void LoginReady(bool isValid)
+        {
+            if (isValid)
+                BeginInvokeOnMainThread(() =>
+                {
+                    PerformSegue("ToTrip", this);
+                });
         }
 
         public override void ViewDidLoad()
@@ -51,23 +52,8 @@ namespace WoMoDiary.iOS
             {
                 ViewModel.LoginCommand.Execute(null);
             };
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                if (sender is LoginViewModel viewModel)
-                {
-                    if (e.PropertyName == "IsValid")
-                    {
-                        if (viewModel.IsValid)
-                        {
-                            BeginInvokeOnMainThread(() =>
-                            {
-                                PerformSegue("ToTrip", this);
-                            });
-                        }
-                    }
-                }
-            };
         }
+
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
             => segueIdentifier == "ToTrip" ? ViewModel.IsValid : true;
     }

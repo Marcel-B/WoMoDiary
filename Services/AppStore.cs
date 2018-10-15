@@ -24,6 +24,5 @@ namespace WoMoDiary.Services
         public Trip CurrentTrip { get; set; }
         public Place CurrentPlace { get; set; }
         public ObservableCollection<Trip> Trips { get; set; }
-
     }
 }

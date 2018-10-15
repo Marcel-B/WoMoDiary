@@ -6,7 +6,7 @@
     <ProjectGuid>{52BBEEAF-63F8-4DE3-BD9F-99F4DF025185}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>WoMoDiary.iOS</RootNamespace>
+    <RootNamespace>com.b_velop.WoMoDiary.iOS</RootNamespace>
     <AssemblyName>WoMoDiary.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
@@ -18,7 +18,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: marcel.benders@outlook.de (5B9CN23VEC)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
@@ -30,13 +30,12 @@
     <MtouchVerbosity></MtouchVerbosity>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
-    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: marcel.benders@outlook.de (5B9CN23VEC)</CodesignKey>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
@@ -44,6 +43,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
+    <CodesignProvision>WoMoDev</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -52,12 +52,13 @@
     <DefineConstants></DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: marcel.benders@outlook.de (5B9CN23VEC)</CodesignKey>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchLink>None</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
+    <CodesignProvision>WoMoDev</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,7 +68,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: marcel.benders@outlook.de (5B9CN23VEC)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
@@ -326,6 +327,12 @@
     <ImageAsset Include="Assets.xcassets\Image.imageset\complete%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-216.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
