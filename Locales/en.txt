@@ -9,3 +9,6 @@ New Trip = New Trip
 Your Position = Your Position
 Save Position = Save Position
 New User = New User
+Username = Username
+Password = Password
+Login = Login

@@ -9,3 +9,6 @@ New Trip = Neue Reise
 Your Position = Deine Position
 Save Position = Position speichern
 New User = Neuer Benutzer
+Username = Benutzername
+Password = Passwort
+Login = Anmelden

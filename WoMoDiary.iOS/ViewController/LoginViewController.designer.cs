@@ -20,6 +20,10 @@ namespace WoMoDiary.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton ButtonNewUser { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField TextFieldPassword { get; set; }
 
         [Outlet]
@@ -31,6 +35,11 @@ namespace WoMoDiary.iOS
             if (ButtonLogin != null) {
                 ButtonLogin.Dispose ();
                 ButtonLogin = null;
+            }
+
+            if (ButtonNewUser != null) {
+                ButtonNewUser.Dispose ();
+                ButtonNewUser = null;
             }
 
             if (TextFieldPassword != null) {

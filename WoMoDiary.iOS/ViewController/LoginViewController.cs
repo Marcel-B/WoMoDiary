@@ -1,4 +1,5 @@
 using Foundation;
+using I18NPortable;
 using System;
 using UIKit;
 using WoMoDiary.Helpers;
@@ -33,7 +34,7 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            Localize();
             TextFieldUsername.EditingChanged += (sender, e) =>
             {
                 if (sender is UITextField username)
@@ -52,6 +53,15 @@ namespace WoMoDiary.iOS
             {
                 ViewModel.LoginCommand.Execute(null);
             };
+        }
+
+        private void Localize()
+        {
+            Title = "Login".Translate();
+            TextFieldUsername.Placeholder = "Username".Translate();
+            TextFieldPassword.Placeholder = "Password".Translate();
+            ButtonLogin.SetTitle("Login".Translate(), UIControlState.Normal);
+            ButtonNewUser.SetTitle("New User".Translate(), UIControlState.Normal);
         }
 
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)

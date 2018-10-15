@@ -536,6 +536,7 @@
                         <outlet property="TextFieldPassword" destination="58658" id="name-outlet-58658"/>
                         <outlet property="ButtonLogin" destination="58594" id="name-outlet-58594"/>
                         <segue id="93646" destination="30217" kind="show" identifier="ToTrip"/>
+                        <outlet property="ButtonNewUser" destination="58662" id="name-outlet-58662"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58529" userLabel="First Responder" sceneMemberID="firstResponder"/>
