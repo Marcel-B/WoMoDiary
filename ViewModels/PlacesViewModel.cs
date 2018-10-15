@@ -19,29 +19,12 @@ namespace WoMoDiary.ViewModels
 
         public void PullPlaces()
         {
+            // Get Trips from Users collection
             Places.Clear();
-            var store = AppStore.GetInstance();
-            var trip = store.CurrentTrip;
-            foreach (var place in trip.Places)
-            {
-                Places.Add(place);
-            }
-            return;
-        }
+            var places = AppStore.Instance.CurrentTrip.Places;
 
-        public async Task PullPlaces(Guid tripId)
-        {
-            Places.Clear();
-            var places = await PlaceStore.GetItemsByFkAsync(tripId);
             foreach (var place in places)
-            {
                 Places.Add(place);
-            }
-            var store = AppStore.GetInstance();
-            store.User.Trips
-                 .Single(t => t.Id == tripId)
-                 .Places = places.ToList();
-            return;
         }
     }
 }

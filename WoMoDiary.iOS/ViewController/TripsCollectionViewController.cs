@@ -52,7 +52,7 @@ namespace WoMoDiary.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            Title =  "Trips".Translate();
+            Title = "Trips".Translate();
             NavigationItem.SetHidesBackButton(true, false);
         }
 
@@ -81,7 +81,7 @@ namespace WoMoDiary.iOS
                 if (sender is UICollectionViewCell cell)
                 {
                     var trip = ViewModel.Trips[(int)cell.Tag];
-                    var store = AppStore.GetInstance();
+                    var store = AppStore.Instance;
                     store.CurrentTrip = trip;
                     target.Title = trip.Name;
                 }

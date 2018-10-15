@@ -15,7 +15,7 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         { 
             base.ViewDidLoad();
-            var o = AppStore.GetInstance();
+            var o = AppStore.Instance;
             var i = o.CurrentPlace;
             LabelInfo.Text = i.Description;
             Title = i.Name;

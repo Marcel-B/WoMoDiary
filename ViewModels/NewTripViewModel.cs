@@ -12,12 +12,17 @@ namespace WoMoDiary.ViewModels
             SaveTripCommand = new Command(ExecuteSaveTrip, CanExecuteSaveTrip);
         }
 
+        /// <summary>
+        /// Cans the execute save trip.
+        /// </summary>
+        /// <returns><c>true</c>, if execute save trip was caned, <c>false</c> otherwise.</returns>
+        /// <param name="arg">Argument.</param>
         private bool CanExecuteSaveTrip(object arg)
             => !string.IsNullOrWhiteSpace(TripName);
 
         private async void ExecuteSaveTrip(object obj)
         {
-            var localStore = AppStore.GetInstance();
+            var localStore = AppStore.Instance;
             var trip = new Trip
             {
                 TripId = Guid.NewGuid(),
@@ -28,7 +33,11 @@ namespace WoMoDiary.ViewModels
                 User = localStore.User,
                 UserId = localStore.User.Id
             };
+
+            // Local update
             localStore.User.Trips.Add(trip);
+
+            // Cloud update
             var result = await TripStore.AddItemAsync(trip);
         }
 

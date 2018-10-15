@@ -1,13 +1,10 @@
 using Foundation;
 using System;
-using System.Collections.Generic;
 using UIKit;
-using WoMoDiary.Domain;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
 using System.Collections.Specialized;
-using System.Runtime.CompilerServices;
 
 namespace WoMoDiary.iOS
 {
@@ -35,6 +32,7 @@ namespace WoMoDiary.iOS
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -68,7 +66,7 @@ namespace WoMoDiary.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            var store = AppStore.GetInstance();
+            var store = AppStore.Instance;
             store.CurrentPlace = ViewModel.Places[indexPath.Row];
         }
     }

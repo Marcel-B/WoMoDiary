@@ -52,6 +52,8 @@ namespace WoMoDiary.iOS
             ButtonLogin.TouchUpInside += (sender, e) =>
             {
                 ViewModel.LoginCommand.Execute(null);
+                ButtonLogin.Enabled = false;
+                ButtonNewUser.Enabled = false;
             };
         }
 

@@ -42,7 +42,7 @@ namespace WoMoDiary.ViewModels
             if (result == null)
                 ErrorAction?.Invoke("Error to create new user.");
             else
-                AppStore.GetInstance().User = user;
+                AppStore.Instance.User = user;
         }
     }
 }

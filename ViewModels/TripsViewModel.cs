@@ -13,22 +13,26 @@ namespace WoMoDiary.ViewModels
 
         public TripsViewModel()
         {
-            if (Trips == null)
-            {
-                Trips = new ObservableCollection<Trip>();
-                Task.Run(PullTrips);
-            }
+            Trips = new ObservableCollection<Trip>();
         }
 
         public async Task PullTrips()
         {
-            if (App.AllDataFetched) return;
-            var store = AppStore.GetInstance();
+            if (App.AllDataFetched)
+            {
+                // Get Trips from Users collection
+                Trips.Clear();
+                foreach (var trip in AppStore.Instance.User.Trips)
+                    Trips.Add(trip);
+                return;
+            };
+            var store = AppStore.Instance;
             var userId = store.User.Id;
 
             var trips = await TripStore.GetItemsByFkAsync(userId);
             if (trips == null) return;
             store.User.Trips = new System.Collections.Generic.List<Trip>();
+            store.Trips.Clear();
             foreach (var trip in trips)
             {
                 var places = await PlaceStore.GetItemsByFkAsync(trip.Id);

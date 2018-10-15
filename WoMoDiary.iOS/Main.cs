@@ -23,7 +23,7 @@ namespace WoMoDiary.iOS
                 plist.SetString("569dd649-f9f8-4990-b31b-45d43dda82c2", "UserId");
 
             var userId = plist["UserId"].ToString();
-            var localStore = AppStore.GetInstance();
+            var localStore = AppStore.Instance;
             App.Initialize();
             UIApplication.Main(args, null, "AppDelegate");
         }

@@ -27,7 +27,7 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteSave(object obj)
         {
-            var store = AppStore.GetInstance();
+            var store = AppStore.Instance;
             Place tmp = null;
             switch (Type)
             {
@@ -47,6 +47,7 @@ namespace WoMoDiary.ViewModels
                     tmp = new NicePlace();
                     break;
             }
+
             tmp.Latitude = Latitude;
             tmp.Longitude = Longitude;
             tmp.Rating = Rating;
@@ -57,7 +58,14 @@ namespace WoMoDiary.ViewModels
             tmp.PlaceId = Guid.NewGuid();
             tmp.Trip = store.CurrentTrip;
             tmp.TripId = store.CurrentTrip.TripId;
-            //store.User.Trips.Single(t => t.TripId == store.CurrentTrip.TripId).Places.Add(tmp);
+
+            var trips = store.User.Trips;
+            var tripIdx = trips.IndexOf(store.CurrentTrip);
+
+            // Add new Place to local Collection
+            store.User.Trips[tripIdx].Places.Add(tmp);
+
+            // Save to CloudStore
             await PlaceStore.AddItemAsync(tmp);
         }
     }

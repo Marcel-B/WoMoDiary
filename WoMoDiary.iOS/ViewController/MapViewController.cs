@@ -21,7 +21,7 @@ namespace WoMoDiary.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            var store = AppStore.GetInstance();
+            var store = AppStore.Instance;
             if (store.CurrentTrip == null) return;
             this.Title = $"- {store.CurrentTrip.Name} -";
         }

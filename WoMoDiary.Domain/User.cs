@@ -34,5 +34,6 @@ namespace WoMoDiary.Domain
         public DateTimeOffset LastEdit { get; set; }
 
         public List<Trip> Trips { get; set; }
+
     }
 }

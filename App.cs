@@ -12,7 +12,7 @@ namespace WoMoDiary
         public static bool AllDataFetched { get; set; }
         public static bool UseMockDataStore = false;
         public const string BACKEND_URL = "https://womo.marcelbenders.de";
- 
+
         //public static User User { get; set; }
 
         public App()
