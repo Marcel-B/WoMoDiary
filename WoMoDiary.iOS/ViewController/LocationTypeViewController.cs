@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
 using Foundation;
+using System.Linq;
 
 namespace WoMoDiary.iOS
 {
@@ -12,7 +13,10 @@ namespace WoMoDiary.iOS
         public NewPlaceViewModel ViewModel { get; set; }
 
         public LocationTypeViewController(IntPtr handle) : base(handle) { }
-
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+          
+        }
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -21,7 +25,9 @@ namespace WoMoDiary.iOS
             {
                 if (sender is UIButton button)
                     ViewModel.SavePlaceCommand.Execute(null);
-				PerformSegue("ToPlacesView", this);
+                var controllers = NavigationController.ViewControllers;
+                //NavigationController.ViewControllers = controllers.SkipLast(2).ToArray();
+                NavigationController.SetViewControllers(controllers.SkipLast(2).ToArray(), true);
             };
 
             ButtonThumbUp.TouchUpInside += (object sender, EventArgs e) =>

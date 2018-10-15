@@ -5,6 +5,7 @@ using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
 using System.Collections.Specialized;
+using System.Linq;
 
 namespace WoMoDiary.iOS
 {
@@ -33,16 +34,13 @@ namespace WoMoDiary.iOS
             }
         }
 
-        public override void ViewDidLoad()
+        public override void ViewDidAppear(bool animated)
         {
-            base.ViewDidLoad();
-            //NavigationItem.SetHidesBackButton(true, false);
-            //NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem(), true);
+            base.ViewDidAppear(animated);
             ViewModel.Places.CollectionChanged -= Reload;
             ViewModel.Places.CollectionChanged += Reload;
             ViewModel.PullPlaces();
         }
-
         public override nint RowsInSection(UITableView tableView, nint section)
             => ViewModel.Places.Count;
 
@@ -64,6 +62,7 @@ namespace WoMoDiary.iOS
         {
             base.ViewWillDisappear(animated);
             ViewModel.Places.CollectionChanged -= Reload;
+            ViewModel.Places.Clear();
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
