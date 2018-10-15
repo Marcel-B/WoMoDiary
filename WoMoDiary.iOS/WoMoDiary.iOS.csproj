@@ -378,6 +378,10 @@
       <DependentUpon>MapViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewController\LocationTypeViewController.cs" />
+    <Compile Include="ViewController\LoginViewController.cs" />
+    <Compile Include="ViewController\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewController\LocationTypeViewController.designer.cs">
       <DependentUpon>LocationTypeViewController.cs</DependentUpon>
     </Compile>
@@ -396,10 +400,6 @@
     <Compile Include="ViewController\PlaceDetailViewController.cs" />
     <Compile Include="ViewController\PlaceDetailViewController.designer.cs">
       <DependentUpon>PlaceDetailViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewController\LoginViewController.cs" />
-    <Compile Include="ViewController\LoginViewController.designer.cs">
-      <DependentUpon>LoginViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewController\NewUserViewController.cs" />
     <Compile Include="ViewController\NewUserViewController.designer.cs">

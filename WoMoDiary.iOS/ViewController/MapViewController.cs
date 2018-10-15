@@ -10,12 +10,12 @@ namespace WoMoDiary.iOS
 {
     public partial class MapViewController : UIViewController
     {
-        private NewPlaceViewModel _viewModel;
-        private CLLocationManager _locationManager;
+        public NewPlaceViewModel ViewModel { get; set; }
+        public CLLocationManager LocationManager { get; set; }
 
         public MapViewController(IntPtr handle) : base(handle)
         {
-            _viewModel = new NewPlaceViewModel();
+            ViewModel = new NewPlaceViewModel();
         }
 
         public override void ViewDidAppear(bool animated)
@@ -35,8 +35,8 @@ namespace WoMoDiary.iOS
 
             View.AddGestureRecognizer(g);
 
-            _locationManager = new CLLocationManager();
-            _locationManager.RequestWhenInUseAuthorization();
+            LocationManager = new CLLocationManager();
+            LocationManager.RequestWhenInUseAuthorization();
             Map.ShowsUserLocation = true;
 
             Map.DidUpdateUserLocation += (sender, e) =>
@@ -48,8 +48,8 @@ namespace WoMoDiary.iOS
                         var coordinates = map.UserLocation.Coordinate;
                         var span = new MKCoordinateSpan(.015, .015);
                         map.Region = new MKCoordinateRegion(coordinates, span);
-                        _viewModel.Longitude = coordinates.Longitude;
-                        _viewModel.Latitude = coordinates.Latitude;
+                        ViewModel.Longitude = coordinates.Longitude;
+                        ViewModel.Latitude = coordinates.Latitude;
                     }
             };
 
@@ -65,13 +65,13 @@ namespace WoMoDiary.iOS
             };
             TextFieldName.EditingChanged += (sender, e) =>
             {
-                _viewModel.Name = ((UITextField)sender).Text;
-                ButtonSavePosition.Enabled = _viewModel.SavePlaceCommand.CanExecute(null);
+                ViewModel.Name = ((UITextField)sender).Text;
+                ButtonSavePosition.Enabled = ViewModel.SavePlaceCommand.CanExecute(null);
             };
             TextFieldDescription.EditingChanged += (sender, e) =>
             {
-                _viewModel.Description = ((UITextField)sender).Text;
-                ButtonSavePosition.Enabled = _viewModel.SavePlaceCommand.CanExecute(null);
+                ViewModel.Description = ((UITextField)sender).Text;
+                ButtonSavePosition.Enabled = ViewModel.SavePlaceCommand.CanExecute(null);
             };
             ButtonSavePosition.TouchUpInside += (sender, e) =>
             {
@@ -84,7 +84,7 @@ namespace WoMoDiary.iOS
         {
             if (segue.DestinationViewController is LocationTypeViewController target)
             {
-                target.ViewModel = this._viewModel;
+                target.ViewModel = this.ViewModel;
             }
         }
     }

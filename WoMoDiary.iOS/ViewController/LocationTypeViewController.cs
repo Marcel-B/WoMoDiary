@@ -3,6 +3,7 @@ using UIKit;
 using System.Collections.Generic;
 using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
+using Foundation;
 
 namespace WoMoDiary.iOS
 {
@@ -20,7 +21,7 @@ namespace WoMoDiary.iOS
             {
                 if (sender is UIButton button)
                     ViewModel.SavePlaceCommand.Execute(null);
-                NavigationController.PopToRootViewController(true);
+				PerformSegue("ToPlacesView", this);
             };
 
             ButtonThumbUp.TouchUpInside += (object sender, EventArgs e) =>

@@ -36,6 +36,8 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            //NavigationItem.SetHidesBackButton(true, false);
+            //NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem(), true);
             ViewModel.Places.CollectionChanged -= Reload;
             ViewModel.Places.CollectionChanged += Reload;
             ViewModel.PullPlaces();

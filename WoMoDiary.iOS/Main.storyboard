@@ -325,13 +325,14 @@
                         <outlet property="PickerViewLocationType" destination="15332" id="name-outlet-15332"/>
                         <outlet property="ButtonThumbUp" destination="47092" id="name-outlet-47092"/>
                         <outlet property="ButtonThumbDown" destination="47093" id="name-outlet-47093"/>
+                        <segue id="105597" destination="5069" kind="show" identifier="ToPlacesView"/>
                     </connections>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15293" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2340" y="-773"/>
+            <point key="canvasLocation" x="2175" y="-866"/>
         </scene>
         <scene sceneID="30216">
             <objects>
@@ -384,7 +385,7 @@
                                     <outlet property="LabelTrip" destination="30260" id="name-outlet-30260"/>
                                     <outlet property="LabelCount" destination="30261" id="name-outlet-30261"/>
                                     <outlet property="LabelTimespan" destination="30262" id="name-outlet-30262"/>
-                                    <segue id="102384" destination="5069" kind="show"/>
+                                    <segue id="102384" destination="5069" kind="show" identifier="FromTripToPlaces"/>
                                 </connections>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="2" left="8" bottom="2" right="8" leading="2" trailing="2"/>
                                 <size key="customSize" width="394" height="132"/>
