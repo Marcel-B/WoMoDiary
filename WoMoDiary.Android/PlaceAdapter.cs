@@ -54,33 +54,11 @@ namespace WoMoDiary
                 holder.RatingName = view.FindViewById<ImageView>(Resource.Id.imageViewPlaceRating);
                 view.Tag = holder;
             }
-
-            var val = Places[position].Rating > 2 ? Resource.Drawable.thumb_up_light : Resource.Drawable.thumb_down_light;
-            var v = 0;
-            switch (Places[position].Type)
-            {
-                case PlaceType.Hotel:
-                    v = Resource.Drawable.hotel_light;
-                    break;
-                case PlaceType.CampingPlace:
-                    v = Resource.Drawable.camping_light;
-                    break;
-                case PlaceType.MotorhomePlace:
-                    v = Resource.Drawable.camping_light;
-                    break;
-                case PlaceType.Restaurant:
-                    v = Resource.Drawable.restaurant_light;
-                    break;
-                case PlaceType.SightSeeing:
-                    v = Resource.Drawable.sightseeing_light;
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            holder.PlaceName.Text = Places[position].Name;
-            holder.PlaceDescription.Text = Places[position].Description;
-            holder.RatingName.SetImageResource(val);
-            holder.TypeName.SetImageResource(v);
+            var currentPlace = Places[position];
+            holder.PlaceName.Text = currentPlace.Name;
+            holder.PlaceDescription.Text = currentPlace.Description;
+            holder.RatingName.SetImageResource(currentPlace.ToRating());
+            holder.TypeName.SetImageResource(currentPlace.ToCategory());
 
             return view;
         }

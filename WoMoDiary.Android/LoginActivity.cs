@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Preferences;
 using Android.Widget;
@@ -8,7 +7,6 @@ using WoMoDiary.ViewModels;
 using System.Reflection;
 using I18NPortable;
 using WoMoDiary.Services;
-using System;
 
 namespace WoMoDiary
 {
@@ -16,6 +14,10 @@ namespace WoMoDiary
     public class LoginActivity : Activity
     {
         public LoginViewModel ViewModel { get; set; }
+        public Button ButtonLogin { get; set; }
+        public Button ButtonNewUser { get; set; }
+        public EditText EditTextLoginPassword { get; set; }
+        public EditText EditTextLoginUsername { get; set; }
 
         public LoginActivity()
         {
@@ -40,9 +42,32 @@ namespace WoMoDiary
             }
         }
 
+        private void GetViews()
+        {
+            ButtonLogin = FindViewById<Button>(Resource.Id.buttonLoginUser);
+            ButtonNewUser = FindViewById<Button>(Resource.Id.buttonNewUser);
+            EditTextLoginPassword = FindViewById<EditText>(Resource.Id.editTextLoginPassword);
+            EditTextLoginUsername = FindViewById<EditText>(Resource.Id.editTextLoginUsername);
+        }
+
+        private void Localize()
+        {
+            ButtonLogin.Text = "Login".Translate();
+            ButtonNewUser.Text = "New User".Translate();
+            EditTextLoginPassword.Hint = "Password".Translate();
+            EditTextLoginUsername.Hint = "Username".Translate();
+        }
+
+        private void SetStates()
+        {
+            ButtonLogin.Enabled = false;
+        }
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.loginLayout);
+         
             I18N.Current
                  .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                  .SetFallbackLocale("en") // Optional but recommended: locale to load in case the system locale is not supported
@@ -58,40 +83,38 @@ namespace WoMoDiary
             // editor.Commit();    // applies changes synchronously on older APIs
             editor.Apply();        // applies changes asynchronously on newer APIs
 
+            GetViews();
+            SetStates();
+            Localize();
+
             // Create your application here
-            var localStore = AppStore.GetInstance();
-            localStore.UserId = Guid.Parse(str);
+            var localStore = AppStore.Instance;
 
-            SetContentView(Resource.Layout.loginLayout);
-
-            var button = FindViewById<Button>(Resource.Id.buttonLoginUser);
-            button.Enabled = false;
-            button.Click += (sender, args) =>
+            ButtonLogin.Click += (sender, args) =>
             {
                 ViewModel.LoginCommand.Execute(null);
+                ButtonLogin.Enabled = false;
+                ButtonNewUser.Enabled = false;
             };
 
-            var buttonNewUser = FindViewById<Button>(Resource.Id.buttonNewUser);
-            buttonNewUser.Text = "New User".Translate();
-            buttonNewUser.Click += (sender, args) =>
-                {
-                    StartActivity(typeof(NewUserActivity));
-                };
+            ButtonNewUser.Click += (sender, args) =>
+            {
+                StartActivity(typeof(NewUserActivity));
+            };
 
-            FindViewById<EditText>(Resource.Id.editTextLoginUsername)
-                .TextChanged += (sender, e) =>
-                {
-                    ViewModel.Username = e.Text.ToString();
-                    button.Enabled = ViewModel.LoginCommand.CanExecute(null);
-                };
+            EditTextLoginUsername.TextChanged += (sender, e) =>
+            {
+                ViewModel.Username = e.Text.ToString();
+                ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
+            };
 
-            FindViewById<EditText>(Resource.Id.editTextLoginPassword)
-                 .TextChanged += (sender, e) =>
-                 {
-                     ViewModel.Password = e.Text.ToString();
-                     button.Enabled = ViewModel.LoginCommand.CanExecute(null);
-                 };
-            ToastMessage("Login Successful");
+            EditTextLoginPassword.TextChanged += (sender, e) =>
+            {
+                ViewModel.Password = e.Text.ToString();
+                ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
+            };
+
+            //ToastMessage("Login Successful");
         }
     }
 }

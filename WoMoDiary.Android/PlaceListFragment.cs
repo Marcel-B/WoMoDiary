@@ -24,18 +24,18 @@ namespace WoMoDiary
             => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
 
 
-        public override async void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            var store = AppStore.GetInstance();
+            var store = AppStore.Instance;
             var trip = store.CurrentTrip;
-            await ViewModel.PullPlaces(trip.Id);
+            ViewModel.PullPlaces();
             ListAdapter = new PlaceAdapter(Activity, ViewModel.Places);
         }
 
         public override void OnListItemClick(ListView l, View v, int position, long id)
         {
-            var localStore = AppStore.GetInstance();
+            var localStore = AppStore.Instance;
             localStore.CurrentPlace = ViewModel.Places[position];
             Activity.StartActivity(typeof(PlaceDetailActivity));
         }

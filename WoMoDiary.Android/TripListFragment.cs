@@ -1,9 +1,7 @@
-﻿using System;
-using Android.OS;
+﻿using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
@@ -23,9 +21,10 @@ namespace WoMoDiary
         private void ToastMessage(string mssg)
             => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
 
-        public override void OnCreate(Bundle savedInstanceState)
+        public override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            await ViewModel.PullTrips();
             ListAdapter = new TripAdapter(Activity, ViewModel.Trips);
         }
 
@@ -36,9 +35,10 @@ namespace WoMoDiary
 
         public override void OnListItemClick(ListView l, View v, int position, long id)
         {
+#if DEBUG
             System.Diagnostics.Debug.WriteLine($"Selected Trip '{ViewModel.Trips[position].Name}'");
-            var store = AppStore.GetInstance();
-            store.CurrentTrip = ViewModel.Trips[position];
+#endif
+            AppStore.Instance.CurrentTrip = ViewModel.Trips[position];
             Activity.StartActivity(typeof(PlaceActivity));
         }
     }

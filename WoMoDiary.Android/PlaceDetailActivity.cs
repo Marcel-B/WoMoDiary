@@ -11,35 +11,47 @@ namespace WoMoDiary
     [Activity(Label = "PlaceDetailActivity")]
     public class PlaceDetailActivity : Activity, IOnMapReadyCallback
     {
-        private GoogleMap _map;
-        private MapFragment _mapFragment;
-        private Place _place;
+        public GoogleMap Map { get; set; }
+        public MapFragment MapFragment { get; set; }
+        public Place Place { get; set; }
+        public ImageView ImageViewDetailCategory { get; set; }
+        public ImageView ImageViewDetailRating { get; set; }
+        public TextView TextViewPlaceName { get; set; }
+        public TextView TextViewPlaceDescription { get; set; }
 
         public void OnMapReady(GoogleMap googleMap)
         {
-            _map = googleMap;
+            Map = googleMap;
             var marker = new MarkerOptions();
-            marker.SetPosition(new LatLng(_place.Latitude, _place.Longitude));
-            marker.SetTitle(_place.Name);
-            _map.AddMarker(marker);
-            _map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(_place.Latitude, _place.Longitude), 15));
+            marker.SetPosition(new LatLng(Place.Latitude, Place.Longitude));
+            marker.SetTitle(Place.Name);
+            Map.AddMarker(marker);
+            Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Place.Latitude, Place.Longitude), 15));
+        }
+
+        private void GetViews()
+        {
+            ImageViewDetailRating = FindViewById<ImageView>(Resource.Id.imageViewDetailRating);
+            ImageViewDetailCategory = FindViewById<ImageView>(Resource.Id.imageViewDetailCategory);
+            TextViewPlaceName = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
+            TextViewPlaceDescription = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
+            MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaceDetail);
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.placeDetailLayout);
+            GetViews();
 
             // Create your application here
-            var name = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
-            var description = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
-            _mapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaceDetail);
-
-            var localStore = AppStore.GetInstance();
-            _place = localStore.CurrentPlace;
-            name.Text = _place.Name;
-            description.Text = _place.Description;
-            _mapFragment.GetMapAsync(this);
+            var localStore = AppStore.Instance;
+            Place = localStore.CurrentPlace;
+            TextViewPlaceName.Text = Place.Name;
+            TextViewPlaceDescription.Text = Place.Description;
+            ImageViewDetailRating.SetImageResource(Place.ToRating());
+            ImageViewDetailCategory.SetImageResource(Place.ToCategory());
+            MapFragment.GetMapAsync(this);
         }
     }
 }

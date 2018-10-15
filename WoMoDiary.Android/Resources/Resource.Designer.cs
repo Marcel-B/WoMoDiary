@@ -2616,11 +2616,11 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b00bf
 			public const int action0 = 2131427519;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int actionAddPlace = 2131427547;
+			// aapt resource value: 0x7f0b00dd
+			public const int actionAddPlace = 2131427549;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int action_add = 2131427548;
+			// aapt resource value: 0x7f0b00de
+			public const int action_add = 2131427550;
 			
 			// aapt resource value: 0x7f0b0086
 			public const int action_bar = 2131427462;
@@ -2895,6 +2895,12 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b00b0
 			public const int imageButtonRatingUp = 2131427504;
 			
+			// aapt resource value: 0x7f0b00d6
+			public const int imageViewDetailCategory = 2131427542;
+			
+			// aapt resource value: 0x7f0b00d4
+			public const int imageViewDetailRating = 2131427540;
+			
 			// aapt resource value: 0x7f0b00d2
 			public const int imageViewPlaceRating = 2131427538;
 			
@@ -2937,17 +2943,17 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b00b3
 			public const int mapFragmentNewPlace = 2131427507;
 			
-			// aapt resource value: 0x7f0b00d5
-			public const int mapFragmentPlaceDetail = 2131427541;
+			// aapt resource value: 0x7f0b00d7
+			public const int mapFragmentPlaceDetail = 2131427543;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int masked = 2131427546;
+			// aapt resource value: 0x7f0b00dc
+			public const int masked = 2131427548;
 			
 			// aapt resource value: 0x7f0b00c2
 			public const int media_actions = 2131427522;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int message = 2131427542;
+			// aapt resource value: 0x7f0b00d8
+			public const int message = 2131427544;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -3165,8 +3171,8 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b0073
 			public const int textSpacerNoTitle = 2131427443;
 			
-			// aapt resource value: 0x7f0b00d4
-			public const int textViewDetailPlaceDescription = 2131427540;
+			// aapt resource value: 0x7f0b00d5
+			public const int textViewDetailPlaceDescription = 2131427541;
 			
 			// aapt resource value: 0x7f0b00d3
 			public const int textViewDetailPlaceName = 2131427539;
@@ -3177,11 +3183,11 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b00cf
 			public const int textViewPlaceNameCell = 2131427535;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int textViewTripName = 2131427543;
+			// aapt resource value: 0x7f0b00d9
+			public const int textViewTripName = 2131427545;
 			
-			// aapt resource value: 0x7f0b00d8
-			public const int textViewTripTimeSpan = 2131427544;
+			// aapt resource value: 0x7f0b00da
+			public const int textViewTripTimeSpan = 2131427546;
 			
 			// aapt resource value: 0x7f0b00a8
 			public const int text_input_password_toggle = 2131427496;
@@ -3246,8 +3252,8 @@ namespace WoMoDiary
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int visible = 2131427545;
+			// aapt resource value: 0x7f0b00db
+			public const int visible = 2131427547;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int wide = 2131427366;

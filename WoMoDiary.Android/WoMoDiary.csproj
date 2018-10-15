@@ -67,7 +67,6 @@
     <Compile Include="NewPlaceActivity.cs" />
     <Compile Include="PlaceActivity.cs" />
     <Compile Include="PlaceDetailActivity.cs" />
-    <Compile Include="PlaceTypeAdapter.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NewTripActivity.cs" />
