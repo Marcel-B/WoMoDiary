@@ -18,6 +18,7 @@ namespace WoMoDiary.iOS
 
         public PlacesViewController(IntPtr handle) : base(handle)
         {
+            ViewModel = ServiceLocator.Instance.Get<PlacesViewModel>();
         }
 
         public void Reload(object sender, NotifyCollectionChangedEventArgs e)
@@ -37,7 +38,6 @@ namespace WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            ViewModel = ServiceLocator.Instance.Get<PlacesViewModel>();
             ViewModel.Places.CollectionChanged -= Reload;
             ViewModel.Places.CollectionChanged += Reload;
             ViewModel.PullPlaces();

@@ -16,20 +16,17 @@ namespace WoMoDiary.ViewModels
             if (Trips == null)
             {
                 Trips = new ObservableCollection<Trip>();
-                Task.Run(PullData);
+                Task.Run(PullTrips);
             }
         }
 
-        public async Task PullData()
+        public async Task PullTrips()
         {
+            if (App.AllDataFetched) return;
             var store = AppStore.GetInstance();
-            var userId = store.UserId;
-            var userStore = ServiceLocator.Instance.Get<IDataStore<User>>();
-            var user = await userStore.GetItemAsync(userId);
-            if (user == null) return;
-            store.User = user;
-            var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>();
-            var trips = await tripStore.GetItemsByFkAsync(userId);
+            var userId = store.User.Id;
+
+            var trips = await TripStore.GetItemsByFkAsync(userId);
             if (trips == null) return;
             store.User.Trips = new System.Collections.Generic.List<Trip>();
             foreach (var trip in trips)
@@ -40,6 +37,8 @@ namespace WoMoDiary.ViewModels
                 Trips.Add(trip);
             }
 
+            // All data for this User are fetched yet
+            App.AllDataFetched = true;
             return;
         }
     }

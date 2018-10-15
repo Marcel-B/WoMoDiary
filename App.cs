@@ -9,6 +9,7 @@ namespace WoMoDiary
     public class App
     {
         public static bool Init { get; set; }
+        public static bool AllDataFetched { get; set; }
         public static bool UseMockDataStore = false;
         public const string BACKEND_URL = "https://womo.marcelbenders.de";
  
@@ -16,6 +17,8 @@ namespace WoMoDiary
 
         public App()
         {
+            AllDataFetched = false;
+            Init = false;
             System.Diagnostics.Debug.WriteLine(GetType().GetTypeInfo().Assembly);
         }
 

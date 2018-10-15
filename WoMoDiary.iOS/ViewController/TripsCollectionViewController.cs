@@ -7,7 +7,6 @@ using UIKit;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
-using System.Collections.ObjectModel;
 using I18NPortable;
 using WoMoDiary.Helpers;
 
@@ -20,26 +19,22 @@ namespace WoMoDiary.iOS
 
         public TripsCollectionViewController(IntPtr handle) : base(handle)
         {
+            ViewModel = ServiceLocator.Instance.Get<TripsViewModel>();
         }
 
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
-            var w = collectionView.Frame.Width - 16;
-            flowLayout.ItemSize = new CGSize(width: w, height: 120);
-            if (ViewModel == null)
-            {
-                ViewModel = ServiceLocator.Instance.Get<TripsViewModel>();
-                ViewModel.Trips.CollectionChanged += (sender, e) =>
-                {
-                    Reload();
-                };
-            }
+            var width = collectionView.Frame.Width - 16;
+            flowLayout.ItemSize = new CGSize(width, 120);
+            ViewModel.Trips.CollectionChanged -= Trips_CollectionChanged;
+            ViewModel.Trips.CollectionChanged += Trips_CollectionChanged;
+            await ViewModel.PullTrips();
         }
 
-        public void Reload()
+        void Trips_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             try
             {
@@ -53,6 +48,7 @@ namespace WoMoDiary.iOS
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
         }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);

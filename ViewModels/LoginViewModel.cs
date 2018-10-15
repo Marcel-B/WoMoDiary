@@ -15,7 +15,9 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteLogin(object obj)
         {
-            await ((UserDataStore)UserStore).GetUserByUsername(Username).ContinueWith(HandleAction);
+            await ((UserDataStore)UserStore)
+                .GetUserByUsername(Username)
+                .ContinueWith(HandleAction);
         }
 
         void HandleAction(System.Threading.Tasks.Task<Domain.User> obj)
@@ -28,7 +30,6 @@ namespace WoMoDiary.ViewModels
             if (IsValid)
             {
                 AppStore.GetInstance().User = user;
-                AppStore.GetInstance().UserId = user.Id;
             }
             LoginReady?.Invoke(IsValid);
         }

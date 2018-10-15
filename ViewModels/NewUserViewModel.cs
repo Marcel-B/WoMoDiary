@@ -13,8 +13,6 @@ namespace WoMoDiary.ViewModels
         public string Password { get; set; }
         public string ConfirmPassword { get; set; }
 
-        
-
         public NewUserViewModel()
         {
             ConfirmNewUserCommand = new Command(Execute, CanExecute);
@@ -29,11 +27,10 @@ namespace WoMoDiary.ViewModels
 
         private async void Execute(object obj)
         {
-            var id = AppStore.GetInstance().UserId;
             PasswordHelper.CreatePasswordHash(Password, out var hash, out var salt);
             var user = new User
             {
-                Id = id,
+                Id = Guid.NewGuid(),
                 Email = Email,
                 Hash = hash,
                 Salt = salt,
@@ -44,6 +41,8 @@ namespace WoMoDiary.ViewModels
             var result = await UserStore.AddItemAsync(user);
             if (result == null)
                 ErrorAction?.Invoke("Error to create new user.");
+            else
+                AppStore.GetInstance().User = user;
         }
     }
 }

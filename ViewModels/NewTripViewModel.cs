@@ -29,7 +29,6 @@ namespace WoMoDiary.ViewModels
                 UserId = localStore.User.Id
             };
             localStore.User.Trips.Add(trip);
-            localStore.Trips.Add(trip);
             var result = await TripStore.AddItemAsync(trip);
         }
 
