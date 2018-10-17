@@ -11,4 +11,7 @@
   <ItemGroup>
     <Compile Remove="IPlace.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WoMoDiary.Meta\WoMoDiary.Meta.csproj" />
+  </ItemGroup>
 </Project>

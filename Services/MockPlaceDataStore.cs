@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
+using System.Linq;
 
 namespace WoMoDiary.Services
 {
     public class MockPlaceDataStore : IDataStore<Place>
     {
-        private readonly Dictionary<Guid, Place> _places;
+        private readonly IList<Place> _places;
 
         public MockPlaceDataStore()
         {
             var tripStore = ServiceLocator.Instance.Get<IDataStore<Trip>>() as MockTripDataStore;
-            _places = new Dictionary<Guid, Place>();
-            Place place = new CampingPlace
+            _places = new List<Place>{
+            new CampingPlace
             {
                 Id = Guid.NewGuid(),
                 Name = "Emma's Camping",
@@ -25,10 +26,8 @@ namespace WoMoDiary.Services
                 Trip = tripStore.Trips[0],
                 Rating = 0,
                 Created = DateTimeOffset.Now,
-            };
-            _places[place.Id] = place;
-            tripStore.Trips[0].Places.Add(place);
-            place = new Restaurant
+            },
+            new Restaurant
             {
                 Id = Guid.NewGuid(),
                 Trip = tripStore.Trips[0],
@@ -39,13 +38,12 @@ namespace WoMoDiary.Services
                 Altitude = 191,
                 Rating = 2,
                 Created = DateTimeOffset.Now,
-            };
-            _places[place.Id] = place;
-            tripStore.Trips[0].Places.Add(place);
-            place = new NicePlace
+            },
+                new Poi
             {
                 Id = Guid.NewGuid(),
                 Trip = tripStore.Trips[1],
+                TripId = tripStore.Trips[1].Id,
                 Name = "Waterfall",
                 Description = "Awesome Waterfall",
                 Longitude = 8.16295347,
@@ -53,51 +51,39 @@ namespace WoMoDiary.Services
                 Altitude = 347,
                 Rating = 5,
                 Created = DateTimeOffset.Now,
+                }
             };
-            _places[place.Id] = place;
-            tripStore.Trips[1].Places.Add(place);
         }
 
         public async Task<Place> AddItemAsync(Place item)
             => await Task.Run(() =>
             {
-                _places[item.Id] = item;
+                _places.Add(item);
                 return item;
             });
 
         public async Task<bool> DeleteItemAsync(Guid id)
-            => await Task.Run(() => { _places.Remove(id); return true; });
+            => await Task.Run(() => { _places.Remove(_places.Single(p => p.Id == id)); return true; });
 
         public async Task<Place> GetItemAsync(Guid id)
-            => await Task.Run(() => _places[id]);
+            => await Task.Run(() => _places.Single(p => p.Id == id));
 
         public async Task<IEnumerable<Place>> GetItemsAsync(bool forceRefresh = false)
             => await Task.Run(() =>
             {
                 var ret = new List<Place>();
-                foreach (var place in _places.Values)
+                foreach (var place in _places)
                 {
                     ret.Add(place);
                 }
                 return ret;
             });
 
-        public Task<IEnumerable<Place>> GetItemsByFkAsync(Guid fk)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<Place>> GetItemsByFkAsync(Guid fk)
+            => await Task.Run(() => _places.Where(p => p.TripId == fk));
 
         public async Task<IEnumerable<Place>> GetItemsAsync(Guid id, bool forceRefresh = false)
-        => await Task.Run(() =>
-        {
-            var list = new List<Place>();
-            //foreach (var place in _places.Values)
-            //{
-            //    if (place.TripFk == id)
-            //        list.Add(place);
-            //}
-            return list;
-        });
+            => await Task.Run(() => _places);
 
         /// <summary>
         /// Updates the item async.
@@ -107,8 +93,14 @@ namespace WoMoDiary.Services
         public async Task<Place> UpdateItemAsync(Place item)
             => await Task.Run(() =>
             {
-                _places[item.Id] = item;
+                var old = _places.SingleOrDefault(i => i.Id == item.Id);
+                if (old != null)
+                    _places.Remove(old);
+                _places.Add(item);
                 return item;
             });
+
+        public async Task<Place> GetByName(string name)
+            => await Task.Run(() => _places.SingleOrDefault(p => p.Name == name));
     }
 }

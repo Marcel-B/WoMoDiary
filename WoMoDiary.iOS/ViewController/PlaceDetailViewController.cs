@@ -8,12 +8,10 @@ namespace WoMoDiary.iOS
 {
     public partial class PlaceDetailViewController : UIViewController
     {
-        public PlaceDetailViewController(IntPtr handle) : base(handle)
-        {
-        }
+        public PlaceDetailViewController(IntPtr handle) : base(handle) { }
 
         public override void ViewDidLoad()
-        { 
+        {
             base.ViewDidLoad();
             var o = AppStore.Instance;
             var i = o.CurrentPlace;

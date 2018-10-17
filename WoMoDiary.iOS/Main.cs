@@ -1,9 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using WoMoDiary.Domain;
 using WoMoDiary.Services;
-using System.Threading.Tasks;
 
 namespace WoMoDiary.iOS
 {
@@ -18,6 +16,11 @@ namespace WoMoDiary.iOS
             // Save value
             if (plist["UserId"] == null)
                 plist.SetString(Guid.NewGuid().ToString(), "UserId");
+
+            if (plist["Username"] != null)
+                App.LogOutLn($"We have an User named {plist["Username"]}");
+            else
+                App.LogOutLn($"No User");
 
             if (App.UseMockDataStore)
                 plist.SetString("569dd649-f9f8-4990-b31b-45d43dda82c2", "UserId");

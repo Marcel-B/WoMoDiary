@@ -101,5 +101,10 @@ namespace WoMoDiary.Services
             }
 
         }
+
+        public virtual Task<T> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

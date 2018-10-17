@@ -44,7 +44,7 @@ namespace WoMoDiary.ViewModels
                     tmp = new Restaurant();
                     break;
                 case PlaceType.SightSeeing:
-                    tmp = new NicePlace();
+                    tmp = new Poi();
                     break;
             }
 

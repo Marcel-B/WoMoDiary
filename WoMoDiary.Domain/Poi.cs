@@ -1,10 +1,12 @@
-﻿namespace WoMoDiary.Domain
+﻿using WoMoDiary.Meta;
+
+namespace WoMoDiary.Domain
 {
-    public class NicePlace : Place
+    public class Poi : Place
     {
-        public NicePlace()
+        public Poi()
         {
-            Name = "Nice place";
+            Name = Strings.POINT_OF_INTEREST;
             AssetName = "SightSeeing";
             Type = PlaceType.SightSeeing;
         }

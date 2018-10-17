@@ -1,16 +1,15 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Widget;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
+using I18NPortable;
 
 namespace WoMoDiary
 {
     [Activity(Label = "NewUserActivity")]
     public class NewUserActivity : Activity
     {
-        public NewUserViewModel ViewModel { get; set; }
 
         public NewUserActivity()
         {
@@ -18,10 +17,12 @@ namespace WoMoDiary
             ViewModel.ErrorAction = ErrorMessage;
         }
 
-        private void ErrorMessage(string message)
-        {
-            Toast.MakeText(this, message, ToastLength.Long).Show();
-        }
+        public NewUserViewModel ViewModel { get; set; }
+        public EditText EditTextUsername { get; set; }
+        public EditText EditTextEmail { get; set; }
+        public EditText EditTextPassword { get; set; }
+        public EditText EditTextConfirmPassword { get; set; }
+        public Button ButtonNewUserSave { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,34 +30,56 @@ namespace WoMoDiary
 
             // Create your application here
             SetContentView(Resource.Layout.newUserLayout);
+            GetControlls();
+            Localize();
+            SetControllEvents();
+        }
 
-            var username = FindViewById<EditText>(Resource.Id.editTextNewUserUsername);
-            var email = FindViewById<EditText>(Resource.Id.editTextNewUserEmail);
-            var password = FindViewById<EditText>(Resource.Id.editTextNewUserPassword);
-            var confirmPassword = FindViewById<EditText>(Resource.Id.editTextNewUserConfirmPassword);
-            var button = FindViewById<Button>(Resource.Id.buttonNewUserSave);
+        private void ErrorMessage(string message)
+        {
+            Toast.MakeText(this, message, ToastLength.Long).Show();
+        }
 
-            username.TextChanged += (sender, e) =>
+        private void GetControlls()
+        {
+            EditTextUsername = FindViewById<EditText>(Resource.Id.editTextNewUserUsername);
+            EditTextEmail = FindViewById<EditText>(Resource.Id.editTextNewUserEmail);
+            EditTextPassword = FindViewById<EditText>(Resource.Id.editTextNewUserPassword);
+            EditTextConfirmPassword = FindViewById<EditText>(Resource.Id.editTextNewUserConfirmPassword);
+            ButtonNewUserSave = FindViewById<Button>(Resource.Id.buttonNewUserSave);
+        }
+
+        private void Localize()
+        {
+            EditTextUsername.Hint = "Username".Translate();
+            EditTextPassword.Hint = "Password".Translate();
+            EditTextConfirmPassword.Hint = "Confirm Password".Translate();
+            ButtonNewUserSave.Text = "Save new user".Translate();
+        }
+
+        public void SetControllEvents()
+        {
+            EditTextUsername.TextChanged += (sender, e) =>
             {
                 ViewModel.Username = e.Text.ToString();
-                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
+                ButtonNewUserSave.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-            email.TextChanged += (sender, e) =>
+            EditTextEmail.TextChanged += (sender, e) =>
             {
                 ViewModel.Email = e.Text.ToString();
-                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
+                ButtonNewUserSave.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-            password.TextChanged += (sender, e) =>
+            EditTextPassword.TextChanged += (sender, e) =>
             {
                 ViewModel.Password = e.Text.ToString();
-                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
+                ButtonNewUserSave.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-            confirmPassword.TextChanged += (sender, e) =>
+            EditTextConfirmPassword.TextChanged += (sender, e) =>
             {
                 ViewModel.ConfirmPassword = e.Text.ToString();
-                button.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
+                ButtonNewUserSave.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
             };
-            button.Click += (sender, e) =>
+            ButtonNewUserSave.Click += (sender, e) =>
             {
                 ViewModel.ConfirmNewUserCommand.Execute(null);
             };

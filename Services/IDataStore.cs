@@ -28,9 +28,7 @@ namespace WoMoDiary.Services
         /// <returns></returns>
         Task<bool> DeleteItemAsync(Guid id);
 
-
         Task<T> GetItemAsync(Guid id);
-
 
         Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
 
@@ -40,5 +38,7 @@ namespace WoMoDiary.Services
         /// <param name="fk">The Foreign Key</param>
         /// <returns></returns>
         Task<IEnumerable<T>> GetItemsByFkAsync(Guid fk);
+
+        Task<T> GetByName(string name);
     }
 }

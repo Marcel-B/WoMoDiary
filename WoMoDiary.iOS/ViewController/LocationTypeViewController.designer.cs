@@ -28,6 +28,10 @@ namespace WoMoDiary.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel LabelSelectPlaceCategory { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIPickerView PickerViewLocationType { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -45,6 +49,11 @@ namespace WoMoDiary.iOS
             if (ButtonThumbUp != null) {
                 ButtonThumbUp.Dispose ();
                 ButtonThumbUp = null;
+            }
+
+            if (LabelSelectPlaceCategory != null) {
+                LabelSelectPlaceCategory.Dispose ();
+                LabelSelectPlaceCategory = null;
             }
 
             if (PickerViewLocationType != null) {

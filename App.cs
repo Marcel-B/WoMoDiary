@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
@@ -8,18 +9,16 @@ namespace WoMoDiary
 {
     public class App
     {
+        public static bool UseMockDataStore = true;
         public static bool Init { get; set; }
         public static bool AllDataFetched { get; set; }
-        public static bool UseMockDataStore = false;
         public const string BACKEND_URL = "https://womo.marcelbenders.de";
-
-        //public static User User { get; set; }
 
         public App()
         {
             AllDataFetched = false;
             Init = false;
-            System.Diagnostics.Debug.WriteLine(GetType().GetTypeInfo().Assembly);
+            App.LogOutLn(GetType().GetTypeInfo().Assembly); 
         }
 
         /// <summary>
@@ -50,5 +49,8 @@ namespace WoMoDiary
             ServiceLocator.Instance.Register<NewTripViewModel, NewTripViewModel>();
             return;
         }
+
+        public static void LogOutLn(object mssg)
+            => System.Diagnostics.Debug.WriteLine($"[{DateTime.Now}] - {mssg}");
     }
 }

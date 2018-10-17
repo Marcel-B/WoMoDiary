@@ -1,4 +1,5 @@
 ﻿using System;
+using WoMoDiary.Domain;
 using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 namespace WoMoDiary.ViewModels
@@ -15,8 +16,8 @@ namespace WoMoDiary.ViewModels
 
         private async void ExecuteLogin(object obj)
         {
-            await ((UserDataStore)UserStore)
-                .GetUserByUsername(Username)
+            await UserStore
+                .GetByName(Username)
                 .ContinueWith(HandleAction);
         }
 
@@ -27,6 +28,7 @@ namespace WoMoDiary.ViewModels
                 IsValid = false;
             else
                 IsValid = PasswordHelper.VerifyPasswordHash(Password, user.Hash, user.Salt);
+
             if (IsValid)
             {
                 AppStore.Instance.User = user;

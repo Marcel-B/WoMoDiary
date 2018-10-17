@@ -164,6 +164,7 @@
                             <connections>
                                 <segue id="53285" destination="9856" kind="show"/>
                             </connections>
+                            <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -295,7 +296,7 @@
                                     <constraint id="47103" firstAttribute="width" constant="40"/>
                                 </constraints>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select place type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="50879" translatesAutoresizingMaskIntoConstraints="NO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Place Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="50879" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="19" y="90" width="285" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -326,6 +327,7 @@
                         <outlet property="ButtonThumbUp" destination="47092" id="name-outlet-47092"/>
                         <outlet property="ButtonThumbDown" destination="47093" id="name-outlet-47093"/>
                         <segue id="105597" destination="5069" kind="show" identifier="ToPlacesView"/>
+                        <outlet property="LabelSelectPlaceCategory" destination="50879" id="name-outlet-50879"/>
                     </connections>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>

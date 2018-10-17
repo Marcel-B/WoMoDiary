@@ -5,6 +5,7 @@ using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
 using Foundation;
 using System.Linq;
+using WoMoDiary.Meta;
 
 namespace WoMoDiary.iOS
 {
@@ -15,19 +16,21 @@ namespace WoMoDiary.iOS
         public LocationTypeViewController(IntPtr handle) : base(handle) { }
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
-          
+
         }
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Localize();
             PickerViewLocationType.Model = new LocationTypePickerViewModel(PickerChangedEvent);
             ButtonSave.TouchUpInside += (sender, e) =>
             {
                 if (sender is UIButton button)
+                {
                     ViewModel.SavePlaceCommand.Execute(null);
-                var controllers = NavigationController.ViewControllers;
-                //NavigationController.ViewControllers = controllers.SkipLast(2).ToArray();
-                NavigationController.SetViewControllers(controllers.SkipLast(2).ToArray(), true);
+                    var controllers = NavigationController.ViewControllers;
+                    NavigationController.SetViewControllers(controllers.SkipLast(2).ToArray(), true);
+                }
             };
 
             ButtonThumbUp.TouchUpInside += (object sender, EventArgs e) =>
@@ -65,6 +68,13 @@ namespace WoMoDiary.iOS
             ViewModel.Type = args.Place.Type;
         }
 
+        private void Localize()
+        {
+            Title = Strings.CATEGORY;
+            LabelSelectPlaceCategory.Text = Strings.SELECT_PLACE_CATEGORY;
+            ButtonSave.SetTitle(Strings.SAVE, UIControlState.Normal);
+        }
+
         private class LocationTypePickerViewModel : UIPickerViewModel
         {
             public Place SelectedType { get; set; }
@@ -78,7 +88,7 @@ namespace WoMoDiary.iOS
                     new CampingPlace(),
                     new Hotel(),
                     new Restaurant(),
-                    new NicePlace(),
+                    new Poi(),
                 };// LocationTypes().Locations;
                 this.pickerChanged = pickerChanged;
             }

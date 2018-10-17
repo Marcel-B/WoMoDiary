@@ -22,7 +22,7 @@ namespace WoMoDiary.Services
             throw new NotImplementedException();
         }
 
-        public async Task<User> GetUserByUsername(string username)
+        public override async Task<User> GetByName(string username)
         {
             if (!CrossConnectivity.Current.IsConnected) return null;
             try

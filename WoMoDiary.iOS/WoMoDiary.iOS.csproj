@@ -1,4 +1,5 @@
 ﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\WoMoDiary.projitems" Label="Shared" Condition="Exists('..\WoMoDiary.projitems')" />
   <Import Project="..\packages\Xamarin.Forms.3.2.0.871581\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.2.0.871581\build\netstandard2.0\Xamarin.Forms.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -368,10 +369,6 @@
     <Compile Include="TripCollectionViewCell.designer.cs">
       <DependentUpon>TripCollectionViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\CollectionViewHeaderViewController.cs" />
-    <Compile Include="ViewController\CollectionViewHeaderViewController.designer.cs">
-      <DependentUpon>CollectionViewHeaderViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewController\MapViewController.cs" />
     <Compile Include="ViewController\MapViewController.designer.cs">
       <DependentUpon>MapViewController.cs</DependentUpon>
@@ -410,8 +407,11 @@
       <Project>{D47E86C8-3276-4088-A2FF-8F4A9ADC9280}</Project>
       <Name>WoMoDiary.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WoMoDiary.Meta\WoMoDiary.Meta.csproj">
+      <Project>{1FAB9312-B63B-4F0C-940F-C46263A83123}</Project>
+      <Name>WoMoDiary.Meta</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\WoMoDiary.projitems" Label="Shared" Condition="Exists('..\WoMoDiary.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\packages\Xamarin.Forms.3.2.0.871581\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.2.0.871581\build\netstandard2.0\Xamarin.Forms.targets')" />

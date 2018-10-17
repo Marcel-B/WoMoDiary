@@ -1,4 +1,3 @@
-using Foundation;
 using System;
 using UIKit;
 
@@ -6,12 +5,13 @@ namespace WoMoDiary.iOS
 {
     public partial class TripsTableViewCell : UITableViewCell
     {
+        public TripsTableViewCell(IntPtr handle) : base(handle) { }
+
         public string Trip
         {
             get => LableTripName.Text;
             set => LableTripName.Text = value;
         }
-
 
         public string DescriptionT
         {
@@ -30,11 +30,5 @@ namespace WoMoDiary.iOS
             get => ImageType;
             set => ImageType = value;
         }
-
-
-        public TripsTableViewCell(IntPtr handle) : base(handle)
-        {
-        }
-
     }
 }

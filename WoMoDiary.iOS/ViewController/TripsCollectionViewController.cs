@@ -9,6 +9,7 @@ using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using I18NPortable;
 using WoMoDiary.Helpers;
+using WoMoDiary.Meta;
 
 namespace WoMoDiary.iOS
 {
@@ -52,8 +53,9 @@ namespace WoMoDiary.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            Title = "Trips".Translate();
+            Title = Strings.TRIPS;
             NavigationItem.SetHidesBackButton(true, false);
+            CollectionView.ReloadData();
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)
@@ -66,9 +68,11 @@ namespace WoMoDiary.iOS
             cell.Trip = trip.Name;
             if (trip.Places == null)
                 trip.Places = new List<Place>();
-            cell.Count = $"{trip.Places.Count} places";
+            var prefix = trip.Places.Count == 1 ? Strings.PLACE : Strings.PLACES;
+            cell.Count = $"{trip.Places.Count} {prefix}";
             cell.Tag = indexPath.Row;
             cell.TimeSpan = trip.Created.ToString("D");
+            App.LogOutLn($"Cell {trip.Name} created.");
             return cell;
         }
 

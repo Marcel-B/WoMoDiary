@@ -93,7 +93,7 @@ namespace WoMoDiary
                 new Stellpatz(),
                 new CampingPlace(),
                 new Hotel(),
-                new NicePlace(),
+                new Poi(),
                 new Restaurant()
             };
             var adapter = new ArrayAdapter<Place>(this,

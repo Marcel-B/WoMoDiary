@@ -25,6 +25,7 @@ namespace WoMoDiary.Services
                 Name = "Italien",
                 Description = "This is a nice description",
                 Created = DateTimeOffset.Now,
+                UserId = MockUserDataStore.FirstUserId
             };
             var secondTrip = new Trip
             {
@@ -33,6 +34,7 @@ namespace WoMoDiary.Services
                 User = user,
                 Description = "This is a nice description",
                 Created = DateTimeOffset.Now,
+                UserId = MockUserDataStore.FirstUserId
             };
             user.Trips.Add(firstTrip);
             user.Trips.Add(secondTrip);
@@ -69,12 +71,18 @@ namespace WoMoDiary.Services
         public async Task<IEnumerable<Trip>> GetItemsAsync(bool forceRefresh = false)
             => await Task.FromResult(Trips);
 
-        public Task<IEnumerable<Trip>> GetItemsByFkAsync(Guid fk)
+        public async Task<IEnumerable<Trip>> GetItemsByFkAsync(Guid fk)
         {
-            throw new NotImplementedException();
+            var result = await Task.Run(() => Trips.Where(t => t.UserId == fk));
+            return result;
         }
 
         public async Task<IEnumerable<Trip>> GetItemsAsync(Guid id, bool forceRefresh = false)
             => await Task.Run(() => Trips.Where(t => t.User.Id == id));
+
+        public Task<Trip> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -5,6 +5,7 @@ using MapKit;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using Foundation;
+using I18NPortable;
 
 namespace WoMoDiary.iOS
 {
@@ -23,13 +24,13 @@ namespace WoMoDiary.iOS
             base.ViewDidAppear(animated);
             var store = AppStore.Instance;
             if (store.CurrentTrip == null) return;
-            this.Title = $"- {store.CurrentTrip.Name} -";
+            this.Title = $"{store.CurrentTrip.Name}";
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            Localize();
             var g = new UITapGestureRecognizer(() => View.EndEditing(true));
             g.CancelsTouchesInView = false; //for iOS5
 
@@ -76,8 +77,14 @@ namespace WoMoDiary.iOS
             ButtonSavePosition.TouchUpInside += (sender, e) =>
             {
                 TextFieldName.ResignFirstResponder();
-                //_viewModel.SavePlaceCommand.Execute(null);
             };
+        }
+
+        private void Localize()
+        {
+            TextFieldName.Placeholder = "Enter Name".Translate();
+            TextFieldDescription.Placeholder = "Enter Description".Translate();
+            ButtonSavePosition.SetTitle("Next".Translate(), UIControlState.Normal);
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
