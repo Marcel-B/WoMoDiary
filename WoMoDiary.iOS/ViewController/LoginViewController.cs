@@ -29,6 +29,10 @@ namespace com.b_velop.WoMoDiary.iOS
                 {
                     PerformSegue("ToTrip", this);
                 });
+            else
+            {
+                ButtonLogin.Enabled = true;
+            }
         }
 
         public override void ViewDidLoad()

@@ -1,10 +1,11 @@
-﻿namespace WoMoDiary.Domain
+﻿using com.b_velop.WoMoDiary.Meta;
+namespace WoMoDiary.Domain
 {
     public class Stellpatz : Place
     {
         public Stellpatz()
         {
-            Name = "Stellplatz";
+            Name = Strings.PITCH;
             AssetName = "Camping";
             Type = PlaceType.MotorhomePlace;
         }

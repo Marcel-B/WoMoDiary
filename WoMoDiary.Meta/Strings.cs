@@ -4,6 +4,7 @@ namespace com.b_velop.WoMoDiary.Meta
 {
     public static class Strings
     {
+        public static string CAMPING_SITE = "Camping Site".Translate();
         public static string CATEGORY = "Category".Translate();
         public static string CONFIRM_PASSWORD = "Confirm Password".Translate();
 
@@ -23,9 +24,12 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string NO_CAMERA = "No Camera".Translate();
 
         public static string PASSWORD = "Password".Translate();
+        public static string PITCH = "Pitch".Translate();
         public static string PLACE = "Place".Translate();
         public static string PLACES = "Places".Translate();
         public static string POINT_OF_INTEREST = "Point Of Interest".Translate();
+
+        public static string RESTAURANT = "Restaurant".Translate();
 
         public static string SAVE = "Save".Translate();
         public static string SAVE_NEW_USER = "Save New User".Translate();

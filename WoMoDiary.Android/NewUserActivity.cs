@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Widget;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Meta;
 
 namespace com.b_velop.WoMoDiary.Android
 {

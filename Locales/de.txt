@@ -1,4 +1,5 @@
-﻿Category = Kategorie
+﻿Camping Site = Campingplatz
+Category = Kategorie
 Confirm Password = Passwort bestätigen
 
 Description = Beschreibung
@@ -17,9 +18,12 @@ Next = Weiter
 No Camera = Keine Kamera
 
 Password = Passwort
+Pitch = Stellplatz
 Place = Ort
 Places = Orte
 Point Of Interest = Sehenswürdigkeit
+
+Restaurant = Restaurant
 
 Save = Speichern
 Save New User = Neuen Benutzer speichern

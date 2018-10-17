@@ -15,22 +15,14 @@ using ToastLength = Android.Widget.ToastLength;
 
 namespace com.b_velop.WoMoDiary.Android
 {
-    public class CastJavaObject
-    {
-        public static T Cast<T>(Java.Lang.Object obj) where T : Place
-        {
-            var propInfo = obj.GetType().GetProperty("Instance");
-            return propInfo == null ? null : propInfo.GetValue(obj, null) as T;
-        }
-    }
 
     [Activity(Label = "NewPlaceActivity")]
     public class NewPlaceActivity : Activity, IOnMapReadyCallback, ILocationListener
     {
         public NewPlaceViewModel ViewModel { get; set; }
 
-        private MapFragment _mapFragment;
-        private GoogleMap _map;
+        public MapFragment MapFragment { get; set; }
+        public GoogleMap Map { get; set; }
         public LocationManager LocationManager { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
@@ -41,15 +33,16 @@ namespace com.b_velop.WoMoDiary.Android
             ViewModel.ErrorAction = ToastMessage;
         }
 
-        private void ToastMessage(string mssg)
-            => Toast.MakeText(this, mssg, ToastLength.Long).Show();
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.newPlaceLayout);
-            var button = FindViewById<Button>(Resource.Id.saveNewPlaceButton);
-            var spinner = FindViewById<Spinner>(Resource.Id.spinnerPlaceType);
+
+            GetViews();
+            SetStates();
+            SetControllEvents();
+            Localize();
+
 
             FindViewById<EditText>(Resource.Id.editTextNewPlaceName)
                 .AfterTextChanged += (sender, args) =>
@@ -65,28 +58,9 @@ namespace com.b_velop.WoMoDiary.Android
                     ViewModel.Description = box.Text;
                 };
 
-            var imgBtnUp = FindViewById<ImageButton>(Resource.Id.imageButtonRatingUp);
-            var imgBtnDown = FindViewById<ImageButton>(Resource.Id.imageButtonRatingDown);
-            var color = imgBtnUp.Background;
-            imgBtnUp.Click += (sender, args) =>
-                {
-                    ViewModel.Rating = 4;
-                    if (sender is ImageButton tmp)
-                    {
-                        imgBtnUp.SetBackgroundColor(Color.Green);
-                        imgBtnDown.Background = color;
-                    }
-                };
 
-            imgBtnDown.Click += (sender, args) =>
-                {
-                    ViewModel.Rating = 0;
-                    if (sender is ImageButton tmp)
-                    {
-                        imgBtnUp.Background = color;
-                        imgBtnDown.SetBackgroundColor(Color.Green);
-                    }
-                };
+            var color = ImageButtonThumbUp.Background;
+
 
             var places = new Place[]
             {
@@ -99,14 +73,8 @@ namespace com.b_velop.WoMoDiary.Android
             var adapter = new ArrayAdapter<Place>(this,
                 Reces.Layout.SimpleSpinnerItem, places);
 
-            _mapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentNewPlace);
-            spinner.Adapter = adapter;
-            spinner.ItemSelected += (sender, args) =>
-            {
-                if (!(sender is Spinner spn)) return;
-                var place = CastJavaObject.Cast<Place>(spn.SelectedItem);
-                ViewModel.Type = place.Type;
-            };
+            SpinnerPlaceCategory.Adapter = adapter;
+
             //var mapOptions = new GoogleMapOptions()
             //    .InvokeMapType(GoogleMap.MapTypeSatellite)
             //    .InvokeZoomControlsEnabled(false)
@@ -139,7 +107,65 @@ namespace com.b_velop.WoMoDiary.Android
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
-            _mapFragment.GetMapAsync(this);
+            MapFragment.GetMapAsync(this);
+        }
+
+        private void ToastMessage(string mssg)
+            => Toast.MakeText(this, mssg, ToastLength.Long).Show();
+
+        private void Localize()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SetControllEvents()
+        {
+            ImageButtonThumbUp.Click += (sender, args) =>
+            {
+                ViewModel.Rating = 4;
+                if (sender is ImageButton tmp)
+                {
+                    ImageButtonThumbUp.SetBackgroundColor(Color.Green);
+                    ImageButtonThumbDown.Background = color;
+                }
+            };
+
+            ImageButtonThumbDown.Click += (sender, args) =>
+            {
+                ViewModel.Rating = 0;
+                if (sender is ImageButton tmp)
+                {
+                    ImageButtonThumbUp.Background = color;
+                    ImageButtonThumbDown.SetBackgroundColor(Color.Green);
+                }
+            };
+
+            SpinnerPlaceCategory.ItemSelected += (sender, args) =>
+            {
+                if (!(sender is Spinner spn)) return;
+                var place = CastJavaObject.Cast<Place>(spn.SelectedItem);
+                ViewModel.Type = place.Type;
+            };
+        }
+
+        private void SetStates()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ImageButton ImageButtonThumbUp { get; set; }
+        public ImageButton ImageButtonThumbDown { get; set; }
+        public Button ButtonSaveNewPlace { get; set; }
+        public Spinner SpinnerPlaceCategory { get; set; }
+
+
+        private void GetViews()
+        {
+            ImageButtonThumbUp = FindViewById<ImageButton>(Resource.Id.imageButtonRatingUp);
+            ImageButtonThumbDown = FindViewById<ImageButton>(Resource.Id.imageButtonRatingDown);
+            MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentNewPlace);
+            ButtonSaveNewPlace = FindViewById<Button>(Resource.Id.saveNewPlaceButton);
+            SpinnerPlaceCategory = FindViewById<Spinner>(Resource.Id.spinnerPlaceType);
         }
 
         protected override void OnResume()

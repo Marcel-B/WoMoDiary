@@ -1,4 +1,5 @@
-﻿Category = Category
+﻿Camping Site = Camping Site
+Category = Category
 Confirm Password = Confirm Password
 
 Description = Description
@@ -17,9 +18,12 @@ Next = Next
 No Camera = No Camera
 
 Password = Password
+Pitch = Pitch
 Place = Place
 Places = Places
 Point Of Interest = Point of interest
+
+Restaurant = Restaurant
 
 Save = Save
 Save New User = Save new user

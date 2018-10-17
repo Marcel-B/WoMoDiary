@@ -4,22 +4,16 @@ using Android.Preferences;
 using Android.Widget;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
-using System.Reflection;
-using I18NPortable;
 using WoMoDiary.Services;
 using WoMoDiary;
 using com.b_velop.WoMoDiary.Meta;
+using System;
 
 namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "WoMo Diary", Theme = "@style/AppTheme", MainLauncher = true)]
     public class LoginActivity : Activity
     {
-        public LoginViewModel ViewModel { get; set; }
-        public Button ButtonLogin { get; set; }
-        public Button ButtonNewUser { get; set; }
-        public EditText EditTextLoginPassword { get; set; }
-        public EditText EditTextLoginUsername { get; set; }
 
         public LoginActivity()
         {
@@ -28,6 +22,23 @@ namespace com.b_velop.WoMoDiary.Android
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
             ViewModel.LoginReady = IsReady;
             ViewModel.ErrorAction = ToastMessage;
+        }
+
+        public LoginViewModel ViewModel { get; set; }
+        public Button ButtonLogin { get; set; }
+        public Button ButtonNewUser { get; set; }
+        public EditText EditTextLoginPassword { get; set; }
+        public EditText EditTextLoginUsername { get; set; }
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.loginLayout);
+
+            GetViews();
+            SetStates();
+            SetControllEvents();
+            Localize();
         }
 
         private void ToastMessage(string mssg)
@@ -65,35 +76,16 @@ namespace com.b_velop.WoMoDiary.Android
         private void SetStates()
         {
             ButtonLogin.Enabled = false;
-        }
-
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.loginLayout);
-         
-            I18N.Current
-                 .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
-                 .SetFallbackLocale("en") // Optional but recommended: locale to load in case the system locale is not supported
-                 .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
-                 .SetLogger(text => System.Diagnostics.Debug.WriteLine(text)) // action to output traces
-                 .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
-                 .Init(GetType().GetTypeInfo().Assembly); // assembly where locales live
-
             var prefs = PreferenceManager.GetDefaultSharedPreferences(this);
             var str = prefs.GetString("UserGuid", "569DD649-F9F8-4990-B31B-45D43DDA82C2");
             var editor = prefs.Edit();
             editor.PutString("UserGuid", str);
             // editor.Commit();    // applies changes synchronously on older APIs
             editor.Apply();        // applies changes asynchronously on newer APIs
+        }
 
-            GetViews();
-            SetStates();
-            Localize();
-
-            // Create your application here
-            var localStore = AppStore.Instance;
-
+        private void SetControllEvents()
+        {
             ButtonLogin.Click += (sender, args) =>
             {
                 ViewModel.LoginCommand.Execute(null);
@@ -117,13 +109,6 @@ namespace com.b_velop.WoMoDiary.Android
                 ViewModel.Password = e.Text.ToString();
                 ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
             };
-
-            //ToastMessage("Login Successful");
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
         }
     }
 }
