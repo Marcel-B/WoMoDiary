@@ -6,7 +6,7 @@ using WoMoDiary.Helpers;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     public class TripListFragment : ListFragment
     {

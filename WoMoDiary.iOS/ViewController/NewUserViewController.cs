@@ -2,9 +2,9 @@ using System;
 using UIKit;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
-using I18NPortable;
+using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class NewUserViewController : UIViewController
     {
@@ -17,11 +17,11 @@ namespace WoMoDiary.iOS
 
         private void Localize()
         {
-            ButtonConfirm.SetTitle("Save new user".Translate(), UIControlState.Normal);
-            TextFieldPassword.Placeholder = "Password".Translate();
-            TextFieldUsername.Placeholder = "Username".Translate();
-            TextFieldConfirmPassword.Placeholder = "Confirm Password".Translate();
-            Title = "New User".Translate();
+            ButtonConfirm.SetTitle(Strings.SAVE_NEW_USER, UIControlState.Normal);
+            TextFieldPassword.Placeholder = Strings.PASSWORD;
+            TextFieldUsername.Placeholder = Strings.USERNAME;
+            TextFieldConfirmPassword.Placeholder = Strings.CONFIRM_PASSWORD;
+            Title = Strings.NEW_USER;
         }
 
         public override void ViewDidLoad()

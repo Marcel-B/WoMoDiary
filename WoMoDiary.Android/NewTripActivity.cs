@@ -4,7 +4,7 @@ using Android.Widget;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "NewTripActivity")]
     public class NewTripActivity : Activity

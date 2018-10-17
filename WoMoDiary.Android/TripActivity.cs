@@ -3,7 +3,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using Toolbar = Android.Support.V7.Widget.Toolbar;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
 
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]

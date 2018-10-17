@@ -4,7 +4,7 @@ using System;
 using UIKit;
 using WoMoDiary.Services;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class PlaceDetailViewController : UIViewController
     {

@@ -1,5 +1,4 @@
-﻿using System;
-using WoMoDiary.Meta;
+﻿using com.b_velop.WoMoDiary.Meta;
 
 namespace WoMoDiary.Domain
 {

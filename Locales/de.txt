@@ -1,25 +1,36 @@
-﻿Trip = Reise
-Trips = Reisen
-No Camera = Keine Kamera
-Shoot = Aufnahme
+﻿Category = Kategorie
 Confirm Password = Passwort bestätigen
-Trip Name = Reiseziel
-Save = Speichern
+
 Description = Beschreibung
-New Trip = Neue Reise
-Your Position = Deine Position
-Save Position = Position speichern
-New User = Neuer Benutzer
-Username = Benutzername
-Password = Passwort
-Login = Anmelden
-Point Of Interest = Sehenswürdigkeit
-Save new user = Neuen Benutzer speichern
-Enter Name = Name eingeben
+
 Enter Description = Beschreibung eingeben
-Next = Weiter
-Places = Orte
-Place = Ort
+Enter Name = Name eingeben
 Enter Trip Name = Name der Reise eingeben
-Category = Kategorie
+
+Hotel = Hotel
+
+Login = Anmelden
+
+New Trip = Neue Reise
+New User = Neuer Benutzer
+Next = Weiter
+No Camera = Keine Kamera
+
+Password = Passwort
+Place = Ort
+Places = Orte
+Point Of Interest = Sehenswürdigkeit
+
+Save = Speichern
+Save New User = Neuen Benutzer speichern
+Save Position = Position speichern
 Select Place Category = Kategorie wählen
+Shoot = Aufnahme
+
+Trip = Reise
+Trip Name = Reiseziel
+Trips = Reisen
+
+Username = Benutzername
+
+Your Position = Deine Position

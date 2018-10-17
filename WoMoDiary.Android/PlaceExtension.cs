@@ -1,6 +1,7 @@
 ﻿using System;
 using WoMoDiary.Domain;
-namespace WoMoDiary
+
+namespace com.b_velop.WoMoDiary.Android
 {
     public static class PlaceExtension
     {

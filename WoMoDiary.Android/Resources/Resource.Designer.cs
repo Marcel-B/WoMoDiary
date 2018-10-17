@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("WoMoDiary.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("com.b_velop.WoMoDiary.Android.Resource", IsApplication=true)]
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
 	
 	

@@ -3,9 +3,8 @@ using Android.OS;
 using Android.Widget;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
-using I18NPortable;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "NewUserActivity")]
     public class NewUserActivity : Activity
@@ -51,10 +50,10 @@ namespace WoMoDiary
 
         private void Localize()
         {
-            EditTextUsername.Hint = "Username".Translate();
-            EditTextPassword.Hint = "Password".Translate();
-            EditTextConfirmPassword.Hint = "Confirm Password".Translate();
-            ButtonNewUserSave.Text = "Save new user".Translate();
+            EditTextUsername.Hint = Strings.USERNAME;
+            EditTextPassword.Hint = Strings.PASSWORD;
+            EditTextConfirmPassword.Hint = Strings.CONFIRM_PASSWORD;
+            ButtonNewUserSave.Text = Strings.SAVE_NEW_USER;
         }
 
         public void SetControllEvents()

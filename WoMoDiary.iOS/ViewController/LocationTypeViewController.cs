@@ -5,9 +5,9 @@ using WoMoDiary.Domain;
 using WoMoDiary.ViewModels;
 using Foundation;
 using System.Linq;
-using WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class LocationTypeViewController : UIViewController
     {

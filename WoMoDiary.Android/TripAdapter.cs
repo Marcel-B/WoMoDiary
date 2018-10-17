@@ -6,7 +6,7 @@ using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
 using Android.App;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     public class TripAdapter : BaseAdapter
     {

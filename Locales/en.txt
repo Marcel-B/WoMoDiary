@@ -1,25 +1,36 @@
-﻿Confirm Password = Confirm Password
-Trip = Trip
-Trips = Trips
-No Camera = No Camera
-Shoot = Shoot
-Trip Name = Trip Name
-Save = Save
+﻿Category = Category
+Confirm Password = Confirm Password
+
 Description = Description
-New Trip = New Trip
-Your Position = Your Position
-Save Position = Save Position
-New User = New User
-Username = Username
-Password = Password
-Login = Login
-Point Of Interest = Point of interest
-Save new user = Save new user
-Enter Name = Enter Name
+
 Enter Description = Enter Description
-Next = Next
-Places = Places
-Place = Place
+Enter Name = Enter Name
 Enter Trip Name = Enter Trip Name
-Category = Category
+
+Hotel = Hotel
+
+Login = Login
+
+New Trip = New Trip
+New User = New User
+Next = Next
+No Camera = No Camera
+
+Password = Password
+Place = Place
+Places = Places
+Point Of Interest = Point of interest
+
+Save = Save
+Save New User = Save new user
+Save Position = Save Position
 Select Place Category = Kategorie wählen
+Shoot = Shoot
+
+Trip = Trip
+Trip Name = Trip Name
+Trips = Trips
+
+Username = Username
+
+Your Position = Your Position

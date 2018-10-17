@@ -2,8 +2,9 @@
 using UIKit;
 using System;
 using WoMoDiary.Services;
+using WoMoDiary;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public class Application
     {

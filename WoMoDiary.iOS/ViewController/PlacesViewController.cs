@@ -5,9 +5,9 @@ using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using WoMoDiary.Helpers;
 using System.Collections.Specialized;
-using System.Linq;
+using WoMoDiary;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class PlacesViewController : UITableViewController
     {
@@ -30,7 +30,7 @@ namespace WoMoDiary.iOS
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.Message);
             }
         }
 

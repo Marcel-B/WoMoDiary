@@ -1,5 +1,4 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
@@ -7,7 +6,7 @@ using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
 using Android.App;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     public class PlaceAdapter : BaseAdapter
     {

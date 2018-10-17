@@ -3,7 +3,7 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "PlaceActivity")]
     public class PlaceActivity : FragmentActivity

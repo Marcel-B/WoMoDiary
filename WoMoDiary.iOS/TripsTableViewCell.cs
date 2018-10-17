@@ -1,7 +1,7 @@
 using System;
 using UIKit;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class TripsTableViewCell : UITableViewCell
     {

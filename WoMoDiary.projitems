@@ -6,7 +6,7 @@
     <SharedGUID>{55855BC6-90EF-4B47-90C6-D3B4A584CF51}</SharedGUID>
   </PropertyGroup>
   <PropertyGroup Label="Configuration">
-    <Import_RootNamespace>WoMoDiary</Import_RootNamespace>
+    <Import_RootNamespace>com.b_velop.WoMoDiary</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Command.cs" />
@@ -16,7 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockTripDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Strings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewPlaceViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewTripViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AppStore.cs" />

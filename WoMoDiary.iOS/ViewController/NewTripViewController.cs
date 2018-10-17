@@ -1,10 +1,9 @@
 using System;
-using I18NPortable;
+using com.b_velop.WoMoDiary.Meta;
 using UIKit;
-using WoMoDiary.Meta;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class NewTripViewController : UIViewController
     {
@@ -16,7 +15,7 @@ namespace WoMoDiary.iOS
 
         private void Localize()
         {
-            Title = Strings.NEW_TRIP.Translate();
+            Title = Strings.NEW_TRIP;
             TextFieldTripName.Placeholder = Strings.ENTER_TRIP_NAME;
             TextFieldDescription.Placeholder = Strings.ENTER_DESCRIPTION;
             ButtonSaveTrip.SetTitle(Strings.SAVE, UIControlState.Normal);

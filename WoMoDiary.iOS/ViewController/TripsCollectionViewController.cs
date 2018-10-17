@@ -7,11 +7,11 @@ using UIKit;
 using WoMoDiary.Domain;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
-using I18NPortable;
 using WoMoDiary.Helpers;
-using WoMoDiary.Meta;
+using WoMoDiary;
+using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class TripsCollectionViewController : UICollectionViewController
     {

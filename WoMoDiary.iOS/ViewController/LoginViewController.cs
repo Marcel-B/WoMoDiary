@@ -1,11 +1,11 @@
+using com.b_velop.WoMoDiary.Meta;
 using Foundation;
-using I18NPortable;
 using System;
 using UIKit;
 using WoMoDiary.Helpers;
 using WoMoDiary.ViewModels;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class LoginViewController : UIViewController
     {
@@ -59,11 +59,11 @@ namespace WoMoDiary.iOS
 
         private void Localize()
         {
-            Title = "Login".Translate();
-            TextFieldUsername.Placeholder = "Username".Translate();
-            TextFieldPassword.Placeholder = "Password".Translate();
-            ButtonLogin.SetTitle("Login".Translate(), UIControlState.Normal);
-            ButtonNewUser.SetTitle("New User".Translate(), UIControlState.Normal);
+            Title = Strings.LOGIN;
+            TextFieldUsername.Placeholder = Strings.USERNAME;
+            TextFieldPassword.Placeholder = Strings.PASSWORD;
+            ButtonLogin.SetTitle(Strings.LOGIN, UIControlState.Normal);
+            ButtonNewUser.SetTitle(Strings.NEW_USER, UIControlState.Normal);
         }
 
         public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)

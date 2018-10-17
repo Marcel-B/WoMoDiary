@@ -8,7 +8,7 @@ using WoMoDiary.Helpers;
 using Toast = Android.Widget.Toast;
 using ToastLength = Android.Widget.ToastLength;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     public class PlaceListFragment : ListFragment
     {

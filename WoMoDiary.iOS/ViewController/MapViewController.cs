@@ -5,9 +5,9 @@ using MapKit;
 using WoMoDiary.Services;
 using WoMoDiary.ViewModels;
 using Foundation;
-using I18NPortable;
+using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary.iOS
+namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class MapViewController : UIViewController
     {
@@ -82,9 +82,9 @@ namespace WoMoDiary.iOS
 
         private void Localize()
         {
-            TextFieldName.Placeholder = "Enter Name".Translate();
-            TextFieldDescription.Placeholder = "Enter Description".Translate();
-            ButtonSavePosition.SetTitle("Next".Translate(), UIControlState.Normal);
+            TextFieldName.Placeholder = Strings.ENTER_NAME;
+            TextFieldDescription.Placeholder = Strings.ENTER_DESCRIPTION;
+            ButtonSavePosition.SetTitle(Strings.NEXT, UIControlState.Normal);
         }
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)

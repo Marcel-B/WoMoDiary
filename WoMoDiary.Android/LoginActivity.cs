@@ -7,8 +7,10 @@ using WoMoDiary.ViewModels;
 using System.Reflection;
 using I18NPortable;
 using WoMoDiary.Services;
+using WoMoDiary;
+using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "WoMo Diary", Theme = "@style/AppTheme", MainLauncher = true)]
     public class LoginActivity : Activity
@@ -21,6 +23,7 @@ namespace WoMoDiary
 
         public LoginActivity()
         {
+            var app = new App();
             App.Initialize();
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
             ViewModel.LoginReady = IsReady;
@@ -35,6 +38,7 @@ namespace WoMoDiary
             if (isValid)
             {
                 StartActivity(typeof(TripActivity));
+                Finish();
             }
             else
             {
@@ -52,10 +56,10 @@ namespace WoMoDiary
 
         private void Localize()
         {
-            ButtonLogin.Text = "Login".Translate();
-            ButtonNewUser.Text = "New User".Translate();
-            EditTextLoginPassword.Hint = "Password".Translate();
-            EditTextLoginUsername.Hint = "Username".Translate();
+            ButtonLogin.Text = Strings.LOGIN;
+            ButtonNewUser.Text = Strings.NEW_USER;
+            EditTextLoginPassword.Hint = Strings.PASSWORD;
+            EditTextLoginUsername.Hint = Strings.USERNAME;
         }
 
         private void SetStates()
@@ -115,6 +119,11 @@ namespace WoMoDiary
             };
 
             //ToastMessage("Login Successful");
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
         }
     }
 }
