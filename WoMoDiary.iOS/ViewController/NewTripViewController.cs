@@ -1,16 +1,25 @@
 using System;
+using UIKit;
+using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
 using com.b_velop.WoMoDiary.ViewModels;
-using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class NewTripViewController : UIViewController
     {
-        private NewTripViewModel viewModel;
         public NewTripViewController(IntPtr handle) : base(handle)
         {
-            viewModel = new NewTripViewModel();
+            ViewModel = ServiceLocator.Instance.Get<NewTripViewModel>();
+        }
+
+        public NewTripViewModel ViewModel { get; set; }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            Localize();
+            SetControllEvents();
         }
 
         private void Localize()
@@ -21,27 +30,21 @@ namespace com.b_velop.WoMoDiary.iOS
             ButtonSaveTrip.SetTitle(Strings.SAVE, UIControlState.Normal);
         }
 
-        public override void ViewDidLoad()
+        private void SetControllEvents()
         {
-            base.ViewDidLoad();
-            Localize();
             ButtonSaveTrip.TouchUpInside += (sender, e) =>
             {
-                viewModel.SaveTripCommand.Execute(null);
+                ViewModel.SaveTripCommand.Execute(null);
             };
-            //TextFieldTripName.EditingDidEnd += (sender, e) =>
-            //{
-
-            //};
             TextFieldTripName.EditingChanged += (sender, e) =>
             {
-                viewModel.TripName = TextFieldTripName.Text;
-                ButtonSaveTrip.Enabled = viewModel.SaveTripCommand.CanExecute(null);
+                ViewModel.TripName = TextFieldTripName.Text;
+                ButtonSaveTrip.Enabled = ViewModel.SaveTripCommand.CanExecute(null);
             };
             TextFieldDescription.EditingChanged += (sender, e) =>
             {
-                viewModel.Description = ((UITextField)sender).Text;
-                ButtonSaveTrip.Enabled = viewModel.SaveTripCommand.CanExecute(null);
+                ViewModel.Description = ((UITextField)sender).Text;
+                ButtonSaveTrip.Enabled = ViewModel.SaveTripCommand.CanExecute(null);
             };
         }
     }

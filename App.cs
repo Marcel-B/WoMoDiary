@@ -75,7 +75,7 @@ namespace com.b_velop.WoMoDiary
             else
             {
                 var ob = $"[{sender}]";
-                ob = ob.PadRight(12);
+                ob = ob.PadRight(16);
                 System.Diagnostics.Debug.WriteLine($"[{DateTime.Now}] - {ob} {mssg}");
             }
         }

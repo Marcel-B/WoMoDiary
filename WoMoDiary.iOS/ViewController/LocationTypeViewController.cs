@@ -1,28 +1,46 @@
 using System;
 using UIKit;
 using System.Collections.Generic;
-using Foundation;
 using System.Linq;
 using com.b_velop.WoMoDiary.Meta;
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class LocationTypeViewController : UIViewController
     {
+
+        public LocationTypeViewController(IntPtr handle) : base(handle)
+        {
+            // Set by MapViewController - Singleton are not available in ServiceLocator ...
+            //ViewModel = ServiceLocator.Instance.Get<NewPlaceViewModel>();
+        }
+
         public NewPlaceViewModel ViewModel { get; set; }
 
-        public LocationTypeViewController(IntPtr handle) : base(handle) { }
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-
-        }
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             Localize();
+            SetStates();
+            SetControllEvents();
             PickerViewLocationType.Model = new LocationTypePickerViewModel(PickerChangedEvent);
+        }
+
+        private void PickerChangedEvent(object sender, PickerChangedEventArgs args)
+        {
+            ViewModel.Type = args.Place.Type;
+        }
+
+        private void SetStates()
+        {
+            PickerViewLocationType.Model.Selected(PickerViewLocationType, 0, 0);
+        }
+
+        private void SetControllEvents()
+        {
             ButtonSave.TouchUpInside += (sender, e) =>
             {
                 if (sender is UIButton button)
@@ -46,6 +64,7 @@ namespace com.b_velop.WoMoDiary.iOS
 
                 ViewModel.Rating = 5;
             };
+
             ButtonThumbDown.TouchUpInside += (sender, e) =>
             {
                 var color = ((UIButton)sender).BackgroundColor;
@@ -59,13 +78,6 @@ namespace com.b_velop.WoMoDiary.iOS
 
                 ViewModel.Rating = 0;
             };
-
-            PickerViewLocationType.Model.Selected(PickerViewLocationType, 0, 0);
-        }
-
-        private void PickerChangedEvent(object sender, PickerChangedEventArgs args)
-        {
-            ViewModel.Type = args.Place.Type;
         }
 
         private void Localize()
