@@ -1,16 +1,16 @@
 ﻿using Android.App;
 using Android.OS;
 using Android.Widget;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Helpers;
+
+using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "NewUserActivity")]
     public class NewUserActivity : Activity
     {
-
         public NewUserActivity()
         {
             ViewModel = ServiceLocator.Instance.Get<NewUserViewModel>();

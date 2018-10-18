@@ -12,8 +12,6 @@ namespace com.b_velop.WoMoDiary.Domain
         }
 
         public override string ToString()
-        {
-            return Name;
-        }
+            => Name;
     }
 }

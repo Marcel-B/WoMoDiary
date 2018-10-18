@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockPlaceDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockUserDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlaceDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TripsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\PlacesViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />

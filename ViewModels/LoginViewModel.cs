@@ -21,7 +21,7 @@ namespace com.b_velop.WoMoDiary.ViewModels
                 .ContinueWith(HandleAction);
         }
 
-        void HandleAction(System.Threading.Tasks.Task<WoMoDiary.Domain.User> obj)
+        private void HandleAction(System.Threading.Tasks.Task<Domain.User> obj)
         {
             var user = obj.Result;
             if (user == null)
@@ -33,12 +33,13 @@ namespace com.b_velop.WoMoDiary.ViewModels
             {
                 AppStore.Instance.User = user;
             }
-            LoginReady?.Invoke(IsValid);
+            LoginReadyCallback?.Invoke(IsValid);
         }
 
-        public Action<bool> LoginReady { get; set; }
+        public Action<bool> LoginReadyCallback { get; set; }
 
         private bool _isValid;
+
         public bool IsValid { get => _isValid; set => SetProperty(ref _isValid, value); }
 
         public string Username { get; set; }
@@ -46,6 +47,5 @@ namespace com.b_velop.WoMoDiary.ViewModels
         public string Password { get; set; }
 
         public Command LoginCommand { get; set; }
-
     }
 }

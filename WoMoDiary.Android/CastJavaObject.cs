@@ -1,4 +1,4 @@
-﻿using WoMoDiary.Domain;
+﻿using com.b_velop.WoMoDiary.Domain;
 
 namespace com.b_velop.WoMoDiary.Android
 {

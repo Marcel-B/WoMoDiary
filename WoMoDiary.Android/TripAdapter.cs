@@ -2,9 +2,9 @@
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
 using Android.App;
+using com.b_velop.WoMoDiary.Domain;
 
 namespace com.b_velop.WoMoDiary.Android
 {

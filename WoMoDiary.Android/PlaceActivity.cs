@@ -8,8 +8,6 @@ namespace com.b_velop.WoMoDiary.Android
     [Activity(Label = "PlaceActivity")]
     public class PlaceActivity : FragmentActivity
     {
-        public Toolbar Toolbar { get; set; }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -32,5 +30,8 @@ namespace com.b_velop.WoMoDiary.Android
             transaction.Commit();
             // Create your application here
         }
+
+        public Toolbar Toolbar { get; set; }
+
     }
 }

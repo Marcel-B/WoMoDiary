@@ -2,38 +2,38 @@
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using WoMoDiary.Domain;
 using System.Collections.ObjectModel;
 using Android.App;
+
+using com.b_velop.WoMoDiary.Domain;
 
 namespace com.b_velop.WoMoDiary.Android
 {
     public class PlaceAdapter : BaseAdapter
     {
-        ObservableCollection<Place> Places;
-        Context context;
         public PlaceAdapter(Context content, ObservableCollection<Place> places)
         {
             Places = places;
-            this.context = content;
+            this.Context = content;
             Places.CollectionChanged -= Places_CollectionChanged;
             Places.CollectionChanged += Places_CollectionChanged;
         }
 
+        public ObservableCollection<Place> Places { get; set; }
+        public Context Context { get; set; }
+
         void Places_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            ((Activity)context).RunOnUiThread(() => NotifyDataSetChanged());
+            ((Activity)Context).RunOnUiThread(() => NotifyDataSetChanged());
         }
-
-
 
         public override int Count => Places.Count;
 
         public override Java.Lang.Object GetItem(int position)
-        => position;
+            => position;
 
         public override long GetItemId(int position)
-        => position;
+            => position;
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
@@ -44,7 +44,7 @@ namespace com.b_velop.WoMoDiary.Android
             if (holder == null)
             {
                 holder = new PlaceAdapterViewHolder();
-                var inflater = context.GetSystemService(Context.LayoutInflaterService)
+                var inflater = Context.GetSystemService(Context.LayoutInflaterService)
                                       .JavaCast<LayoutInflater>();
                 view = inflater.Inflate(Resource.Layout.placeAdapterCellLayout, parent, false);
                 holder.PlaceName = view.FindViewById<TextView>(Resource.Id.textViewPlaceNameCell);
@@ -61,6 +61,7 @@ namespace com.b_velop.WoMoDiary.Android
 
             return view;
         }
+
         internal class PlaceAdapterViewHolder : Java.Lang.Object
         {
             public TextView PlaceName { get; set; }

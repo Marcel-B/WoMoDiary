@@ -4,12 +4,12 @@ using Android.Gms.Maps;
 using Android.Locations;
 using Android.OS;
 using Android.Widget;
-using WoMoDiary.Domain;
-using WoMoDiary.ViewModels;
 using Reces = Android.Resource;
 using Android.Graphics;
 using Android.Gms.Maps.Model;
-using WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.ViewModels;
 using Toast = Android.Widget.Toast;
 using ToastLength = Android.Widget.ToastLength;
 
@@ -22,10 +22,17 @@ namespace com.b_velop.WoMoDiary.Android
         public NewPlaceViewModel ViewModel { get; set; }
 
         public MapFragment MapFragment { get; set; }
-        public GoogleMap Map { get; set; }
+        public GoogleMap GoogleMap { get; set; }
         public LocationManager LocationManager { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+
+        public ImageButton ImageButtonThumbUp { get; set; }
+        public ImageButton ImageButtonThumbDown { get; set; }
+        public Button ButtonSaveNewPlace { get; set; }
+        public Spinner SpinnerPlaceCategory { get; set; }
+        public EditText EditTextPlaceDescription { get; set; }
+        public EditText EditTextPlaceName { get; set; }
 
         public NewPlaceActivity()
         {
@@ -42,25 +49,6 @@ namespace com.b_velop.WoMoDiary.Android
             SetStates();
             SetControllEvents();
             Localize();
-
-
-            FindViewById<EditText>(Resource.Id.editTextNewPlaceName)
-                .AfterTextChanged += (sender, args) =>
-                {
-                    if (!(sender is EditText box)) return;
-                    ViewModel.Name = box.Text;
-                };
-
-            FindViewById<EditText>(Resource.Id.editTextNewPlaceDescription)
-                .AfterTextChanged += (sender, args) =>
-                {
-                    if (!(sender is EditText box)) return;
-                    ViewModel.Description = box.Text;
-                };
-
-
-            var color = ImageButtonThumbUp.Background;
-
 
             var places = new Place[]
             {
@@ -84,11 +72,7 @@ namespace com.b_velop.WoMoDiary.Android
             //fragTx.Add(Resource.Id.mapFragmentNewPlace, _mapFragment, "mapFragmentNewPlace");
             //fragTx.Commit();
             //_mapFragment.GetMapAsync(this);
-            button.Click += (sender, args) =>
-            {
-                ViewModel.SavePlaceCommand.Execute(null);
-                StartActivity(typeof(PlaceActivity));
-            };
+
             // Create your application here
             LocationManager = GetSystemService(LocationService) as LocationManager;
             const string provider = LocationManager.GpsProvider;
@@ -120,6 +104,7 @@ namespace com.b_velop.WoMoDiary.Android
 
         private void SetControllEvents()
         {
+            var color = ImageButtonThumbUp.Background;
             ImageButtonThumbUp.Click += (sender, args) =>
             {
                 ViewModel.Rating = 4;
@@ -139,12 +124,26 @@ namespace com.b_velop.WoMoDiary.Android
                     ImageButtonThumbDown.SetBackgroundColor(Color.Green);
                 }
             };
-
             SpinnerPlaceCategory.ItemSelected += (sender, args) =>
             {
                 if (!(sender is Spinner spn)) return;
                 var place = CastJavaObject.Cast<Place>(spn.SelectedItem);
                 ViewModel.Type = place.Type;
+            };
+            EditTextPlaceName.AfterTextChanged += (sender, args) =>
+            {
+                if (!(sender is EditText box)) return;
+                ViewModel.Name = box.Text;
+            };
+            EditTextPlaceDescription.AfterTextChanged += (sender, args) =>
+            {
+                if (!(sender is EditText box)) return;
+                ViewModel.Description = box.Text;
+            };
+            ButtonSaveNewPlace.Click += (sender, args) =>
+            {
+                ViewModel.SavePlaceCommand.Execute(null);
+                StartActivity(typeof(PlaceActivity));
             };
         }
 
@@ -153,10 +152,7 @@ namespace com.b_velop.WoMoDiary.Android
             throw new NotImplementedException();
         }
 
-        public ImageButton ImageButtonThumbUp { get; set; }
-        public ImageButton ImageButtonThumbDown { get; set; }
-        public Button ButtonSaveNewPlace { get; set; }
-        public Spinner SpinnerPlaceCategory { get; set; }
+
 
 
         private void GetViews()
@@ -166,6 +162,8 @@ namespace com.b_velop.WoMoDiary.Android
             MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentNewPlace);
             ButtonSaveNewPlace = FindViewById<Button>(Resource.Id.saveNewPlaceButton);
             SpinnerPlaceCategory = FindViewById<Spinner>(Resource.Id.spinnerPlaceType);
+            EditTextPlaceDescription = FindViewById<EditText>(Resource.Id.editTextNewPlaceDescription);
+            EditTextPlaceName = FindViewById<EditText>(Resource.Id.editTextNewPlaceName);
         }
 
         protected override void OnResume()
@@ -188,7 +186,7 @@ namespace com.b_velop.WoMoDiary.Android
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
             }
-            _mapFragment.GetMapAsync(this);
+            MapFragment.GetMapAsync(this);
         }
 
         protected override void OnPause()
@@ -199,12 +197,12 @@ namespace com.b_velop.WoMoDiary.Android
 
         public void OnMapReady(GoogleMap googleMap)
         {
-            _map = googleMap;
+            GoogleMap = googleMap;
             var marker = new MarkerOptions();
             marker.SetPosition(new LatLng(Latitude, Longitude));
             marker.SetTitle("Your Location");
-            _map.AddMarker(marker);
-            _map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Latitude, Longitude), 66));
+            GoogleMap.AddMarker(marker);
+            GoogleMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Latitude, Longitude), 66));
         }
 
 
@@ -215,7 +213,7 @@ namespace com.b_velop.WoMoDiary.Android
             ViewModel.Latitude = location.Latitude;
             ViewModel.Longitude = location.Longitude;
             ViewModel.Altitude = location.Altitude;
-            _mapFragment.GetMapAsync(this);
+            MapFragment.GetMapAsync(this);
         }
 
         public void OnProviderDisabled(string provider) { }

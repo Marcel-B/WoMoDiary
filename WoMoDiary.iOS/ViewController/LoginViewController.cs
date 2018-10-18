@@ -1,26 +1,33 @@
-using com.b_velop.WoMoDiary.Helpers;
-using com.b_velop.WoMoDiary.Meta;
-using com.b_velop.WoMoDiary.ViewModels;
 using Foundation;
 using System;
 using UIKit;
+
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class LoginViewController : UIViewController
     {
-        LoginViewModel ViewModel;
         public LoginViewController(IntPtr handle) : base(handle)
         {
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
-            ViewModel.LoginReady = LoginReady;
+            ViewModel.LoginReadyCallback = LoginReady;
         }
 
-        public override void ViewDidAppear(bool animated)
+        public LoginViewModel ViewModel { get; set; }
+
+        public override void ViewDidLoad()
         {
-            base.ViewDidAppear(animated);
-            ViewModel.IsValid = false;
+            base.ViewDidLoad();
+            Localize();
+            SetStates();
+            SetControllEvents();
         }
+
+        public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
+            => segueIdentifier != "ToTrip" || ViewModel.IsValid;
 
         private void LoginReady(bool isValid)
         {
@@ -35,32 +42,6 @@ namespace com.b_velop.WoMoDiary.iOS
             }
         }
 
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
-            Localize();
-            TextFieldUsername.EditingChanged += (sender, e) =>
-            {
-                if (sender is UITextField username)
-                {
-                    ViewModel.Username = username.Text;
-                }
-            };
-            TextFieldPassword.EditingChanged += (sender, e) =>
-            {
-                if (sender is UITextField password)
-                {
-                    ViewModel.Password = password.Text;
-                }
-            };
-            ButtonLogin.TouchUpInside += (sender, e) =>
-            {
-                ViewModel.LoginCommand.Execute(null);
-                ButtonLogin.Enabled = false;
-                ButtonNewUser.Enabled = false;
-            };
-        }
-
         private void Localize()
         {
             Title = Strings.LOGIN;
@@ -70,7 +51,35 @@ namespace com.b_velop.WoMoDiary.iOS
             ButtonNewUser.SetTitle(Strings.NEW_USER, UIControlState.Normal);
         }
 
-        public override bool ShouldPerformSegue(string segueIdentifier, NSObject sender)
-            => segueIdentifier == "ToTrip" ? ViewModel.IsValid : true;
+        private void SetStates()
+        {
+            ViewModel.IsValid = false;
+        }
+
+        private void SetControllEvents()
+        {
+            TextFieldUsername.EditingChanged += (sender, e) =>
+            {
+                if (sender is UITextField username)
+                {
+                    ViewModel.Username = username.Text;
+                    ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
+                }
+            };
+            TextFieldPassword.EditingChanged += (sender, e) =>
+            {
+                if (sender is UITextField password)
+                {
+                    ViewModel.Password = password.Text;
+                    ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
+                }
+            };
+            ButtonLogin.TouchUpInside += (sender, e) =>
+            {
+                ViewModel.LoginCommand.Execute(null);
+                ButtonLogin.Enabled = false;
+                ButtonNewUser.Enabled = false;
+            };
+        }
     }
 }

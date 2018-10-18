@@ -3,8 +3,9 @@ using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.OS;
 using Android.Widget;
-using WoMoDiary.Services;
-using WoMoDiary.Domain;
+
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.Android
 {

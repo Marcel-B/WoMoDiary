@@ -2,6 +2,7 @@
 
 namespace com.b_velop.WoMoDiary.Meta
 {
+    // ReSharper disable InconsistentNaming
     public static class Strings
     {
         public static string CAMPING_SITE = "Camping Site".Translate();

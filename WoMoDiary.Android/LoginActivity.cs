@@ -2,25 +2,22 @@
 using Android.OS;
 using Android.Preferences;
 using Android.Widget;
-using WoMoDiary.Helpers;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Services;
-using WoMoDiary;
+
 using com.b_velop.WoMoDiary.Meta;
-using System;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.Android
 {
     [Activity(Label = "WoMo Diary", Theme = "@style/AppTheme", MainLauncher = true)]
     public class LoginActivity : Activity
     {
-
         public LoginActivity()
         {
             var app = new App();
             App.Initialize();
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
-            ViewModel.LoginReady = IsReady;
+            ViewModel.LoginReadyCallback = IsReady;
             ViewModel.ErrorAction = ToastMessage;
         }
 
@@ -92,18 +89,15 @@ namespace com.b_velop.WoMoDiary.Android
                 ButtonLogin.Enabled = false;
                 ButtonNewUser.Enabled = false;
             };
-
             ButtonNewUser.Click += (sender, args) =>
             {
                 StartActivity(typeof(NewUserActivity));
             };
-
             EditTextLoginUsername.TextChanged += (sender, e) =>
             {
                 ViewModel.Username = e.Text.ToString();
                 ButtonLogin.Enabled = ViewModel.LoginCommand.CanExecute(null);
             };
-
             EditTextLoginPassword.TextChanged += (sender, e) =>
             {
                 ViewModel.Password = e.Text.ToString();

@@ -2,9 +2,10 @@
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
-using WoMoDiary.Helpers;
-using WoMoDiary.Services;
-using WoMoDiary.ViewModels;
+
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.Android
 {

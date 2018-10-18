@@ -1,45 +1,64 @@
-using System;
-using UIKit;
-using CoreLocation;
-using MapKit;
-using Foundation;
+using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
 using com.b_velop.WoMoDiary.ViewModels;
-using com.b_velop.WoMoDiary.Services;
+
+using CoreLocation;
+using Foundation;
+using MapKit;
+using System;
+using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class MapViewController : UIViewController
     {
-        public NewPlaceViewModel ViewModel { get; set; }
-        public CLLocationManager LocationManager { get; set; }
-
         public MapViewController(IntPtr handle) : base(handle)
         {
-            ViewModel = new NewPlaceViewModel();
+            ViewModel = ServiceLocator.Instance.Get<NewPlaceViewModel>();
         }
 
-        public override void ViewDidAppear(bool animated)
-        {
-            base.ViewDidAppear(animated);
-            var store = AppStore.Instance;
-            if (store.CurrentTrip == null) return;
-            this.Title = Strings.NEW_PLACE;
-        }
+        public NewPlaceViewModel ViewModel { get; set; }
+        public CLLocationManager LocationManager { get; set; }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Localize();
-            var g = new UITapGestureRecognizer(() => View.EndEditing(true));
-            g.CancelsTouchesInView = false; //for iOS5
 
-            View.AddGestureRecognizer(g);
+            Localize();
+            SetStates();
+            SetControllEvents();
+
+            var gestureRecognizer = new UITapGestureRecognizer(() => View.EndEditing(true));
+            gestureRecognizer.CancelsTouchesInView = false; //for iOS5
+            View.AddGestureRecognizer(gestureRecognizer);
 
             LocationManager = new CLLocationManager();
             LocationManager.RequestWhenInUseAuthorization();
-            Map.ShowsUserLocation = true;
+        }
 
+        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
+        {
+            if (segue.DestinationViewController is LocationTypeViewController target)
+            {
+                target.ViewModel = this.ViewModel;
+            }
+        }
+
+        private void Localize()
+        {
+            Title = Strings.NEW_PLACE;
+            TextFieldName.Placeholder = Strings.ENTER_NAME;
+            TextFieldDescription.Placeholder = Strings.ENTER_DESCRIPTION;
+            ButtonSavePosition.SetTitle(Strings.NEXT, UIControlState.Normal);
+        }
+
+        private void SetStates()
+        {
+            Map.ShowsUserLocation = true;
+        }
+
+        private void SetControllEvents()
+        {
             Map.DidUpdateUserLocation += (sender, e) =>
             {
 
@@ -53,13 +72,12 @@ namespace com.b_velop.WoMoDiary.iOS
                         ViewModel.Latitude = coordinates.Latitude;
                     }
             };
-
-            TextFieldName.ShouldReturn = (textField) =>
+            TextFieldName.ShouldReturn = textField =>
             {
                 textField.ResignFirstResponder();
                 return true;
             };
-            TextFieldDescription.ShouldReturn = (textField) =>
+            TextFieldDescription.ShouldReturn = textField =>
             {
                 textField.ResignFirstResponder();
                 return true;
@@ -78,21 +96,6 @@ namespace com.b_velop.WoMoDiary.iOS
             {
                 TextFieldName.ResignFirstResponder();
             };
-        }
-
-        private void Localize()
-        {
-            TextFieldName.Placeholder = Strings.ENTER_NAME;
-            TextFieldDescription.Placeholder = Strings.ENTER_DESCRIPTION;
-            ButtonSavePosition.SetTitle(Strings.NEXT, UIControlState.Normal);
-        }
-
-        public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
-        {
-            if (segue.DestinationViewController is LocationTypeViewController target)
-            {
-                target.ViewModel = this.ViewModel;
-            }
         }
     }
 }

@@ -1,12 +1,13 @@
 ﻿using Android.OS;
 using Android.Views;
 using Android.Widget;
-using WoMoDiary.Services;
 using ListFragment = Android.Support.V4.App.ListFragment;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Helpers;
 using Toast = Android.Widget.Toast;
 using ToastLength = Android.Widget.ToastLength;
+
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -22,7 +23,6 @@ namespace com.b_velop.WoMoDiary.Android
 
         private void ToastMessage(string mssg)
             => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
-
 
         public override void OnCreate(Bundle savedInstanceState)
         {
