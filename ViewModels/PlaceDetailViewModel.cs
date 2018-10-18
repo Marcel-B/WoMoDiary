@@ -6,6 +6,11 @@ namespace com.b_velop.WoMoDiary.ViewModels
     {
         public PlaceDetailViewModel()
         {
+            PullData();
+        }
+
+        public void PullData()
+        {
             var place = AppStore.Instance.CurrentPlace;
             Name = place.Name;
             Description = place.Description;

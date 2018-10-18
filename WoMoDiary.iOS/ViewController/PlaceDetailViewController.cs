@@ -32,6 +32,7 @@ namespace com.b_velop.WoMoDiary.iOS
 
         private void SetStates()
         {
+            ViewModel.PullData();
             LabelInfo.Text = ViewModel.Description;
             Title = ViewModel.Name;
             if (ViewModel.Rating > 0)
