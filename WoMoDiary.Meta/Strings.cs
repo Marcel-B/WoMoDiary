@@ -13,11 +13,13 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string ENTER_DESCRIPTION = "Enter Description".Translate();
         public static string ENTER_NAME = "Enter Name".Translate();
         public static string ENTER_TRIP_NAME = "Enter Trip Name".Translate();
+        public static string ERROR_OCCURED_WHILE_CREATING_NEW_USER = "Error occured while creating new user".Translate();
 
         public static string HOTEL = "Hotel".Translate();
 
         public static string LOGIN = "Login".Translate();
 
+        public static string NEW_PLACE = "New Place".Translate();
         public static string NEW_TRIP = "New Trip".Translate();
         public static string NEW_USER = "New User".Translate();
         public static string NEXT = "Next".Translate();

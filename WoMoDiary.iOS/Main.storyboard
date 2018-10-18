@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4814" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="461" y="-537"/>
+            <point key="canvasLocation" x="620" y="-522"/>
         </scene>
         <scene sceneID="5068">
             <objects>
@@ -585,9 +585,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="102874" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="16" y="287" width="288" height="30"/>
                                 <state key="normal" title="Confirm"/>
-                                <connections>
-                                    <segue id="103785" destination="30217" kind="show"/>
-                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -616,6 +613,7 @@
                         <outlet property="TextFieldPassword" destination="102872" id="name-outlet-102872"/>
                         <outlet property="TextFieldConfirmPassword" destination="102873" id="name-outlet-102873"/>
                         <outlet property="ButtonConfirm" destination="102874" id="name-outlet-102874"/>
+                        <segue id="106185" destination="30217" kind="show" identifier="FromNewUserToTrips"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58536" userLabel="First Responder" sceneMemberID="firstResponder"/>

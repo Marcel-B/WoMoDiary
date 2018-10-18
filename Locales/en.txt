@@ -7,11 +7,13 @@ Description = Description
 Enter Description = Enter Description
 Enter Name = Enter Name
 Enter Trip Name = Enter Trip Name
+Error occured while creating new user = Error occured while creating new user
 
 Hotel = Hotel
 
 Login = Login
 
+New Place = New Place
 New Trip = New Trip
 New User = New User
 Next = Next

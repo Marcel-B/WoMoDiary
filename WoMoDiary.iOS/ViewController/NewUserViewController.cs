@@ -8,11 +8,53 @@ namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class NewUserViewController : UIViewController
     {
-        public NewUserViewModel ViewModel { get; set; }
 
         public NewUserViewController(IntPtr handle) : base(handle)
         {
             ViewModel = ServiceLocator.Instance.Get<NewUserViewModel>();
+            ViewModel.NewUserSucceeded = NewUserSucceeded;
+            ViewModel.ErrorAction = ShowMessage;
+        }
+
+        public NewUserViewModel ViewModel { get; set; }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            SetStates();
+            Localize();
+            SetControllEvents();
+        }
+
+        private void SetStates()
+        {
+            ButtonConfirm.Enabled = false;
+        }
+
+        private void SwitchStates(bool newState)
+        {
+            TextFieldEmail.Enabled = newState;
+            TextFieldPassword.Enabled = newState;
+            TextFieldUsername.Enabled = newState;
+            TextFieldConfirmPassword.Enabled = newState;
+            ButtonConfirm.Enabled = newState;
+        }
+
+        private void NewUserSucceeded(bool success)
+        {
+            if (success)
+            {
+                PerformSegue("FromNewUserToTrips", this);
+            }
+            else
+            {
+                SwitchStates(true);
+            }
+        }
+
+        private void ShowMessage(string message)
+        {
+
         }
 
         private void Localize()
@@ -24,12 +66,11 @@ namespace com.b_velop.WoMoDiary.iOS
             Title = Strings.NEW_USER;
         }
 
-        public override void ViewDidLoad()
+        private void SetControllEvents()
         {
-            base.ViewDidLoad();
-            Localize();
             ButtonConfirm.TouchUpInside += (sender, e) =>
             {
+                SwitchStates(false);
                 ViewModel.ConfirmNewUserCommand.Execute(null);
             };
 
@@ -38,6 +79,7 @@ namespace com.b_velop.WoMoDiary.iOS
                 if (sender is UITextField textView)
                 {
                     ViewModel.Email = textView.Text;
+                    ButtonConfirm.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
                 }
             };
 
@@ -46,6 +88,7 @@ namespace com.b_velop.WoMoDiary.iOS
                 if (sender is UITextField textView)
                 {
                     ViewModel.Password = textView.Text;
+                    ButtonConfirm.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
                 }
             };
 
@@ -54,6 +97,7 @@ namespace com.b_velop.WoMoDiary.iOS
                 if (sender is UITextField textView)
                 {
                     ViewModel.Username = textView.Text;
+                    ButtonConfirm.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
                 }
             };
 
@@ -62,6 +106,7 @@ namespace com.b_velop.WoMoDiary.iOS
                 if (sender is UITextField textView)
                 {
                     ViewModel.ConfirmPassword = textView.Text;
+                    ButtonConfirm.Enabled = ViewModel.ConfirmNewUserCommand.CanExecute(null);
                 }
             };
         }

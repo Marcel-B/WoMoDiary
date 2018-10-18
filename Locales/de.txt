@@ -7,11 +7,13 @@ Description = Beschreibung
 Enter Description = Beschreibung eingeben
 Enter Name = Name eingeben
 Enter Trip Name = Name der Reise eingeben
+Error occured while creating new user = Fehler beim anlegen des Benutzers
 
 Hotel = Hotel
 
 Login = Anmelden
 
+New Place = Neuer Ort
 New Trip = Neue Reise
 New User = Neuer Benutzer
 Next = Weiter

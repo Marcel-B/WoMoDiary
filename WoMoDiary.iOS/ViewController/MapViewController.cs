@@ -24,7 +24,7 @@ namespace com.b_velop.WoMoDiary.iOS
             base.ViewDidAppear(animated);
             var store = AppStore.Instance;
             if (store.CurrentTrip == null) return;
-            this.Title = $"{store.CurrentTrip.Name}";
+            this.Title = Strings.NEW_PLACE;
         }
 
         public override void ViewDidLoad()

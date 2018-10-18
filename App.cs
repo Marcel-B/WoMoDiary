@@ -10,7 +10,13 @@ namespace WoMoDiary
 {
     public class App
     {
+
+#if DEBUG
+        public static bool UseMockDataStore = true;
+#else
         public static bool UseMockDataStore = false;
+#endif
+
         public static bool Init { get; set; }
         public static bool AllDataFetched { get; set; }
         public const string BACKEND_URL = "https://womo.marcelbenders.de";
@@ -19,7 +25,7 @@ namespace WoMoDiary
         {
             AllDataFetched = false;
             Init = false;
-            App.LogOutLn(GetType().GetTypeInfo().Assembly); 
+            App.LogOutLn(GetType().GetTypeInfo().Assembly);
         }
 
         /// <summary>
@@ -49,18 +55,29 @@ namespace WoMoDiary
             ServiceLocator.Instance.Register<LoginViewModel, LoginViewModel>();
             ServiceLocator.Instance.Register<NewTripViewModel, NewTripViewModel>();
 
+            LogOutLn("Logger test", typeof(App).Name);
+
             I18N.Current
                 .SetNotFoundSymbol("$") // Optional: when a key is not found, it will appear as $key$ (defaults to "$")
                 .SetFallbackLocale("en") // Optional but recommended: locale to load in case the system locale is not supported
                 .SetThrowWhenKeyNotFound(true) // Optional: Throw an exception when keys are not found (recommended only for debugging)
-                .SetLogger(text => App.LogOutLn(text)) // action to output traces
+                .SetLogger(text => App.LogOutLn(text.Substring(7), typeof(I18N).Name)) // action to output traces
                 .SetResourcesFolder("Locales") // Optional: The directory containing the resource files (defaults to "Locales")
                 .Init(typeof(App).GetTypeInfo().Assembly); // assembly where locales live
 
             return;
         }
 
-        public static void LogOutLn(object mssg)
-            => System.Diagnostics.Debug.WriteLine($"[{DateTime.Now}] - {mssg}");
+        public static void LogOutLn(object mssg, object sender = null)
+        {
+            if (sender == null)
+                System.Diagnostics.Debug.WriteLine($"[{DateTime.Now}] - {mssg}");
+            else
+            {
+                var ob = $"[{sender}]";
+                ob = ob.PadRight(12);
+                System.Diagnostics.Debug.WriteLine($"[{DateTime.Now}] - {ob} {mssg}");
+            }
+        }
     }
 }
