@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using com.b_velop.WoMoDiary.Domain;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
-using WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public class UserDataStore : CloudDataStore<User>
     {

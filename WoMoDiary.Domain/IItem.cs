@@ -1,5 +1,6 @@
 ﻿using System;
-namespace WoMoDiary.Domain
+
+namespace com.b_velop.WoMoDiary.Domain
 {
     public interface IItem
     {

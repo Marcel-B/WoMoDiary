@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public class MockUserDataStore : IDataStore<User>
     {

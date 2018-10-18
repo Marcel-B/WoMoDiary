@@ -1,5 +1,5 @@
 ﻿using System;
-namespace WoMoDiary.Helpers
+namespace com.b_velop.WoMoDiary.Helpers
 {
     public static class PasswordHelper
     {

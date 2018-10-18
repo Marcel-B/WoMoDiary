@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public interface IDataStore<T> where T : IItem
     {

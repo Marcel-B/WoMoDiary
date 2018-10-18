@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using WoMoDiary.Domain;
-using System.Threading.Tasks;
-using WoMoDiary.Services;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Services;
 
-namespace WoMoDiary.ViewModels
+namespace com.b_velop.WoMoDiary.ViewModels
 {
     public class PlacesViewModel : BaseViewModel
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using com.b_velop.WoMoDiary.Domain;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
-using WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public abstract class CloudDataStore<T> : IDataStore<T> where T : IItem
     {

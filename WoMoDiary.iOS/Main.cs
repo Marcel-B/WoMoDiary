@@ -1,8 +1,7 @@
 ﻿using Foundation;
 using UIKit;
 using System;
-using WoMoDiary.Services;
-using WoMoDiary;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
@@ -19,9 +18,9 @@ namespace com.b_velop.WoMoDiary.iOS
                 plist.SetString(Guid.NewGuid().ToString(), "UserId");
 
             if (plist["Username"] != null)
-                App.LogOutLn($"We have an User named {plist["Username"]}");
+                App.LogOutLn($"We have an User named {plist["Username"]}", typeof(Application).Name);
             else
-                App.LogOutLn($"No User");
+                App.LogOutLn($"No User", typeof(Application).Name);
 
             if (App.UseMockDataStore)
                 plist.SetString("569dd649-f9f8-4990-b31b-45d43dda82c2", "UserId");

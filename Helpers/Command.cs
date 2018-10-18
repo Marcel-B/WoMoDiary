@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WoMoDiary.Helpers
+namespace com.b_velop.WoMoDiary.Helpers
 {
     public sealed class Command<T> : Command
     {

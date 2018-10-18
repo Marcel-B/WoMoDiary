@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public class MockTripDataStore : IDataStore<Trip>
     {

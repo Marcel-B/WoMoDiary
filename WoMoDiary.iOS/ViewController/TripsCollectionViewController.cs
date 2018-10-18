@@ -4,12 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIKit;
-using WoMoDiary.Domain;
-using WoMoDiary.Services;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Helpers;
-using WoMoDiary;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {

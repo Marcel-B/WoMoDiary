@@ -2,10 +2,10 @@ using System;
 using UIKit;
 using CoreLocation;
 using MapKit;
-using WoMoDiary.Services;
-using WoMoDiary.ViewModels;
 using Foundation;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {

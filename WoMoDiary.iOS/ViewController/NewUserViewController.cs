@@ -1,8 +1,8 @@
 using System;
 using UIKit;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Helpers;
 
 namespace com.b_velop.WoMoDiary.iOS
 {

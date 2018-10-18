@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
 using System.Linq;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public class MockPlaceDataStore : IDataStore<Place>
     {

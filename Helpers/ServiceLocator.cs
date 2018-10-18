@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WoMoDiary.Helpers
+namespace com.b_velop.WoMoDiary.Helpers
 {
     public sealed class ServiceLocator
     {

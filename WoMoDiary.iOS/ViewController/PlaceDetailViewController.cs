@@ -1,8 +1,8 @@
+using com.b_velop.WoMoDiary.Services;
 using CoreLocation;
 using MapKit;
 using System;
 using UIKit;
-using WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {

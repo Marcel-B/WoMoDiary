@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Collections.ObjectModel;
-using WoMoDiary.Domain;
-using WoMoDiary.Services;
-using WoMoDiary.Helpers;
-using System.Threading.Tasks;
+using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.ViewModels
+namespace com.b_velop.WoMoDiary.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

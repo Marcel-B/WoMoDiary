@@ -1,10 +1,10 @@
 ﻿using System;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
-using WoMoDiary.Services;
+using com.b_velop.WoMoDiary.Services;
 
-namespace WoMoDiary.ViewModels
+namespace com.b_velop.WoMoDiary.ViewModels
 {
     public class NewUserViewModel : BaseViewModel
     {

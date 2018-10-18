@@ -1,11 +1,10 @@
 using Foundation;
 using System;
 using UIKit;
-using WoMoDiary.Services;
-using WoMoDiary.ViewModels;
-using WoMoDiary.Helpers;
 using System.Collections.Specialized;
-using WoMoDiary;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
-using WoMoDiary.Services;
-namespace WoMoDiary.ViewModels
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Services;
+
+namespace com.b_velop.WoMoDiary.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
@@ -21,7 +21,7 @@ namespace WoMoDiary.ViewModels
                 .ContinueWith(HandleAction);
         }
 
-        void HandleAction(System.Threading.Tasks.Task<Domain.User> obj)
+        void HandleAction(System.Threading.Tasks.Task<WoMoDiary.Domain.User> obj)
         {
             var user = obj.Result;
             if (user == null)

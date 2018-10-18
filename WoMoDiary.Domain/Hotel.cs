@@ -1,6 +1,6 @@
 ﻿using com.b_velop.WoMoDiary.Meta;
 
-namespace WoMoDiary.Domain
+namespace com.b_velop.WoMoDiary.Domain
 {
     public class Hotel : Place
     {

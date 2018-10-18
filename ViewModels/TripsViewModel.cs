@@ -1,11 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
-using WoMoDiary.Services;
 using System.Linq;
+using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.ViewModels
+namespace com.b_velop.WoMoDiary.ViewModels
 {
     public class TripsViewModel : BaseViewModel
     {

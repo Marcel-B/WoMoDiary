@@ -1,8 +1,8 @@
-﻿using WoMoDiary.Domain;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.Services
+namespace com.b_velop.WoMoDiary.Services
 {
     public class AppStore
     {

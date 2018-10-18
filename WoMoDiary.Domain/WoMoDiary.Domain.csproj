@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>com.b_velop.WoMoDiary.Domain</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

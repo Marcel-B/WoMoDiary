@@ -1,4 +1,4 @@
-﻿namespace WoMoDiary.Domain
+﻿namespace com.b_velop.WoMoDiary.Domain
 {
     public enum PlaceType
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Reflection;
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.ViewModels;
 using I18NPortable;
-using WoMoDiary.Domain;
-using WoMoDiary.Helpers;
-using WoMoDiary.Services;
-using WoMoDiary.ViewModels;
 
-namespace WoMoDiary
+namespace com.b_velop.WoMoDiary
 {
     public class App
     {

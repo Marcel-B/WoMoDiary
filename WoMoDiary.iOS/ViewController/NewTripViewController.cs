@@ -1,7 +1,7 @@
 using System;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
 using UIKit;
-using WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
