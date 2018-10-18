@@ -15,6 +15,7 @@ namespace com.b_velop.WoMoDiary.Android
         {
             ViewModel = ServiceLocator.Instance.Get<NewUserViewModel>();
             ViewModel.ErrorAction = ErrorMessage;
+            ViewModel.NewUserSucceeded = NewUserSucceeded;
         }
 
         public NewUserViewModel ViewModel { get; set; }
@@ -35,6 +36,18 @@ namespace com.b_velop.WoMoDiary.Android
             SetControllEvents();
         }
 
+        private void NewUserSucceeded(bool success)
+        {
+            if (success)
+            {
+                StartActivity(typeof(TripActivity));
+                Finish();
+            }
+            else
+            {
+
+            }
+        }
         private void ErrorMessage(string message)
         {
             Toast.MakeText(this, message, ToastLength.Long).Show();

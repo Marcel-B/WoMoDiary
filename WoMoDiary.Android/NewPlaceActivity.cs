@@ -12,6 +12,7 @@ using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.ViewModels;
 using Toast = Android.Widget.Toast;
 using ToastLength = Android.Widget.ToastLength;
+using com.b_velop.WoMoDiary.Meta;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -19,26 +20,25 @@ namespace com.b_velop.WoMoDiary.Android
     [Activity(Label = "NewPlaceActivity")]
     public class NewPlaceActivity : Activity, IOnMapReadyCallback, ILocationListener
     {
-        public NewPlaceViewModel ViewModel { get; set; }
-
-        public MapFragment MapFragment { get; set; }
-        public GoogleMap GoogleMap { get; set; }
-        public LocationManager LocationManager { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
-
-        public ImageButton ImageButtonThumbUp { get; set; }
-        public ImageButton ImageButtonThumbDown { get; set; }
-        public Button ButtonSaveNewPlace { get; set; }
-        public Spinner SpinnerPlaceCategory { get; set; }
-        public EditText EditTextPlaceDescription { get; set; }
-        public EditText EditTextPlaceName { get; set; }
-
         public NewPlaceActivity()
         {
             ViewModel = ServiceLocator.Instance.Get<NewPlaceViewModel>();
             ViewModel.ErrorAction = ToastMessage;
         }
+
+        public NewPlaceViewModel ViewModel { get; set; }
+
+        public MapFragment MapFragment { get; set; }
+        public GoogleMap GoogleMap { get; set; }
+        public LocationManager LocationManager { get; set; }
+
+        public ImageButton ImageButtonThumbUp { get; set; }
+        public ImageButton ImageButtonThumbDown { get; set; }
+
+        public Button ButtonSaveNewPlace { get; set; }
+        public Spinner SpinnerPlaceCategory { get; set; }
+        public EditText EditTextPlaceDescription { get; set; }
+        public EditText EditTextPlaceName { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -49,49 +49,13 @@ namespace com.b_velop.WoMoDiary.Android
             SetStates();
             SetControllEvents();
             Localize();
+            MapFragment.GetMapAsync(this);
 
-            var places = new Place[]
-            {
-                new Stellpatz(),
-                new CampingPlace(),
-                new Hotel(),
-                new Poi(),
-                new Restaurant()
-            };
-            var adapter = new ArrayAdapter<Place>(this,
-                Reces.Layout.SimpleSpinnerItem, places);
 
-            SpinnerPlaceCategory.Adapter = adapter;
-
-            //var mapOptions = new GoogleMapOptions()
-            //    .InvokeMapType(GoogleMap.MapTypeSatellite)
-            //    .InvokeZoomControlsEnabled(false)
-            //    .InvokeCompassEnabled(true);
             //var fragTx = FragmentManager.BeginTransaction();
             //_mapFragment = MapFragment.NewInstance(mapOptions);
             //fragTx.Add(Resource.Id.mapFragmentNewPlace, _mapFragment, "mapFragmentNewPlace");
             //fragTx.Commit();
-            //_mapFragment.GetMapAsync(this);
-
-            // Create your application here
-            LocationManager = GetSystemService(LocationService) as LocationManager;
-            const string provider = LocationManager.GpsProvider;
-            try
-            {
-                if (LocationManager.IsProviderEnabled(provider))
-                    LocationManager.RequestLocationUpdates(provider, 500, 1, this);
-                var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
-                Latitude = location.Latitude;
-                Longitude = location.Longitude;
-                ViewModel.Latitude = location.Latitude;
-                ViewModel.Longitude = location.Longitude;
-                ViewModel.Altitude = location.Altitude;
-            }
-            catch (Exception e)
-            {
-                System.Diagnostics.Debug.WriteLine(e.Message);
-            }
-            MapFragment.GetMapAsync(this);
         }
 
         private void ToastMessage(string mssg)
@@ -99,7 +63,9 @@ namespace com.b_velop.WoMoDiary.Android
 
         private void Localize()
         {
-            throw new NotImplementedException();
+            ButtonSaveNewPlace.Text = Strings.SAVE_POSITION;
+            EditTextPlaceName.Hint = Strings.ENTER_NAME;
+            EditTextPlaceDescription.Hint = Strings.ENTER_DESCRIPTION;
         }
 
         private void SetControllEvents()
@@ -149,11 +115,43 @@ namespace com.b_velop.WoMoDiary.Android
 
         private void SetStates()
         {
-            throw new NotImplementedException();
+            var places = new Place[]
+             {
+                new Stellpatz(),
+                new CampingPlace(),
+                new Hotel(),
+                new Poi(),
+                new Restaurant()
+             };
+            var adapter = new ArrayAdapter<Place>(this,
+                Reces.Layout.SimpleSpinnerItem, places);
+
+            SpinnerPlaceCategory.Adapter = adapter;
+
+            LocationManager = GetSystemService(LocationService) as LocationManager;
+            const string provider = LocationManager.GpsProvider;
+            try
+            {
+                if (LocationManager.IsProviderEnabled(provider))
+                    LocationManager.RequestLocationUpdates(provider, 500, 1, this);
+                var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
+                if (location == null)
+                {
+                    App.LogOutLn("No location", GetType().Name);
+                }
+                else
+                {
+                    ViewModel.Latitude = location.Latitude;
+                    ViewModel.Longitude = location.Longitude;
+                    ViewModel.Altitude = location.Altitude;
+                }
+
+            }
+            catch (Exception e)
+            {
+                App.LogOutLn(e.Message, GetType().Name);
+            }
         }
-
-
-
 
         private void GetViews()
         {
@@ -164,6 +162,7 @@ namespace com.b_velop.WoMoDiary.Android
             SpinnerPlaceCategory = FindViewById<Spinner>(Resource.Id.spinnerPlaceType);
             EditTextPlaceDescription = FindViewById<EditText>(Resource.Id.editTextNewPlaceDescription);
             EditTextPlaceName = FindViewById<EditText>(Resource.Id.editTextNewPlaceName);
+
         }
 
         protected override void OnResume()
@@ -176,15 +175,20 @@ namespace com.b_velop.WoMoDiary.Android
                 if (LocationManager.IsProviderEnabled(provider))
                     LocationManager.RequestLocationUpdates(provider, 500, 1, this);
                 var location = LocationManager.GetLastKnownLocation(LocationManager.NetworkProvider);
-                Latitude = location.Latitude;
-                Longitude = location.Longitude;
-                ViewModel.Latitude = location.Latitude;
-                ViewModel.Longitude = location.Longitude;
-                ViewModel.Altitude = location.Altitude;
+                if (location == null)
+                {
+                    App.LogOutLn("No Location received", GetType().Name);
+                }
+                else
+                {
+                    ViewModel.Latitude = location.Latitude;
+                    ViewModel.Longitude = location.Longitude;
+                    ViewModel.Altitude = location.Altitude;
+                }
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.Message);
+                App.LogOutLn(e.Message, GetType().Name);
             }
             MapFragment.GetMapAsync(this);
         }
@@ -198,18 +202,55 @@ namespace com.b_velop.WoMoDiary.Android
         public void OnMapReady(GoogleMap googleMap)
         {
             GoogleMap = googleMap;
-            var marker = new MarkerOptions();
-            marker.SetPosition(new LatLng(Latitude, Longitude));
-            marker.SetTitle("Your Location");
-            GoogleMap.AddMarker(marker);
-            GoogleMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Latitude, Longitude), 66));
-        }
+            GoogleMap.MapType = GoogleMap.MapTypeNormal;
+            GoogleMap.PoiClick += (sender, e) =>
+            {
+                EditTextPlaceName.Text = e.Poi.Name;
+                ViewModel.Longitude = e.Poi.LatLng.Longitude;
+                ViewModel.Latitude = e.Poi.LatLng.Latitude;
+                MapFragment.GetMapAsync(this);
+            };
+            // to remove old markers
+            GoogleMap.Clear();
 
+            //var mapOptions = new GoogleMapOptions()
+               //.InvokeMapType(GoogleMap.MapTypeSatellite)
+               //.InvokeZoomControlsEnabled(false)
+               //.InvokeCompassEnabled(true);
+
+            //            GoogleMap.SetMapStyle(new MapStyleOptions(@"[{""featureType"": ""all"",
+            //    ""stylers"": [
+            //      { ""color"": ""#C0C0C0"" }
+            //    ]
+            //  },{
+            //    ""featureType"": ""road.arterial"",
+            //    ""elementType"": ""geometry"",
+            //    ""stylers"": [
+            //      { ""color"": ""#CCFFFF"" }
+            //    ]
+            //  },{
+            //    ""featureType"": ""landscape"",
+            //    ""elementType"": ""labels"",
+            //    ""stylers"": [
+            //      { ""visibility"": ""off"" }
+            //    ]
+            //  }
+            //]"));
+            GoogleMap.UiSettings.MyLocationButtonEnabled = true;
+
+            var marker = GoogleMap.AddMarker(
+                new MarkerOptions()
+                    .SetPosition(new LatLng(ViewModel.Latitude, ViewModel.Longitude))
+                    .SetTitle(Strings.YOU_ARE_HERE)
+            );
+
+            GoogleMap.MoveCamera(
+                CameraUpdateFactory.NewLatLngZoom(
+                    new LatLng(ViewModel.Latitude, ViewModel.Longitude), 17));
+        }
 
         public void OnLocationChanged(Location location)
         {
-            Latitude = location.Latitude;
-            Longitude = location.Longitude;
             ViewModel.Latitude = location.Latitude;
             ViewModel.Longitude = location.Longitude;
             ViewModel.Altitude = location.Altitude;

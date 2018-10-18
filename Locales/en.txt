@@ -30,7 +30,7 @@ Restaurant = Restaurant
 Save = Save
 Save New User = Save new user
 Save Position = Save Position
-Select Place Category = Kategorie wählen
+Select Place Category = Select Category
 Shoot = Shoot
 
 Trip = Trip
@@ -39,4 +39,5 @@ Trips = Trips
 
 Username = Username
 
+You Are Here = You Are Here
 Your Position = Your Position

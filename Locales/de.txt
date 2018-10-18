@@ -39,4 +39,5 @@ Trips = Reisen
 
 Username = Benutzername
 
+You Are Here = Du bist hier
 Your Position = Deine Position

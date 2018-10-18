@@ -23,10 +23,11 @@ namespace com.b_velop.WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            PickerViewLocationType.Model = new LocationTypePickerViewModel(PickerChangedEvent);
+
             Localize();
             SetStates();
             SetControllEvents();
-            PickerViewLocationType.Model = new LocationTypePickerViewModel(PickerChangedEvent);
         }
 
         private void PickerChangedEvent(object sender, PickerChangedEventArgs args)

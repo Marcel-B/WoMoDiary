@@ -46,6 +46,7 @@ namespace com.b_velop.WoMoDiary.Meta
 
         public static string USERNAME = "Username".Translate();
 
+        public static string YOU_ARE_HERE = "You Are Here".Translate();
         public static string YOUR_POSITION = "Your Position".Translate();
     }
 }
