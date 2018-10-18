@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WoMoDiary.BackEnd.Migrations
+namespace com.b_velop.WoMoDiary.BackEnd.Migrations
 {
     public partial class InitialCreate : Migration
     {

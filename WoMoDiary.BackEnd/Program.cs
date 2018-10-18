@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
 
-namespace WoMoDiary.BackEnd
+namespace com.b_velop.WoMoDiary.BackEnd
 {
     public class Program
     {

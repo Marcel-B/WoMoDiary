@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
-using WoMoDiary.Domain;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.BackEnd.Controllers
+namespace com.b_velop.WoMoDiary.BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

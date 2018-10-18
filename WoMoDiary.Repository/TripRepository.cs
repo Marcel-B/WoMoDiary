@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using System.Threading.Tasks;
-using WoMoDiary.Domain;
-using System.Net.Http;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.Repository
+namespace com.b_velop.WoMoDiary.Repository
 {
     public interface IRepository
     {

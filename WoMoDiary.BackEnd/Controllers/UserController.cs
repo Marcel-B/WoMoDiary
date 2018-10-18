@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WoMoDiary.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using com.b_velop.WoMoDiary.Domain;
 
-namespace WoMoDiary.BackEnd.Controllers
+namespace com.b_velop.WoMoDiary.BackEnd.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

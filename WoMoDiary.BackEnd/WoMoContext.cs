@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WoMoDiary.Domain;
+﻿using com.b_velop.WoMoDiary.Domain;
+using Microsoft.EntityFrameworkCore;
 
-namespace WoMoDiary.BackEnd
+namespace com.b_velop.WoMoDiary.BackEnd
 {
     public class WoMoContext : DbContext
     {
