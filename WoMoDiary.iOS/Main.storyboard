@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4133">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -177,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="-407"/>
+            <point key="canvasLocation" x="1012" y="-773"/>
         </scene>
         <scene sceneID="9855">
             <objects>
@@ -421,14 +421,6 @@
                         <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1"/>
                     </collectionView>
-                    <navigationItem id="30256" key="navigationItem" largeTitleDisplayMode="always">
-                        <barButtonItem key="rightBarButtonItem" id="34649" image="Motorhome">
-                            <connections>
-                                <segue id="34686" destination="4812" kind="show"/>
-                            </connections>
-                            <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
-                        </barButtonItem>
-                    </navigationItem>
                     <tabBarItem key="tabBarItem" title="Item" id="106919"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
@@ -488,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54662" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1888" y="-450"/>
+            <point key="canvasLocation" x="2137" y="-450"/>
         </scene>
         <scene sceneID="58526">
             <objects>
@@ -642,8 +634,11 @@
                         <outlet property="BarButtonItemAddTrip" destination="112684" id="name-outlet-112684"/>
                     </connections>
                     <navigationItem title="Title" id="112683" key="navigationItem">
-                        <barButtonItem key="rightBarButtonItem" id="112684" style="done" title="Add">
+                        <barButtonItem key="rightBarButtonItem" id="112684" style="done" image="Motorhome">
                             <color key="tintColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
+                            <connections>
+                                <segue id="121850" destination="4812" kind="show"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tabBarController>
@@ -686,4 +681,13 @@
         </scene>
     </scenes>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1"/>
+    <resources>
+        <image name="Position" width="32" height="32"/>
+        <image name="Map" width="32" height="32"/>
+        <image name="Motorhome" width="30" height="30"/>
+        <image name="Poi" width="30" height="30"/>
+        <image name="ThumbUp" width="30" height="30"/>
+        <image name="ThumbDown" width="30" height="30"/>
+        <image name="Image" width="30" height="30"/>
+    </resources>
 </document>
