@@ -6,8 +6,8 @@ namespace com.b_velop.WoMoDiary.iOS
 {
     public class PlaceAnnotation : MKAnnotation
     {
-        Place _place;
-        CLLocationCoordinate2D _coord;
+        private readonly Place _place;
+        private readonly CLLocationCoordinate2D _coord;
 
         public PlaceAnnotation(Place place,
         CLLocationCoordinate2D coord)
@@ -24,6 +24,5 @@ namespace com.b_velop.WoMoDiary.iOS
 
         public override CLLocationCoordinate2D Coordinate
              => _coord;
-
     }
 }

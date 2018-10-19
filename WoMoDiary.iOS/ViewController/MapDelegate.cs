@@ -50,7 +50,7 @@ namespace com.b_velop.WoMoDiary.iOS
 
                 venueView = new UIImageView();
                 venueView.ContentMode = UIViewContentMode.ScaleAspectFit;
-                venueImage = UIImage.FromFile("image/venue.png");
+                //venueImage = UIImage.FromFile("image/venue.png");
                 venueView.Image = venueImage;
                 view.AddSubview(venueView);
 
