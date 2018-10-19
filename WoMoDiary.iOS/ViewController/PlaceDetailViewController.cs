@@ -40,8 +40,8 @@ namespace com.b_velop.WoMoDiary.iOS
             else
                 ImageRating.Image = UIImage.FromBundle("ThumbDown");
 
-            LocationManager = new CLLocationManager();
-            LocationManager.RequestWhenInUseAuthorization();
+            //LocationManager = new CLLocationManager();
+            //LocationManager.RequestWhenInUseAuthorization();
 
             var span = new MKCoordinateSpan(.015, .015);
             var coordinates = new CLLocationCoordinate2D(ViewModel.Latitude, ViewModel.Longitude);

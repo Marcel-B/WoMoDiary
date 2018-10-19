@@ -52,8 +52,7 @@ namespace com.b_velop.WoMoDiary.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-            Title = Strings.TRIPS;
-            NavigationItem.SetHidesBackButton(true, false);
+           NavigationItem.Title = Strings.TRIPS;
             CollectionView.ReloadData();
         }
 

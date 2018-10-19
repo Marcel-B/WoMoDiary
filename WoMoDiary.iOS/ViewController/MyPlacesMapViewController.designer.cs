@@ -11,18 +11,18 @@ using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
-    [Register ("TripsViewController")]
-    partial class PlacesViewController
+    [Register ("MyPlacesMapViewController")]
+    partial class MyPlacesMapViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MapKit.MKMapView MapViewPlaces { get; set; }
+        MapKit.MKMapView MapViewMyPlaces { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (MapViewPlaces != null) {
-                MapViewPlaces.Dispose ();
-                MapViewPlaces = null;
+            if (MapViewMyPlaces != null) {
+                MapViewMyPlaces.Dispose ();
+                MapViewMyPlaces = null;
             }
         }
     }

@@ -55,6 +55,10 @@ namespace com.b_velop.WoMoDiary.iOS
         private void SetStates()
         {
             Map.ShowsUserLocation = true;
+            Map.DidSelectAnnotationView += (sender, e) =>
+            {
+                App.LogOutLn("TestTest");
+            };
         }
 
         private void SetControllEvents()

@@ -31,15 +31,19 @@ namespace com.b_velop.WoMoDiary.iOS
 
         private void LoginReady(bool isValid)
         {
-            if (isValid)
-                BeginInvokeOnMainThread(() =>
-                {
-                    PerformSegue("ToTrip", this);
-                });
-            else
+            BeginInvokeOnMainThread(() =>
             {
-                ButtonLogin.Enabled = true;
-            }
+
+                if (isValid)
+                    BeginInvokeOnMainThread(() =>
+                    {
+                        PerformSegue("ToTrip", this);
+                    });
+                else
+                {
+                    ButtonLogin.Enabled = true;
+                }
+            });
         }
 
         private void Localize()

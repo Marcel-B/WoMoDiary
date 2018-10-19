@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4814" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="620" y="-522"/>
+            <point key="canvasLocation" x="664" y="301"/>
         </scene>
         <scene sceneID="5068">
             <objects>
@@ -95,7 +95,7 @@
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5073" reuseIdentifier="MyCell" customClass="TripsTableViewCell" rowHeight="100">
-                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="216" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5073" id="5074">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
@@ -157,6 +157,10 @@
                             <outlet property="dataSource" destination="5069" id="5071"/>
                             <outlet property="delegate" destination="5069" id="5072"/>
                         </connections>
+                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="112102" key="tableHeaderView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </mapView>
                     </tableView>
                     <tabBarItem key="tabBarItem" id="5108" image="Position" selectedImage="Poi"/>
                     <navigationItem title="Foobar" id="53177" key="navigationItem" largeTitleDisplayMode="always">
@@ -167,10 +171,13 @@
                             <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="MapViewPlaces" destination="112102" id="name-outlet-112102"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1059" y="-1407"/>
+            <point key="canvasLocation" x="1121" y="-407"/>
         </scene>
         <scene sceneID="9855">
             <objects>
@@ -240,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9858" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1528" y="-442"/>
+            <point key="canvasLocation" x="1548" y="265"/>
         </scene>
         <scene sceneID="15290">
             <objects>
@@ -334,7 +341,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15293" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2175" y="-866"/>
+            <point key="canvasLocation" x="2193" y="252"/>
         </scene>
         <scene sceneID="30216">
             <objects>
@@ -422,11 +429,12 @@
                             <color key="tintColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="106919"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30223" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="477" y="-1394"/>
+            <point key="canvasLocation" x="1553" y="-1053"/>
         </scene>
         <scene sceneID="54659">
             <objects>
@@ -480,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54662" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-1509"/>
+            <point key="canvasLocation" x="1888" y="-450"/>
         </scene>
         <scene sceneID="58526">
             <objects>
@@ -538,8 +546,8 @@
                         <outlet property="TextFieldUsername" destination="58657" id="name-outlet-58657"/>
                         <outlet property="TextFieldPassword" destination="58658" id="name-outlet-58658"/>
                         <outlet property="ButtonLogin" destination="58594" id="name-outlet-58594"/>
-                        <segue id="93646" destination="30217" kind="show" identifier="ToTrip"/>
                         <outlet property="ButtonNewUser" destination="58662" id="name-outlet-58662"/>
+                        <segue id="106884" destination="106742" kind="show" identifier="ToTrip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58529" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -613,12 +621,62 @@
                         <outlet property="TextFieldPassword" destination="102872" id="name-outlet-102872"/>
                         <outlet property="TextFieldConfirmPassword" destination="102873" id="name-outlet-102873"/>
                         <outlet property="ButtonConfirm" destination="102874" id="name-outlet-102874"/>
-                        <segue id="106185" destination="30217" kind="show" identifier="FromNewUserToTrips"/>
+                        <segue id="106970" destination="106742" kind="show" identifier="FromNewUserToTrips"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58536" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="159" y="240"/>
+        </scene>
+        <scene sceneID="106741">
+            <objects>
+                <tabBarController id="106742" sceneMemberID="viewController" customClass="TabBarViewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="106745">
+                        <rect key="frame" x="0.0" y="430" width="320" height="50"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue id="106920" destination="30217" kind="relationship" relationship="viewControllers"/>
+                        <segue id="109731" destination="109683" kind="relationship" relationship="viewControllers"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="106746" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="-1037"/>
+        </scene>
+        <scene sceneID="109682">
+            <objects>
+                <viewController id="109683" sceneMemberID="viewController" customClass="MyPlacesMapViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="109680"/>
+                        <viewControllerLayoutGuide type="bottom" id="109681"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="109684">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="109733" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="135" width="288" height="295"/>
+                            </mapView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="109734" firstItem="109733" firstAttribute="top" secondItem="109680" secondAttribute="bottom" constant="13"/>
+                            <constraint id="109735" firstItem="109733" firstAttribute="trailing" secondItem="109684" secondAttribute="trailingMargin"/>
+                            <constraint id="109736" firstItem="109733" firstAttribute="leading" secondItem="109684" secondAttribute="leadingMargin"/>
+                            <constraint id="109737" firstItem="109733" firstAttribute="bottom" secondItem="109681" secondAttribute="top"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Karte" id="109730" selectedImage="Map" image="Map"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="MapViewMyPlaces" destination="109733" id="name-outlet-109733"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="109685" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="-1561"/>
         </scene>
     </scenes>
     <resources>

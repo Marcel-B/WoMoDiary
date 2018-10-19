@@ -419,6 +419,14 @@
     <Compile Include="ViewController\NewUserViewController.designer.cs">
       <DependentUpon>NewUserViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewController\MyPlacesMapViewController.cs" />
+    <Compile Include="ViewController\MyPlacesMapViewController.designer.cs">
+      <DependentUpon>MyPlacesMapViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController\TabBarViewController.cs" />
+    <Compile Include="ViewController\TabBarViewController.designer.cs">
+      <DependentUpon>TabBarViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WoMoDiary.Domain\WoMoDiary.Domain.csproj">

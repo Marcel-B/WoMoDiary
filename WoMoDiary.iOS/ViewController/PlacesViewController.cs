@@ -5,6 +5,10 @@ using System.Collections.Specialized;
 using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Services;
+using MapKit;
+using CoreLocation;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
@@ -12,6 +16,8 @@ namespace com.b_velop.WoMoDiary.iOS
     {
         public int SelectedIndex { get; set; }
         public PlacesViewModel ViewModel { get; set; }
+        private List<double> _longitudes = new List<double>();
+        private List<double> _latitudes = new List<double>();
 
         public PlacesViewController(IntPtr handle) : base(handle)
         {
@@ -25,12 +31,29 @@ namespace com.b_velop.WoMoDiary.iOS
                 BeginInvokeOnMainThread(() =>
                 {
                     TableView.ReloadData();
+                    SetMarkerOnMap();
                 });
             }
             catch (Exception ex)
             {
                 App.LogOutLn(ex.Message);
             }
+        }
+
+        private void SetMarkerOnMap()
+        {
+            MapViewPlaces.RemoveAnnotations();
+            var annotations = new List<MKPointAnnotation>();
+            foreach (var place in ViewModel.Places)
+            {
+                var coordinate = new CLLocationCoordinate2D(place.Latitude, place.Longitude);
+                annotations.Add(new MKPointAnnotation
+                {
+                    Coordinate = coordinate,
+                    Title = place.Name
+                });
+            }
+            MapViewPlaces.ShowAnnotations(annotations.ToArray(), true);
         }
 
         public override void ViewDidAppear(bool animated)
@@ -49,11 +72,11 @@ namespace com.b_velop.WoMoDiary.iOS
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell("MyCell") as TripsTableViewCell;
-            var trip = ViewModel.Places[indexPath.Row];
-            cell.Trip = trip.Name;
-            cell.DescriptionT = trip.Description;
-            cell.ImagePath.Image = UIImage.FromBundle(trip.AssetName);
-            cell.Rating.Image = trip.Rating > 0 ? UIImage.FromBundle("ThumbUp") : UIImage.FromBundle("ThumbDown");
+            var place = ViewModel.Places[indexPath.Row];
+            cell.Trip = place.Name;
+            cell.DescriptionT = place.Description;
+            cell.ImagePath.Image = UIImage.FromBundle(place.AssetName);
+            cell.Rating.Image = place.Rating > 0 ? UIImage.FromBundle("ThumbUp") : UIImage.FromBundle("ThumbDown");
             return cell;
         }
 
