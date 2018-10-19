@@ -14,6 +14,11 @@ namespace com.b_velop.WoMoDiary.iOS
         {
             base.ViewDidLoad();
             NavigationItem.SetHidesBackButton(true, false);
+            BarButtonItemAddTrip.Clicked += BarButtonItemAddTrip_Clicked;
+        }
+
+        private void BarButtonItemAddTrip_Clicked(object sender, EventArgs e)
+        {
         }
     }
 }

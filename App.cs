@@ -20,6 +20,7 @@ namespace com.b_velop.WoMoDiary
 
         public static bool Init { get; set; }
         public static bool AllDataFetched { get; set; }
+        // ReSharper disable once InconsistentNaming
         public const string BACKEND_URL = "https://womo.marcelbenders.de";
 
         public App()

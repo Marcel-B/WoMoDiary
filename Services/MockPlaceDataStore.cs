@@ -42,15 +42,41 @@ namespace com.b_velop.WoMoDiary.Services
                 new Poi
             {
                 Id = Guid.NewGuid(),
-                Trip = tripStore.Trips[1],
-                TripId = tripStore.Trips[1].Id,
-                Name = "Waterfall",
-                Description = "Awesome Waterfall",
-                Longitude = 8.16295347,
-                Latitude = 47.46171372,
+                Trip = tripStore.Trips[0],
+                TripId = tripStore.Trips[0].Id,
+                Name = "Kirche",
+                Description = "ganz tolle Kirche",
+                Longitude = 12.497292,
+                Latitude = 41.903411,
                 Altitude = 347,
                 Rating = 5,
                 Created = DateTimeOffset.Now,
+                },
+                new Restaurant()
+                {
+                    Id = Guid.NewGuid(),
+                    Trip = tripStore.Trips[0],
+                    TripId = tripStore.Trips[0].Id,
+                    Name = "Jammi",
+                    Description = "ganz tolles Restaurant",
+                    Longitude = 12.490243,
+                    Latitude = 41.897673,
+                    Altitude = 1,
+                    Rating = 4,
+                    Created = DateTimeOffset.Now,
+                },
+                new Restaurant
+                {
+                    Id = Guid.NewGuid(),
+                    Trip = tripStore.Trips[0],
+                    TripId = tripStore.Trips[0].Id,
+                    Name = "Mäcces",
+                    Description = "nicht so tolles Restaurant",
+                    Longitude = 12.488987,
+                    Latitude = 41.898121,
+                    Altitude = 347,
+                    Rating = 5,
+                    Created = DateTimeOffset.Now,
                 }
             };
         }
