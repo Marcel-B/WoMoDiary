@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Reflection;
+using I18NPortable;
+
 using com.b_velop.WoMoDiary.Domain;
 using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Services;
 using com.b_velop.WoMoDiary.ViewModels;
-using I18NPortable;
 
 namespace com.b_velop.WoMoDiary
 {
@@ -12,7 +13,7 @@ namespace com.b_velop.WoMoDiary
     {
 
 #if DEBUG
-        public static bool UseMockDataStore = false;
+        public static bool UseMockDataStore = true;
 #else
         public static bool UseMockDataStore = false;
 #endif
