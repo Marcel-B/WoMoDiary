@@ -12,7 +12,7 @@ using UIKit;
 namespace com.b_velop.WoMoDiary.iOS
 {
     [Register ("LocationTypeViewController")]
-    partial class LocationTypeViewController
+    partial class NewPlaceLocationTypeViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

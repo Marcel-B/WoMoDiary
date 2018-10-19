@@ -7,12 +7,11 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
     [Register ("MapViewController")]
-    partial class MapViewController
+    partial class NewPlaceMapViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

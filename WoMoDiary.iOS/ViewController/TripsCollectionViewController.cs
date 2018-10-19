@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIKit;
+
 using com.b_velop.WoMoDiary.Meta;
 using com.b_velop.WoMoDiary.Domain;
 using com.b_velop.WoMoDiary.ViewModels;
@@ -70,7 +71,7 @@ namespace com.b_velop.WoMoDiary.iOS
             cell.Count = $"{trip.Places.Count} {prefix}";
             cell.Tag = indexPath.Row;
             cell.TimeSpan = trip.Created.ToString("D");
-            App.LogOutLn($"Cell {trip.Name} created.");
+            App.LogOutLn($"Cell {trip.Name} created.", GetType().Name);
             return cell;
         }
 

@@ -2,13 +2,13 @@ using Foundation;
 using System;
 using UIKit;
 using System.Collections.Specialized;
-using com.b_velop.WoMoDiary.Helpers;
-using com.b_velop.WoMoDiary.ViewModels;
-using com.b_velop.WoMoDiary.Services;
 using MapKit;
 using CoreLocation;
 using System.Collections.Generic;
-using System.Linq;
+
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Services;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
@@ -42,7 +42,7 @@ namespace com.b_velop.WoMoDiary.iOS
 
         private void SetMarkerOnMap()
         {
-            MapViewPlaces.RemoveAnnotations();
+            MapViewPlaces.RemoveAnnotations(MapViewPlaces.Annotations);
             var annotations = new List<MKPointAnnotation>();
             foreach (var place in ViewModel.Places)
             {

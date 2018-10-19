@@ -9,10 +9,10 @@ using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
-    public partial class LocationTypeViewController : UIViewController
+    public partial class NewPlaceLocationTypeViewController : UIViewController
     {
 
-        public LocationTypeViewController(IntPtr handle) : base(handle)
+        public NewPlaceLocationTypeViewController(IntPtr handle) : base(handle)
         {
             // Set by MapViewController - Singleton are not available in ServiceLocator ...
             //ViewModel = ServiceLocator.Instance.Get<NewPlaceViewModel>();

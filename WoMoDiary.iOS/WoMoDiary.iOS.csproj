@@ -387,17 +387,17 @@
     <Compile Include="TripCollectionViewCell.designer.cs">
       <DependentUpon>TripCollectionViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\MapViewController.cs" />
-    <Compile Include="ViewController\MapViewController.designer.cs">
-      <DependentUpon>MapViewController.cs</DependentUpon>
+    <Compile Include="ViewController\NewPlaceMapViewController.cs" />
+    <Compile Include="ViewController\NewPlaceMapViewController.designer.cs">
+      <DependentUpon>NewPlaceMapViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\LocationTypeViewController.cs" />
+    <Compile Include="ViewController\NewPlaceLocationTypeViewController.cs" />
     <Compile Include="ViewController\LoginViewController.cs" />
     <Compile Include="ViewController\LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController\LocationTypeViewController.designer.cs">
-      <DependentUpon>LocationTypeViewController.cs</DependentUpon>
+    <Compile Include="ViewController\NewPlaceLocationTypeViewController.designer.cs">
+      <DependentUpon>NewPlaceLocationTypeViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewController\TripsCollectionViewController.cs" />
     <Compile Include="ViewController\TripsCollectionViewController.designer.cs">
@@ -427,6 +427,8 @@
     <Compile Include="ViewController\TabBarViewController.designer.cs">
       <DependentUpon>TabBarViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewController\PlaceAnnotation.cs" />
+    <Compile Include="ViewController\MapDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WoMoDiary.Domain\WoMoDiary.Domain.csproj">
