@@ -26,6 +26,8 @@ namespace com.b_velop.WoMoDiary.iOS
         public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            ItemTrips.Title = Strings.TRIPS;
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var width = collectionView.Frame.Width - 16;

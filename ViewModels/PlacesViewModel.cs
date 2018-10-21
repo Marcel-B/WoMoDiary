@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using com.b_velop.WoMoDiary.Domain;
 using com.b_velop.WoMoDiary.Services;
 
@@ -12,6 +13,15 @@ namespace com.b_velop.WoMoDiary.ViewModels
         {
             if (Places == null)
                 Places = new ObservableCollection<Place>();
+        }
+
+        public async Task<bool> DeletePlace(int idx)
+        {
+            var result = await PlaceStore.DeleteItemAsync(Places[idx].Id);
+            if (!result) return false;
+            Places.RemoveAt(idx);
+            AppStore.Instance.CurrentTrip.Places.RemoveAt(idx);
+            return true;
         }
 
         public void PullPlaces()

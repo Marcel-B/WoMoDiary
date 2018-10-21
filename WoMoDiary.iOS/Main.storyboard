@@ -173,6 +173,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="MapViewPlaces" destination="112102" id="name-outlet-112102"/>
+                        <segue id="122635" destination="122411" kind="show" identifier="ToEditPlace"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -236,8 +237,6 @@
                             <constraint id="50047" firstItem="10168" firstAttribute="trailing" secondItem="9857" secondAttribute="trailingMargin"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" id="9905" image="Map"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Map" destination="10168" id="name-outlet-10168"/>
                         <outlet property="TextFieldName" destination="11940" id="name-outlet-11940"/>
@@ -421,8 +420,11 @@
                         <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1"/>
                     </collectionView>
-                    <tabBarItem key="tabBarItem" title="Item" id="106919"/>
+                    <tabBarItem key="tabBarItem" id="106919" image="Poi"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ItemTrips" destination="106919" id="name-outlet-106919"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30223" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -669,15 +671,46 @@
                             <constraint id="109737" firstItem="109733" firstAttribute="bottom" secondItem="109681" secondAttribute="top"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Karte" id="109730" selectedImage="Map" image="Map"/>
+                    <tabBarItem key="tabBarItem" id="109730" selectedImage="Map" image="Map"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="MapViewMyPlaces" destination="109733" id="name-outlet-109733"/>
+                        <outlet property="ItemMap" destination="109730" id="name-outlet-109730"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="109685" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1011" y="-1561"/>
+        </scene>
+        <scene sceneID="122410">
+            <objects>
+                <viewController id="122411" sceneMemberID="viewController" customClass="EditPlaceViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="122408"/>
+                        <viewControllerLayoutGuide type="bottom" id="122409"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="122412">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="123185" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="137" y="225" width="46" height="30"/>
+                                <state key="normal" title="Save"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="137649" firstItem="123185" firstAttribute="centerX" secondItem="122412" secondAttribute="centerX"/>
+                            <constraint id="137650" firstItem="123185" firstAttribute="centerY" secondItem="122412" secondAttribute="centerY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ButtonSave" destination="123185" id="name-outlet-123185"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="122413" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1578" y="-466"/>
         </scene>
     </scenes>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1"/>

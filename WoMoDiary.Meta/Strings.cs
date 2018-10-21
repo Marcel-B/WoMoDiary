@@ -5,12 +5,18 @@ namespace com.b_velop.WoMoDiary.Meta
     // ReSharper disable InconsistentNaming
     public static class Strings
     {
+        public static string ATTENTION = "Attention".Translate();
+
         public static string CAMPING_SITE = "Camping Site".Translate();
+        public static string CANCEL = "Cancel".Translate();
         public static string CATEGORY = "Category".Translate();
         public static string CONFIRM_PASSWORD = "Confirm Password".Translate();
 
+
+        public static string DELETE_PLACE(string place) => "Delete.Place".Translate(place);
         public static string DESCRIPTION = "Description".Translate();
 
+        public static string EDIT = "Edit".Translate();
         public static string ENTER_DESCRIPTION = "Enter Description".Translate();
         public static string ENTER_NAME = "Enter Name".Translate();
         public static string ENTER_TRIP_NAME = "Enter Trip Name".Translate();
@@ -20,11 +26,15 @@ namespace com.b_velop.WoMoDiary.Meta
 
         public static string LOGIN = "Login".Translate();
 
+        public static string MAP = "Map".Translate();
+
         public static string NEW_PLACE = "New Place".Translate();
         public static string NEW_TRIP = "New Trip".Translate();
         public static string NEW_USER = "New User".Translate();
         public static string NEXT = "Next".Translate();
         public static string NO_CAMERA = "No Camera".Translate();
+
+        public static string OK = "Ok".Translate();
 
         public static string PASSWORD = "Password".Translate();
         public static string PITCH = "Pitch".Translate();

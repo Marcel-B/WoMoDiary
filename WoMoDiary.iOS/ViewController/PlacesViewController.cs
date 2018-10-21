@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Services;
+using com.b_velop.WoMoDiary.Meta;
+using System.Linq;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
@@ -56,6 +58,21 @@ namespace com.b_velop.WoMoDiary.iOS
             MapViewPlaces.ShowAnnotations(annotations.ToArray(), true);
         }
 
+        public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
+        {
+            var alertController = UIAlertController.Create(Strings.ATTENTION, Strings.DELETE_PLACE(ViewModel.Places[indexPath.Row].Name), UIAlertControllerStyle.Alert);
+            alertController.AddAction(UIAlertAction.Create(Strings.OK, UIAlertActionStyle.Default, async alert =>
+            {
+                App.LogOutLn("Ok clicked", GetType().Name);
+                var result = await ViewModel.DeletePlace(indexPath.Row);
+            }));
+            alertController.AddAction( UIAlertAction.Create(Strings.CANCEL, UIAlertActionStyle.Cancel, alert =>
+            {
+                App.LogOutLn("Cancel clicked", GetType().Name);
+            }));
+            this.PresentViewController(alertController, true, null);
+        }
+
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
@@ -91,6 +108,35 @@ namespace com.b_velop.WoMoDiary.iOS
         {
             var store = AppStore.Instance;
             store.CurrentPlace = ViewModel.Places[indexPath.Row];
+        }
+
+        public UIContextualAction ContextualDefinitionAction(int row)
+        {
+            var place = ViewModel.Places[row];
+            var action = UIContextualAction.FromContextualActionStyle(
+                UIContextualActionStyle.Normal,
+                Strings.EDIT,
+                (ReadLaterAction, view, success) =>
+                {
+                    PerformSegue("ToEditPlace", this);
+                });
+
+            action.BackgroundColor = UIColor.FromRGB(16, 172, 132);
+            return action;
+        }
+
+
+        public override UISwipeActionsConfiguration GetLeadingSwipeActionsConfiguration(UITableView tableView, NSIndexPath indexPath)
+        {
+            //UIContextualActions
+            var definitionAction = ContextualDefinitionAction(indexPath.Row);
+            //var flagAction = ContextualFlagAction(indexPath.Row);
+
+            //UISwipeActionsConfiguration
+            var leadingSwipe = UISwipeActionsConfiguration.FromActions(new UIContextualAction[] { /*flagAction,*/ definitionAction });
+
+            leadingSwipe.PerformsFirstActionWithFullSwipe = false;
+            return leadingSwipe;
         }
     }
 }

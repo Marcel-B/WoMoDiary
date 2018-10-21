@@ -1,9 +1,14 @@
-﻿Camping Site = Camping Site
+﻿Attention = Attention
+
+Camping Site = Camping Site
+Cancel = Cancel
 Category = Category
 Confirm Password = Confirm Password
 
+Delete.Place = Delete Place "{0}"?
 Description = Description
 
+Edit = Edit
 Enter Description = Enter Description
 Enter Name = Enter Name
 Enter Trip Name = Enter Trip Name
@@ -13,11 +18,15 @@ Hotel = Hotel
 
 Login = Login
 
+Map = Map
+
 New Place = New Place
 New Trip = New Trip
 New User = New User
 Next = Next
 No Camera = No Camera
+
+Ok = Ok
 
 Password = Password
 Pitch = Pitch

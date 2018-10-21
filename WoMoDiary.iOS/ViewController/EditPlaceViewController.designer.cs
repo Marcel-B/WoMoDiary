@@ -11,18 +11,18 @@ using UIKit;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
-    [Register ("TripsCollectionViewController")]
-    partial class TripsCollectionViewController
+    [Register ("EditPlaceViewController")]
+    partial class EditPlaceViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITabBarItem ItemTrips { get; set; }
+        UIKit.UIButton ButtonSave { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (ItemTrips != null) {
-                ItemTrips.Dispose ();
-                ItemTrips = null;
+            if (ButtonSave != null) {
+                ButtonSave.Dispose ();
+                ButtonSave = null;
             }
         }
     }

@@ -1,9 +1,13 @@
-﻿Camping Site = Campingplatz
+﻿Attention = Achtung
+
+Camping Site = Campingplatz
 Category = Kategorie
 Confirm Password = Passwort bestätigen
 
+Delete.Place = "{0}" wirklich löschen?
 Description = Beschreibung
 
+Edit = Ändern
 Enter Description = Beschreibung eingeben
 Enter Name = Name eingeben
 Enter Trip Name = Name der Reise eingeben
@@ -13,11 +17,15 @@ Hotel = Hotel
 
 Login = Anmelden
 
+Map = Karte
+
 New Place = Neuer Ort
 New Trip = Neue Reise
 New User = Neuer Benutzer
 Next = Weiter
 No Camera = Keine Kamera
+
+Ok = Ok
 
 Password = Passwort
 Pitch = Stellplatz

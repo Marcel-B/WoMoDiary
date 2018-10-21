@@ -16,10 +16,19 @@ namespace com.b_velop.WoMoDiary.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITabBarItem ItemMap { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         MapKit.MKMapView MapViewMyPlaces { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (ItemMap != null) {
+                ItemMap.Dispose ();
+                ItemMap = null;
+            }
+
             if (MapViewMyPlaces != null) {
                 MapViewMyPlaces.Dispose ();
                 MapViewMyPlaces = null;
