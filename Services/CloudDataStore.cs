@@ -44,7 +44,7 @@ namespace com.b_velop.WoMoDiary.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.Message, GetType().Name);
                 return default(T);
             }
         }
@@ -69,7 +69,7 @@ namespace com.b_velop.WoMoDiary.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.Message, GetType().Name);
                 return default(T);
             }
 
@@ -96,7 +96,7 @@ namespace com.b_velop.WoMoDiary.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.Message, GetType().Name);
                 return default(T);
             }
 

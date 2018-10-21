@@ -37,7 +37,7 @@ namespace com.b_velop.WoMoDiary.Android
         public override void OnListItemClick(ListView l, View v, int position, long id)
         {
 #if DEBUG
-            System.Diagnostics.Debug.WriteLine($"Selected Trip '{ViewModel.Trips[position].Name}'");
+            App.LogOutLn($"Selected Trip '{ViewModel.Trips[position].Name}'", GetType().Name);
 #endif
             AppStore.Instance.CurrentTrip = ViewModel.Trips[position];
             Activity.StartActivity(typeof(PlaceActivity));

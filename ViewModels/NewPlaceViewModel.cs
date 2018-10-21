@@ -16,6 +16,9 @@ namespace com.b_velop.WoMoDiary.ViewModels
         public double Altitude { get; set; }
         public Command SavePlaceCommand { get; set; }
 
+        public Action<bool> SavePlaceSuccessCallback { get; set; }
+
+
         public NewPlaceViewModel()
         {
             SavePlaceCommand = new Command(ExecuteSave, CanExecuteSave);
@@ -65,7 +68,11 @@ namespace com.b_velop.WoMoDiary.ViewModels
             store.User.Trips[tripIdx].Places.Add(tmp);
 
             // Save to CloudStore
-            await PlaceStore.AddItemAsync(tmp);
+           var tmpPlace = await PlaceStore.AddItemAsync(tmp);
+            if (tmpPlace != null)
+                SavePlaceSuccessCallback?.Invoke(true);
+            else
+                SavePlaceSuccessCallback?.Invoke(false);
         }
     }
 }

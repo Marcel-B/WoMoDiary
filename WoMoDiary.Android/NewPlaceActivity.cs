@@ -80,7 +80,6 @@ namespace com.b_velop.WoMoDiary.Android
                     ImageButtonThumbDown.Background = color;
                 }
             };
-
             ImageButtonThumbDown.Click += (sender, args) =>
             {
                 ViewModel.Rating = 0;
@@ -109,12 +108,17 @@ namespace com.b_velop.WoMoDiary.Android
             ButtonSaveNewPlace.Click += (sender, args) =>
             {
                 ViewModel.SavePlaceCommand.Execute(null);
-                StartActivity(typeof(PlaceActivity));
             };
         }
-
+        private void SavePlaceReady(bool status)
+        {
+            if (!status) return;
+            StartActivity(typeof(PlaceActivity));
+            Finish();
+        }
         private void SetStates()
         {
+            ViewModel.SavePlaceSuccessCallback = SavePlaceReady;
             var places = new Place[]
              {
                 new Stellpatz(),
@@ -214,9 +218,9 @@ namespace com.b_velop.WoMoDiary.Android
             GoogleMap.Clear();
 
             //var mapOptions = new GoogleMapOptions()
-               //.InvokeMapType(GoogleMap.MapTypeSatellite)
-               //.InvokeZoomControlsEnabled(false)
-               //.InvokeCompassEnabled(true);
+            //.InvokeMapType(GoogleMap.MapTypeSatellite)
+            //.InvokeZoomControlsEnabled(false)
+            //.InvokeCompassEnabled(true);
 
             //            GoogleMap.SetMapStyle(new MapStyleOptions(@"[{""featureType"": ""all"",
             //    ""stylers"": [
