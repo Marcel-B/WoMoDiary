@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using com.b_velop.WoMoDiary.Domain;
 using Newtonsoft.Json;
 using Plugin.Connectivity;
+
+using com.b_velop.WoMoDiary.Domain;
 
 namespace com.b_velop.WoMoDiary.Services
 {

@@ -2613,14 +2613,14 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0042
 			public const int SYM = 2131427394;
 			
-			// aapt resource value: 0x7f0b00c0
-			public const int action0 = 2131427520;
+			// aapt resource value: 0x7f0b00c3
+			public const int action0 = 2131427523;
 			
-			// aapt resource value: 0x7f0b00df
-			public const int actionAddPlace = 2131427551;
+			// aapt resource value: 0x7f0b00e2
+			public const int actionAddPlace = 2131427554;
 			
-			// aapt resource value: 0x7f0b00e0
-			public const int action_add = 2131427552;
+			// aapt resource value: 0x7f0b00e3
+			public const int action_add = 2131427555;
 			
 			// aapt resource value: 0x7f0b0086
 			public const int action_bar = 2131427462;
@@ -2643,17 +2643,17 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0064
 			public const int action_bar_title = 2131427428;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int action_container = 2131427517;
+			// aapt resource value: 0x7f0b00c0
+			public const int action_container = 2131427520;
 			
 			// aapt resource value: 0x7f0b0087
 			public const int action_context_bar = 2131427463;
 			
-			// aapt resource value: 0x7f0b00c4
-			public const int action_divider = 2131427524;
+			// aapt resource value: 0x7f0b00c7
+			public const int action_divider = 2131427527;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int action_image = 2131427518;
+			// aapt resource value: 0x7f0b00c1
+			public const int action_image = 2131427521;
 			
 			// aapt resource value: 0x7f0b0003
 			public const int action_menu_divider = 2131427331;
@@ -2670,11 +2670,11 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0066
 			public const int action_mode_close_button = 2131427430;
 			
-			// aapt resource value: 0x7f0b00bf
-			public const int action_text = 2131427519;
+			// aapt resource value: 0x7f0b00c2
+			public const int action_text = 2131427522;
 			
-			// aapt resource value: 0x7f0b00cd
-			public const int actions = 2131427533;
+			// aapt resource value: 0x7f0b00d0
+			public const int actions = 2131427536;
 			
 			// aapt resource value: 0x7f0b0067
 			public const int activity_chooser_view_content = 2131427431;
@@ -2712,20 +2712,20 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0048
 			public const int bottom = 2131427400;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int buttonLoginUser = 2131427500;
+			// aapt resource value: 0x7f0b00ae
+			public const int buttonLoginUser = 2131427502;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int buttonNewUser = 2131427501;
+			// aapt resource value: 0x7f0b00af
+			public const int buttonNewUser = 2131427503;
 			
-			// aapt resource value: 0x7f0b00bc
-			public const int buttonNewUserSave = 2131427516;
+			// aapt resource value: 0x7f0b00bf
+			public const int buttonNewUserSave = 2131427519;
 			
 			// aapt resource value: 0x7f0b006d
 			public const int buttonPanel = 2131427437;
 			
-			// aapt resource value: 0x7f0b00c1
-			public const int cancel_action = 2131427521;
+			// aapt resource value: 0x7f0b00c4
+			public const int cancel_action = 2131427524;
 			
 			// aapt resource value: 0x7f0b004f
 			public const int center = 2131427407;
@@ -2739,8 +2739,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b007d
 			public const int checkbox = 2131427453;
 			
-			// aapt resource value: 0x7f0b00c9
-			public const int chronometer = 2131427529;
+			// aapt resource value: 0x7f0b00cc
+			public const int chronometer = 2131427532;
 			
 			// aapt resource value: 0x7f0b0058
 			public const int clip_horizontal = 2131427416;
@@ -2751,20 +2751,20 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0044
 			public const int collapseActionView = 2131427396;
 			
-			// aapt resource value: 0x7f0b009e
-			public const int container = 2131427486;
+			// aapt resource value: 0x7f0b00a0
+			public const int container = 2131427488;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int contentFrame = 2131427479;
+			// aapt resource value: 0x7f0b0099
+			public const int contentFrame = 2131427481;
 			
 			// aapt resource value: 0x7f0b0070
 			public const int contentPanel = 2131427440;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int contentPlacesFrame = 2131427483;
+			// aapt resource value: 0x7f0b009d
+			public const int contentPlacesFrame = 2131427485;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int coordinator = 2131427487;
+			// aapt resource value: 0x7f0b00a1
+			public const int coordinator = 2131427489;
 			
 			// aapt resource value: 0x7f0b0077
 			public const int custom = 2131427447;
@@ -2781,47 +2781,47 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b006a
 			public const int default_activity_button = 2131427434;
 			
-			// aapt resource value: 0x7f0b00a1
-			public const int design_bottom_sheet = 2131427489;
+			// aapt resource value: 0x7f0b00a3
+			public const int design_bottom_sheet = 2131427491;
+			
+			// aapt resource value: 0x7f0b00aa
+			public const int design_menu_item_action_area = 2131427498;
+			
+			// aapt resource value: 0x7f0b00a9
+			public const int design_menu_item_action_area_stub = 2131427497;
 			
 			// aapt resource value: 0x7f0b00a8
-			public const int design_menu_item_action_area = 2131427496;
+			public const int design_menu_item_text = 2131427496;
 			
 			// aapt resource value: 0x7f0b00a7
-			public const int design_menu_item_action_area_stub = 2131427495;
-			
-			// aapt resource value: 0x7f0b00a6
-			public const int design_menu_item_text = 2131427494;
-			
-			// aapt resource value: 0x7f0b00a5
-			public const int design_navigation_view = 2131427493;
+			public const int design_navigation_view = 2131427495;
 			
 			// aapt resource value: 0x7f0b002c
 			public const int disableHome = 2131427372;
 			
-			// aapt resource value: 0x7f0b00ab
-			public const int editTextLoginPassword = 2131427499;
+			// aapt resource value: 0x7f0b00ad
+			public const int editTextLoginPassword = 2131427501;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int editTextLoginUsername = 2131427498;
+			// aapt resource value: 0x7f0b00ac
+			public const int editTextLoginUsername = 2131427500;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int editTextNewPlaceDescription = 2131427503;
+			// aapt resource value: 0x7f0b00b2
+			public const int editTextNewPlaceDescription = 2131427506;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int editTextNewPlaceName = 2131427502;
+			// aapt resource value: 0x7f0b00b1
+			public const int editTextNewPlaceName = 2131427505;
+			
+			// aapt resource value: 0x7f0b00be
+			public const int editTextNewUserConfirmPassword = 2131427518;
+			
+			// aapt resource value: 0x7f0b00bc
+			public const int editTextNewUserEmail = 2131427516;
+			
+			// aapt resource value: 0x7f0b00bd
+			public const int editTextNewUserPassword = 2131427517;
 			
 			// aapt resource value: 0x7f0b00bb
-			public const int editTextNewUserConfirmPassword = 2131427515;
-			
-			// aapt resource value: 0x7f0b00b9
-			public const int editTextNewUserEmail = 2131427513;
-			
-			// aapt resource value: 0x7f0b00ba
-			public const int editTextNewUserPassword = 2131427514;
-			
-			// aapt resource value: 0x7f0b00b8
-			public const int editTextNewUserUsername = 2131427512;
+			public const int editTextNewUserUsername = 2131427515;
 			
 			// aapt resource value: 0x7f0b0088
 			public const int edit_query = 2131427464;
@@ -2829,8 +2829,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b003b
 			public const int end = 2131427387;
 			
-			// aapt resource value: 0x7f0b00cf
-			public const int end_padder = 2131427535;
+			// aapt resource value: 0x7f0b00d2
+			public const int end_padder = 2131427538;
 			
 			// aapt resource value: 0x7f0b004a
 			public const int enterAlways = 2131427402;
@@ -2877,8 +2877,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b006c
 			public const int icon = 2131427436;
 			
-			// aapt resource value: 0x7f0b00ce
-			public const int icon_group = 2131427534;
+			// aapt resource value: 0x7f0b00d1
+			public const int icon_group = 2131427537;
 			
 			// aapt resource value: 0x7f0b0024
 			public const int icon_only = 2131427364;
@@ -2889,26 +2889,26 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0069
 			public const int image = 2131427433;
 			
-			// aapt resource value: 0x7f0b00b3
-			public const int imageButtonRatingDown = 2131427507;
+			// aapt resource value: 0x7f0b00b6
+			public const int imageButtonRatingDown = 2131427510;
 			
-			// aapt resource value: 0x7f0b00b1
-			public const int imageButtonRatingUp = 2131427505;
+			// aapt resource value: 0x7f0b00b4
+			public const int imageButtonRatingUp = 2131427508;
 			
-			// aapt resource value: 0x7f0b00d7
-			public const int imageViewDetailCategory = 2131427543;
+			// aapt resource value: 0x7f0b00da
+			public const int imageViewDetailCategory = 2131427546;
+			
+			// aapt resource value: 0x7f0b00d8
+			public const int imageViewDetailRating = 2131427544;
+			
+			// aapt resource value: 0x7f0b00d6
+			public const int imageViewPlaceRating = 2131427542;
 			
 			// aapt resource value: 0x7f0b00d5
-			public const int imageViewDetailRating = 2131427541;
+			public const int imageViewPlaceType = 2131427541;
 			
-			// aapt resource value: 0x7f0b00d3
-			public const int imageViewPlaceRating = 2131427539;
-			
-			// aapt resource value: 0x7f0b00d2
-			public const int imageViewPlaceType = 2131427538;
-			
-			// aapt resource value: 0x7f0b00ca
-			public const int info = 2131427530;
+			// aapt resource value: 0x7f0b00cd
+			public const int info = 2131427533;
 			
 			// aapt resource value: 0x7f0b0063
 			public const int italic = 2131427427;
@@ -2916,8 +2916,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0000
 			public const int item_touch_helper_previous_elevation = 2131427328;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int largeLabel = 2131427485;
+			// aapt resource value: 0x7f0b009f
+			public const int largeLabel = 2131427487;
 			
 			// aapt resource value: 0x7f0b0053
 			public const int left = 2131427411;
@@ -2937,26 +2937,32 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b006b
 			public const int list_item = 2131427435;
 			
+			// aapt resource value: 0x7f0b0097
+			public const int mainTabLayout = 2131427479;
+			
 			// aapt resource value: 0x7f0b0096
 			public const int main_content = 2131427478;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int mapFragmentNewPlace = 2131427508;
+			// aapt resource value: 0x7f0b00b0
+			public const int mapFragmentMyPlaces = 2131427504;
 			
-			// aapt resource value: 0x7f0b00d8
-			public const int mapFragmentPlaceDetail = 2131427544;
+			// aapt resource value: 0x7f0b00b7
+			public const int mapFragmentNewPlace = 2131427511;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int mapFragmentPlaces = 2131427482;
+			// aapt resource value: 0x7f0b00db
+			public const int mapFragmentPlaceDetail = 2131427547;
 			
-			// aapt resource value: 0x7f0b00de
-			public const int masked = 2131427550;
+			// aapt resource value: 0x7f0b009c
+			public const int mapFragmentPlaces = 2131427484;
 			
-			// aapt resource value: 0x7f0b00c3
-			public const int media_actions = 2131427523;
+			// aapt resource value: 0x7f0b00e1
+			public const int masked = 2131427553;
 			
-			// aapt resource value: 0x7f0b00d9
-			public const int message = 2131427545;
+			// aapt resource value: 0x7f0b00c6
+			public const int media_actions = 2131427526;
+			
+			// aapt resource value: 0x7f0b00dc
+			public const int message = 2131427548;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -2967,17 +2973,17 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0033
 			public const int multiply = 2131427379;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int navigation_header_container = 2131427492;
+			// aapt resource value: 0x7f0b00a6
+			public const int navigation_header_container = 2131427494;
 			
 			// aapt resource value: 0x7f0b0046
 			public const int never = 2131427398;
 			
-			// aapt resource value: 0x7f0b00b6
-			public const int newTripDescriptionEditText = 2131427510;
+			// aapt resource value: 0x7f0b00b9
+			public const int newTripDescriptionEditText = 2131427513;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int newTripNameEditText = 2131427509;
+			// aapt resource value: 0x7f0b00b8
+			public const int newTripNameEditText = 2131427512;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int none = 2131427358;
@@ -2985,14 +2991,14 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b001f
 			public const int normal = 2131427359;
 			
-			// aapt resource value: 0x7f0b00cc
-			public const int notification_background = 2131427532;
+			// aapt resource value: 0x7f0b00cf
+			public const int notification_background = 2131427535;
 			
-			// aapt resource value: 0x7f0b00c6
-			public const int notification_main_column = 2131427526;
+			// aapt resource value: 0x7f0b00c9
+			public const int notification_main_column = 2131427529;
 			
-			// aapt resource value: 0x7f0b00c5
-			public const int notification_main_column_container = 2131427525;
+			// aapt resource value: 0x7f0b00c8
+			public const int notification_main_column_container = 2131427528;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int parallax = 2131427414;
@@ -3006,8 +3012,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0057
 			public const int pin = 2131427415;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int placesContent = 2131427481;
+			// aapt resource value: 0x7f0b009b
+			public const int placesContent = 2131427483;
 			
 			// aapt resource value: 0x7f0b0006
 			public const int progress_circular = 2131427334;
@@ -3021,20 +3027,20 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0054
 			public const int right = 2131427412;
 			
-			// aapt resource value: 0x7f0b00cb
-			public const int right_icon = 2131427531;
+			// aapt resource value: 0x7f0b00ce
+			public const int right_icon = 2131427534;
 			
-			// aapt resource value: 0x7f0b00c7
-			public const int right_side = 2131427527;
+			// aapt resource value: 0x7f0b00ca
+			public const int right_side = 2131427530;
 			
 			// aapt resource value: 0x7f0b0020
 			public const int satellite = 2131427360;
 			
-			// aapt resource value: 0x7f0b00b2
-			public const int saveNewPlaceButton = 2131427506;
+			// aapt resource value: 0x7f0b00b5
+			public const int saveNewPlaceButton = 2131427509;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int saveNewTripButton = 2131427511;
+			// aapt resource value: 0x7f0b00ba
+			public const int saveNewTripButton = 2131427514;
 			
 			// aapt resource value: 0x7f0b000c
 			public const int save_image_matrix = 2131427340;
@@ -3108,14 +3114,14 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0030
 			public const int showTitle = 2131427376;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int smallLabel = 2131427484;
+			// aapt resource value: 0x7f0b009e
+			public const int smallLabel = 2131427486;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int snackbar_action = 2131427491;
+			// aapt resource value: 0x7f0b00a5
+			public const int snackbar_action = 2131427493;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int snackbar_text = 2131427490;
+			// aapt resource value: 0x7f0b00a4
+			public const int snackbar_text = 2131427492;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int snap = 2131427406;
@@ -3123,8 +3129,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b006e
 			public const int spacer = 2131427438;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int spinnerPlaceType = 2131427504;
+			// aapt resource value: 0x7f0b00b3
+			public const int spinnerPlaceType = 2131427507;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int split_action_bar = 2131427336;
@@ -3144,14 +3150,17 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0055
 			public const int start = 2131427413;
 			
-			// aapt resource value: 0x7f0b00c2
-			public const int status_bar_latest_event_content = 2131427522;
+			// aapt resource value: 0x7f0b00c5
+			public const int status_bar_latest_event_content = 2131427525;
 			
 			// aapt resource value: 0x7f0b0080
 			public const int submenuarrow = 2131427456;
 			
 			// aapt resource value: 0x7f0b0091
 			public const int submit_area = 2131427473;
+			
+			// aapt resource value: 0x7f0b0098
+			public const int tabItemTrips = 2131427480;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int tabMode = 2131427371;
@@ -3174,29 +3183,29 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0073
 			public const int textSpacerNoTitle = 2131427443;
 			
-			// aapt resource value: 0x7f0b00d6
-			public const int textViewDetailPlaceDescription = 2131427542;
+			// aapt resource value: 0x7f0b00d9
+			public const int textViewDetailPlaceDescription = 2131427545;
+			
+			// aapt resource value: 0x7f0b00d7
+			public const int textViewDetailPlaceName = 2131427543;
 			
 			// aapt resource value: 0x7f0b00d4
-			public const int textViewDetailPlaceName = 2131427540;
+			public const int textViewPlaceDescriptionCell = 2131427540;
 			
-			// aapt resource value: 0x7f0b00d1
-			public const int textViewPlaceDescriptionCell = 2131427537;
+			// aapt resource value: 0x7f0b00d3
+			public const int textViewPlaceNameCell = 2131427539;
 			
-			// aapt resource value: 0x7f0b00d0
-			public const int textViewPlaceNameCell = 2131427536;
+			// aapt resource value: 0x7f0b00dd
+			public const int textViewTripName = 2131427549;
 			
-			// aapt resource value: 0x7f0b00da
-			public const int textViewTripName = 2131427546;
+			// aapt resource value: 0x7f0b00de
+			public const int textViewTripPlacesCount = 2131427550;
 			
-			// aapt resource value: 0x7f0b00db
-			public const int textViewTripPlacesCount = 2131427547;
+			// aapt resource value: 0x7f0b00df
+			public const int textViewTripTimeSpan = 2131427551;
 			
-			// aapt resource value: 0x7f0b00dc
-			public const int textViewTripTimeSpan = 2131427548;
-			
-			// aapt resource value: 0x7f0b00a9
-			public const int text_input_password_toggle = 2131427497;
+			// aapt resource value: 0x7f0b00ab
+			public const int text_input_password_toggle = 2131427499;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int textinput_counter = 2131427348;
@@ -3204,8 +3213,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0015
 			public const int textinput_error = 2131427349;
 			
-			// aapt resource value: 0x7f0b00c8
-			public const int time = 2131427528;
+			// aapt resource value: 0x7f0b00cb
+			public const int time = 2131427531;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int title = 2131427356;
@@ -3219,8 +3228,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0095
 			public const int toolbar = 2131427477;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int toolbarPlaces = 2131427480;
+			// aapt resource value: 0x7f0b009a
+			public const int toolbarPlaces = 2131427482;
 			
 			// aapt resource value: 0x7f0b0049
 			public const int top = 2131427401;
@@ -3228,8 +3237,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0078
 			public const int topPanel = 2131427448;
 			
-			// aapt resource value: 0x7f0b00a0
-			public const int touch_outside = 2131427488;
+			// aapt resource value: 0x7f0b00a2
+			public const int touch_outside = 2131427490;
 			
 			// aapt resource value: 0x7f0b000f
 			public const int transition_current_scene = 2131427343;
@@ -3258,8 +3267,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00dd
-			public const int visible = 2131427549;
+			// aapt resource value: 0x7f0b00e0
+			public const int visible = 2131427552;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int wide = 2131427366;
@@ -3459,82 +3468,85 @@ namespace com.b_velop.WoMoDiary.Android
 			public const int loginLayout = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int newPlaceLayout = 2130968619;
+			public const int myPlacesMapLayout = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int newTripLayout = 2130968620;
+			public const int newPlaceLayout = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int newUserLayout = 2130968621;
+			public const int newTripLayout = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int notification_action = 2130968622;
+			public const int newUserLayout = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int notification_action_tombstone = 2130968623;
+			public const int notification_action = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_media_action = 2130968624;
+			public const int notification_action_tombstone = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_media_cancel_action = 2130968625;
+			public const int notification_media_action = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_template_big_media = 2130968626;
+			public const int notification_media_cancel_action = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_template_big_media_custom = 2130968627;
+			public const int notification_template_big_media = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_big_media_narrow = 2130968628;
+			public const int notification_template_big_media_custom = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_big_media_narrow_custom = 2130968629;
+			public const int notification_template_big_media_narrow = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_custom_big = 2130968630;
+			public const int notification_template_big_media_narrow_custom = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_icon_group = 2130968631;
+			public const int notification_template_custom_big = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_template_lines_media = 2130968632;
+			public const int notification_template_icon_group = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_template_media = 2130968633;
+			public const int notification_template_lines_media = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_template_media_custom = 2130968634;
+			public const int notification_template_media = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_template_part_chronometer = 2130968635;
+			public const int notification_template_media_custom = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_part_time = 2130968636;
+			public const int notification_template_part_chronometer = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int placeAdapterCellLayout = 2130968637;
+			public const int notification_template_part_time = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int placeDetailLayout = 2130968638;
+			public const int placeAdapterCellLayout = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int select_dialog_item_material = 2130968639;
+			public const int placeDetailLayout = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int select_dialog_multichoice_material = 2130968640;
+			public const int select_dialog_item_material = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int select_dialog_singlechoice_material = 2130968641;
+			public const int select_dialog_multichoice_material = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int support_simple_spinner_dropdown_item = 2130968642;
+			public const int select_dialog_singlechoice_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int tooltip = 2130968643;
+			public const int support_simple_spinner_dropdown_item = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int tripAdapterCellLayout = 2130968644;
+			public const int tooltip = 2130968644;
+			
+			// aapt resource value: 0x7f040045
+			public const int tripAdapterCellLayout = 2130968645;
 			
 			static Layout()
 			{

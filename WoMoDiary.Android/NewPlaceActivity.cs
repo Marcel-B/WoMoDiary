@@ -51,8 +51,6 @@ namespace com.b_velop.WoMoDiary.Android
             SetControllEvents();
             Localize();
             MapFragment.GetMapAsync(this);
-
-
             //var fragTx = FragmentManager.BeginTransaction();
             //_mapFragment = MapFragment.NewInstance(mapOptions);
             //fragTx.Add(Resource.Id.mapFragmentNewPlace, _mapFragment, "mapFragmentNewPlace");

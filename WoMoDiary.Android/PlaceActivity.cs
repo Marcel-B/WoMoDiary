@@ -32,6 +32,7 @@ namespace com.b_velop.WoMoDiary.Android
             GetViews();
             InitViews();
             SetViewsEvents();
+            MapFragmentPlaces.GetMapAsync(this);
         }
 
         private void GetViews()
@@ -46,7 +47,6 @@ namespace com.b_velop.WoMoDiary.Android
             var transaction = SupportFragmentManager.BeginTransaction();
             transaction.Replace(Resource.Id.contentPlacesFrame, new PlaceListFragment());
             transaction.Commit();
-            MapFragmentPlaces.GetMapAsync(this);
         }
 
         private void SetViewsEvents()
@@ -57,7 +57,7 @@ namespace com.b_velop.WoMoDiary.Android
                 var action = Resource.Id.actionAddPlace;
                 if (action == itemId)
                 {
-                    System.Diagnostics.Debug.WriteLine("Add Item");
+                    App.LogOutLn("Add Item", GetType().Name);
                     StartActivity(typeof(NewPlaceActivity));
                 }
             };
@@ -69,7 +69,6 @@ namespace com.b_velop.WoMoDiary.Android
             IList<MarkerOptions> markers = new List<MarkerOptions>();
             foreach (var place in ViewModel.Places)
             {
-
                 var marker = new MarkerOptions();
                 marker.SetPosition(new LatLng(place.Latitude, place.Longitude));
                 marker.SetTitle(place.Name);
@@ -83,7 +82,7 @@ namespace com.b_velop.WoMoDiary.Android
                 builder.Include(marker.Position);
             }
             LatLngBounds bounds = builder.Build();
-            int padding = 0; // offset from edges of the map in pixels
+            int padding = 22; // offset from edges of the map in pixels
             CameraUpdate cu = CameraUpdateFactory.NewLatLngBounds(bounds, padding);
             Map.AnimateCamera(cu);
         }

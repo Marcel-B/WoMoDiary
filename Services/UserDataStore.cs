@@ -34,7 +34,7 @@ namespace com.b_velop.WoMoDiary.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.StackTrace, GetType().Name);
                 return null;
             }
         }
