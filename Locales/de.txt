@@ -16,6 +16,8 @@ Error occured while creating new user = Fehler beim anlegen des Benutzers
 
 Hotel = Hotel
 
+Incorrect username or password. = Benutzername oder Passwort falsch.
+
 Login = Anmelden
 
 Map = Karte

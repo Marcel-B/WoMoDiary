@@ -63,7 +63,7 @@ namespace com.b_velop.WoMoDiary.Services
 
         public async Task<User> GetByName(string name)
         {
-            var user = await Task.Run(() => Users.Single(u => u.Name == name));
+            var user = await Task.Run(() => Users.SingleOrDefault(u => u.Name == name));
             return user;
         }
     }

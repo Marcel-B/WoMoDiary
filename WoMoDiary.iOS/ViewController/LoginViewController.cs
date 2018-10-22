@@ -14,8 +14,34 @@ namespace com.b_velop.WoMoDiary.iOS
         {
             ViewModel = ServiceLocator.Instance.Get<LoginViewModel>();
             ViewModel.LoginReadyCallback = LoginReady;
+            ViewModel.ErrorAction = ErrorAlert;
         }
 
+        private void ErrorAlert(string mssg)
+        {
+            BeginInvokeOnMainThread(() =>
+            {
+                var alertController = UIAlertController.Create(
+                    Strings.ATTENTION,
+                    mssg,
+                    UIAlertControllerStyle.Alert);
+
+                alertController.AddAction(UIAlertAction.Create(
+                    Strings.OK,
+                    UIAlertActionStyle.Default,
+                    alert =>
+                    {
+                        App.LogOutLn("Ok clicked", GetType().Name);
+                    }));
+
+                //alertController.AddAction(UIAlertAction.Create(
+                //Strings.CANCEL,
+                //UIAlertActionStyle.Cancel,
+                //alert => App.LogOutLn("Cancel clicked", GetType().Name)));
+
+                this.PresentViewController(alertController, true, null);
+            });
+        }
         public LoginViewModel ViewModel { get; set; }
 
         public override void ViewDidLoad()
@@ -42,6 +68,7 @@ namespace com.b_velop.WoMoDiary.iOS
                 else
                 {
                     ButtonLogin.Enabled = true;
+                    ErrorAlert(Strings.INCORRECT_USERNAME_OR_PASSWORD);
                 }
             });
         }

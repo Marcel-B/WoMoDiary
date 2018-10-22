@@ -12,7 +12,6 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string CATEGORY = "Category".Translate();
         public static string CONFIRM_PASSWORD = "Confirm Password".Translate();
 
-
         public static string DELETE_PLACE(string place) => "Delete.Place".Translate(place);
         public static string DESCRIPTION = "Description".Translate();
 
@@ -23,6 +22,8 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string ERROR_OCCURED_WHILE_CREATING_NEW_USER = "Error occured while creating new user".Translate();
 
         public static string HOTEL = "Hotel".Translate();
+
+        public static string INCORRECT_USERNAME_OR_PASSWORD = "Incorrect username or password.".Translate();
 
         public static string LOGIN = "Login".Translate();
 
