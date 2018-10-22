@@ -30,15 +30,6 @@ namespace com.b_velop.WoMoDiary.Android
             Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Place.Latitude, Place.Longitude), 15));
         }
 
-        private void GetViews()
-        {
-            ImageViewDetailRating = FindViewById<ImageView>(Resource.Id.imageViewDetailRating);
-            ImageViewDetailCategory = FindViewById<ImageView>(Resource.Id.imageViewDetailCategory);
-            TextViewPlaceName = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
-            TextViewPlaceDescription = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
-            MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaceDetail);
-        }
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -53,6 +44,15 @@ namespace com.b_velop.WoMoDiary.Android
             ImageViewDetailRating.SetImageResource(Place.ToRating());
             ImageViewDetailCategory.SetImageResource(Place.ToCategory());
             MapFragment.GetMapAsync(this);
+        }
+
+        private void GetViews()
+        {
+            ImageViewDetailRating = FindViewById<ImageView>(Resource.Id.imageViewDetailRating);
+            ImageViewDetailCategory = FindViewById<ImageView>(Resource.Id.imageViewDetailCategory);
+            TextViewPlaceName = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
+            TextViewPlaceDescription = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
+            MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaceDetail);
         }
     }
 }
