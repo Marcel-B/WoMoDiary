@@ -429,6 +429,10 @@
     </Compile>
     <Compile Include="ViewController\PlaceAnnotation.cs" />
     <Compile Include="ViewController\MapDelegate.cs" />
+    <Compile Include="ViewController\EditPlaceViewController.cs" />
+    <Compile Include="ViewController\EditPlaceViewController.designer.cs">
+          <DependentUpon>EditPlaceViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WoMoDiary.Domain\WoMoDiary.Domain.csproj">

@@ -1,6 +1,7 @@
 ﻿Attention = Achtung
 
 Camping Site = Campingplatz
+Cancel = Abbrechen
 Category = Kategorie
 Confirm Password = Passwort bestätigen
 

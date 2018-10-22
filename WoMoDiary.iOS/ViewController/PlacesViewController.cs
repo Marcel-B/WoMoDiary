@@ -60,16 +60,25 @@ namespace com.b_velop.WoMoDiary.iOS
 
         public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
         {
-            var alertController = UIAlertController.Create(Strings.ATTENTION, Strings.DELETE_PLACE(ViewModel.Places[indexPath.Row].Name), UIAlertControllerStyle.Alert);
-            alertController.AddAction(UIAlertAction.Create(Strings.OK, UIAlertActionStyle.Default, async alert =>
-            {
-                App.LogOutLn("Ok clicked", GetType().Name);
-                var result = await ViewModel.DeletePlace(indexPath.Row);
-            }));
-            alertController.AddAction( UIAlertAction.Create(Strings.CANCEL, UIAlertActionStyle.Cancel, alert =>
-            {
-                App.LogOutLn("Cancel clicked", GetType().Name);
-            }));
+            var alertController = UIAlertController.Create(
+                Strings.ATTENTION,
+                Strings.DELETE_PLACE(ViewModel.Places[indexPath.Row].Name),
+                UIAlertControllerStyle.Alert);
+
+            alertController.AddAction(UIAlertAction.Create(
+                Strings.OK,
+                UIAlertActionStyle.Default,
+                async alert =>
+                {
+                    App.LogOutLn("Ok clicked", GetType().Name);
+                    var result = await ViewModel.DeletePlace(indexPath.Row);
+                }));
+
+            alertController.AddAction(UIAlertAction.Create(
+                Strings.CANCEL,
+                UIAlertActionStyle.Cancel,
+                alert => App.LogOutLn("Cancel clicked", GetType().Name)));
+
             this.PresentViewController(alertController, true, null);
         }
 
@@ -80,6 +89,7 @@ namespace com.b_velop.WoMoDiary.iOS
             ViewModel.Places.CollectionChanged += Reload;
             ViewModel.PullPlaces();
         }
+
         public override nint RowsInSection(UITableView tableView, nint section)
             => ViewModel.Places.Count;
 
