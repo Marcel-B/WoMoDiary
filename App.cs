@@ -13,7 +13,7 @@ namespace com.b_velop.WoMoDiary
     {
 
 #if DEBUG
-        public static bool UseMockDataStore = false;
+        public static bool UseMockDataStore = true;
 #else
         public static bool UseMockDataStore = false;
 #endif
