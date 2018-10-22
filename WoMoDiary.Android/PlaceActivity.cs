@@ -7,6 +7,8 @@ using Android.Gms.Maps.Model;
 
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Helpers;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -64,14 +66,26 @@ namespace com.b_velop.WoMoDiary.Android
         public void OnMapReady(GoogleMap googleMap)
         {
             Map = googleMap;
+            IList<MarkerOptions> markers = new List<MarkerOptions>();
             foreach (var place in ViewModel.Places)
             {
+
                 var marker = new MarkerOptions();
                 marker.SetPosition(new LatLng(place.Latitude, place.Longitude));
                 marker.SetTitle(place.Name);
                 Map.AddMarker(marker);
-                Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(place.Latitude, place.Longitude), 15));
+                markers.Add(marker);
+                //Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(place.Latitude, place.Longitude), 15));
             }
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
+            foreach (var marker in markers)
+            {
+                builder.Include(marker.Position);
+            }
+            LatLngBounds bounds = builder.Build();
+            int padding = 0; // offset from edges of the map in pixels
+            CameraUpdate cu = CameraUpdateFactory.NewLatLngBounds(bounds, padding);
+            Map.AnimateCamera(cu);
         }
     }
 }
