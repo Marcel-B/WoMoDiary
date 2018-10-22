@@ -8,6 +8,7 @@ using ToastLength = Android.Widget.ToastLength;
 using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Services;
 using com.b_velop.WoMoDiary.ViewModels;
+using Android.Gms.Maps;
 
 namespace com.b_velop.WoMoDiary.Android
 {
