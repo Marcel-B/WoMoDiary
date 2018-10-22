@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4136" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-401" y="255"/>
+            <point key="canvasLocation" x="-382" y="237"/>
         </scene>
         <scene sceneID="4811">
             <objects>
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4814" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="664" y="301"/>
+            <point key="canvasLocation" x="657" y="239"/>
         </scene>
         <scene sceneID="5068">
             <objects>
@@ -178,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5075" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="-773"/>
+            <point key="canvasLocation" x="1051" y="-517"/>
         </scene>
         <scene sceneID="9855">
             <objects>
@@ -246,7 +246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9858" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="265"/>
+            <point key="canvasLocation" x="1211" y="232"/>
         </scene>
         <scene sceneID="15290">
             <objects>
@@ -340,7 +340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15293" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2193" y="252"/>
+            <point key="canvasLocation" x="1656" y="247"/>
         </scene>
         <scene sceneID="30216">
             <objects>
@@ -428,7 +428,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30223" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1553" y="-1053"/>
+            <point key="canvasLocation" x="1013" y="-1176"/>
         </scene>
         <scene sceneID="54659">
             <objects>
@@ -482,7 +482,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54662" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="-450"/>
+            <point key="canvasLocation" x="1586" y="-517"/>
         </scene>
         <scene sceneID="58526">
             <objects>
@@ -546,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58529" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-333" y="-1388"/>
+            <point key="canvasLocation" x="-148" y="-535"/>
         </scene>
         <scene sceneID="58533">
             <objects>
@@ -646,7 +646,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="106746" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="-1037"/>
+            <point key="canvasLocation" x="474" y="-516"/>
         </scene>
         <scene sceneID="109682">
             <objects>
@@ -680,7 +680,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="109685" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="-1561"/>
+            <point key="canvasLocation" x="471" y="-1139"/>
         </scene>
         <scene sceneID="122410">
             <objects>
@@ -694,23 +694,65 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="123185" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
-                                <rect key="frame" x="137" y="225" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="123185" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="16" y="430" width="288" height="30"/>
                                 <state key="normal" title="Save"/>
+                                <constraints>
+                                    <constraint id="138800" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="138779" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Name">
+                                <rect key="frame" x="9" y="90" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="138780" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Description">
+                                <rect key="frame" x="9" y="128" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="138781" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Rating 0 - 5">
+                                <rect key="frame" x="9" y="166" width="295" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView contentMode="scaleToFill" id="138782" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="12" y="204" width="292" height="162"/>
+                                <constraints>
+                                    <constraint id="139391" firstAttribute="height" constant="162"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <constraints>
-                            <constraint id="137649" firstItem="123185" firstAttribute="centerX" secondItem="122412" secondAttribute="centerX"/>
-                            <constraint id="137650" firstItem="123185" firstAttribute="centerY" secondItem="122412" secondAttribute="centerY"/>
+                            <constraint id="138783" firstItem="122409" firstAttribute="top" secondItem="123185" secondAttribute="bottom" constant="20"/>
+                            <constraint id="138784" firstItem="123185" firstAttribute="trailing" secondItem="122412" secondAttribute="trailingMargin"/>
+                            <constraint id="138785" firstItem="123185" firstAttribute="leading" secondItem="122412" secondAttribute="leadingMargin"/>
+                            <constraint id="138786" firstItem="138779" firstAttribute="top" secondItem="122408" secondAttribute="bottom" constant="20"/>
+                            <constraint id="138787" firstItem="123185" firstAttribute="leading" secondItem="138779" secondAttribute="leading" constant="7"/>
+                            <constraint id="138788" firstItem="138779" firstAttribute="trailing" secondItem="122412" secondAttribute="trailingMargin"/>
+                            <constraint id="138789" firstAttribute="leadingMargin" secondItem="138780" secondAttribute="leading" constant="7"/>
+                            <constraint id="138790" firstItem="138780" firstAttribute="trailing" secondItem="122412" secondAttribute="trailingMargin"/>
+                            <constraint id="138791" firstItem="138780" firstAttribute="top" secondItem="138779" secondAttribute="bottom" constant="8"/>
+                            <constraint id="138792" firstItem="138781" firstAttribute="top" secondItem="138780" secondAttribute="bottom" constant="8"/>
+                            <constraint id="138793" firstAttribute="leadingMargin" secondItem="138781" secondAttribute="leading" constant="7"/>
+                            <constraint id="138794" firstItem="138781" firstAttribute="trailing" secondItem="122412" secondAttribute="trailingMargin"/>
+                            <constraint id="138795" firstItem="138782" firstAttribute="top" secondItem="138781" secondAttribute="bottom" constant="8"/>
+                            <constraint id="138796" firstAttribute="leadingMargin" secondItem="138782" secondAttribute="leading" constant="4"/>
+                            <constraint id="138797" firstItem="138782" firstAttribute="trailing" secondItem="122412" secondAttribute="trailingMargin"/>
+                            <constraint id="138799" firstItem="122409" firstAttribute="top" secondItem="123185" secondAttribute="bottom" constant="20"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="ButtonSave" destination="123185" id="name-outlet-123185"/>
+                        <outlet property="BottomSpaceButtonSave" destination="138783" id="name-outlet-138783"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="122413" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1578" y="-466"/>
+            <point key="canvasLocation" x="1552" y="-1138"/>
         </scene>
     </scenes>
     <color key="tintColor" colorSpace="calibratedRGB" red="0.12549019607843137" green="0.12549019607843137" blue="0.12549019607843137" alpha="1"/>

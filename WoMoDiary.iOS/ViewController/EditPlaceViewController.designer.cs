@@ -16,10 +16,19 @@ namespace com.b_velop.WoMoDiary.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint BottomSpaceButtonSave { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton ButtonSave { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (BottomSpaceButtonSave != null) {
+                BottomSpaceButtonSave.Dispose ();
+                BottomSpaceButtonSave = null;
+            }
+
             if (ButtonSave != null) {
                 ButtonSave.Dispose ();
                 ButtonSave = null;
