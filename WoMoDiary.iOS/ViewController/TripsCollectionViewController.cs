@@ -34,6 +34,7 @@ namespace com.b_velop.WoMoDiary.iOS
             flowLayout.ItemSize = new CGSize(width, 120);
             ViewModel.Trips.CollectionChanged -= Trips_CollectionChanged;
             ViewModel.Trips.CollectionChanged += Trips_CollectionChanged;
+            this.ParentViewController.Title = Strings.TRIPS;
             await ViewModel.PullTrips();
         }
 
@@ -48,14 +49,13 @@ namespace com.b_velop.WoMoDiary.iOS
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                App.LogOutLn(ex.Message, GetType().Name);
             }
         }
 
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
-           NavigationItem.Title = Strings.TRIPS;
             CollectionView.ReloadData();
         }
 
@@ -73,7 +73,7 @@ namespace com.b_velop.WoMoDiary.iOS
             cell.Count = $"{trip.Places.Count} {prefix}";
             cell.Tag = indexPath.Row;
             cell.TimeSpan = trip.Created.ToString("D");
-            App.LogOutLn($"Cell {trip.Name} created.", GetType().Name);
+            App.LogOutLn($"Cell '{trip.Name}' created.", GetType().Name);
             return cell;
         }
 
