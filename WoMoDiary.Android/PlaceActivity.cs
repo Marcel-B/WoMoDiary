@@ -4,6 +4,7 @@ using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Helpers;
 

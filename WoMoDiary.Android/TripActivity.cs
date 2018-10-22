@@ -5,7 +5,6 @@ using Toolbar = Android.Support.V7.Widget.Toolbar;
 
 namespace com.b_velop.WoMoDiary.Android
 {
-
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class TripActivity : FragmentActivity // AppCompatActivity
     {

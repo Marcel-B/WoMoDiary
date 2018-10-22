@@ -1,18 +1,19 @@
 ﻿using System;
 using Android.App;
 using Android.Gms.Maps;
+using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.Locations;
 using Android.OS;
 using Android.Widget;
 using Reces = Android.Resource;
-using Android.Graphics;
-using Android.Gms.Maps.Model;
-using com.b_velop.WoMoDiary.Domain;
-using com.b_velop.WoMoDiary.Helpers;
-using com.b_velop.WoMoDiary.ViewModels;
 using Toast = Android.Widget.Toast;
 using ToastLength = Android.Widget.ToastLength;
+
+using com.b_velop.WoMoDiary.Domain;
+using com.b_velop.WoMoDiary.Helpers;
 using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.ViewModels;
 
 namespace com.b_velop.WoMoDiary.Android
 {
