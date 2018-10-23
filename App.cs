@@ -50,6 +50,7 @@ namespace com.b_velop.WoMoDiary
                 ServiceLocator.Instance.Register<IDataStore<Place>, PlaceDataStore>();
                 ServiceLocator.Instance.Register<IDataStore<User>, UserDataStore>();
             }
+
             ServiceLocator.Instance.Register<PlacesViewModel, PlacesViewModel>();
             ServiceLocator.Instance.Register<TripsViewModel, TripsViewModel>();
             ServiceLocator.Instance.Register<NewUserViewModel, NewUserViewModel>();

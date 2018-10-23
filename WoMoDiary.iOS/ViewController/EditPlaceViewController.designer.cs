@@ -22,6 +22,22 @@ namespace com.b_velop.WoMoDiary.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton ButtonSave { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIPickerView PickerViewPlaceType { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField TextFieldDescription { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField TextFieldName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField TextFieldRating { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (BottomSpaceButtonSave != null) {
@@ -32,6 +48,26 @@ namespace com.b_velop.WoMoDiary.iOS
             if (ButtonSave != null) {
                 ButtonSave.Dispose ();
                 ButtonSave = null;
+            }
+
+            if (PickerViewPlaceType != null) {
+                PickerViewPlaceType.Dispose ();
+                PickerViewPlaceType = null;
+            }
+
+            if (TextFieldDescription != null) {
+                TextFieldDescription.Dispose ();
+                TextFieldDescription = null;
+            }
+
+            if (TextFieldName != null) {
+                TextFieldName.Dispose ();
+                TextFieldName = null;
+            }
+
+            if (TextFieldRating != null) {
+                TextFieldRating.Dispose ();
+                TextFieldRating = null;
             }
         }
     }

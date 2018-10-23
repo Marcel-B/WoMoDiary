@@ -17,7 +17,6 @@ namespace com.b_velop.WoMoDiary.ViewModels
 
         public Action<string> ErrorAction { get; set; }
 
-
         public BaseViewModel()
         {
             PlaceStore = ServiceLocator.Instance.Get<IDataStore<Place>>();

@@ -123,6 +123,9 @@ namespace com.b_velop.WoMoDiary.iOS
         public UIContextualAction ContextualDefinitionAction(int row)
         {
             var place = ViewModel.Places[row];
+            var store = AppStore.Instance;
+            store.CurrentPlace = place;
+
             var action = UIContextualAction.FromContextualActionStyle(
                 UIContextualActionStyle.Normal,
                 Strings.EDIT,

@@ -717,7 +717,7 @@
                                 <rect key="frame" x="9" y="166" width="295" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" id="138782" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="12" y="204" width="292" height="162"/>
@@ -748,6 +748,9 @@
                     <connections>
                         <outlet property="ButtonSave" destination="123185" id="name-outlet-123185"/>
                         <outlet property="BottomSpaceButtonSave" destination="138783" id="name-outlet-138783"/>
+                        <outlet property="TextFieldName" destination="138779" id="name-outlet-138779"/>
+                        <outlet property="TextFieldDescription" destination="138780" id="name-outlet-138780"/>
+                        <outlet property="TextFieldRating" destination="138781" id="name-outlet-138781"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="122413" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,8 +7,6 @@ using Android.Views;
 using Android.Gms.Maps.Model;
 using com.b_velop.WoMoDiary.Services;
 using Android.Support.V4.App;
-using Android.Content;
-using Android.Util;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -17,29 +15,42 @@ namespace com.b_velop.WoMoDiary.Android
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            // Create your fragment here
-        }
+            // contentFrameMyMap
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            View view = inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
-            //mMapFragment = MapFragment.newInstance();
+
+
             //FragmentTransaction fragmentTransaction =
             //        getFragmentManager().beginTransaction();
             //fragmentTransaction.add(R.id.my_container, mMapFragment);
             //fragmentTransaction.commit();
 
-            // init
-            var mapFragment = (SupportMapFragment)FragmentManager.FindFragmentById(Resource.Id.mapFragmentMyPlaces);
-            // don't recreate fragment everytime ensure last map location/state are maintain
-            if (mapFragment == null)
-            {
-                mapFragment = SupportMapFragment.NewInstance();
-            }
-            var transaction = FragmentManager.BeginTransaction();
-            // R.id.map is a layout
-            transaction.Replace(Resource.Id.mapFragmentMyPlaces, mapFragment).Commit();
-            mapFragment.GetMapAsync(this);
+
+            // Create your fragment here
+        }
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+
+             var view = inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
+            //return base.OnCreateView(inflater, container, savedInstanceState);
+            //View view = inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
+            var mMapFragment = SupportMapFragment.NewInstance();
+            FragmentTransaction fragmentTransaction =
+                    FragmentManager.BeginTransaction();
+            fragmentTransaction.Replace(Resource.Id.contentFrameMyMap, mMapFragment);
+            ////fragmentTransaction.commit();
+
+            //// init
+            //var mapFragment = (SupportMapFragment)FragmentManager.FindFragmentById(Resource.Id.mapFragmentMyPlaces);
+            //// don't recreate fragment everytime ensure last map location/state are maintain
+            //if (mapFragment == null)
+            //{
+            //    mapFragment = SupportMapFragment.NewInstance();
+            //}
+            //var transaction = FragmentManager.BeginTransaction();
+            //// R.id.map is a layout
+            //transaction.Replace(Resource.Id.mapFragmentMyPlaces, mapFragment).Commit();
+            mMapFragment.GetMapAsync(this);
             return view;
         }
         public void OnMapReady(GoogleMap googleMap)

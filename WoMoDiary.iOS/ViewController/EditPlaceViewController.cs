@@ -2,23 +2,74 @@ using System;
 using System.Linq;
 using UIKit;
 
+using com.b_velop.WoMoDiary.ViewModels;
+using com.b_velop.WoMoDiary.Helpers;
+using com.b_velop.WoMoDiary.Meta;
+using com.b_velop.WoMoDiary.Domain;
+
 namespace com.b_velop.WoMoDiary.iOS
 {
     public partial class EditPlaceViewController : UIViewController
     {
         public EditPlaceViewController(IntPtr handle) : base(handle)
         {
+            ViewModel = ServiceLocator.Instance.Get<EditPlaceViewModel>();
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+            ViewModel.ErrorAction = ErrorMessage;
+            ViewModel.UpdateReady = UpdateReady;
         }
+
+        private void UpdateReady(bool success)
+        {
+            if (!success) return;
+            var controllers = NavigationController.ViewControllers;
+            NavigationController.SetViewControllers(controllers.SkipLast(1).ToArray(), true);
+        }
+
+        private void ErrorMessage(string mssg)
+        {
+
+        }
+
+        public EditPlaceViewModel ViewModel { get; set; }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Localize();
+            SetControllEvents();
+            ViewModel.FetchPlace();
+        }
+        private void Localize()
+        {
+            ButtonSave.SetTitle(Strings.SAVE, UIControlState.Normal);
+        }
+        private void SetControllEvents()
+        {
             ButtonSave.TouchUpInside += (sender, e) =>
             {
-                var controllers = NavigationController.ViewControllers;
-                NavigationController.SetViewControllers(controllers.SkipLast(1).ToArray(), true);
+                ViewModel.SavePlaceCommand.Execute(null);
             };
         }
 
+        void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "Name":
+                    TextFieldName.Text = ViewModel.Name;
+                    break;
+                case "Description":
+                    TextFieldDescription.Text = ViewModel.Description;
+                    break;
+                case "Rating":
+                    TextFieldRating.Text = ViewModel.Rating;
+                    break;
+                case "SelectedPlaceType":
+                    break;
+                default:
+                    return;
+            }
+        }
     }
 }

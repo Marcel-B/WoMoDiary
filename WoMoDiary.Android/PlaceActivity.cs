@@ -76,6 +76,7 @@ namespace com.b_velop.WoMoDiary.Android
                 markers.Add(marker);
                 //Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(place.Latitude, place.Longitude), 15));
             }
+            if (markers.Count == 0) return;
             LatLngBounds.Builder builder = new LatLngBounds.Builder();
             foreach (var marker in markers)
             {

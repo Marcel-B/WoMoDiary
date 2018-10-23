@@ -77,6 +77,7 @@
     <Compile Include="CastJavaObject.cs" />
     <Compile Include="MyPlacesMapFragment.cs" />
     <Compile Include="EditPlaceActivity.cs" />
+    <Compile Include="TestFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

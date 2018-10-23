@@ -1,14 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout 
+    android:id="@+id/linearLayoutMapHolder"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
       android:orientation="vertical"
       android:layout_width="match_parent" 
       android:layout_height="match_parent">
-    <fragment
+        <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/textView1"
+        android:text="Some Fucking Map" />
+    <FrameLayout 
+         android:id="@+id/contentFrameMyMap"
+         android:layout_margin="8dp"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
+    
+<!--    <fragment
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="8dp"
-        android:id="@+id/mapFragmentMyPlaces" />
+        android:id="@+id/mapFragmentMyPlaces" />-->
+
+    
 </LinearLayout>
