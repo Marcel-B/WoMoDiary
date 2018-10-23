@@ -74,8 +74,6 @@ namespace com.b_velop.WoMoDiary.ViewModels
             get => _selectedPlaceType;
             set => SetProperty(ref _selectedPlaceType, value);
         }
-
         public Command SavePlaceCommand { get; set; }
-
     }
 }

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIKit;
+using Network;
 
 namespace com.b_velop.WoMoDiary.iOS
 {
@@ -88,43 +89,54 @@ namespace com.b_velop.WoMoDiary.iOS
             ButtonSave.SetTitle(Strings.SAVE, UIControlState.Normal);
         }
 
-        private class LocationTypePickerViewModel : UIPickerViewModel
-        {
-            public Place SelectedType { get; set; }
 
-            private readonly IList<Place> _locationTypes;
-            private Action<object, PickerChangedEventArgs> pickerChanged;
-            public LocationTypePickerViewModel(Action<object, PickerChangedEventArgs> pickerChanged)
-            {
-                _locationTypes = new List<Place>
+    }
+
+
+    public class LocationTypePickerViewModel : UIPickerViewModel
+    {
+        public Place SelectedType { get; set; }
+
+        private readonly IList<Place> _locationTypes;
+        private Action<object, PickerChangedEventArgs> pickerChanged;
+        public LocationTypePickerViewModel(Action<object, PickerChangedEventArgs> pickerChanged)
+        {
+            /*
+        MotorhomePlace,
+        CampingPlace,
+        Restaurant,
+        Poi,
+        Hotel
+                */
+            _locationTypes = new List<Place>
                 {
+                    new MotorhomePlace(),
                     new CampingPlace(),
-                    new Hotel(),
                     new Restaurant(),
                     new Poi(),
+                    new Hotel()
                 };// LocationTypes().Locations;
-                this.pickerChanged = pickerChanged;
-            }
-
-            public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
-                => _locationTypes.Count;
-
-            public override string GetTitle(UIPickerView pickerView, nint row, nint component)
-                => _locationTypes[(int)row].Name;
-
-            public override nint GetComponentCount(UIPickerView pickerView)
-                => 1;
-
-            public override void Selected(UIPickerView pickerView, nint row, nint component)
-            {
-                var SelectedPlace = _locationTypes[(int)row];
-                pickerChanged?.Invoke(this, new PickerChangedEventArgs { Place = SelectedPlace });
-            }
+            this.pickerChanged = pickerChanged;
         }
 
-        private class PickerChangedEventArgs : EventArgs
+        public override nint GetRowsInComponent(UIPickerView pickerView, nint component)
+            => _locationTypes.Count;
+
+        public override string GetTitle(UIPickerView pickerView, nint row, nint component)
+            => _locationTypes[(int)row].Name;
+
+        public override nint GetComponentCount(UIPickerView pickerView)
+            => 1;
+
+        public override void Selected(UIPickerView pickerView, nint row, nint component)
         {
-            public Place Place { get; set; }
+            var SelectedPlace = _locationTypes[(int)row];
+            pickerChanged?.Invoke(this, new PickerChangedEventArgs { Place = SelectedPlace });
         }
+    }
+
+    public class PickerChangedEventArgs : EventArgs
+    {
+        public Place Place { get; set; }
     }
 }

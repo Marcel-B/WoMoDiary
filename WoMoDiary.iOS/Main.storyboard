@@ -751,6 +751,7 @@
                         <outlet property="TextFieldName" destination="138779" id="name-outlet-138779"/>
                         <outlet property="TextFieldDescription" destination="138780" id="name-outlet-138780"/>
                         <outlet property="TextFieldRating" destination="138781" id="name-outlet-138781"/>
+                        <outlet property="PickerViewTypes" destination="138782" id="name-outlet-138782"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="122413" userLabel="First Responder" sceneMemberID="firstResponder"/>

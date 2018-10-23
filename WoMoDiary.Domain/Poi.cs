@@ -8,7 +8,7 @@ namespace com.b_velop.WoMoDiary.Domain
         {
             Name = Strings.POINT_OF_INTEREST;
             AssetName = "SightSeeing";
-            Type = PlaceType.SightSeeing;
+            Type = PlaceType.Poi;
         }
         public override string ToString()
             => Name;

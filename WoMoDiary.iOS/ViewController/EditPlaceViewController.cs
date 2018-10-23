@@ -14,7 +14,7 @@ namespace com.b_velop.WoMoDiary.iOS
         public EditPlaceViewController(IntPtr handle) : base(handle)
         {
             ViewModel = ServiceLocator.Instance.Get<EditPlaceViewModel>();
-            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+            //ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             ViewModel.ErrorAction = ErrorMessage;
             ViewModel.UpdateReady = UpdateReady;
         }
@@ -36,19 +36,48 @@ namespace com.b_velop.WoMoDiary.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Localize();
-            SetControllEvents();
             ViewModel.FetchPlace();
+            Localize();
+            InitController();
+            SetControllEvents();
         }
         private void Localize()
         {
             ButtonSave.SetTitle(Strings.SAVE, UIControlState.Normal);
+        }
+        private void PickerChangedEvent(object sender, PickerChangedEventArgs args)
+        {
+            ViewModel.SelectedPlaceType = args.Place.Type;
+        }
+        private void InitController()
+        {
+            TextFieldName.Text = ViewModel.Name;
+            TextFieldDescription.Text = ViewModel.Description;
+            TextFieldRating.Text = ViewModel.Rating;
+            PickerViewTypes.Model = new LocationTypePickerViewModel(PickerChangedEvent);
+            PickerViewTypes.Select((int)ViewModel.SelectedPlaceType, 0, true);
+            PickerViewTypes.UserInteractionEnabled = false;
         }
         private void SetControllEvents()
         {
             ButtonSave.TouchUpInside += (sender, e) =>
             {
                 ViewModel.SavePlaceCommand.Execute(null);
+            };
+            TextFieldName.AllEditingEvents += (sender, e) =>
+            {
+                if (sender is UITextField textField)
+                    ViewModel.Name = textField.Text;
+            };
+            TextFieldDescription.AllEditingEvents += (sender, e) =>
+            {
+                if (sender is UITextField textField)
+                    ViewModel.Description = textField.Text;
+            };
+            TextFieldRating.AllEditingEvents += (sender, e) =>
+            {
+                if (sender is UITextField textField)
+                    ViewModel.Rating = textField.Text;
             };
         }
 
@@ -66,6 +95,7 @@ namespace com.b_velop.WoMoDiary.iOS
                     TextFieldRating.Text = ViewModel.Rating;
                     break;
                 case "SelectedPlaceType":
+                    PickerViewTypes.Select((int)ViewModel.SelectedPlaceType, 0, true);
                     break;
                 default:
                     return;

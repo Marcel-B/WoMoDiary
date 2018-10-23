@@ -24,7 +24,7 @@ namespace com.b_velop.WoMoDiary.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIPickerView PickerViewPlaceType { get; set; }
+        UIKit.UIPickerView PickerViewTypes { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -50,9 +50,9 @@ namespace com.b_velop.WoMoDiary.iOS
                 ButtonSave = null;
             }
 
-            if (PickerViewPlaceType != null) {
-                PickerViewPlaceType.Dispose ();
-                PickerViewPlaceType = null;
+            if (PickerViewTypes != null) {
+                PickerViewTypes.Dispose ();
+                PickerViewTypes = null;
             }
 
             if (TextFieldDescription != null) {

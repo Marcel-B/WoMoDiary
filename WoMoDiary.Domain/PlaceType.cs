@@ -2,10 +2,10 @@
 {
     public enum PlaceType
     {
-        Hotel,
-        CampingPlace,
         MotorhomePlace,
+        CampingPlace,
         Restaurant,
-        SightSeeing
+        Poi,
+        Hotel
     }
 }

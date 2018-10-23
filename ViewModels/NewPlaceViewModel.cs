@@ -41,12 +41,12 @@ namespace com.b_velop.WoMoDiary.ViewModels
                     tmp = new Hotel();
                     break;
                 case PlaceType.MotorhomePlace:
-                    tmp = new Stellpatz();
+                    tmp = new MotorhomePlace();
                     break;
                 case PlaceType.Restaurant:
                     tmp = new Restaurant();
                     break;
-                case PlaceType.SightSeeing:
+                case PlaceType.Poi:
                     tmp = new Poi();
                     break;
             }
