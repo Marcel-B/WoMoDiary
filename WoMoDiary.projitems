@@ -30,6 +30,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\LoginViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewUserViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\PasswordHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\EditPlaceViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Locales\" />

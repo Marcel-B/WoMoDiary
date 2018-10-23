@@ -57,6 +57,7 @@ namespace com.b_velop.WoMoDiary
             ServiceLocator.Instance.Register<LoginViewModel, LoginViewModel>();
             ServiceLocator.Instance.Register<NewTripViewModel, NewTripViewModel>();
             ServiceLocator.Instance.Register<PlaceDetailViewModel, PlaceDetailViewModel>();
+            ServiceLocator.Instance.Register<EditPlaceViewModel, EditPlaceViewModel>();
 
             LogOutLn("Logger test", typeof(App).Name);
 

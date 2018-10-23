@@ -76,6 +76,7 @@
     <Compile Include="PlaceExtension.cs" />
     <Compile Include="CastJavaObject.cs" />
     <Compile Include="MyPlacesMapFragment.cs" />
+    <Compile Include="EditPlaceActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -152,6 +153,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\sightseeing_light.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\restaurant_light.png" />
     <AndroidResource Include="Resources\layout\myPlacesMapLayout.axml" />
+    <AndroidResource Include="Resources\layout\editPlaceLayout.axml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xam.Plugin.Connectivity">
