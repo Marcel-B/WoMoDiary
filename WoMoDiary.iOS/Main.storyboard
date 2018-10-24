@@ -396,7 +396,7 @@
                                     <outlet property="LabelTimespan" destination="145198" id="name-outlet-145198"/>
                                 </connections>
                                 <directionalEdgeInsets key="directionalLayoutMargins" top="2" left="8" bottom="2" right="8" leading="2" trailing="2"/>
-                                <size key="customSize" width="394" height="132"/>
+                                <size key="customSize" width="394" height="130"/>
                                 <constraints>
                                     <constraint id="146361" firstItem="30260" firstAttribute="top" secondItem="30221" secondAttribute="top" constant="20" symbolic="YES"/>
                                     <constraint id="146362" firstAttribute="trailing" secondItem="30260" secondAttribute="trailing" constant="20" symbolic="YES"/>
