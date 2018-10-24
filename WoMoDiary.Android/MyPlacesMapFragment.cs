@@ -37,8 +37,8 @@ namespace com.b_velop.WoMoDiary.Android
             var mMapFragment = SupportMapFragment.NewInstance();
             FragmentTransaction fragmentTransaction =
                     FragmentManager.BeginTransaction();
-            fragmentTransaction.Replace(Resource.Id.contentFrameMyMap, mMapFragment);
-            ////fragmentTransaction.commit();
+            fragmentTransaction.Add(Resource.Id.contentFrameMyMap, mMapFragment);
+            fragmentTransaction.Commit();
 
             //// init
             //var mapFragment = (SupportMapFragment)FragmentManager.FindFragmentById(Resource.Id.mapFragmentMyPlaces);
@@ -53,6 +53,7 @@ namespace com.b_velop.WoMoDiary.Android
             mMapFragment.GetMapAsync(this);
             return view;
         }
+
         public void OnMapReady(GoogleMap googleMap)
         {
             var Map = googleMap;
@@ -79,9 +80,11 @@ namespace com.b_velop.WoMoDiary.Android
                 builder.Include(marker.Position);
             }
             LatLngBounds bounds = builder.Build();
-            int padding = 40; // offset from edges of the map in pixels
+            int padding = 240; // offset from edges of the map in pixels
             CameraUpdate cu = CameraUpdateFactory.NewLatLngBounds(bounds, padding);
             Map.AnimateCamera(cu);
         }
+
+
     }
 }

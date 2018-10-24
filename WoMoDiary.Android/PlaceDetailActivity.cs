@@ -12,8 +12,6 @@ namespace com.b_velop.WoMoDiary.Android
     [Activity(Label = "PlaceDetailActivity")]
     public class PlaceDetailActivity : Activity, IOnMapReadyCallback
     {
-        public GoogleMap Map { get; set; }
-        public MapFragment MapFragment { get; set; }
         public Place Place { get; set; }
         public ImageView ImageViewDetailCategory { get; set; }
         public ImageView ImageViewDetailRating { get; set; }
@@ -22,18 +20,24 @@ namespace com.b_velop.WoMoDiary.Android
 
         public void OnMapReady(GoogleMap googleMap)
         {
-            Map = googleMap;
             var marker = new MarkerOptions();
             marker.SetPosition(new LatLng(Place.Latitude, Place.Longitude));
             marker.SetTitle(Place.Name);
-            Map.AddMarker(marker);
-            Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Place.Latitude, Place.Longitude), 15));
+            googleMap.AddMarker(marker);
+            googleMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(Place.Latitude, Place.Longitude), 15));
         }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.placeDetailLayout);
+
+            var mMapFragment = MapFragment.NewInstance();
+            FragmentTransaction fragmentTransaction =
+                    FragmentManager.BeginTransaction();
+            fragmentTransaction.Add(Resource.Id.contentFramePlacesDetail, mMapFragment);
+            fragmentTransaction.Commit();
+
             GetViews();
 
             // Create your application here
@@ -43,7 +47,7 @@ namespace com.b_velop.WoMoDiary.Android
             TextViewPlaceDescription.Text = Place.Description;
             ImageViewDetailRating.SetImageResource(Place.ToRating());
             ImageViewDetailCategory.SetImageResource(Place.ToCategory());
-            MapFragment.GetMapAsync(this);
+            mMapFragment.GetMapAsync(this);
         }
 
         private void GetViews()
@@ -52,7 +56,6 @@ namespace com.b_velop.WoMoDiary.Android
             ImageViewDetailCategory = FindViewById<ImageView>(Resource.Id.imageViewDetailCategory);
             TextViewPlaceName = FindViewById<TextView>(Resource.Id.textViewDetailPlaceName);
             TextViewPlaceDescription = FindViewById<TextView>(Resource.Id.textViewDetailPlaceDescription);
-            MapFragment = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaceDetail);
         }
     }
 }

@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-              
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/editTextNewPlaceName"
 		android:hint="Enter place name" />
+    
 	<EditText
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:hint="Enter place description"
 		android:id="@+id/editTextNewPlaceDescription" />
+    
 	<Spinner
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
@@ -26,8 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 		android:columnCount="3"
-		android:rowCount="1"
-		>
+		android:rowCount="1">
+        
 		<ImageButton
 			android:layout_marginLeft="8dp"
 			android:layout_columnWeight="1"
@@ -36,6 +39,7 @@
 			android:pointerIcon="none"
             android:layout_gravity="center"
 			android:src="@drawable/thumb_up_light"/>
+        
 		<Button
 			android:layout_columnWeight="4"
 			android:layout_width="wrap_content"
@@ -45,6 +49,7 @@
 			android:layout_gravity="fill"
 			android:layout_marginLeft="8dp"
 			android:layout_marginRight="8dp"/>
+        
         <ImageButton
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -52,14 +57,13 @@
             android:layout_gravity="center"
             android:id="@+id/imageButtonRatingDown" 
             android:src="@drawable/thumb_down_light"/>
+        
 	</GridLayout>
-
 	
 	<fragment
         class="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-		android:layout_margin="12px"
-        android:id="@+id/mapFragmentNewPlace"
-	/>
+        android:id="@+id/mapFragmentNewPlace"/>
+    
 </LinearLayout>

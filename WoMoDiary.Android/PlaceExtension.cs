@@ -20,7 +20,7 @@ namespace com.b_velop.WoMoDiary.Android
                     return Resource.Drawable.camping_light;
                 case PlaceType.Restaurant:
                     return Resource.Drawable.restaurant_light;
-                case PlaceType.SightSeeing:
+                case PlaceType.Poi:
                     return Resource.Drawable.sightseeing_light;
                 default:
                     throw new ArgumentOutOfRangeException();

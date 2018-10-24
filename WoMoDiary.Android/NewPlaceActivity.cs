@@ -120,7 +120,7 @@ namespace com.b_velop.WoMoDiary.Android
             ViewModel.SavePlaceSuccessCallback = SavePlaceReady;
             var places = new Place[]
              {
-                new Stellpatz(),
+                new MotorhomePlace(),
                 new CampingPlace(),
                 new Hotel(),
                 new Poi(),

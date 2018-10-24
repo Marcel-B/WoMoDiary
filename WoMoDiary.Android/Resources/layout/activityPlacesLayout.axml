@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-	<android.support.v7.widget.Toolbar 
+
+    <android.support.v7.widget.Toolbar 
         android:id="@+id/toolbarPlaces"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,20 +14,22 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
-   <LinearLayout
+    
+    <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/placesContent"
         android:layout_below="@id/toolbarPlaces">
-        <fragment
-            class="com.google.android.gms.maps.MapFragment"
+
+        <FrameLayout 
+             android:id="@+id/contentFramePlacesMap"
+             android:layout_width="match_parent"
+             android:layout_height="160dp"/>
+        <FrameLayout 
+            android:id="@+id/contentPlacesFrame"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
-            android:id="@+id/mapFragmentPlaces"/>
-       <FrameLayout 
-          android:id="@+id/contentPlacesFrame"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"/>
+        
     </LinearLayout>
 </RelativeLayout>

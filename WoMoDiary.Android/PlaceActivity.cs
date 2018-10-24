@@ -4,11 +4,11 @@ using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using System.Collections.Generic;
+using System;
 
 using com.b_velop.WoMoDiary.ViewModels;
 using com.b_velop.WoMoDiary.Helpers;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -21,8 +21,6 @@ namespace com.b_velop.WoMoDiary.Android
         }
 
         public Toolbar Toolbar { get; set; }
-        public MapFragment MapFragmentPlaces { get; set; }
-        public GoogleMap Map { get; set; }
         public PlacesViewModel ViewModel { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -32,12 +30,10 @@ namespace com.b_velop.WoMoDiary.Android
             GetViews();
             InitViews();
             SetViewsEvents();
-            MapFragmentPlaces.GetMapAsync(this);
         }
 
         private void GetViews()
         {
-            MapFragmentPlaces = FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mapFragmentPlaces);
             Toolbar = FindViewById<Toolbar>(Resource.Id.toolbarPlaces);
         }
 
@@ -45,8 +41,12 @@ namespace com.b_velop.WoMoDiary.Android
         {
             Toolbar.InflateMenu(Resource.Menu.addPlace);
             var transaction = SupportFragmentManager.BeginTransaction();
-            transaction.Replace(Resource.Id.contentPlacesFrame, new PlaceListFragment());
+            var mMapFragment = SupportMapFragment.NewInstance();
+            transaction.Add(Resource.Id.contentFramePlacesMap, mMapFragment);
+            transaction.Add(Resource.Id.contentPlacesFrame, new PlaceListFragment());
             transaction.Commit();
+
+            mMapFragment.GetMapAsync(this);
         }
 
         private void SetViewsEvents()
@@ -65,27 +65,32 @@ namespace com.b_velop.WoMoDiary.Android
 
         public void OnMapReady(GoogleMap googleMap)
         {
-            Map = googleMap;
-            IList<MarkerOptions> markers = new List<MarkerOptions>();
-            foreach (var place in ViewModel.Places)
+            try
             {
-                var marker = new MarkerOptions();
-                marker.SetPosition(new LatLng(place.Latitude, place.Longitude));
-                marker.SetTitle(place.Name);
-                Map.AddMarker(marker);
-                markers.Add(marker);
-                //Map.MoveCamera(CameraUpdateFactory.NewLatLngZoom(new LatLng(place.Latitude, place.Longitude), 15));
+                var markers = new List<MarkerOptions>();
+                foreach (var place in ViewModel.Places)
+                {
+                    var marker = new MarkerOptions();
+                    marker.SetPosition(new LatLng(place.Latitude, place.Longitude));
+                    marker.SetTitle(place.Name);
+                    googleMap.AddMarker(marker);
+                    markers.Add(marker);
+                }
+                if (markers.Count == 0) return;
+                var builder = new LatLngBounds.Builder();
+
+                foreach (var marker in markers)
+                    builder.Include(marker.Position);
+
+                LatLngBounds bounds = builder.Build();
+                int padding = 145; // offset from edges of the map in pixels
+                var cu = CameraUpdateFactory.NewLatLngBounds(bounds, padding);
+                googleMap.AnimateCamera(cu);
             }
-            if (markers.Count == 0) return;
-            LatLngBounds.Builder builder = new LatLngBounds.Builder();
-            foreach (var marker in markers)
+            catch (Exception e)
             {
-                builder.Include(marker.Position);
+                App.LogOutLn(e.StackTrace, GetType().Name);
             }
-            LatLngBounds bounds = builder.Build();
-            int padding = 22; // offset from edges of the map in pixels
-            CameraUpdate cu = CameraUpdateFactory.NewLatLngBounds(bounds, padding);
-            Map.AnimateCamera(cu);
         }
     }
 }

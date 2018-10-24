@@ -2616,11 +2616,11 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b00c9
 			public const int action0 = 2131427529;
 			
-			// aapt resource value: 0x7f0b00e8
-			public const int actionAddPlace = 2131427560;
-			
 			// aapt resource value: 0x7f0b00e9
-			public const int action_add = 2131427561;
+			public const int actionAddPlace = 2131427561;
+			
+			// aapt resource value: 0x7f0b00ea
+			public const int action_add = 2131427562;
 			
 			// aapt resource value: 0x7f0b0086
 			public const int action_bar = 2131427462;
@@ -2759,6 +2759,12 @@ namespace com.b_velop.WoMoDiary.Android
 			
 			// aapt resource value: 0x7f0b00b6
 			public const int contentFrameMyMap = 2131427510;
+			
+			// aapt resource value: 0x7f0b00e1
+			public const int contentFramePlacesDetail = 2131427553;
+			
+			// aapt resource value: 0x7f0b009c
+			public const int contentFramePlacesMap = 2131427484;
 			
 			// aapt resource value: 0x7f0b0070
 			public const int contentPanel = 2131427440;
@@ -2961,20 +2967,17 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b00bd
 			public const int mapFragmentNewPlace = 2131427517;
 			
-			// aapt resource value: 0x7f0b00e1
-			public const int mapFragmentPlaceDetail = 2131427553;
+			// aapt resource value: 0x7f0b00e2
+			public const int mapFragmentPlaceDetail = 2131427554;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int mapFragmentPlaces = 2131427484;
-			
-			// aapt resource value: 0x7f0b00e7
-			public const int masked = 2131427559;
+			// aapt resource value: 0x7f0b00e8
+			public const int masked = 2131427560;
 			
 			// aapt resource value: 0x7f0b00cc
 			public const int media_actions = 2131427532;
 			
-			// aapt resource value: 0x7f0b00e2
-			public const int message = 2131427554;
+			// aapt resource value: 0x7f0b00e3
+			public const int message = 2131427555;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int middle = 2131427388;
@@ -3198,14 +3201,14 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0073
 			public const int textSpacerNoTitle = 2131427443;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int textView1 = 2131427509;
-			
 			// aapt resource value: 0x7f0b00df
 			public const int textViewDetailPlaceDescription = 2131427551;
 			
 			// aapt resource value: 0x7f0b00dd
 			public const int textViewDetailPlaceName = 2131427549;
+			
+			// aapt resource value: 0x7f0b00b5
+			public const int textViewMyPlaces = 2131427509;
 			
 			// aapt resource value: 0x7f0b00da
 			public const int textViewPlaceDescriptionCell = 2131427546;
@@ -3213,14 +3216,14 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b00d9
 			public const int textViewPlaceNameCell = 2131427545;
 			
-			// aapt resource value: 0x7f0b00e3
-			public const int textViewTripName = 2131427555;
-			
 			// aapt resource value: 0x7f0b00e4
-			public const int textViewTripPlacesCount = 2131427556;
+			public const int textViewTripName = 2131427556;
 			
 			// aapt resource value: 0x7f0b00e5
-			public const int textViewTripTimeSpan = 2131427557;
+			public const int textViewTripPlacesCount = 2131427557;
+			
+			// aapt resource value: 0x7f0b00e6
+			public const int textViewTripTimeSpan = 2131427558;
 			
 			// aapt resource value: 0x7f0b00ab
 			public const int text_input_password_toggle = 2131427499;
@@ -3285,8 +3288,8 @@ namespace com.b_velop.WoMoDiary.Android
 			// aapt resource value: 0x7f0b0016
 			public const int view_offset_helper = 2131427350;
 			
-			// aapt resource value: 0x7f0b00e6
-			public const int visible = 2131427558;
+			// aapt resource value: 0x7f0b00e7
+			public const int visible = 2131427559;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int wide = 2131427366;
