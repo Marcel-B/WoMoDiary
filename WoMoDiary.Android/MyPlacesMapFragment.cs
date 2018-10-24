@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Gms.Maps.Model;
 using com.b_velop.WoMoDiary.Services;
 using Android.Support.V4.App;
+using Android.Widget;
+using com.b_velop.WoMoDiary.Meta;
 
 namespace com.b_velop.WoMoDiary.Android
 {
@@ -26,33 +28,28 @@ namespace com.b_velop.WoMoDiary.Android
 
 
             // Create your fragment here
+
         }
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        public override void OnStart()
         {
-
-             var view = inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
-            //return base.OnCreateView(inflater, container, savedInstanceState);
-            //View view = inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
+            base.OnStart();
+        }
+        public override void OnResume()
+        {
+            base.OnResume();
+            var myPlaces = Activity.FindViewById<TextView>(Resource.Id.textViewMyPlaces);
+            if (myPlaces != null) myPlaces.Text = Strings.MY_PLACES;
             var mMapFragment = SupportMapFragment.NewInstance();
             FragmentTransaction fragmentTransaction =
                     FragmentManager.BeginTransaction();
             fragmentTransaction.Add(Resource.Id.contentFrameMyMap, mMapFragment);
             fragmentTransaction.Commit();
-
-            //// init
-            //var mapFragment = (SupportMapFragment)FragmentManager.FindFragmentById(Resource.Id.mapFragmentMyPlaces);
-            //// don't recreate fragment everytime ensure last map location/state are maintain
-            //if (mapFragment == null)
-            //{
-            //    mapFragment = SupportMapFragment.NewInstance();
-            //}
-            //var transaction = FragmentManager.BeginTransaction();
-            //// R.id.map is a layout
-            //transaction.Replace(Resource.Id.mapFragmentMyPlaces, mapFragment).Commit();
             mMapFragment.GetMapAsync(this);
-            return view;
         }
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+            => inflater.Inflate(Resource.Layout.myPlacesMapLayout, container, false);
 
         public void OnMapReady(GoogleMap googleMap)
         {

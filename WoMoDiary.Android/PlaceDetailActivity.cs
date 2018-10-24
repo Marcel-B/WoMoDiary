@@ -13,6 +13,7 @@ namespace com.b_velop.WoMoDiary.Android
     public class PlaceDetailActivity : Activity, IOnMapReadyCallback
     {
         public Place Place { get; set; }
+
         public ImageView ImageViewDetailCategory { get; set; }
         public ImageView ImageViewDetailRating { get; set; }
         public TextView TextViewPlaceName { get; set; }

@@ -5,6 +5,7 @@ Cancel = Cancel
 Category = Category
 Confirm Password = Confirm Password
 
+Delete = Delete
 Delete.Place = Delete Place "{0}"?
 Description = Description
 
@@ -21,6 +22,7 @@ Incorrect username or password. = Incorrect username or password.
 Login = Login
 
 Map = Map
+My Places = My Places
 
 New Place = New Place
 New Trip = New Trip

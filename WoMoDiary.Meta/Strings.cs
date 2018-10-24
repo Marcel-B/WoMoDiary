@@ -12,6 +12,7 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string CATEGORY = "Category".Translate();
         public static string CONFIRM_PASSWORD = "Confirm Password".Translate();
 
+        public static string DELETE = "Delete".Translate();
         public static string DELETE_PLACE(string place) => "Delete.Place".Translate(place);
         public static string DESCRIPTION = "Description".Translate();
 
@@ -28,6 +29,7 @@ namespace com.b_velop.WoMoDiary.Meta
         public static string LOGIN = "Login".Translate();
 
         public static string MAP = "Map".Translate();
+        public static string MY_PLACES = "My Places".Translate();
 
         public static string NEW_PLACE = "New Place".Translate();
         public static string NEW_TRIP = "New Trip".Translate();

@@ -18,15 +18,20 @@ namespace com.b_velop.WoMoDiary.Android
             ViewModel = ServiceLocator.Instance.Get<TripsViewModel>();
             ViewModel.ErrorAction = ToastMessage;
         }
-
+        public override async void OnResume()
+        {
+            base.OnResume();
+            await ViewModel.PullTrips();
+            ListAdapter = new TripAdapter(Activity, ViewModel.Trips);
+        }
         private void ToastMessage(string mssg)
             => Toast.MakeText(Activity, mssg, ToastLength.Long).Show();
 
-        public override async void OnCreate(Bundle savedInstanceState)
+        public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            await ViewModel.PullTrips();
-            ListAdapter = new TripAdapter(Activity, ViewModel.Trips);
+            //await ViewModel.PullTrips();
+            //ListAdapter = new TripAdapter(Activity, ViewModel.Trips);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

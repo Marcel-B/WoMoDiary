@@ -27,11 +27,14 @@ namespace com.b_velop.WoMoDiary.Android
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activityPlacesLayout);
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
             GetViews();
             InitViews();
             SetViewsEvents();
         }
-
         private void GetViews()
         {
             Toolbar = FindViewById<Toolbar>(Resource.Id.toolbarPlaces);
@@ -42,8 +45,10 @@ namespace com.b_velop.WoMoDiary.Android
             Toolbar.InflateMenu(Resource.Menu.addPlace);
             var transaction = SupportFragmentManager.BeginTransaction();
             var mMapFragment = SupportMapFragment.NewInstance();
+
             transaction.Add(Resource.Id.contentFramePlacesMap, mMapFragment);
             transaction.Add(Resource.Id.contentPlacesFrame, new PlaceListFragment());
+
             transaction.Commit();
 
             mMapFragment.GetMapAsync(this);

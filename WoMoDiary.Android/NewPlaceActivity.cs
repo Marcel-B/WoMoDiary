@@ -51,10 +51,6 @@ namespace com.b_velop.WoMoDiary.Android
             SetControllEvents();
             Localize();
             MapFragment.GetMapAsync(this);
-            //var fragTx = FragmentManager.BeginTransaction();
-            //_mapFragment = MapFragment.NewInstance(mapOptions);
-            //fragTx.Add(Resource.Id.mapFragmentNewPlace, _mapFragment, "mapFragmentNewPlace");
-            //fragTx.Commit();
         }
 
         private void ToastMessage(string mssg)
@@ -112,7 +108,6 @@ namespace com.b_velop.WoMoDiary.Android
         private void SavePlaceReady(bool status)
         {
             if (!status) return;
-            StartActivity(typeof(PlaceActivity));
             Finish();
         }
         private void SetStates()

@@ -26,7 +26,6 @@ namespace com.b_velop.WoMoDiary.Android
         {
             ((Activity)Context).RunOnUiThread(() => NotifyDataSetChanged());
         }
-
         public override int Count => Places.Count;
 
         public override Java.Lang.Object GetItem(int position)

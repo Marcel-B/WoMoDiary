@@ -5,6 +5,7 @@ Cancel = Abbrechen
 Category = Kategorie
 Confirm Password = Passwort bestätigen
 
+Delete = Löschen
 Delete.Place = "{0}" wirklich löschen?
 Description = Beschreibung
 
@@ -21,6 +22,7 @@ Incorrect username or password. = Benutzername oder Passwort falsch.
 Login = Anmelden
 
 Map = Karte
+My Places = Meine Orte
 
 New Place = Neuer Ort
 New Trip = Neue Reise

@@ -1,10 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <resources>
-  <string name="app_name">WoMo Diary</string>
-  <string name="action_settings">Settings</string>
-  <string-array name="placeTypesArray">
-    <item>Camping</item>
-    <item>Hotel</item>
-    <item>Restaurant</item>
-    <item>Nice Place</item>
-  </string-array>
+    <string name="app_name">WoMo Diary</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="placeTypesArray">
+        <item>Camping</item>
+        <item>Hotel</item>
+        <item>Restaurant</item>
+        <item>Nice Place</item>
+    </string-array>
+    <string-array name="menu">
+        <item>Edit</item>
+        <item>Delete</item>
+    </string-array>
 </resources>
