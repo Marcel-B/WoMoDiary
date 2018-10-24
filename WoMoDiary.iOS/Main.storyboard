@@ -368,14 +368,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                             <constraints/>
-                                            <color key="backgroundColor" colorSpace="calibratedRGB" red="0.12549019607843137" green="0.74509803921568629" blue="0.41568627450980394" alpha="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Timespan" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="145198" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="2" misplaced="YES">
-                                            <rect key="frame" x="20.5" y="0.0" width="95.5" height="16"/>
+                                            <rect key="frame" x="149.5" y="58" width="95.5" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
-                                            <color key="backgroundColor" colorSpace="calibratedRGB" red="0.81568627450980391" green="0.84313725490196079" blue="0.87450980392156863" alpha="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="30261" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
                                             <rect key="frame" x="20" y="91.5" width="92.5" height="20.5"/>
@@ -407,8 +405,8 @@
                                     <constraint id="148132" firstItem="30261" firstAttribute="width" secondItem="30260" secondAttribute="width"/>
                                     <constraint id="148133" firstAttribute="bottom" secondItem="30261" secondAttribute="bottom" constant="20" symbolic="YES"/>
                                     <constraint id="148134" firstItem="30261" firstAttribute="leading" secondItem="30221" secondAttribute="leading" symbolic="YES" constant="20"/>
-                                    <constraint id="152488" firstAttribute="centerX" secondItem="145198" secondAttribute="centerX" constant="129"/>
-                                    <constraint id="152489" firstAttribute="centerY" secondItem="145198" secondAttribute="centerY" constant="58"/>
+                                    <constraint id="152488" firstAttribute="centerX" secondItem="145198" secondAttribute="centerX"/>
+                                    <constraint id="152489" firstAttribute="centerY" secondItem="145198" secondAttribute="centerY"/>
                                 </constraints>
                             </collectionViewCell>
                         </cells>
