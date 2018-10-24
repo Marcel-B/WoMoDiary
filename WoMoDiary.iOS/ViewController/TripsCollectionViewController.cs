@@ -31,7 +31,7 @@ namespace com.b_velop.WoMoDiary.iOS
             var flowLayout = Layout as UICollectionViewFlowLayout;
             var collectionView = CollectionView;
             var width = collectionView.Frame.Width - 16;
-            flowLayout.ItemSize = new CGSize(width, 120);
+            flowLayout.ItemSize = new CGSize(width, 130);
             ViewModel.Trips.CollectionChanged -= Trips_CollectionChanged;
             ViewModel.Trips.CollectionChanged += Trips_CollectionChanged;
             this.ParentViewController.Title = Strings.TRIPS;
@@ -72,7 +72,17 @@ namespace com.b_velop.WoMoDiary.iOS
             var prefix = trip.Places.Count == 1 ? Strings.PLACE : Strings.PLACES;
             cell.Count = $"{trip.Places.Count} {prefix}";
             cell.Tag = indexPath.Row;
-            cell.TimeSpan = trip.Created.ToString("D");
+            var span = string.Empty;
+            if (trip.Places.Count > 0)
+            {
+                var last = trip.Places.Max(p => p.Created);
+                var first = trip.Places.Min(p => p.Created);
+                span = $"{first.ToString("D")} -{Environment.NewLine}{last.ToString("D")}";
+            }
+            else
+                span = trip.Created.ToString("D");
+
+            cell.TimeSpan = span;
             App.LogOutLn($"Cell '{trip.Name}' created.", GetType().Name);
             return cell;
         }
